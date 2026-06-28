@@ -68,14 +68,13 @@
     .toc-link:hover,.toc-link.active{color:#0033ff;}
 
     /* Sidebar newsletter CTA */
-    .sidebar-cta{background:#111;padding:24px;position:relative;}
-    .sidebar-cta h3{font-size:16px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.3;}
+.sidebar-cta{background:#111;padding:24px;}
+    .sidebar-cta-tag{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#6b9fff;margin-bottom:10px;}
+    .sidebar-cta h3{font-size:18px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.25;}
     .sidebar-cta p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:16px;}
-    .sidebar-cta .sf-wrap{position:relative;}
-    .sidebar-cta input{width:100%;padding:10px 14px;border:none;border-radius:3px;font-size:13px;font-family:inherit;box-sizing:border-box;margin-bottom:8px;}
-    .sidebar-cta button{width:100%;padding:11px;background:#0033ff;color:#fff;border:none;border-radius:3px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;}
-    .sidebar-cta button:hover{background:#0022cc;}
-    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.4);margin-top:8px;}
+    .sidebar-cta-btn{display:block;width:100%;padding:13px 0;background:#0033ff;color:#fff;font-size:14px;font-weight:700;text-align:center;text-decoration:none;border-radius:3px;transition:background .15s;box-sizing:border-box;}
+    .sidebar-cta-btn:hover{background:#0022cc;}
+    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.35);margin-top:10px;margin-bottom:0;}
 
     /* Post body */
     .post-body h2{font-size:30px;font-weight:800;color:#111;letter-spacing:-.5px;margin:44px 0 18px;line-height:1.2;}
@@ -160,7 +159,7 @@
 <p>However, spending tons of money on hiring a public relations agency is also not an option. When you’re a small SaaS startup, you don’t have that kind of money!</p>
 <p>What’s the solution?</p>
 <p>In this post, I’ll show you some practical ways to generate PR traction for your SaaS business without shelling out the big bucks.
-<h2>Here's what I'll cover in this post<a id="simple"></a>:</h2>
+<h2 id="heres-what-ill-cover-in-this-post">Here's what I'll cover in this post<a id="simple"></a>:</h2>
 <ul>
  	<li><a href="#simple">5 Simple, Yet Effective SaaS PR Strategies</a></li>
  	<li><a href="#mistakes">3 PR Mistakes To Avoid</a></li>
@@ -399,13 +398,13 @@ I know you want to get mentions on top-tier sites like Forbes, TNW and VentureBe
 <p>After all, why do you think <a href="https://www.forbes.com/sites/forbescommunicationscouncil/2020/01/21/influencers-positive-social-value-and-how-to-develop-a-responsible-influencer-partnership/">influencer partnerships</a> have such a proven track record? The goodwill your brand can generate through influencer partnerships is immense and it can also add that much needed human element to your b2b marketing.
 <h2 id="why-your-saas-company-needs-pr">Why your SaaS company needs PR</h2>
 Now that you know how you can get some quality PR for your SaaS startup, let’s get into why public relations is so important:
-<h3>1. You can increase brand awareness</h3>
+<h3 id="1-you-can-increase-brand-awareness">1. You can increase brand awareness</h3>
 This is one of the key reasons why every company invests in a public relations strategy.</p>
 <p>Good PR is one of the easiest ways to gain media coverage and raise brand awareness to attract a potential customer or investor.</p>
 <p>Look at it this way:</p>
 <p>Your SaaS business is going to have a very limited reach - especially if it’s new. A major publication, on the other hand, reaches thousands (if not millions) of readers or potential customers every day!</p>
 <p>What do you think is going to be a better solution to increase brand awareness?
-<h3>2. You can build credibility</h3>
+<h3 id="2-you-can-build-credibility">2. You can build credibility</h3>
 Sure, people may know of your SaaS business - but why should they trust you?</p>
 <p>Just because you say so?</p>
 <p>That’s never going to work!</p>
@@ -448,34 +447,30 @@ PR for SaaS companies is different from public relations for other businesses.</
     <aside class="post-sidebar">
       <div class="toc-box" id="toc-box">
   <p class="toc-title">Table of Contents</p>
-  <ul class="toc-list"><li ><a href="#here-s-what-i-ll-cover-in-this-post" class="toc-link">Here's what I'll cover in this post:</a></li>
+  <ul class="toc-list"><li ><a href="#heres-what-ill-cover-in-this-post" class="toc-link">Here's what I'll cover in this post:</a></li>
 <li ><a href="#5-simple-yet-effective-saas-pr-strategies" class="toc-link">5 Simple, Yet Effective SaaS PR Strategies</a></li>
-<li style="padding-left:16px"><a href="#1-come-up-with-data-insights" class="toc-link">1. Come Up With Data/Insights</a></li>
-<li style="padding-left:16px"><a href="#2-answer-journalist-requests" class="toc-link">2. Answer Journalist Requests</a></li>
-<li style="padding-left:16px"><a href="#3-use-newsjacking" class="toc-link">3. Use Newsjacking</a></li>
-<li style="padding-left:16px"><a href="#4-use-quora-to-start-a-conversation" class="toc-link">4. Use Quora to Start a Conversation</a></li>
-<li style="padding-left:16px"><a href="#5-use-a-story-angle-that-has-worked-before" class="toc-link">5. Use A Story Angle That Has Worked Before</a></li>
+<li style="padding-left:14px"><a href="#1-come-up-with-datainsights" class="toc-link">1. Come Up With Data/Insights</a></li>
+<li style="padding-left:14px"><a href="#2-answer-journalist-requests" class="toc-link">2. Answer Journalist Requests</a></li>
+<li style="padding-left:14px"><a href="#3-use-newsjacking" class="toc-link">3. Use Newsjacking</a></li>
+<li style="padding-left:14px"><a href="#4-use-quora-to-start-a-conversation" class="toc-link">4. Use Quora to Start a Conversation</a></li>
+<li style="padding-left:14px"><a href="#5-use-a-story-angle-that-has-worked-before" class="toc-link">5. Use A Story Angle That Has Worked Before</a></li>
 <li ><a href="#3-pr-mistakes-to-avoid" class="toc-link">3 PR Mistakes To Avoid</a></li>
-<li style="padding-left:16px"><a href="#mistake-1-hiring-a-pr-firm-with-no-saas-experience" class="toc-link">Mistake #1: Hiring a PR Firm With No SaaS Experience</a></li>
-<li style="padding-left:16px"><a href="#mistake-2-not-having-a-realistic-measurable-strategy" class="toc-link">Mistake #2: Not Having a Realistic, Measurable Strategy</a></li>
-<li style="padding-left:16px"><a href="#mistake-3-pitching-only-to-traditional-media" class="toc-link">Mistake #3: Pitching Only to Traditional Media</a></li>
+<li style="padding-left:14px"><a href="#mistake-1-hiring-a-pr-firm-with-no-saas-experience" class="toc-link">Mistake #1: Hiring a PR Firm With No SaaS Experience</a></li>
+<li style="padding-left:14px"><a href="#mistake-2-not-having-a-realistic-measurable-strategy" class="toc-link">Mistake #2: Not Having a Realistic, Measurable Strategy</a></li>
+<li style="padding-left:14px"><a href="#mistake-3-pitching-only-to-traditional-media" class="toc-link">Mistake #3: Pitching Only to Traditional Media</a></li>
 <li ><a href="#why-your-saas-company-needs-pr" class="toc-link">Why your SaaS company needs PR</a></li>
+<li style="padding-left:14px"><a href="#1-you-can-increase-brand-awareness" class="toc-link">1. You can increase brand awareness</a></li>
+<li style="padding-left:14px"><a href="#2-you-can-build-credibility" class="toc-link">2. You can build credibility</a></li>
 </ul>
 </div>
       <div class="sidebar-cta">
-        <h3>Free: The 4-Exit Playbook</h3>
-        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. 20k+ subscribers.</p>
-        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-wrap" id="sf2-saas-pr" data-async="true" data-recaptcha="true">
-          <input type="text" name="first_name" placeholder="First Name" required />
-          <input type="text" name="last_name" placeholder="Last Name" required />
-          <input type="email" name="email" placeholder="Email" required />
-          <div style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
-          <button type="submit">Get It Free →</button>
-          <p class="fine">No spam. Unsubscribe anytime.</p>
-        <p class="sendfox-message"></p></form>
-        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+        <p class="sidebar-cta-tag">FREE NEWSLETTER</p>
+        <h3>The 4-Exit Playbook</h3>
+        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. Read by 20k+ founders.</p>
+        <a href="/signup/" class="sidebar-cta-btn">Get it free →</a>
+        <p class="fine">No spam. Unsubscribe anytime.</p>
       </div>
-    </aside>
+      </aside>
   </div>
 </article>
 

@@ -68,14 +68,13 @@
     .toc-link:hover,.toc-link.active{color:#0033ff;}
 
     /* Sidebar newsletter CTA */
-    .sidebar-cta{background:#111;padding:24px;position:relative;}
-    .sidebar-cta h3{font-size:16px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.3;}
+.sidebar-cta{background:#111;padding:24px;}
+    .sidebar-cta-tag{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#6b9fff;margin-bottom:10px;}
+    .sidebar-cta h3{font-size:18px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.25;}
     .sidebar-cta p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:16px;}
-    .sidebar-cta .sf-wrap{position:relative;}
-    .sidebar-cta input{width:100%;padding:10px 14px;border:none;border-radius:3px;font-size:13px;font-family:inherit;box-sizing:border-box;margin-bottom:8px;}
-    .sidebar-cta button{width:100%;padding:11px;background:#0033ff;color:#fff;border:none;border-radius:3px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;}
-    .sidebar-cta button:hover{background:#0022cc;}
-    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.4);margin-top:8px;}
+    .sidebar-cta-btn{display:block;width:100%;padding:13px 0;background:#0033ff;color:#fff;font-size:14px;font-weight:700;text-align:center;text-decoration:none;border-radius:3px;transition:background .15s;box-sizing:border-box;}
+    .sidebar-cta-btn:hover{background:#0022cc;}
+    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.35);margin-top:10px;margin-bottom:0;}
 
     /* Post body */
     .post-body h2{font-size:30px;font-weight:800;color:#111;letter-spacing:-.5px;margin:44px 0 18px;line-height:1.2;}
@@ -202,9 +201,9 @@ Humans love flattery. Even if they feel it's not 100% genuine. Why not bring a s
 <p><img class="alignnone" src="/assets/uploads/2016/06/stay-awesome-2.jpg" alt="Stay awesome" /></p>
 <p>&nbsp;
 <h2 id="express-gratitude-appreciation">Express gratitude, appreciation</h2>
-<h3>Thank you for [something specific they did to help you],</h3>
+<h3 id="thank-you-for-something-specific-they-did-to-help-you">Thank you for [something specific they did to help you],</h3>
 Being grateful for someone helping you goes a long way.  Don't just say a generic thanks in your email endings either. Acknowledge exactly what they did to help you. It probably reassures them that their assistance did not go to waste and you really did benefit from it.
-<h3>Thank you for taking the time to [what they did for you],</h3>
+<h3 id="thank-you-for-taking-the-time-to-what-they-did-for-you">Thank you for taking the time to [what they did for you],</h3>
 Time is often people's most valuable resource so if they spend some of it to help you, acknowledge they did and in which way. People often feel others don't realize the amount of time they put into doing something (as a measure of their effort) so being acknowledged for it and not just the act itself probably makes them feel good.
 <h3>Thanks for the consideration,</h3>
 Send this one when you apply to something. In addition, it works great when you want to express gratitude for being given the opportunity without being presumptuous of what will happen next.</p>
@@ -431,33 +430,29 @@ Use these different email endings to wrap up messages in the most love-hate comm
       <div class="toc-box" id="toc-box">
   <p class="toc-title">Table of Contents</p>
   <ul class="toc-list"><li ><a href="#to-congratulate-compliment" class="toc-link">To congratulate, compliment</a></li>
-<li style="padding-left:16px"><a href="#great-working-with-you" class="toc-link">Great working with you,</a></li>
-<li style="padding-left:16px"><a href="#keep-up-the-great-work" class="toc-link">Keep up the great work,</a></li>
-<li style="padding-left:16px"><a href="#either-way-keep-up-the-great-work" class="toc-link">Either way, keep up the great work!</a></li>
-<li style="padding-left:16px"><a href="#you-always-something-they-always-do-with-positive-effect" class="toc-link">You always [something they always do with positive effect],</a></li>
-<li style="padding-left:16px"><a href="#keep-up-the-great-work-something-they-do-well" class="toc-link">Keep up the great work [something they do well],</a></li>
-<li style="padding-left:16px"><a href="#to-your-continued-success" class="toc-link">To your continued success,</a></li>
-<li style="padding-left:16px"><a href="#you-re-an-inspiration" class="toc-link">You're an inspiration,</a></li>
-<li style="padding-left:16px"><a href="#congrats" class="toc-link">Congrats,</a></li>
-<li style="padding-left:16px"><a href="#you-rock" class="toc-link">You rock,</a></li>
-<li style="padding-left:16px"><a href="#stay-awesome" class="toc-link">Stay awesome,</a></li>
+<li style="padding-left:14px"><a href="#great-working-with-you" class="toc-link">Great working with you,</a></li>
+<li style="padding-left:14px"><a href="#keep-up-the-great-work" class="toc-link">Keep up the great work,</a></li>
+<li style="padding-left:14px"><a href="#either-way-keep-up-the-great-work" class="toc-link">Either way, keep up the great work!</a></li>
+<li style="padding-left:14px"><a href="#you-always-something-they-always-do-with-positive-effect" class="toc-link">You always [something they always do with positive effect],</a></li>
+<li style="padding-left:14px"><a href="#keep-up-the-great-work-something-they-do-well" class="toc-link">Keep up the great work [something they do well],</a></li>
+<li style="padding-left:14px"><a href="#to-your-continued-success" class="toc-link">To your continued success,</a></li>
+<li style="padding-left:14px"><a href="#youre-an-inspiration" class="toc-link">You're an inspiration,</a></li>
+<li style="padding-left:14px"><a href="#congrats" class="toc-link">Congrats,</a></li>
+<li style="padding-left:14px"><a href="#you-rock" class="toc-link">You rock,</a></li>
+<li style="padding-left:14px"><a href="#stay-awesome" class="toc-link">Stay awesome,</a></li>
 <li ><a href="#express-gratitude-appreciation" class="toc-link">Express gratitude, appreciation</a></li>
+<li style="padding-left:14px"><a href="#thank-you-for-something-specific-they-did-to-help-you" class="toc-link">Thank you for [something specific they did to help you],</a></li>
+<li style="padding-left:14px"><a href="#thank-you-for-taking-the-time-to-what-they-did-for-you" class="toc-link">Thank you for taking the time to [what they did for you],</a></li>
 </ul>
 </div>
       <div class="sidebar-cta">
-        <h3>Free: The 4-Exit Playbook</h3>
-        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. 20k+ subscribers.</p>
-        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-wrap" id="sf2-email-signoffs" data-async="true" data-recaptcha="true">
-          <input type="text" name="first_name" placeholder="First Name" required />
-          <input type="text" name="last_name" placeholder="Last Name" required />
-          <input type="email" name="email" placeholder="Email" required />
-          <div style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
-          <button type="submit">Get It Free →</button>
-          <p class="fine">No spam. Unsubscribe anytime.</p>
-        <p class="sendfox-message"></p></form>
-        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+        <p class="sidebar-cta-tag">FREE NEWSLETTER</p>
+        <h3>The 4-Exit Playbook</h3>
+        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. Read by 20k+ founders.</p>
+        <a href="/signup/" class="sidebar-cta-btn">Get it free →</a>
+        <p class="fine">No spam. Unsubscribe anytime.</p>
       </div>
-    </aside>
+      </aside>
   </div>
 </article>
 

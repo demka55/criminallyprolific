@@ -68,14 +68,13 @@
     .toc-link:hover,.toc-link.active{color:#0033ff;}
 
     /* Sidebar newsletter CTA */
-    .sidebar-cta{background:#111;padding:24px;position:relative;}
-    .sidebar-cta h3{font-size:16px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.3;}
+.sidebar-cta{background:#111;padding:24px;}
+    .sidebar-cta-tag{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#6b9fff;margin-bottom:10px;}
+    .sidebar-cta h3{font-size:18px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.25;}
     .sidebar-cta p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:16px;}
-    .sidebar-cta .sf-wrap{position:relative;}
-    .sidebar-cta input{width:100%;padding:10px 14px;border:none;border-radius:3px;font-size:13px;font-family:inherit;box-sizing:border-box;margin-bottom:8px;}
-    .sidebar-cta button{width:100%;padding:11px;background:#0033ff;color:#fff;border:none;border-radius:3px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;}
-    .sidebar-cta button:hover{background:#0022cc;}
-    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.4);margin-top:8px;}
+    .sidebar-cta-btn{display:block;width:100%;padding:13px 0;background:#0033ff;color:#fff;font-size:14px;font-weight:700;text-align:center;text-decoration:none;border-radius:3px;transition:background .15s;box-sizing:border-box;}
+    .sidebar-cta-btn:hover{background:#0022cc;}
+    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.35);margin-top:10px;margin-bottom:0;}
 
     /* Post body */
     .post-body h2{font-size:30px;font-weight:800;color:#111;letter-spacing:-.5px;margin:44px 0 18px;line-height:1.2;}
@@ -274,13 +273,13 @@ While traditional media databases like Cision or Meltwater cost thousands per mo
 <p>Twitter Lists offer another free but powerful approach. By creating curated lists of journalists in your industry, you can monitor their interests, recent articles, and even personal updates to inform your pitch timing.</p>
 <p>Many journalists explicitly state their email preferences and current story interests in their Twitter bios.</p>
 <p>HARO (Help a Reporter Out) flips the traditional PR model by letting journalists come to you. By responding to relevant queries with expert insights, you position yourself as a valuable source while building relationships that extend beyond single stories.
-<h3>Email Tracking and Analytics</h3>
+<h3 id="email-tracking-and-analytics">Email Tracking and Analytics</h3>
 Understanding whether your pitches are being read is crucial when you PR yourself.</p>
 <p>Tools like Mailtrack or Streak for Gmail provide real-time notifications when journalists open your emails, helping you gauge interest and optimize follow-up timing.</p>
 <p>If a journalist opens your email multiple times but doesn't respond, it might indicate they're considering your pitch but need additional information.</p>
 <p>These analytics also reveal patterns in journalist behavior. For example, you could discover that tech journalists open emails early in the morning, while lifestyle writers engage more in the afternoon.</p>
 <p>This data-driven approach to timing can significantly improve your open and response rates.
-<h2>PR Yourself: Industry-Specific Strategies</h2>
+<h2 id="pr-yourself-industry-specific-strategies">PR Yourself: Industry-Specific Strategies</h2>
 Different industries require distinct approaches to media outreach. Understanding these nuances can mean the difference between a polite rejection and front-page coverage.</p>
 <p>When you do PR yourself, tailoring your strategy to your specific sector demonstrates professionalism and increases your chances of success.
 <h3>How to Do Your Own PR for Startups</h3>
@@ -387,32 +386,28 @@ The most damaging mistake is the "spray-and-pray" approach—sending identical p
   <p class="toc-title">Table of Contents</p>
   <ul class="toc-list"><li ><a href="#key-takeaways" class="toc-link">Key Takeaways</a></li>
 <li ><a href="#why-diy-pr-beats-hiring-an-agency" class="toc-link">Why DIY PR Beats Hiring an Agency</a></li>
-<li ><a href="#1-search-google-news-to-find-articles-related-to-the-topic-you-d-like-to-pitch" class="toc-link">1. Search Google News to Find Articles Related to the Topic You’d Like to Pitch</a></li>
-<li ><a href="#2-verify-the-article-is-relevant-to-the-topic-you-re-pitching" class="toc-link">2. Verify the Article is Relevant to the Topic You’re Pitching</a></li>
+<li ><a href="#1-search-google-news-to-find-articles-related-to-the-topic-youd-like-to-pitch" class="toc-link">1. Search Google News to Find Articles Related to the Topic You’d Like to Pitch</a></li>
+<li ><a href="#2-verify-the-article-is-relevant-to-the-topic-youre-pitching" class="toc-link">2. Verify the Article is Relevant to the Topic You’re Pitching</a></li>
 <li ><a href="#3-find-the-name-of-the-journalist-and-the-publication-they-write-for" class="toc-link">3. Find the Name of the Journalist and the Publication They Write for</a></li>
 <li ><a href="#4-write-the-email-subject-line" class="toc-link">4. Write the Email Subject Line</a></li>
 <li ><a href="#5-construct-the-body-of-the-email" class="toc-link">5. Construct the Body of the Email</a></li>
 <li ><a href="#6-find-the-email-address-of-the-reporter" class="toc-link">6. Find the Email Address of the Reporter</a></li>
 <li ><a href="#7-reach-out" class="toc-link">7. Reach Out!</a></li>
 <li ><a href="#essential-tools-for-how-to-do-pr-yourself" class="toc-link">Essential Tools for How to Do PR Yourself</a></li>
-<li style="padding-left:16px"><a href="#email-finding-tools" class="toc-link">Email Finding Tools</a></li>
-<li style="padding-left:16px"><a href="#media-database-alternatives" class="toc-link">Media Database Alternatives</a></li>
+<li style="padding-left:14px"><a href="#email-finding-tools" class="toc-link">Email Finding Tools</a></li>
+<li style="padding-left:14px"><a href="#media-database-alternatives" class="toc-link">Media Database Alternatives</a></li>
+<li style="padding-left:14px"><a href="#email-tracking-and-analytics" class="toc-link">Email Tracking and Analytics</a></li>
+<li ><a href="#pr-yourself-industry-specific-strategies" class="toc-link">PR Yourself: Industry-Specific Strategies</a></li>
 </ul>
 </div>
       <div class="sidebar-cta">
-        <h3>Free: The 4-Exit Playbook</h3>
-        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. 20k+ subscribers.</p>
-        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-wrap" id="sf2-do-your-own-pr" data-async="true" data-recaptcha="true">
-          <input type="text" name="first_name" placeholder="First Name" required />
-          <input type="text" name="last_name" placeholder="Last Name" required />
-          <input type="email" name="email" placeholder="Email" required />
-          <div style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
-          <button type="submit">Get It Free →</button>
-          <p class="fine">No spam. Unsubscribe anytime.</p>
-        <p class="sendfox-message"></p></form>
-        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+        <p class="sidebar-cta-tag">FREE NEWSLETTER</p>
+        <h3>The 4-Exit Playbook</h3>
+        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. Read by 20k+ founders.</p>
+        <a href="/signup/" class="sidebar-cta-btn">Get it free →</a>
+        <p class="fine">No spam. Unsubscribe anytime.</p>
       </div>
-    </aside>
+      </aside>
   </div>
 </article>
 
