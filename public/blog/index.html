@@ -22,21 +22,21 @@
     .cat-btn:hover,.cat-btn.active{color:#0033ff;border-bottom-color:#0033ff;}
 
     .blog-grid-wrap{max-width:1100px;margin:0 auto;padding:48px 40px 80px;}
-    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 
-    .blog-card{display:flex;flex-direction:column;border:1.5px solid #e8e8e8;text-decoration:none;transition:.2s all;background:#fff;}
+    .blog-card{display:flex;flex-direction:column;border:1.5px solid #e8e8e8;text-decoration:none;transition:.2s all;background:#fff;padding:28px 28px 24px;}
     .blog-card:hover{border-color:#0033ff;box-shadow:0 4px 20px rgba(0,51,255,.08);transform:translateY(-2px);}
     .blog-card.hidden{display:none;}
-    .blog-card-thumb{width:100%;height:200px;overflow:hidden;background:#f5f5f5;flex-shrink:0;}
-    .blog-card-img{width:100%;height:100%;object-fit:cover;display:block;}
-    .blog-card-no-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f0f4ff;}
-    .blog-card-no-img span{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0033ff;}
-    .blog-card-body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1;}
-    .blog-card-cat{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:8px;display:block;}
-    .blog-card-title{font-size:16px;font-weight:800;color:#111;line-height:1.35;margin-bottom:10px;letter-spacing:-.2px;}
+    .blog-card-thumb{display:none;}
+    .blog-card-img{display:none;}
+    .blog-card-no-img{display:none;}
+    .blog-card-body{display:flex;flex-direction:column;flex:1;padding:0;}
+    .blog-card-cat{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#0033ff;margin-bottom:12px;display:block;}
+    .blog-card-title{font-size:19px;font-weight:900;color:#111;line-height:1.3;margin-bottom:12px;letter-spacing:-.3px;}
     .blog-card:hover .blog-card-title{color:#0033ff;}
-    .blog-card-excerpt{font-size:13px;color:#666;line-height:1.65;flex:1;margin-bottom:14px;}
-    .blog-card-date{font-size:11px;font-weight:700;color:#0033ff;letter-spacing:.5px;}
+    .blog-card-excerpt{font-size:14px;color:#555;line-height:1.7;flex:1;margin-bottom:16px;}
+    .blog-card-date{font-size:11px;font-weight:700;color:#0033ff;letter-spacing:.5px;display:flex;align-items:center;gap:6px;}
+    .blog-card-date::before{content:'';display:inline-block;width:6px;height:6px;background:#0033ff;border-radius:50%;}
 
     .blog-count{font-size:13px;color:#999;margin-bottom:24px;}
     .blog-count span{font-weight:700;color:#111;}
@@ -462,6 +462,7 @@ btns.forEach(btn => {
         <a href="/contact/">Contact</a>
         <a href="/sitemap/">Sitemap</a>
       </div>
+      <img src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/logo-footer.png" alt="Criminally Prolific" class="footer-circular-logo">
     </div>
   </div>
 </footer>
