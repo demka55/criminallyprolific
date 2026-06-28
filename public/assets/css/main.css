@@ -98,13 +98,15 @@ img{max-width:100%;display:block;}
 .curr-btn:hover{background:#0022cc;}
 /* Acquired timeline */
 .acq-timeline{display:flex;flex-direction:column;}
-.acq-item{display:grid;grid-template-columns:160px 1fr;gap:32px;padding:24px 0;border-bottom:1px solid #eee;align-items:start;}
-.acq-year-col{text-align:right;padding-top:3px;}
-.acq-year{font-size:13px;font-weight:700;color:#888;display:block;margin-bottom:6px;}
-.acq-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:#f0f0f0;color:#555;padding:3px 8px;border-radius:3px;}
-.acq-name{font-size:17px;font-weight:800;color:#111;margin-bottom:6px;letter-spacing:-.3px;}
-.acq-desc{font-size:14px;color:#555;line-height:1.7;margin-bottom:10px;}
-.acq-link{font-size:13px;font-weight:700;color:#0033ff;}
+.acq-item{display:grid;grid-template-columns:180px 1fr;gap:36px;padding:32px 0;border-bottom:1px solid #eee;align-items:start;}
+.acq-year-col{text-align:right;padding-top:6px;}
+.acq-year{font-size:15px;font-weight:800;color:#111;display:block;margin-bottom:10px;letter-spacing:-.3px;}
+.acq-badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;background:#0033ff;color:#fff;padding:5px 12px;border-radius:4px;}
+.acq-name{font-size:22px;font-weight:900;color:#111;margin-bottom:10px;letter-spacing:-.5px;}
+.acq-acquired{font-size:13px;font-weight:700;color:#0033ff;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.acq-acquired::before{content:'';display:inline-block;width:8px;height:8px;background:#0033ff;border-radius:50%;}
+.acq-desc{font-size:15px;color:#444;line-height:1.75;margin-bottom:12px;}
+.acq-link{font-size:14px;font-weight:700;color:#0033ff;}
 @media(max-width:900px){.curr-grid{grid-template-columns:1fr;}.acq-item{grid-template-columns:1fr;gap:8px;}.acq-year-col{text-align:left;}}
 
 /* ── INTERVIEWS ── */
