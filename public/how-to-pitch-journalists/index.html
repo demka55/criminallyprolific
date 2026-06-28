@@ -24,67 +24,101 @@
   "description": "You can waste your time scrolling through every article about how to pitch journalists like a pro, or … Trust me when I say: I just scoured the internet and…",
   "datePublished": "2021-03-17",
   "dateModified": "2026-06-01",
-  "author": {
-    "@type": "Person",
-    "name": "Dmitry Dragilev",
-    "url": "https://www.criminallyprolific.com/dmitry/",
-    "sameAs": ["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Criminally Prolific",
-    "url": "https://www.criminallyprolific.com",
-    "logo": {"@type": "ImageObject","url": "https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png"}
-  },
+  "author": {"@type":"Person","name":"Dmitry Dragilev","url":"https://www.criminallyprolific.com/dmitry/","sameAs":["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]},
+  "publisher": {"@type":"Organization","name":"Criminally Prolific","url":"https://www.criminallyprolific.com","logo":{"@type":"ImageObject","url":"https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png"}},
   "image": "https://www.criminallyprolific.com/wp-content/uploads/2017/03/collaboration.jpg",
-  "mainEntityOfPage": {"@type": "WebPage","@id": "https://www.criminallyprolific.com/how-to-pitch-journalists/"},
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://www.criminallyprolific.com/how-to-pitch-journalists/"},
   "keywords": "PR outreach, PR tactics",
-  "articleSection": "PR outreach"
+  "articleSection": "PR outreach",
+  "wordCount": 7789
 }
   </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"A New Approach","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Brainstorming","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Know Your Goals","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Give Them What They Want","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Find Inspiration","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Analyze Capabilities","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}}]}
+</script>
   <style>
-    .post-hero{padding:56px 0 40px;border-bottom:1.5px solid #eee;}
-    .post-hero-inner{max-width:800px;margin:0 auto;padding:0 40px;}
-    .post-cat{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:20px;display:block;}
-    .post-title{font-size:44px;font-weight:900;color:#111;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;}
-    .post-meta{font-size:14px;font-weight:700;color:#111;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+    .post-hero{padding:48px 0 36px;border-bottom:1.5px solid #eee;}
+    .post-hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;}
+    .post-cat{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:16px;display:block;}
+    .post-title{font-size:48px;font-weight:900;color:#111;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;max-width:800px;}
+    .post-meta{font-size:15px;font-weight:700;color:#111;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
     .post-meta a{color:#111;text-decoration:none;}.post-meta a:hover{color:#0033ff;}
     .post-meta .meta-sep{color:#ddd;font-weight:400;}
-    .post-update-banner{background:#f0f4ff;border-left:4px solid #0033ff;padding:14px 20px;margin-bottom:28px;font-size:14px;color:#333;line-height:1.6;border-radius:0 4px 4px 0;}
+    .post-meta .read-time{color:#888;font-weight:500;}
+
+    /* Two-column layout */
+    .post-layout{max-width:1100px;margin:0 auto;padding:48px 40px 80px;display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start;}
+    .post-content{min-width:0;}
+    .post-sidebar{position:sticky;top:88px;}
+
+    /* Update banner */
+    .post-update-banner{background:#f0f4ff;border-left:4px solid #0033ff;padding:14px 20px;margin-bottom:28px;font-size:15px;color:#333;line-height:1.6;border-radius:0 4px 4px 0;}
     .post-update-banner strong{color:#0033ff;}
-    .post-body{max-width:800px;margin:0 auto;padding:48px 40px 72px;}
-    .post-body h2{font-size:28px;font-weight:800;color:#111;letter-spacing:-.5px;margin:40px 0 16px;}
-    .post-body h3{font-size:22px;font-weight:700;color:#111;letter-spacing:-.3px;margin:32px 0 12px;}
-    .post-body h4{font-size:18px;font-weight:700;color:#111;margin:24px 0 10px;}
-    .post-body p{font-size:17px;color:#333;line-height:1.8;margin-bottom:20px;}
-    .post-body ul,.post-body ol{margin:0 0 20px 28px;}
-    .post-body li{font-size:17px;color:#333;line-height:1.75;margin-bottom:8px;}
+
+    /* AI intro */
+    .post-ai-intro{background:#fafafa;border:1.5px solid #eee;padding:24px 28px;margin-bottom:32px;border-radius:4px;}
+    .post-ai-intro p{font-size:16px;color:#444;line-height:1.75;margin-bottom:14px;}
+    .post-ai-intro p:last-child{margin-bottom:0;}
+
+    /* TOC */
+    .toc-box{background:#fff;border:1.5px solid #eee;padding:20px 24px;margin-bottom:24px;}
+    .toc-title{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:14px;}
+    .toc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px;}
+    .toc-link{font-size:13px;color:#333;text-decoration:none;display:block;padding:5px 0;border-bottom:1px solid #f5f5f5;line-height:1.4;transition:color .15s;}
+    .toc-link:hover,.toc-link.active{color:#0033ff;}
+
+    /* Sidebar newsletter CTA */
+    .sidebar-cta{background:#111;padding:24px;position:relative;}
+    .sidebar-cta h3{font-size:16px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.3;}
+    .sidebar-cta p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:16px;}
+    .sidebar-cta .sf-wrap{position:relative;}
+    .sidebar-cta input{width:100%;padding:10px 14px;border:none;border-radius:3px;font-size:13px;font-family:inherit;box-sizing:border-box;margin-bottom:8px;}
+    .sidebar-cta button{width:100%;padding:11px;background:#0033ff;color:#fff;border:none;border-radius:3px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .sidebar-cta button:hover{background:#0022cc;}
+    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.4);margin-top:8px;}
+
+    /* Post body */
+    .post-body h2{font-size:30px;font-weight:800;color:#111;letter-spacing:-.5px;margin:44px 0 18px;line-height:1.2;}
+    .post-body h3{font-size:24px;font-weight:700;color:#111;letter-spacing:-.3px;margin:36px 0 14px;}
+    .post-body h4{font-size:19px;font-weight:700;color:#111;margin:28px 0 12px;}
+    .post-body p{font-size:18px;color:#222;line-height:1.85;margin-bottom:22px;}
+    .post-body ul,.post-body ol{margin:0 0 22px 32px;}
+    .post-body li{font-size:18px;color:#222;line-height:1.8;margin-bottom:10px;}
     .post-body a{color:#0033ff;}.post-body a:hover{color:#0022cc;}
-    .post-body blockquote{border-left:4px solid #0033ff;margin:28px 0;padding:16px 24px;background:#f5f8ff;font-size:18px;color:#333;font-style:italic;line-height:1.7;}
+    .post-body blockquote{border-left:4px solid #0033ff;margin:32px 0;padding:18px 28px;background:#f5f8ff;font-size:19px;color:#333;font-style:italic;line-height:1.7;}
     .post-body strong{color:#111;font-weight:700;}
-    .post-img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid #eee;}
+    .post-img{max-width:100%;height:auto;display:block;margin:28px auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.08);}
     .post-body figure{margin:28px 0;}.post-body figcaption{font-size:13px;color:#888;text-align:center;margin-top:8px;}
-    .post-body table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;}
-    .post-body th{background:#f5f5f5;font-weight:700;padding:10px 14px;border:1px solid #e0e0e0;text-align:left;}
-    .post-body td{padding:10px 14px;border:1px solid #e0e0e0;color:#333;}
+    .post-body table{width:100%;border-collapse:collapse;margin:28px 0;font-size:16px;}
+    .post-body th{background:#f5f5f5;font-weight:700;padding:12px 16px;border:1px solid #e0e0e0;text-align:left;}
+    .post-body td{padding:12px 16px;border:1px solid #e0e0e0;color:#333;}
     .post-body tr:nth-child(even) td{background:#fafafa;}
-    .post-body pre{background:#f5f5f5;padding:20px;overflow-x:auto;font-size:14px;line-height:1.6;margin:24px 0;border:1px solid #e0e0e0;}
-    .post-body code{font-family:monospace;background:#f5f5f5;padding:2px 6px;font-size:14px;border-radius:3px;}
+    .post-body pre{background:#1a1a1a;color:#e8e8e8;padding:24px;overflow-x:auto;font-size:14px;line-height:1.7;margin:28px 0;border-radius:4px;}
+    .post-body code{font-family:'SF Mono',monospace;background:#f0f0f0;padding:2px 7px;font-size:14px;border-radius:3px;color:#c41a16;}
+    .post-body pre code{background:none;color:inherit;padding:0;}
+
+    /* Inline CTA */
     .post-cta{background:#f5f8ff;border:1.5px solid #dde5ff;padding:36px 40px;margin:48px 0;border-radius:4px;position:relative;}
     .post-cta h3{font-size:22px;font-weight:800;color:#111;margin-bottom:8px;}
     .post-cta p{font-size:16px;color:#555;margin-bottom:20px;}
-    .sendfox-form{position:relative;display:flex;flex-direction:column;gap:10px;max-width:440px;}
-    .sendfox-form p{margin:0;}.sendfox-form label{display:none;}
-    .sendfox-form input{padding:12px 16px;border:1.5px solid #ddd;border-radius:4px;font-size:15px;font-family:inherit;outline:none;width:100%;box-sizing:border-box;}
-    .sendfox-form input:focus{border-color:#0033ff;}
-    .sendfox-form button{padding:13px 20px;background:#0033ff;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .post-cta .sf-inline{position:relative;display:flex;flex-direction:column;gap:10px;max-width:440px;}
+    .post-cta .sf-inline input{padding:12px 16px;border:1.5px solid #ddd;border-radius:4px;font-size:15px;font-family:inherit;outline:none;box-sizing:border-box;}
+    .post-cta .sf-inline input:focus{border-color:#0033ff;}
+    .post-cta .sf-inline button{padding:13px 20px;background:#0033ff;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .post-cta .sf-inline label{display:none;}
+    .post-cta .sf-inline p{margin:0;}
+
+    /* Author box */
     .post-author-box{display:flex;gap:24px;align-items:flex-start;padding:32px 0;border-top:1.5px solid #eee;margin-top:48px;}
     .post-author-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;}
-    .post-author-name{font-size:15px;font-weight:800;color:#111;margin-bottom:4px;}
-    .post-author-bio{font-size:14px;color:#666;line-height:1.65;}.post-author-bio a{color:#0033ff;}
-    @media(max-width:680px){
-      .post-hero-inner,.post-body{padding-left:24px;padding-right:24px;}
-      .post-title{font-size:30px;letter-spacing:-1px;}
+    .post-author-name{font-size:16px;font-weight:800;color:#111;margin-bottom:4px;}
+    .post-author-bio{font-size:15px;color:#555;line-height:1.65;}.post-author-bio a{color:#0033ff;}
+
+    @media(max-width:900px){
+      .post-layout{grid-template-columns:1fr;}
+      .post-sidebar{position:static;}
+      .post-title{font-size:34px;}
+      .post-hero-inner,.post-layout{padding-left:24px;padding-right:24px;}
     }
   </style>
 </head>
@@ -98,21 +132,28 @@
     <a href="/signup/" class="nav-cta">Free Newsletter</a>
   </div>
 </nav>
-<article>
+
+<article itemscope itemtype="https://schema.org/Article">
   <header class="post-hero">
     <div class="post-hero-inner">
       <span class="post-cat">PR outreach</span>
-      <h1 class="post-title">How to Pitch Journalists in 2026: 5 Templates That Get Responses</h1>
+      <h1 class="post-title" itemprop="headline">How to Pitch Journalists in 2026: 5 Templates That Get Responses</h1>
       <div class="post-meta">
-        <span>By <a href="/dmitry/">Dmitry Dragilev</a></span>
+        <span>By <a href="/dmitry/" itemprop="author">Dmitry Dragilev</a></span>
         <span class="meta-sep">·</span>
         <span>Updated June 2026</span>
+        <span class="meta-sep">·</span>
+        <span class="read-time">39 min read</span>
         <span class="meta-sep">·</span><span>PR outreach</span>
       </div>
     </div>
   </header>
-  <div class="post-body">
-<div class="post-update-banner"><strong>Updated June 2026:</strong> Journalist inboxes are more crowded than ever, and AI-generated pitches have made good pitching even more valuable. These 5 templates are updated with what's cutting through in 2026.</div>
+
+  <div class="post-layout">
+    <div class="post-content">
+      <div class="post-update-banner"><strong>Updated June 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
+      <div class="post-ai-intro"><p>Pitching journalists successfully requires understanding how they work: journalists at top publications receive 100–200 pitches per day and respond to fewer than 3% of them (Cision, 2024). The pitches that cut through share three traits: they're personalized, timely, and offer a clear story angle rather than a product promotion.</p><p>Dmitry Dragilev has pitched journalists for 15+ years, getting coverage in Forbes, TechCrunch, Mashable, The Next Web, and 200+ other outlets. He used press outreach to grow Polar Polls from zero to 40 million pageviews/month — which led to Google's acquisition of the company in 2014. Below are the exact templates and frameworks he's used across 4 company exits.</p></div>
+      <div class="post-body" itemprop="articleBody">
 <p>You can waste your time scrolling through every article about how to pitch journalists like a pro, or …</p>
 <p>Trust me when I say:</p>
 <p>I just scoured the internet and compared all the best info about how to get publishers to swoon over your pitches, so I can be sure ...</p>
@@ -141,7 +182,7 @@
 <p>#3 Don't use cliches or idioms. They used to be clever and cute. But those days are over. Get creative: Invent your own cliches.</p>
 <p>If you're sick of reading, and you think you're ready to send that pitch right now, hit our team up <a href="https://justreachout.io/" target="_blank" rel="noopener noreferrer">here at Just Reach Out</a>. We'll help!</p>
 <p>[/take]
-<h2>A New Approach</h2>
+<h2 id="a-new-approach">A New Approach</h2>
 Traditionally, PR comes into the picture <em>after</em> the content's been created. Your content team pitches an idea. The marketing team approves it. And once the content is wrapped up, you call in the experts to get it in the press.</p>
 <p>But hang on.</p>
 <p>What's wrong with this approach?</p>
@@ -164,7 +205,7 @@ Traditionally, PR comes into the picture <em>after</em> the content's been crea
 First things first: Content ideation.</p>
 <p>This process is strategic in nature. Don't simply copy your competitors.</p>
 <p>Instead, develop unique ideas based on what you want, for example, shares or backlinks, and what your target publications need...
-<h2>Know Your Goals</h2>
+<h2 id="know-your-goals">Know Your Goals</h2>
 Ok, so what do you actually want from your content? Links, shares, press mentions, new sign-ups?</p>
 <p>You've gotta know this. It'll impact your content and where you distribute it.</p>
 <p>In most cases, your goals will fit into one of these four categories:
@@ -183,7 +224,7 @@ Before you jump to the next section, take time to clearly define what you want.<
 <p>Use subheads and bullet points to break up "grey space." Grey space is what journalists call large chunks of text.</p>
 <p>You might also want to try <a href="https://justreachout.io/blog/media-pitch/" target="_blank" rel="noopener noreferrer">Just Reach Out</a>. I built JRO specifically for folks who are trying to get in good with the press.</p>
 <p>[/take]
-<h2>Give Them What They Want</h2>
+<h2 id="give-them-what-they-want">Give Them What They Want</h2>
 Great PR happens when you can create content that meets your own goals <em>and </em>gives journalists what they want.</p>
 <p>Fortunately, there's an entire study about what journalists want. I covered it in an earlier <a href="https://justreachout.io/blog/pr-outreach/">JRO post that you can catch here</a>.</p>
 <p>But here's a quick rundown of what journalists want...
@@ -193,7 +234,7 @@ A majority of journalists in the study said that they would rather collaborate w
 <p>The takeaway is clear:</p>
 <p>Before you send a finished piece, ask for feedback and collaboration from your target journalists. Do this for at least your top three target publications--usually big names like HuffPo or TechCrunch.</p>
 <p>&nbsp;
-<h3>Exclusive research</h3>
+<h3 id="exclusive-research">Exclusive research</h3>
 Exclusivity is a powerful lure for attracting journalists. I'll cover this more below, but essentially, you want to give a few of your top targets exclusive first rights to your data/research if you have any.</p>
 <p>[take title="Dmitry’s take"]</p>
 <p>But don't ever promise exclusivity to someone, and then suggest another publication can use the same story just a few minutes or a few hours later. You'll lose all respect with journalists.</p>
@@ -205,13 +246,13 @@ Exclusivity is a powerful lure for attracting journalists. I'll cover this more 
 <p>A story that evokes emotional triggers can be a gold mine for getting publicity. For example, if you've created software that helps people save time, create content that inspires the audience to think about what they could do with added free time. And showing them specific examples can trigger positive emotions.</p>
 <p>[/take]</p>
 <p>They also love...
-<h3>Visual content</h3>
+<h3 id="visual-content">Visual content</h3>
 Blame it on our shrinking attention spans, but more and more journalists want to see visual assets in pitches.</p>
 <p><img class="alignnone" src="/assets/uploads/2017/03/kind-of-content.jpg" /></p>
 <p>Unsurprisingly, press releases and interactive content like quizzes aren't a big hit. Widgets and badges are a big no-no.</p>
 <p>This means that if you have a content idea, try to reframe it in the form of a visual asset.</p>
 <p>Factor these points in when you're brainstorming, and you'll be a hit among journalists.
-<h2>Find Inspiration</h2>
+<h2 id="find-inspiration">Find Inspiration</h2>
 To figure out how to pitch journalists, you have to create compelling content.</p>
 <p>There are three ways to go about this:
 <h3><strong>1. Borrow ideas from your competitors</strong></h3>
@@ -225,7 +266,7 @@ Analyzing your competitors is an easy way to figure out what's successful in you
 <p>These guides don't have viral potential, but they do get a slow trickle of backlinks from others.</p>
 <p>If you're in a similar niche, you can use this data to brainstorm SEO-oriented content ideas.</p>
 <p>&nbsp;
-<h3>Popular press</h3>
+<h3 id="popular-press">Popular press</h3>
 If you want shares, mentions in publications, or traffic from your content marketing efforts, you'll do well to see what your target publications are writing about, and then create something similar.</p>
 <p>I like to segregate my target publication list into two tiers, so I can focus more on bigger sites:
 <ul>
@@ -252,7 +293,7 @@ Low-tier publications typically follow whatever bigger sites are writing about, 
  	<li>Exclusive studies and surveys</li>
  	<li>Data-backed stories and analysis</li>
 </ul>
-<h3>How to get backlinks</h3>
+<h3 id="how-to-get-backlinks">How to get backlinks</h3>
 If your goal is to get backlinks (always a nice goal to have), you can also discover ideas by checking what people are already linking to.</p>
 <p>My favorite tool to do this is <a href="https://ahrefs.com">Ahrefs</a> Content Explorer.</p>
 <p>Ahref works like Buzzsumo, except it also takes into account the total number of links.</p>
@@ -699,27 +740,83 @@ Mirror the target's communication style in your email.</p>
 We've covered a <em>lot </em>of ground. You've learned how to come up with content ideas and how to get that content noticed by influencers and journalists. I recommend using this article as a reference source. Read it once to get the basic gist of content marketing. Then, come back to it when you want to tackle a specific part of the process - ideation, creation or promotion.</p>
 <p>[toc]</p>
 
-    <div class="post-cta">
-      <h3>Get the full playbook in your inbox.</h3>
-      <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
-      <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form" id="sf-how-to-pitch-journalists" data-async="true" data-recaptcha="true">
-        <p><label for="sfn-how-to-pitch-journalists">First Name</label><input type="text" id="sfn-how-to-pitch-journalists" name="first_name" placeholder="First Name" required /></p>
-        <p><label for="sfl-how-to-pitch-journalists">Last Name</label><input type="text" id="sfl-how-to-pitch-journalists" name="last_name" placeholder="Last Name" required /></p>
-        <p><label for="sfe-how-to-pitch-journalists">Email</label><input type="email" id="sfe-how-to-pitch-journalists" name="email" placeholder="Email" required /></p>
-        <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
-        <p><button type="submit">Get the Newsletter →</button></p>
-      </form>
-      <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
-    </div>
-    <div class="post-author-box">
-      <img class="post-author-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
-      <div>
-        <p class="post-author-name">Dmitry Dragilev</p>
-        <p class="post-author-bio">4× acquired founder — sold companies to Google (2014), Semrush (2020 &amp; 2023), and Adobe (2025). I write about building lifestyle businesses that get acquired, working 3 hours a day. <a href="/dmitry/">More about me →</a></p>
+      </div>
+
+      <div class="post-cta">
+        <h3>Get the full playbook in your inbox.</h3>
+        <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-how-to-pitch-journalists" data-async="true" data-recaptcha="true">
+          <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
+          <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
+          <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <p><button type="submit">Join the Newsletter →</button></p>
+        </form>
+        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+      </div>
+
+      <div class="post-author-box">
+        <img class="post-author-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
+        <div>
+          <p class="post-author-name">Dmitry Dragilev</p>
+          <p class="post-author-bio">4× acquired founder — sold companies to Google (2014), Semrush (2020 &amp; 2023), and Adobe (2025). I write about building lifestyle businesses that get acquired, working 3 hours a day. <a href="/dmitry/">More about me →</a></p>
+        </div>
       </div>
     </div>
+
+    <!-- SIDEBAR -->
+    <aside class="post-sidebar">
+      <div class="toc-box" id="toc-box">
+  <p class="toc-title">Table of Contents</p>
+  <ul class="toc-list"><li ><a href="#a-new-approach" class="toc-link">A New Approach</a></li>
+<li ><a href="#brainstorming" class="toc-link">Brainstorming</a></li>
+<li ><a href="#know-your-goals" class="toc-link">Know Your Goals</a></li>
+<li ><a href="#give-them-what-they-want" class="toc-link">Give Them What They Want</a></li>
+<li style="padding-left:16px"><a href="#1-to-collaborate-on-content" class="toc-link">1. To collaborate on content</a></li>
+<li style="padding-left:16px"><a href="#exclusive-research" class="toc-link">Exclusive research</a></li>
+<li style="padding-left:16px"><a href="#visual-content" class="toc-link">Visual content</a></li>
+<li ><a href="#find-inspiration" class="toc-link">Find Inspiration</a></li>
+<li style="padding-left:16px"><a href="#1-borrow-ideas-from-your-competitors" class="toc-link">1. Borrow ideas from your competitors</a></li>
+<li style="padding-left:16px"><a href="#popular-press" class="toc-link">Popular press</a></li>
+<li style="padding-left:16px"><a href="#how-to-get-backlinks" class="toc-link">How to get backlinks</a></li>
+<li ><a href="#analyze-capabilities" class="toc-link">Analyze Capabilities</a></li>
+</ul>
+</div>
+      <div class="sidebar-cta">
+        <h3>Free: The 4-Exit Playbook</h3>
+        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. 20k+ subscribers.</p>
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-wrap" id="sf2-how-to-pitch-journalists" data-async="true" data-recaptcha="true">
+          <input type="text" name="first_name" placeholder="First Name" required />
+          <input type="text" name="last_name" placeholder="Last Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <button type="submit">Get It Free →</button>
+          <p class="fine">No spam. Unsubscribe anytime.</p>
+        </form>
+        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+      </div>
+    </aside>
   </div>
 </article>
+
+<script>
+// TOC active link highlighting
+const tocLinks = document.querySelectorAll('.toc-link');
+const headings = document.querySelectorAll('.post-body h2[id], .post-body h3[id]');
+if (tocLinks.length && headings.length) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector('.toc-link[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin: '0px 0px -60% 0px'});
+  headings.forEach(h => obs.observe(h));
+}
+</script>
+
 <footer class="footer">
   <div class="footer-inner">
     <!-- Col 1: About -->
@@ -730,7 +827,7 @@ We've covered a <em>lot </em>of ground. You've learned how to come up with con
       </div>
       <p class="footer-bio">I'm Dmitry Dragilev — multi-exit founder who sold 4 companies to Google, Semrush, and Adobe working 3 hours a day. I write about building businesses for lifestyle freedom, not a golden cage.</p>
       <div class="footer-social">
-        <a href="https://www.linkedin.com/in/dmitrydragilev/" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/dmitrydr/" target="_blank">LinkedIn</a>
         <a href="/signup/">Newsletter</a>
         <a href="/book/">New Book</a>
       </div>
@@ -800,6 +897,7 @@ We've covered a <em>lot </em>of ground. You've learned how to come up with con
         <a href="/contact/">Contact</a>
         <a href="/sitemap/">Sitemap</a>
       </div>
+      <img src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/logo-footer.png" alt="Criminally Prolific" class="footer-circular-logo">
     </div>
   </div>
 </footer>

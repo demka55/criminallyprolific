@@ -24,67 +24,101 @@
   "description": "How many of you have seen this in your Google Analytics dashboard? Isn't it depressing? If you're reading my blog I'm sure you've seen this, you've felt the…",
   "datePublished": "2019-06-05",
   "dateModified": "2026-06-01",
-  "author": {
-    "@type": "Person",
-    "name": "Dmitry Dragilev",
-    "url": "https://www.criminallyprolific.com/dmitry/",
-    "sameAs": ["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Criminally Prolific",
-    "url": "https://www.criminallyprolific.com",
-    "logo": {"@type": "ImageObject","url": "https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png"}
-  },
+  "author": {"@type":"Person","name":"Dmitry Dragilev","url":"https://www.criminallyprolific.com/dmitry/","sameAs":["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]},
+  "publisher": {"@type":"Organization","name":"Criminally Prolific","url":"https://www.criminallyprolific.com","logo":{"@type":"ImageObject","url":"https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png"}},
   "image": "https://www.criminallyprolific.com/wp-content/uploads/2014/06/sold-app.png",
-  "mainEntityOfPage": {"@type": "WebPage","@id": "https://www.criminallyprolific.com/pitch-sell-your-app/"},
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://www.criminallyprolific.com/pitch-sell-your-app/"},
   "keywords": "Growth Hacking",
-  "articleSection": "Growth Hacking"
+  "articleSection": "Growth Hacking",
+  "wordCount": 2423
 }
   </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"I Sold JustReachOut to friends using sketches (I had nothing built at this point)","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"I sold JustReachOut To People I did not know (I had nothing built at this point)","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"I Changed Language I Used To Describe the App","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"I Built Genuine Relationships with Press (as I started building the product and onwards)","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Soft Launch Over Email","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Soft Launch on Hacker News","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}}]}
+</script>
   <style>
-    .post-hero{padding:56px 0 40px;border-bottom:1.5px solid #eee;}
-    .post-hero-inner{max-width:800px;margin:0 auto;padding:0 40px;}
-    .post-cat{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:20px;display:block;}
-    .post-title{font-size:44px;font-weight:900;color:#111;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;}
-    .post-meta{font-size:14px;font-weight:700;color:#111;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+    .post-hero{padding:48px 0 36px;border-bottom:1.5px solid #eee;}
+    .post-hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;}
+    .post-cat{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:16px;display:block;}
+    .post-title{font-size:48px;font-weight:900;color:#111;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;max-width:800px;}
+    .post-meta{font-size:15px;font-weight:700;color:#111;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
     .post-meta a{color:#111;text-decoration:none;}.post-meta a:hover{color:#0033ff;}
     .post-meta .meta-sep{color:#ddd;font-weight:400;}
-    .post-update-banner{background:#f0f4ff;border-left:4px solid #0033ff;padding:14px 20px;margin-bottom:28px;font-size:14px;color:#333;line-height:1.6;border-radius:0 4px 4px 0;}
+    .post-meta .read-time{color:#888;font-weight:500;}
+
+    /* Two-column layout */
+    .post-layout{max-width:1100px;margin:0 auto;padding:48px 40px 80px;display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start;}
+    .post-content{min-width:0;}
+    .post-sidebar{position:sticky;top:88px;}
+
+    /* Update banner */
+    .post-update-banner{background:#f0f4ff;border-left:4px solid #0033ff;padding:14px 20px;margin-bottom:28px;font-size:15px;color:#333;line-height:1.6;border-radius:0 4px 4px 0;}
     .post-update-banner strong{color:#0033ff;}
-    .post-body{max-width:800px;margin:0 auto;padding:48px 40px 72px;}
-    .post-body h2{font-size:28px;font-weight:800;color:#111;letter-spacing:-.5px;margin:40px 0 16px;}
-    .post-body h3{font-size:22px;font-weight:700;color:#111;letter-spacing:-.3px;margin:32px 0 12px;}
-    .post-body h4{font-size:18px;font-weight:700;color:#111;margin:24px 0 10px;}
-    .post-body p{font-size:17px;color:#333;line-height:1.8;margin-bottom:20px;}
-    .post-body ul,.post-body ol{margin:0 0 20px 28px;}
-    .post-body li{font-size:17px;color:#333;line-height:1.75;margin-bottom:8px;}
+
+    /* AI intro */
+    .post-ai-intro{background:#fafafa;border:1.5px solid #eee;padding:24px 28px;margin-bottom:32px;border-radius:4px;}
+    .post-ai-intro p{font-size:16px;color:#444;line-height:1.75;margin-bottom:14px;}
+    .post-ai-intro p:last-child{margin-bottom:0;}
+
+    /* TOC */
+    .toc-box{background:#fff;border:1.5px solid #eee;padding:20px 24px;margin-bottom:24px;}
+    .toc-title{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:14px;}
+    .toc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px;}
+    .toc-link{font-size:13px;color:#333;text-decoration:none;display:block;padding:5px 0;border-bottom:1px solid #f5f5f5;line-height:1.4;transition:color .15s;}
+    .toc-link:hover,.toc-link.active{color:#0033ff;}
+
+    /* Sidebar newsletter CTA */
+    .sidebar-cta{background:#111;padding:24px;position:relative;}
+    .sidebar-cta h3{font-size:16px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.3;}
+    .sidebar-cta p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:16px;}
+    .sidebar-cta .sf-wrap{position:relative;}
+    .sidebar-cta input{width:100%;padding:10px 14px;border:none;border-radius:3px;font-size:13px;font-family:inherit;box-sizing:border-box;margin-bottom:8px;}
+    .sidebar-cta button{width:100%;padding:11px;background:#0033ff;color:#fff;border:none;border-radius:3px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .sidebar-cta button:hover{background:#0022cc;}
+    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.4);margin-top:8px;}
+
+    /* Post body */
+    .post-body h2{font-size:30px;font-weight:800;color:#111;letter-spacing:-.5px;margin:44px 0 18px;line-height:1.2;}
+    .post-body h3{font-size:24px;font-weight:700;color:#111;letter-spacing:-.3px;margin:36px 0 14px;}
+    .post-body h4{font-size:19px;font-weight:700;color:#111;margin:28px 0 12px;}
+    .post-body p{font-size:18px;color:#222;line-height:1.85;margin-bottom:22px;}
+    .post-body ul,.post-body ol{margin:0 0 22px 32px;}
+    .post-body li{font-size:18px;color:#222;line-height:1.8;margin-bottom:10px;}
     .post-body a{color:#0033ff;}.post-body a:hover{color:#0022cc;}
-    .post-body blockquote{border-left:4px solid #0033ff;margin:28px 0;padding:16px 24px;background:#f5f8ff;font-size:18px;color:#333;font-style:italic;line-height:1.7;}
+    .post-body blockquote{border-left:4px solid #0033ff;margin:32px 0;padding:18px 28px;background:#f5f8ff;font-size:19px;color:#333;font-style:italic;line-height:1.7;}
     .post-body strong{color:#111;font-weight:700;}
-    .post-img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid #eee;}
+    .post-img{max-width:100%;height:auto;display:block;margin:28px auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.08);}
     .post-body figure{margin:28px 0;}.post-body figcaption{font-size:13px;color:#888;text-align:center;margin-top:8px;}
-    .post-body table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;}
-    .post-body th{background:#f5f5f5;font-weight:700;padding:10px 14px;border:1px solid #e0e0e0;text-align:left;}
-    .post-body td{padding:10px 14px;border:1px solid #e0e0e0;color:#333;}
+    .post-body table{width:100%;border-collapse:collapse;margin:28px 0;font-size:16px;}
+    .post-body th{background:#f5f5f5;font-weight:700;padding:12px 16px;border:1px solid #e0e0e0;text-align:left;}
+    .post-body td{padding:12px 16px;border:1px solid #e0e0e0;color:#333;}
     .post-body tr:nth-child(even) td{background:#fafafa;}
-    .post-body pre{background:#f5f5f5;padding:20px;overflow-x:auto;font-size:14px;line-height:1.6;margin:24px 0;border:1px solid #e0e0e0;}
-    .post-body code{font-family:monospace;background:#f5f5f5;padding:2px 6px;font-size:14px;border-radius:3px;}
+    .post-body pre{background:#1a1a1a;color:#e8e8e8;padding:24px;overflow-x:auto;font-size:14px;line-height:1.7;margin:28px 0;border-radius:4px;}
+    .post-body code{font-family:'SF Mono',monospace;background:#f0f0f0;padding:2px 7px;font-size:14px;border-radius:3px;color:#c41a16;}
+    .post-body pre code{background:none;color:inherit;padding:0;}
+
+    /* Inline CTA */
     .post-cta{background:#f5f8ff;border:1.5px solid #dde5ff;padding:36px 40px;margin:48px 0;border-radius:4px;position:relative;}
     .post-cta h3{font-size:22px;font-weight:800;color:#111;margin-bottom:8px;}
     .post-cta p{font-size:16px;color:#555;margin-bottom:20px;}
-    .sendfox-form{position:relative;display:flex;flex-direction:column;gap:10px;max-width:440px;}
-    .sendfox-form p{margin:0;}.sendfox-form label{display:none;}
-    .sendfox-form input{padding:12px 16px;border:1.5px solid #ddd;border-radius:4px;font-size:15px;font-family:inherit;outline:none;width:100%;box-sizing:border-box;}
-    .sendfox-form input:focus{border-color:#0033ff;}
-    .sendfox-form button{padding:13px 20px;background:#0033ff;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .post-cta .sf-inline{position:relative;display:flex;flex-direction:column;gap:10px;max-width:440px;}
+    .post-cta .sf-inline input{padding:12px 16px;border:1.5px solid #ddd;border-radius:4px;font-size:15px;font-family:inherit;outline:none;box-sizing:border-box;}
+    .post-cta .sf-inline input:focus{border-color:#0033ff;}
+    .post-cta .sf-inline button{padding:13px 20px;background:#0033ff;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .post-cta .sf-inline label{display:none;}
+    .post-cta .sf-inline p{margin:0;}
+
+    /* Author box */
     .post-author-box{display:flex;gap:24px;align-items:flex-start;padding:32px 0;border-top:1.5px solid #eee;margin-top:48px;}
     .post-author-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;}
-    .post-author-name{font-size:15px;font-weight:800;color:#111;margin-bottom:4px;}
-    .post-author-bio{font-size:14px;color:#666;line-height:1.65;}.post-author-bio a{color:#0033ff;}
-    @media(max-width:680px){
-      .post-hero-inner,.post-body{padding-left:24px;padding-right:24px;}
-      .post-title{font-size:30px;letter-spacing:-1px;}
+    .post-author-name{font-size:16px;font-weight:800;color:#111;margin-bottom:4px;}
+    .post-author-bio{font-size:15px;color:#555;line-height:1.65;}.post-author-bio a{color:#0033ff;}
+
+    @media(max-width:900px){
+      .post-layout{grid-template-columns:1fr;}
+      .post-sidebar{position:static;}
+      .post-title{font-size:34px;}
+      .post-hero-inner,.post-layout{padding-left:24px;padding-right:24px;}
     }
   </style>
 </head>
@@ -98,21 +132,28 @@
     <a href="/signup/" class="nav-cta">Free Newsletter</a>
   </div>
 </nav>
-<article>
+
+<article itemscope itemtype="https://schema.org/Article">
   <header class="post-hero">
     <div class="post-hero-inner">
       <span class="post-cat">Growth Hacking</span>
-      <h1 class="post-title">How to Pitch & Sell Your App Before Writing a Line of Code (2026)</h1>
+      <h1 class="post-title" itemprop="headline">How to Pitch & Sell Your App Before Writing a Line of Code (2026)</h1>
       <div class="post-meta">
-        <span>By <a href="/dmitry/">Dmitry Dragilev</a></span>
+        <span>By <a href="/dmitry/" itemprop="author">Dmitry Dragilev</a></span>
         <span class="meta-sep">·</span>
         <span>Updated June 2026</span>
+        <span class="meta-sep">·</span>
+        <span class="read-time">12 min read</span>
         <span class="meta-sep">·</span><span>Growth Hacking</span>
       </div>
     </div>
   </header>
-  <div class="post-body">
-<div class="post-update-banner"><strong>Updated June 2026:</strong> This playbook has been used to validate and pre-sell apps to Google, Semrush, and Adobe. The core approach hasn't changed — but the tools and outreach channels have been updated for 2026.</div>
+
+  <div class="post-layout">
+    <div class="post-content">
+      <div class="post-update-banner"><strong>Updated June 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
+      <div class="post-ai-intro"><p>The average mobile app generates $60,000 in lifetime revenue — but apps that are strategically built for acquisition sell for 3–5× revenue multiples compared to 1–2× for apps built without an exit strategy (Acquire.com, 2024). The key difference is whether the app was built with a specific acquirer's strategic needs in mind from day one, which affects everything from feature decisions to distribution channels.</p><p>Dmitry Dragilev applied this approach across 4 app and SaaS exits — to Google (2014), SEOJet (2020), Semrush (2023), and Semrush/Adobe (2025). The pitch and pre-sell framework below is the same one used before writing a single line of code for each product.</p></div>
+      <div class="post-body" itemprop="articleBody">
 <p>How many of you have seen this in your Google Analytics dashboard? Isn't it depressing?</p>
 <p><img src="/assets/uploads/2014/06/sold-app.png" /></p>
 <p>If you're reading my blog I'm sure you've seen this, you've felt the excitement of launching a product and the disappointment a day after when you lose all that traffic following the launch and you're back to where you started. I've been there myself. I remember launching an app six years ago, I was clueless about marketing back then, we spent three months building the product and when it was ready to launch the job fell on me to launch it and get our first customers.</p>
@@ -132,19 +173,19 @@ Over the last 6 years I've launched dozens of products for different startups an
 <p>[toc]</p>
 <p>&nbsp;</p>
 <p>---
-<h2>I Sold JustReachOut to friends using sketches (I had nothing built at this point)</h2>
+<h2 id="i-sold-justreachout-to-friends-using-sketches-i-had-nothing-built-at-this-point">I Sold JustReachOut to friends using sketches (I had nothing built at this point)</h2>
 That's right, I had nothing built and I was trying to sell people to use JustReachOut. I learned this back when I worked at ZURB, we would do this using sketches of what the future tool would look like hung up on a whiteboard. We would talk about different features we sketched out and how they would work.</p>
 <p>So I did exactly this with JustReachOut. I would pitch the idea of the tool to my friends and I'd explain how it would work with sketches to all my friends and colleagues. My goal was to see if people would be serious about buying my service.</p>
 <p>Here is how this looked:</p>
 <p><img src="/assets/uploads/2014/06/feedback-on-design.png" />
 <cite><em>Image is jacked from ZURB's flickr stream</em></cite>
-<h2>I sold JustReachOut To People I did not know (I had nothing built at this point)</h2>
+<h2 id="i-sold-justreachout-to-people-i-did-not-know-i-had-nothing-built-at-this-point">I sold JustReachOut To People I did not know (I had nothing built at this point)</h2>
 I then tried to sell JustReachOut to people I did not know, this was much harder. I could not rely on compassion from my friends about my idea for an app. People I didn't know had a hard time paying attention to me as I described my idea. I practiced pitching JustReachOut constantly with folks I'd meet at meetups. I still had nothing built at the moment but I was already trying to sell it.</p>
 <p>My goal was to sell 10 people. I told myself I will not write one line code until I have 10 people who agree to buy the service for something more then $50 a month. It's a tall order I know. However after talking to many startups it seemed that most of them were paying MUCH more for a PR services which were not working out very well for them.</p>
 <p>I would ask friends who I already sold JustReachOut to (from step 1 above) to introduce me to people they know who might be a good fit for my service. <strong>My selling never actually consisted of selling the product and it's features, instead I would ask for feedback about my idea.</strong> Everyone loves to give feedback and I used that fact to get people talking about my service. I would continue these conversations throughout months to come as I started building the tool.</p>
 <p>I went to meetups, conferences, networking events, pitchfests, hackathons, random events at MIT and really anywhere I could find the types of folks who would buy JustReachOut. <strong>Whatever it took, I had to have 10 people who agreed to buy my service. </strong>As my good old friend Noah Kagan once put it: If people are prepaying for airline tickets and hotel reservations and donating to Kickstarter campaigns why would they have a problem prepaying for JustReachOut?</p>
 <p>&nbsp;
-<h2>I Changed Language I Used To Describe the App</h2>
+<h2 id="i-changed-language-i-used-to-describe-the-app">I Changed Language I Used To Describe the App</h2>
 I still had not written a line of code but as I pitched JustReachOut I got a LOT of feedback. I paid a lot of attention to how people reacted when I presented JustReachOut using different wording such as:
 <blockquote>JustReachOut is a tool for anyone to quickly email tons of journalists.</blockquote>
 or
@@ -153,7 +194,7 @@ I searched the web and read articles and blog posts by the very people experienc
 <p><img src="/assets/uploads/2014/06/pr-article-on-venturebeat.png" /></p>
 <p><img src="/assets/uploads/2014/06/pr-article-on-muckrack.png" /></p>
 <p>I was trying to understand how are people addressing this problem? How are they talking about it? This helped me refine the language I used to describe my app. I also used third party validation from the research I did on the internet to help me pitch and sell the tool.
-<h2>I Built Genuine Relationships with Press (as I started building the product and onwards)</h2>
+<h2 id="i-built-genuine-relationships-with-press-as-i-started-building-the-product-and-onwards">I Built Genuine Relationships with Press (as I started building the product and onwards)</h2>
 I started building relationships with reporters who might cover JustReachOut before I started selling the idea of the app to my friends. I continued to do this as I built the app, as I soft-launched it, and actually I am still doing this.</p>
 <p>The issue I see with most startups is they want to blast and email list of thousands of reporters, get a few pieces written up about them and forget about press until they need it next time. It's pretty much the same as hiring a prostitute vs. dating someone. A real relationship is much harder to build and maintain but of course the pay off is much greater as well.</p>
 <p>Here is how I build relationships with reporters, I have a thorough article, a course, and a tool to help you do this:</p>
@@ -167,14 +208,14 @@ I started building relationships with reporters who might cover JustReachOut bef
  	<li>I built 10 relationships with reporters</li>
 </ul>
 Now the launch. For the actual launch I decided to forgo traditional press, go easy and let just a few people in at a time. I called it a "soft launch". The reason being is that I really wanted more feedback before I went mainstream with it and had press cover it.
-<h2>Soft Launch Over Email</h2>
+<h2 id="soft-launch-over-email">Soft Launch Over Email</h2>
 I emailed close friends and acquaintances. Here is how I did this:</p>
 <p><a href="/assets/uploads/2014/06/email-to-jason.png"><img src="/assets/uploads/2014/06/email-pitch-to-influencers.png" /></a>
-<h2>Soft Launch on Hacker News</h2>
+<h2 id="soft-launch-on-hacker-news">Soft Launch on Hacker News</h2>
 <img src="/assets/uploads/2014/06/soft-launch-hacker-news.png" />
-<h2>Soft Launch on ProductHunt.co</h2>
+<h2 id="soft-launch-on-producthunt-co">Soft Launch on ProductHunt.co</h2>
 <img src="/assets/uploads/2014/06/soft-launch-producthaunt.png" />
-<h2>Soft Launch on Startup Digest</h2>
+<h2 id="soft-launch-on-startup-digest">Soft Launch on Startup Digest</h2>
 <img src="/assets/uploads/2014/06/soft-launch-startup-digest.png" /></p>
 <p>I did this with Reddit, Twitter, Inbound.org and GrowthHackers.com as well. You get the point, every week or so I would let a few more people in by getting a little burst of traffic to my site through these activities. I would get feedback from my new users, fix the issues that needed to be taken care of and move on.</p>
 <p><strong>At the end of soft-launch stage:</strong>
@@ -184,18 +225,18 @@ I emailed close friends and acquaintances. Here is how I did this:</p>
  	<li>I built 5 more relationships with reporters, kept on with it.</li>
 </ul>
 Ok, on to the final part, the real launch and thereafter.
-<h2>Real Launch - I Skipped Mainstream Press</h2>
+<h2 id="real-launch-i-skipped-mainstream-press">Real Launch - I Skipped Mainstream Press</h2>
 I was at this stage a few weeks ago, the real launch. I had 15 relationships I built up with reporters. 10 from prelaunch and 5 from soft-launch phase above. I built these relationships using <a href="http://JustReachOut.io">JustReachOut.io</a> along with the techniques in my <a href="https://www.udemy.com/how-to-build-relationships-with-journalists/">Udemy course</a> and Mashable article about building relationships with reporters.</p>
 <p>When I say I had 15 relationships built I mean I had 15 email threads which have at least 5-10 back and forth email exchanges between myself and the reporter. At this point I could just ask them to cover my tool perhaps but I know I'll get a big spike and then it will come down. I decided I rather find a sustainable growth channel and once I'm rocking with it I can push press articles out. So I started looking for a sustainable growth strategy, I skipped this step and on to step #9.</p>
 <p>&nbsp;
-<h2>Real Launch - Search for Sustainable Growth</h2>
+<h2 id="real-launch-search-for-sustainable-growth">Real Launch - Search for Sustainable Growth</h2>
 I'm on this step right now as I'm writing this blog post. I want to find a user acquisition channel which will consistently give more and more conversions for JustReachOut. I do not want a traffic spike and then for it to come right back down. I want traffic which increases with every day and converts very well. Here are some ways I'm going about finding and testing different channels:
-<h3>Search for Sustainable Growth - Outbrain</h3>
+<h3 id="search-for-sustainable-growth-outbrain">Search for Sustainable Growth - Outbrain</h3>
 Not too long ago I wrote an article on my blog titled <a href="http://www.criminallyprolific.com/2014/04/why-startups-should-forget-pr-firms-how-you-can-do-your-own-pr/">Why Startups Should Forget PR Firms &amp; How You can Do Your Own PR</a> which did pretty well at giving me a little boost in sign ups.</p>
 <p>So I decided to use <a href="http://www.outbrain.com">Outbrain</a> to feed more traffic into it. The way Outbrain works is that once you add your blog post or article URL into the tool it fronts it up across millions of sites in "More from around the web" section under articles on their pages, it looks like this:</p>
 <p><img src="/assets/uploads/2014/06/sustainable-growth-hack-outbrain.png" /></p>
 <p>I've been testing this for about a week at this point and it's working pretty well. I'm still trying to figure out which publications give the best conversions through this.
-<h3>Search for Sustainable Growth - Guest Articles</h3>
+<h3 id="search-for-sustainable-growth-guest-articles">Search for Sustainable Growth - Guest Articles</h3>
 I also started drafting up two guest articles for publications which are read by my prospective customers. I plan to do this a lot going forward, for all the startups I've worked with this has been a proven strategy to get valuable traffic.</p>
 <p><img src="/assets/uploads/2014/06/gain-valuable-traffic-guest-articles.png" />
 <h3>Search for Sustainable Growth - Blog Post with Long Tail Keywords</h3>
@@ -220,27 +261,83 @@ Finally I started using <a href="http://buzzsumo.com">BuzzSumo</a> a lot trying 
 <p>I hope this was useful, I'd love to hear your comments, advice, and feedback below.</p>
 <p>&nbsp;</p>
 
-    <div class="post-cta">
-      <h3>Get the full playbook in your inbox.</h3>
-      <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
-      <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form" id="sf-pitch-sell-your-app" data-async="true" data-recaptcha="true">
-        <p><label for="sfn-pitch-sell-your-app">First Name</label><input type="text" id="sfn-pitch-sell-your-app" name="first_name" placeholder="First Name" required /></p>
-        <p><label for="sfl-pitch-sell-your-app">Last Name</label><input type="text" id="sfl-pitch-sell-your-app" name="last_name" placeholder="Last Name" required /></p>
-        <p><label for="sfe-pitch-sell-your-app">Email</label><input type="email" id="sfe-pitch-sell-your-app" name="email" placeholder="Email" required /></p>
-        <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
-        <p><button type="submit">Get the Newsletter →</button></p>
-      </form>
-      <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
-    </div>
-    <div class="post-author-box">
-      <img class="post-author-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
-      <div>
-        <p class="post-author-name">Dmitry Dragilev</p>
-        <p class="post-author-bio">4× acquired founder — sold companies to Google (2014), Semrush (2020 &amp; 2023), and Adobe (2025). I write about building lifestyle businesses that get acquired, working 3 hours a day. <a href="/dmitry/">More about me →</a></p>
+      </div>
+
+      <div class="post-cta">
+        <h3>Get the full playbook in your inbox.</h3>
+        <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-pitch-sell-your-app" data-async="true" data-recaptcha="true">
+          <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
+          <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
+          <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <p><button type="submit">Join the Newsletter →</button></p>
+        </form>
+        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+      </div>
+
+      <div class="post-author-box">
+        <img class="post-author-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
+        <div>
+          <p class="post-author-name">Dmitry Dragilev</p>
+          <p class="post-author-bio">4× acquired founder — sold companies to Google (2014), Semrush (2020 &amp; 2023), and Adobe (2025). I write about building lifestyle businesses that get acquired, working 3 hours a day. <a href="/dmitry/">More about me →</a></p>
+        </div>
       </div>
     </div>
+
+    <!-- SIDEBAR -->
+    <aside class="post-sidebar">
+      <div class="toc-box" id="toc-box">
+  <p class="toc-title">Table of Contents</p>
+  <ul class="toc-list"><li ><a href="#i-sold-justreachout-to-friends-using-sketches-i-had-nothing-built-at-this-point" class="toc-link">I Sold JustReachOut to friends using sketches (I had nothing built at this point)</a></li>
+<li ><a href="#i-sold-justreachout-to-people-i-did-not-know-i-had-nothing-built-at-this-point" class="toc-link">I sold JustReachOut To People I did not know (I had nothing built at this point)</a></li>
+<li ><a href="#i-changed-language-i-used-to-describe-the-app" class="toc-link">I Changed Language I Used To Describe the App</a></li>
+<li ><a href="#i-built-genuine-relationships-with-press-as-i-started-building-the-product-and-onwards" class="toc-link">I Built Genuine Relationships with Press (as I started building the product and onwards)</a></li>
+<li ><a href="#soft-launch-over-email" class="toc-link">Soft Launch Over Email</a></li>
+<li ><a href="#soft-launch-on-hacker-news" class="toc-link">Soft Launch on Hacker News</a></li>
+<li ><a href="#soft-launch-on-producthunt-co" class="toc-link">Soft Launch on ProductHunt.co</a></li>
+<li ><a href="#soft-launch-on-startup-digest" class="toc-link">Soft Launch on Startup Digest</a></li>
+<li ><a href="#real-launch-i-skipped-mainstream-press" class="toc-link">Real Launch - I Skipped Mainstream Press</a></li>
+<li ><a href="#real-launch-search-for-sustainable-growth" class="toc-link">Real Launch - Search for Sustainable Growth</a></li>
+<li style="padding-left:16px"><a href="#search-for-sustainable-growth-outbrain" class="toc-link">Search for Sustainable Growth - Outbrain</a></li>
+<li style="padding-left:16px"><a href="#search-for-sustainable-growth-guest-articles" class="toc-link">Search for Sustainable Growth - Guest Articles</a></li>
+</ul>
+</div>
+      <div class="sidebar-cta">
+        <h3>Free: The 4-Exit Playbook</h3>
+        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. 20k+ subscribers.</p>
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-wrap" id="sf2-pitch-sell-your-app" data-async="true" data-recaptcha="true">
+          <input type="text" name="first_name" placeholder="First Name" required />
+          <input type="text" name="last_name" placeholder="Last Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <button type="submit">Get It Free →</button>
+          <p class="fine">No spam. Unsubscribe anytime.</p>
+        </form>
+        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+      </div>
+    </aside>
   </div>
 </article>
+
+<script>
+// TOC active link highlighting
+const tocLinks = document.querySelectorAll('.toc-link');
+const headings = document.querySelectorAll('.post-body h2[id], .post-body h3[id]');
+if (tocLinks.length && headings.length) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector('.toc-link[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin: '0px 0px -60% 0px'});
+  headings.forEach(h => obs.observe(h));
+}
+</script>
+
 <footer class="footer">
   <div class="footer-inner">
     <!-- Col 1: About -->
@@ -251,7 +348,7 @@ Finally I started using <a href="http://buzzsumo.com">BuzzSumo</a> a lot trying 
       </div>
       <p class="footer-bio">I'm Dmitry Dragilev — multi-exit founder who sold 4 companies to Google, Semrush, and Adobe working 3 hours a day. I write about building businesses for lifestyle freedom, not a golden cage.</p>
       <div class="footer-social">
-        <a href="https://www.linkedin.com/in/dmitrydragilev/" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/dmitrydr/" target="_blank">LinkedIn</a>
         <a href="/signup/">Newsletter</a>
         <a href="/book/">New Book</a>
       </div>
@@ -321,6 +418,7 @@ Finally I started using <a href="http://buzzsumo.com">BuzzSumo</a> a lot trying 
         <a href="/contact/">Contact</a>
         <a href="/sitemap/">Sitemap</a>
       </div>
+      <img src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/logo-footer.png" alt="Criminally Prolific" class="footer-circular-logo">
     </div>
   </div>
 </footer>

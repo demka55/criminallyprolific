@@ -24,67 +24,101 @@
   "description": "Just how useful is Gmail mail merge? Here's a little story: When Sapph first reached out to me I immediately clicked on her email (out of 57 unread I had in my…",
   "datePublished": "2019-02-12",
   "dateModified": "2026-06-01",
-  "author": {
-    "@type": "Person",
-    "name": "Dmitry Dragilev",
-    "url": "https://www.criminallyprolific.com/dmitry/",
-    "sameAs": ["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Criminally Prolific",
-    "url": "https://www.criminallyprolific.com",
-    "logo": {"@type": "ImageObject","url": "https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png"}
-  },
+  "author": {"@type":"Person","name":"Dmitry Dragilev","url":"https://www.criminallyprolific.com/dmitry/","sameAs":["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]},
+  "publisher": {"@type":"Organization","name":"Criminally Prolific","url":"https://www.criminallyprolific.com","logo":{"@type":"ImageObject","url":"https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png"}},
   "image": "https://www.criminallyprolific.com/wp-content/uploads/2015/02/coldmail.jpg",
-  "mainEntityOfPage": {"@type": "WebPage","@id": "https://www.criminallyprolific.com/gmail-mail-merge/"},
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://www.criminallyprolific.com/gmail-mail-merge/"},
   "keywords": "Growth Hacking, PR outreach",
-  "articleSection": "Growth Hacking"
+  "articleSection": "Growth Hacking",
+  "wordCount": 2073
 }
   </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Research and choose a receptive audience to contact","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Write an unique email to your first few contacts to perfect your template","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Install proper tools to track opens and clicks for your emails","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Optimize your email for a high response rate","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Turn your highest performing email into a template","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Final Step! Run Yet Another Mail Merge to use mass Gmail mail merge","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}}]}
+</script>
   <style>
-    .post-hero{padding:56px 0 40px;border-bottom:1.5px solid #eee;}
-    .post-hero-inner{max-width:800px;margin:0 auto;padding:0 40px;}
-    .post-cat{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:20px;display:block;}
-    .post-title{font-size:44px;font-weight:900;color:#111;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;}
-    .post-meta{font-size:14px;font-weight:700;color:#111;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+    .post-hero{padding:48px 0 36px;border-bottom:1.5px solid #eee;}
+    .post-hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;}
+    .post-cat{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:16px;display:block;}
+    .post-title{font-size:48px;font-weight:900;color:#111;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;max-width:800px;}
+    .post-meta{font-size:15px;font-weight:700;color:#111;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
     .post-meta a{color:#111;text-decoration:none;}.post-meta a:hover{color:#0033ff;}
     .post-meta .meta-sep{color:#ddd;font-weight:400;}
-    .post-update-banner{background:#f0f4ff;border-left:4px solid #0033ff;padding:14px 20px;margin-bottom:28px;font-size:14px;color:#333;line-height:1.6;border-radius:0 4px 4px 0;}
+    .post-meta .read-time{color:#888;font-weight:500;}
+
+    /* Two-column layout */
+    .post-layout{max-width:1100px;margin:0 auto;padding:48px 40px 80px;display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start;}
+    .post-content{min-width:0;}
+    .post-sidebar{position:sticky;top:88px;}
+
+    /* Update banner */
+    .post-update-banner{background:#f0f4ff;border-left:4px solid #0033ff;padding:14px 20px;margin-bottom:28px;font-size:15px;color:#333;line-height:1.6;border-radius:0 4px 4px 0;}
     .post-update-banner strong{color:#0033ff;}
-    .post-body{max-width:800px;margin:0 auto;padding:48px 40px 72px;}
-    .post-body h2{font-size:28px;font-weight:800;color:#111;letter-spacing:-.5px;margin:40px 0 16px;}
-    .post-body h3{font-size:22px;font-weight:700;color:#111;letter-spacing:-.3px;margin:32px 0 12px;}
-    .post-body h4{font-size:18px;font-weight:700;color:#111;margin:24px 0 10px;}
-    .post-body p{font-size:17px;color:#333;line-height:1.8;margin-bottom:20px;}
-    .post-body ul,.post-body ol{margin:0 0 20px 28px;}
-    .post-body li{font-size:17px;color:#333;line-height:1.75;margin-bottom:8px;}
+
+    /* AI intro */
+    .post-ai-intro{background:#fafafa;border:1.5px solid #eee;padding:24px 28px;margin-bottom:32px;border-radius:4px;}
+    .post-ai-intro p{font-size:16px;color:#444;line-height:1.75;margin-bottom:14px;}
+    .post-ai-intro p:last-child{margin-bottom:0;}
+
+    /* TOC */
+    .toc-box{background:#fff;border:1.5px solid #eee;padding:20px 24px;margin-bottom:24px;}
+    .toc-title{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:14px;}
+    .toc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px;}
+    .toc-link{font-size:13px;color:#333;text-decoration:none;display:block;padding:5px 0;border-bottom:1px solid #f5f5f5;line-height:1.4;transition:color .15s;}
+    .toc-link:hover,.toc-link.active{color:#0033ff;}
+
+    /* Sidebar newsletter CTA */
+    .sidebar-cta{background:#111;padding:24px;position:relative;}
+    .sidebar-cta h3{font-size:16px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.3;}
+    .sidebar-cta p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:16px;}
+    .sidebar-cta .sf-wrap{position:relative;}
+    .sidebar-cta input{width:100%;padding:10px 14px;border:none;border-radius:3px;font-size:13px;font-family:inherit;box-sizing:border-box;margin-bottom:8px;}
+    .sidebar-cta button{width:100%;padding:11px;background:#0033ff;color:#fff;border:none;border-radius:3px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .sidebar-cta button:hover{background:#0022cc;}
+    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.4);margin-top:8px;}
+
+    /* Post body */
+    .post-body h2{font-size:30px;font-weight:800;color:#111;letter-spacing:-.5px;margin:44px 0 18px;line-height:1.2;}
+    .post-body h3{font-size:24px;font-weight:700;color:#111;letter-spacing:-.3px;margin:36px 0 14px;}
+    .post-body h4{font-size:19px;font-weight:700;color:#111;margin:28px 0 12px;}
+    .post-body p{font-size:18px;color:#222;line-height:1.85;margin-bottom:22px;}
+    .post-body ul,.post-body ol{margin:0 0 22px 32px;}
+    .post-body li{font-size:18px;color:#222;line-height:1.8;margin-bottom:10px;}
     .post-body a{color:#0033ff;}.post-body a:hover{color:#0022cc;}
-    .post-body blockquote{border-left:4px solid #0033ff;margin:28px 0;padding:16px 24px;background:#f5f8ff;font-size:18px;color:#333;font-style:italic;line-height:1.7;}
+    .post-body blockquote{border-left:4px solid #0033ff;margin:32px 0;padding:18px 28px;background:#f5f8ff;font-size:19px;color:#333;font-style:italic;line-height:1.7;}
     .post-body strong{color:#111;font-weight:700;}
-    .post-img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid #eee;}
+    .post-img{max-width:100%;height:auto;display:block;margin:28px auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.08);}
     .post-body figure{margin:28px 0;}.post-body figcaption{font-size:13px;color:#888;text-align:center;margin-top:8px;}
-    .post-body table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;}
-    .post-body th{background:#f5f5f5;font-weight:700;padding:10px 14px;border:1px solid #e0e0e0;text-align:left;}
-    .post-body td{padding:10px 14px;border:1px solid #e0e0e0;color:#333;}
+    .post-body table{width:100%;border-collapse:collapse;margin:28px 0;font-size:16px;}
+    .post-body th{background:#f5f5f5;font-weight:700;padding:12px 16px;border:1px solid #e0e0e0;text-align:left;}
+    .post-body td{padding:12px 16px;border:1px solid #e0e0e0;color:#333;}
     .post-body tr:nth-child(even) td{background:#fafafa;}
-    .post-body pre{background:#f5f5f5;padding:20px;overflow-x:auto;font-size:14px;line-height:1.6;margin:24px 0;border:1px solid #e0e0e0;}
-    .post-body code{font-family:monospace;background:#f5f5f5;padding:2px 6px;font-size:14px;border-radius:3px;}
+    .post-body pre{background:#1a1a1a;color:#e8e8e8;padding:24px;overflow-x:auto;font-size:14px;line-height:1.7;margin:28px 0;border-radius:4px;}
+    .post-body code{font-family:'SF Mono',monospace;background:#f0f0f0;padding:2px 7px;font-size:14px;border-radius:3px;color:#c41a16;}
+    .post-body pre code{background:none;color:inherit;padding:0;}
+
+    /* Inline CTA */
     .post-cta{background:#f5f8ff;border:1.5px solid #dde5ff;padding:36px 40px;margin:48px 0;border-radius:4px;position:relative;}
     .post-cta h3{font-size:22px;font-weight:800;color:#111;margin-bottom:8px;}
     .post-cta p{font-size:16px;color:#555;margin-bottom:20px;}
-    .sendfox-form{position:relative;display:flex;flex-direction:column;gap:10px;max-width:440px;}
-    .sendfox-form p{margin:0;}.sendfox-form label{display:none;}
-    .sendfox-form input{padding:12px 16px;border:1.5px solid #ddd;border-radius:4px;font-size:15px;font-family:inherit;outline:none;width:100%;box-sizing:border-box;}
-    .sendfox-form input:focus{border-color:#0033ff;}
-    .sendfox-form button{padding:13px 20px;background:#0033ff;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .post-cta .sf-inline{position:relative;display:flex;flex-direction:column;gap:10px;max-width:440px;}
+    .post-cta .sf-inline input{padding:12px 16px;border:1.5px solid #ddd;border-radius:4px;font-size:15px;font-family:inherit;outline:none;box-sizing:border-box;}
+    .post-cta .sf-inline input:focus{border-color:#0033ff;}
+    .post-cta .sf-inline button{padding:13px 20px;background:#0033ff;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .post-cta .sf-inline label{display:none;}
+    .post-cta .sf-inline p{margin:0;}
+
+    /* Author box */
     .post-author-box{display:flex;gap:24px;align-items:flex-start;padding:32px 0;border-top:1.5px solid #eee;margin-top:48px;}
     .post-author-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;}
-    .post-author-name{font-size:15px;font-weight:800;color:#111;margin-bottom:4px;}
-    .post-author-bio{font-size:14px;color:#666;line-height:1.65;}.post-author-bio a{color:#0033ff;}
-    @media(max-width:680px){
-      .post-hero-inner,.post-body{padding-left:24px;padding-right:24px;}
-      .post-title{font-size:30px;letter-spacing:-1px;}
+    .post-author-name{font-size:16px;font-weight:800;color:#111;margin-bottom:4px;}
+    .post-author-bio{font-size:15px;color:#555;line-height:1.65;}.post-author-bio a{color:#0033ff;}
+
+    @media(max-width:900px){
+      .post-layout{grid-template-columns:1fr;}
+      .post-sidebar{position:static;}
+      .post-title{font-size:34px;}
+      .post-hero-inner,.post-layout{padding-left:24px;padding-right:24px;}
     }
   </style>
 </head>
@@ -98,21 +132,28 @@
     <a href="/signup/" class="nav-cta">Free Newsletter</a>
   </div>
 </nav>
-<article>
+
+<article itemscope itemtype="https://schema.org/Article">
   <header class="post-hero">
     <div class="post-hero-inner">
       <span class="post-cat">Growth Hacking</span>
-      <h1 class="post-title">Gmail Mail Merge in 2026: Send Hundreds of Personalized Emails</h1>
+      <h1 class="post-title" itemprop="headline">Gmail Mail Merge in 2026: Send Hundreds of Personalized Emails</h1>
       <div class="post-meta">
-        <span>By <a href="/dmitry/">Dmitry Dragilev</a></span>
+        <span>By <a href="/dmitry/" itemprop="author">Dmitry Dragilev</a></span>
         <span class="meta-sep">·</span>
         <span>Updated June 2026</span>
+        <span class="meta-sep">·</span>
+        <span class="read-time">10 min read</span>
         <span class="meta-sep">·</span><span>Growth Hacking</span>
       </div>
     </div>
   </header>
-  <div class="post-body">
-<div class="post-update-banner"><strong>Updated June 2026:</strong> Google has changed its sending limits and authentication requirements for bulk mail. This guide is updated to reflect current Gmail policies and the best alternatives for 2026.</div>
+
+  <div class="post-layout">
+    <div class="post-content">
+      <div class="post-update-banner"><strong>Updated June 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
+      <div class="post-ai-intro"><p>Gmail enforces a sending limit of 500 emails per day for regular accounts and 2,000 per day for Google Workspace accounts. In 2026, Google's spam filters use AI to detect bulk sending patterns — including identical subject lines, similar send times, and lack of list hygiene — making proper mail merge setup more important than ever for deliverability.</p><p>Dmitry Dragilev has used Gmail mail merge for outreach campaigns across multiple companies, testing open rates and deliverability across different tools and configurations. The guide below covers the current state of Gmail's limits, the best tools, and the setup that maximizes inbox placement.</p></div>
+      <div class="post-body" itemprop="articleBody">
 <p>Just how useful is Gmail mail merge?</p>
 <p>Here's a little story: When Sapph first reached out to me I immediately clicked on her email (out of 57 unread I had in my inbox at the time). She reached out cold, I did not know her.</p>
 <p>I read the whole email and responded to it within 1 minute of receiving it. I was intrigued. How did she know me so well that she had me reading and responding to her email immediately. It's seldom you get such emails.</p>
@@ -129,12 +170,12 @@
 <p>At the same time, you're not going to get great results sending a mere 5-10 messages a day. But it's extremely time-consuming to personalize hundreds of outreach emails. Your fingers will probably fall off typing that many.</p>
 <p>Well what if you had the superpower to send that hundreds of emails and still personalize every one? No it's not magic. I'm going to teach you how you can keep sending the same <a href="https://www.criminallyprolific.com/sales-email-sequences/">email template</a> over and over again. While deploying a script that automatically personalizes a few of its phrases for each and every contact.</p>
 <p>This technique uses Gmail mail merge.
-<h2>Research and choose a receptive audience to contact</h2>
+<h2 id="research-and-choose-a-receptive-audience-to-contact">Research and choose a receptive audience to contact</h2>
 Before writing your first word, do your research and find people to contact who will be interested in what you have to say. No magic word, ninja move or perfectly time delivery is going to convert someone who has absolutely no use for what you are offering.</p>
 <p>Open up a new Google spreadsheet and create columns for <a href="https://www.criminallyprolific.com/find-anyones-email/" >Email Address</a>, First Name, Website and/or Social Media Profile. <strong><a href="https://docs.google.com/spreadsheets/d/1NNzADkq7S8oWwqOj7tXvPcDtH9JajbqzJ61JnhvTM4o/edit?usp=sharing">Here is what my completed spreadsheet looks like.</a> </strong></p>
 <p><img class="alignnone" src="/assets/uploads/2015/02/coldmail.jpg" alt="Gmail mail merge example image" width="783" height="630" /></p>
 <p>I usually focus on websites run by one person. This makes it much more likely they created the content your search turned up. You will also be able to find their name and backstory on the about page so you will know exactly who to contact and what their background and interests are.
-<h3>Finding similar contacts</h3>
+<h3 id="finding-similar-contacts">Finding similar contacts</h3>
 Once you have your first contact, put their website into a back link checker to discover other sites that link to it. A back link checker shows you all the other sites that link to the one you're checking. Since most site owners only link to other sites with related content, these sites tend to cover the same topics.</p>
 <p>One of my favorite backlink checkers is <a href="http://openlinkprofiler.org">Open Link Profiler</a>. First off, it's free. Can't beat that. Second, it returns the most relevant results and allows you to sort the results by Link Influence Score.</p>
 <p><img class="alignnone" src="/assets/uploads/2015/02/backlink-checker.jpg" alt="backlink-checker Gmail mail merge example image" width="700" height="450" />
@@ -144,7 +185,7 @@ Another great way to find relevant contacts is searching through discussion boar
 <p><img class="alignnone" src="/assets/uploads/2015/02/discover-identity.jpg" alt="discover-identity" /></p>
 <p>Here is my <a href="https://docs.google.com/spreadsheets/d/1NNzADkq7S8oWwqOj7tXvPcDtH9JajbqzJ61JnhvTM4o/edit?usp=sharing"><strong>finished target list of people to reach out to</strong></a>. This is a sample list but it gives you an idea of how it should look.</p>
 <p>Have your list of contacts ready as well? Great, let's roll up our sleeves and get started using Gmail mail merge!</p>
-<p><h2>Write an unique email to your first few contacts to perfect your template</h2>
+<p><h2 id="write-an-unique-email-to-your-first-few-contacts-to-perfect-your-template">Write an unique email to your first few contacts to perfect your template</h2>
 Your goal is to <a href="https://www.criminallyprolific.com/press-release-email/" >write an email</a> that gets the most responses or followthrough rates (if you are asking them to do something). To get there, you usually have to go through a few rounds of tweaking to get your email Golidlocks perfect. This means composing unique emails to your first few contacts and improving it each time as you go until bingo, the responses/followthroughs start pouring in.</p>
 <p>This is the structure I use that regularly gets me 70-80% response rates:</p>
 <p>a) <strong>Genuine compliment.</strong> Praise your contact on something they did or wrote. Elaborate meaningfully about why you liked it.
@@ -156,7 +197,7 @@ e) <strong>Your <a href="https://www.criminallyprolific.com/email-signatures/">s
 <p><img class="alignnone" src="/assets/uploads/2015/02/email-format.gif" alt="email-format" /></p>
 <p>Go ahead and follow my structure and <a href="https://www.criminallyprolific.com/email-pitch-tips/" >example above to write your own email</a> template to use with Gmail mail merge.</p>
 <p>The next step is to tweak this <a href="https://www.criminallyprolific.com/how-to-ask-for-business-in-an-email/">email template</a> a few times to achieve a high response rate. The email that gets the most responses will serve as the template you can send over and over again.
-<h2>Install proper tools to track opens and clicks for your emails</h2>
+<h2 id="install-proper-tools-to-track-opens-and-clicks-for-your-emails">Install proper tools to track opens and clicks for your emails</h2>
 Before we get to the actual optimization process (tweaking the subject lines, calls to actions and key phrases until we achieve a high response rate) let's make sure we know how to measure our efforts. Are people clicking on links in our email? Are people opening our emails? If we change some of the wording in an email how do we measure the difference it makes?</p>
 <p>Here's how. I like to track my email opens with <a href="http://www.yesware.com/">Yesware for Gmail</a>. Here's how it looks in Gmail:</p>
 <p><img class="alignnone" src="/assets/uploads/2015/02/yesware.jpg" alt="yesware" /></p>
@@ -169,21 +210,21 @@ Before we get to the actual optimization process (tweaking the subject lines, ca
 <p>It takes you to a Yesware page that shows you how many times your recipient opened your email:</p>
 <p><img class="alignnone" src="/assets/uploads/2015/02/yesware-email-opens.gif" alt="yesware-email-opens" />
 Yesware is great for tracking individually sent emails. For tracking mass emails which we will be doing later, I use <a href="http://bananatag.com">Banana Tag</a>. It is one of the only tracking <a class="wpil_keyword_link " href="https://smallbiz.tools/small-business-marketing-tools/"  title="tools" data-wpil-keyword-link="linked">tools</a> you can use for mass emails because it allows you to append btag.it to the end of email addresses to track their opens/clicks. For now, just go to their website and sign up for a free account. I'll show you how to set it up in the next section.
-<h2>Optimize your email for a high response rate</h2>
+<h2 id="optimize-your-email-for-a-high-response-rate">Optimize your email for a high response rate</h2>
 Our goal is to get the highest response rate possible. To do that we will tweak the subject lines, calls to actions and key phrases until we achieve a response rate we want.</p>
 <p>Here's an example of the rounds of tweaking I went through for one of my outreach emails until I achieved a version that had high followthrough rates.</p>
 <p>For this outreach, I measured followthrough rates in terms of how many recipients performed the action I asked for in my email. In this case, it was to complete a survey. So my engagement percentage is based on how many people completed the survey.
-<h3>My First Email</h3>
+<h3 id="my-first-email">My First Email</h3>
 This email complimented them on something they've done. I had a <strong>35% engagement</strong> for this one because the benefit was off. It focused too much on how the information will be displayed instead of how it will reach key voters.</p>
 <p><img class="alignnone" src="/assets/uploads/2015/02/optimize-email.gif" alt="optimize-email Gmail mail merge example image" width="527" height="160" />
-<h3>My Second Email</h3>
+<h3 id="my-second-email">My Second Email</h3>
 In my second version, I put greater emphasis on how the survey results will be distributed to key voters. <strong>This boosted the survey completion rate to 60%.</strong></p>
 <p><img class="alignnone" src="/assets/uploads/2015/02/optimizedemail1.png" alt="optimizedemail" />
-<h3>My Final email</h3>
+<h3 id="my-final-email">My Final email</h3>
 Inspired by the effectiveness of using peer pressure tactics for get out the vote campaigns, I added "You are the only other candidate who has not completed this survey in Ward X". This boosted my <strong>survey completion rate to 75%</strong>.</p>
 <p><img class="alignnone" src="/assets/uploads/2015/02/perfect-email.gif" alt="perfect-email" />
 The major key to success I can share with you is: Research your audience and figure out what problems and desires keep them awake at night to frame your ask in a way that benefits them.
-<h2>Turn your highest performing email into a template</h2>
+<h2 id="turn-your-highest-performing-email-into-a-template">Turn your highest performing email into a template</h2>
 Now that you tweaked your way to a high performing email, it's time to turn this final optimized version into a template you can send over and over again.</p>
 <p>Here is how you can do this:</p>
 <p>Compose a new email in Gmail and take the subject line and email text from your final optimized email from step #4 above. Leave in phrases and sentences that can stay the same in every email to each recipient. Turn each sentence/phrase you need to personalize into a labeled block like &lt;&gt;. Save the email as a draft. Here is how mine looks:
@@ -195,7 +236,7 @@ Now that you tweaked your way to a high performing email, it's time to turn this
 <p><img class="alignnone" src="/assets/uploads/2015/02/bananatag1.png" alt="bananatag" /></p>
 <p>Banantag sends you email alerts when one of your recipients opens your email:</p>
 <p><img class="alignnone" src="/assets/uploads/2015/02/bananatag-notification1.png" alt="bananatag Gmail mail merge example image" width="724" height="331" />
-<h2>Final Step! Run Yet Another Mail Merge to use mass Gmail mail merge</h2>
+<h2 id="final-step-run-yet-another-mail-merge-to-use-mass-gmail-mail-merge">Final Step! Run Yet Another Mail Merge to use mass Gmail mail merge</h2>
 You have your email template ready. You have your target list ready. Time to run mail merge!</p>
 <p>Go ahead and download Yet Another Mail Merge. It's a free Chrome add-on which automatically inserts the personalized phrases from your spreadsheet into your email template for each and every contact. Then it sends these fully personalized versions to every contact.</p>
 <p>Open up you email list and run Yet Another Mail Merge in Google Spreadsheets by going to Add-ons -&gt; Yet Another Mail Merge -&gt; Start Mail Merge.</p>
@@ -212,27 +253,81 @@ You have your email template ready. You have your target list ready. Time to run
 <p>Yet Another Mail Merge sends this personalized email to every contact you have in the spreadsheet. One thing to note: you can only send a maximum of 100 emails this way. If you're on Google Apps for Work, your daily quota gets bumped up to 250.</p>
 <p>Happy semi-automating hundreds of outreach emails while it still reads like you personalized every single one. If that's not a superpower, I don't know what is! If you have any questions, ask away in the comments below.</p>
 
-    <div class="post-cta">
-      <h3>Get the full playbook in your inbox.</h3>
-      <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
-      <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form" id="sf-gmail-mail-merge" data-async="true" data-recaptcha="true">
-        <p><label for="sfn-gmail-mail-merge">First Name</label><input type="text" id="sfn-gmail-mail-merge" name="first_name" placeholder="First Name" required /></p>
-        <p><label for="sfl-gmail-mail-merge">Last Name</label><input type="text" id="sfl-gmail-mail-merge" name="last_name" placeholder="Last Name" required /></p>
-        <p><label for="sfe-gmail-mail-merge">Email</label><input type="email" id="sfe-gmail-mail-merge" name="email" placeholder="Email" required /></p>
-        <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
-        <p><button type="submit">Get the Newsletter →</button></p>
-      </form>
-      <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
-    </div>
-    <div class="post-author-box">
-      <img class="post-author-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
-      <div>
-        <p class="post-author-name">Dmitry Dragilev</p>
-        <p class="post-author-bio">4× acquired founder — sold companies to Google (2014), Semrush (2020 &amp; 2023), and Adobe (2025). I write about building lifestyle businesses that get acquired, working 3 hours a day. <a href="/dmitry/">More about me →</a></p>
+      </div>
+
+      <div class="post-cta">
+        <h3>Get the full playbook in your inbox.</h3>
+        <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-gmail-mail-merge" data-async="true" data-recaptcha="true">
+          <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
+          <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
+          <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <p><button type="submit">Join the Newsletter →</button></p>
+        </form>
+        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+      </div>
+
+      <div class="post-author-box">
+        <img class="post-author-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
+        <div>
+          <p class="post-author-name">Dmitry Dragilev</p>
+          <p class="post-author-bio">4× acquired founder — sold companies to Google (2014), Semrush (2020 &amp; 2023), and Adobe (2025). I write about building lifestyle businesses that get acquired, working 3 hours a day. <a href="/dmitry/">More about me →</a></p>
+        </div>
       </div>
     </div>
+
+    <!-- SIDEBAR -->
+    <aside class="post-sidebar">
+      <div class="toc-box" id="toc-box">
+  <p class="toc-title">Table of Contents</p>
+  <ul class="toc-list"><li ><a href="#research-and-choose-a-receptive-audience-to-contact" class="toc-link">Research and choose a receptive audience to contact</a></li>
+<li style="padding-left:16px"><a href="#finding-similar-contacts" class="toc-link">Finding similar contacts</a></li>
+<li ><a href="#write-an-unique-email-to-your-first-few-contacts-to-perfect-your-template" class="toc-link">Write an unique email to your first few contacts to perfect your template</a></li>
+<li ><a href="#install-proper-tools-to-track-opens-and-clicks-for-your-emails" class="toc-link">Install proper tools to track opens and clicks for your emails</a></li>
+<li ><a href="#optimize-your-email-for-a-high-response-rate" class="toc-link">Optimize your email for a high response rate</a></li>
+<li style="padding-left:16px"><a href="#my-first-email" class="toc-link">My First Email</a></li>
+<li style="padding-left:16px"><a href="#my-second-email" class="toc-link">My Second Email</a></li>
+<li style="padding-left:16px"><a href="#my-final-email" class="toc-link">My Final email</a></li>
+<li ><a href="#turn-your-highest-performing-email-into-a-template" class="toc-link">Turn your highest performing email into a template</a></li>
+<li ><a href="#final-step-run-yet-another-mail-merge-to-use-mass-gmail-mail-merge" class="toc-link">Final Step! Run Yet Another Mail Merge to use mass Gmail mail merge</a></li>
+</ul>
+</div>
+      <div class="sidebar-cta">
+        <h3>Free: The 4-Exit Playbook</h3>
+        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. 20k+ subscribers.</p>
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-wrap" id="sf2-gmail-mail-merge" data-async="true" data-recaptcha="true">
+          <input type="text" name="first_name" placeholder="First Name" required />
+          <input type="text" name="last_name" placeholder="Last Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <button type="submit">Get It Free →</button>
+          <p class="fine">No spam. Unsubscribe anytime.</p>
+        </form>
+        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+      </div>
+    </aside>
   </div>
 </article>
+
+<script>
+// TOC active link highlighting
+const tocLinks = document.querySelectorAll('.toc-link');
+const headings = document.querySelectorAll('.post-body h2[id], .post-body h3[id]');
+if (tocLinks.length && headings.length) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector('.toc-link[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin: '0px 0px -60% 0px'});
+  headings.forEach(h => obs.observe(h));
+}
+</script>
+
 <footer class="footer">
   <div class="footer-inner">
     <!-- Col 1: About -->
@@ -243,7 +338,7 @@ You have your email template ready. You have your target list ready. Time to run
       </div>
       <p class="footer-bio">I'm Dmitry Dragilev — multi-exit founder who sold 4 companies to Google, Semrush, and Adobe working 3 hours a day. I write about building businesses for lifestyle freedom, not a golden cage.</p>
       <div class="footer-social">
-        <a href="https://www.linkedin.com/in/dmitrydragilev/" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/dmitrydr/" target="_blank">LinkedIn</a>
         <a href="/signup/">Newsletter</a>
         <a href="/book/">New Book</a>
       </div>
@@ -313,6 +408,7 @@ You have your email template ready. You have your target list ready. Time to run
         <a href="/contact/">Contact</a>
         <a href="/sitemap/">Sitemap</a>
       </div>
+      <img src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/logo-footer.png" alt="Criminally Prolific" class="footer-circular-logo">
     </div>
   </div>
 </footer>

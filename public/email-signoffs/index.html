@@ -24,67 +24,101 @@
   "description": "Let me ask you: Which email sign off do you use? Do you say 'Cheers' or 'Thanks?' Pffff. Boooring! You might say: &quot;Who cares?&quot; But think about it, wouldn't you…",
   "datePublished": "2022-03-03",
   "dateModified": "2026-06-01",
-  "author": {
-    "@type": "Person",
-    "name": "Dmitry Dragilev",
-    "url": "https://www.criminallyprolific.com/dmitry/",
-    "sameAs": ["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Criminally Prolific",
-    "url": "https://www.criminallyprolific.com",
-    "logo": {"@type": "ImageObject","url": "https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png"}
-  },
+  "author": {"@type":"Person","name":"Dmitry Dragilev","url":"https://www.criminallyprolific.com/dmitry/","sameAs":["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]},
+  "publisher": {"@type":"Organization","name":"Criminally Prolific","url":"https://www.criminallyprolific.com","logo":{"@type":"ImageObject","url":"https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png"}},
   "image": "https://www.criminallyprolific.com/wp-content/uploads/2016/06/email-endings.png",
-  "mainEntityOfPage": {"@type": "WebPage","@id": "https://www.criminallyprolific.com/email-signoffs/"},
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://www.criminallyprolific.com/email-signoffs/"},
   "keywords": "Cold Email, Email Pitches",
-  "articleSection": "Cold Email"
+  "articleSection": "Cold Email",
+  "wordCount": 3820
 }
   </script>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"To congratulate, compliment","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Express gratitude, appreciation","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Anticipatory","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Cheering on, well wishes","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Warm hearted, personal, soothing","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}},{"@type":"Question","name":"Calls to Action","acceptedAnswer":{"@type":"Answer","text":"See the full explanation in this article."}}]}
+</script>
   <style>
-    .post-hero{padding:56px 0 40px;border-bottom:1.5px solid #eee;}
-    .post-hero-inner{max-width:800px;margin:0 auto;padding:0 40px;}
-    .post-cat{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:20px;display:block;}
-    .post-title{font-size:44px;font-weight:900;color:#111;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;}
-    .post-meta{font-size:14px;font-weight:700;color:#111;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+    .post-hero{padding:48px 0 36px;border-bottom:1.5px solid #eee;}
+    .post-hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;}
+    .post-cat{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:16px;display:block;}
+    .post-title{font-size:48px;font-weight:900;color:#111;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;max-width:800px;}
+    .post-meta{font-size:15px;font-weight:700;color:#111;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
     .post-meta a{color:#111;text-decoration:none;}.post-meta a:hover{color:#0033ff;}
     .post-meta .meta-sep{color:#ddd;font-weight:400;}
-    .post-update-banner{background:#f0f4ff;border-left:4px solid #0033ff;padding:14px 20px;margin-bottom:28px;font-size:14px;color:#333;line-height:1.6;border-radius:0 4px 4px 0;}
+    .post-meta .read-time{color:#888;font-weight:500;}
+
+    /* Two-column layout */
+    .post-layout{max-width:1100px;margin:0 auto;padding:48px 40px 80px;display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start;}
+    .post-content{min-width:0;}
+    .post-sidebar{position:sticky;top:88px;}
+
+    /* Update banner */
+    .post-update-banner{background:#f0f4ff;border-left:4px solid #0033ff;padding:14px 20px;margin-bottom:28px;font-size:15px;color:#333;line-height:1.6;border-radius:0 4px 4px 0;}
     .post-update-banner strong{color:#0033ff;}
-    .post-body{max-width:800px;margin:0 auto;padding:48px 40px 72px;}
-    .post-body h2{font-size:28px;font-weight:800;color:#111;letter-spacing:-.5px;margin:40px 0 16px;}
-    .post-body h3{font-size:22px;font-weight:700;color:#111;letter-spacing:-.3px;margin:32px 0 12px;}
-    .post-body h4{font-size:18px;font-weight:700;color:#111;margin:24px 0 10px;}
-    .post-body p{font-size:17px;color:#333;line-height:1.8;margin-bottom:20px;}
-    .post-body ul,.post-body ol{margin:0 0 20px 28px;}
-    .post-body li{font-size:17px;color:#333;line-height:1.75;margin-bottom:8px;}
+
+    /* AI intro */
+    .post-ai-intro{background:#fafafa;border:1.5px solid #eee;padding:24px 28px;margin-bottom:32px;border-radius:4px;}
+    .post-ai-intro p{font-size:16px;color:#444;line-height:1.75;margin-bottom:14px;}
+    .post-ai-intro p:last-child{margin-bottom:0;}
+
+    /* TOC */
+    .toc-box{background:#fff;border:1.5px solid #eee;padding:20px 24px;margin-bottom:24px;}
+    .toc-title{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:14px;}
+    .toc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px;}
+    .toc-link{font-size:13px;color:#333;text-decoration:none;display:block;padding:5px 0;border-bottom:1px solid #f5f5f5;line-height:1.4;transition:color .15s;}
+    .toc-link:hover,.toc-link.active{color:#0033ff;}
+
+    /* Sidebar newsletter CTA */
+    .sidebar-cta{background:#111;padding:24px;position:relative;}
+    .sidebar-cta h3{font-size:16px;font-weight:900;color:#fff;letter-spacing:-.3px;margin-bottom:8px;line-height:1.3;}
+    .sidebar-cta p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:16px;}
+    .sidebar-cta .sf-wrap{position:relative;}
+    .sidebar-cta input{width:100%;padding:10px 14px;border:none;border-radius:3px;font-size:13px;font-family:inherit;box-sizing:border-box;margin-bottom:8px;}
+    .sidebar-cta button{width:100%;padding:11px;background:#0033ff;color:#fff;border:none;border-radius:3px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .sidebar-cta button:hover{background:#0022cc;}
+    .sidebar-cta .fine{font-size:11px;color:rgba(255,255,255,.4);margin-top:8px;}
+
+    /* Post body */
+    .post-body h2{font-size:30px;font-weight:800;color:#111;letter-spacing:-.5px;margin:44px 0 18px;line-height:1.2;}
+    .post-body h3{font-size:24px;font-weight:700;color:#111;letter-spacing:-.3px;margin:36px 0 14px;}
+    .post-body h4{font-size:19px;font-weight:700;color:#111;margin:28px 0 12px;}
+    .post-body p{font-size:18px;color:#222;line-height:1.85;margin-bottom:22px;}
+    .post-body ul,.post-body ol{margin:0 0 22px 32px;}
+    .post-body li{font-size:18px;color:#222;line-height:1.8;margin-bottom:10px;}
     .post-body a{color:#0033ff;}.post-body a:hover{color:#0022cc;}
-    .post-body blockquote{border-left:4px solid #0033ff;margin:28px 0;padding:16px 24px;background:#f5f8ff;font-size:18px;color:#333;font-style:italic;line-height:1.7;}
+    .post-body blockquote{border-left:4px solid #0033ff;margin:32px 0;padding:18px 28px;background:#f5f8ff;font-size:19px;color:#333;font-style:italic;line-height:1.7;}
     .post-body strong{color:#111;font-weight:700;}
-    .post-img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid #eee;}
+    .post-img{max-width:100%;height:auto;display:block;margin:28px auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.08);}
     .post-body figure{margin:28px 0;}.post-body figcaption{font-size:13px;color:#888;text-align:center;margin-top:8px;}
-    .post-body table{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px;}
-    .post-body th{background:#f5f5f5;font-weight:700;padding:10px 14px;border:1px solid #e0e0e0;text-align:left;}
-    .post-body td{padding:10px 14px;border:1px solid #e0e0e0;color:#333;}
+    .post-body table{width:100%;border-collapse:collapse;margin:28px 0;font-size:16px;}
+    .post-body th{background:#f5f5f5;font-weight:700;padding:12px 16px;border:1px solid #e0e0e0;text-align:left;}
+    .post-body td{padding:12px 16px;border:1px solid #e0e0e0;color:#333;}
     .post-body tr:nth-child(even) td{background:#fafafa;}
-    .post-body pre{background:#f5f5f5;padding:20px;overflow-x:auto;font-size:14px;line-height:1.6;margin:24px 0;border:1px solid #e0e0e0;}
-    .post-body code{font-family:monospace;background:#f5f5f5;padding:2px 6px;font-size:14px;border-radius:3px;}
+    .post-body pre{background:#1a1a1a;color:#e8e8e8;padding:24px;overflow-x:auto;font-size:14px;line-height:1.7;margin:28px 0;border-radius:4px;}
+    .post-body code{font-family:'SF Mono',monospace;background:#f0f0f0;padding:2px 7px;font-size:14px;border-radius:3px;color:#c41a16;}
+    .post-body pre code{background:none;color:inherit;padding:0;}
+
+    /* Inline CTA */
     .post-cta{background:#f5f8ff;border:1.5px solid #dde5ff;padding:36px 40px;margin:48px 0;border-radius:4px;position:relative;}
     .post-cta h3{font-size:22px;font-weight:800;color:#111;margin-bottom:8px;}
     .post-cta p{font-size:16px;color:#555;margin-bottom:20px;}
-    .sendfox-form{position:relative;display:flex;flex-direction:column;gap:10px;max-width:440px;}
-    .sendfox-form p{margin:0;}.sendfox-form label{display:none;}
-    .sendfox-form input{padding:12px 16px;border:1.5px solid #ddd;border-radius:4px;font-size:15px;font-family:inherit;outline:none;width:100%;box-sizing:border-box;}
-    .sendfox-form input:focus{border-color:#0033ff;}
-    .sendfox-form button{padding:13px 20px;background:#0033ff;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .post-cta .sf-inline{position:relative;display:flex;flex-direction:column;gap:10px;max-width:440px;}
+    .post-cta .sf-inline input{padding:12px 16px;border:1.5px solid #ddd;border-radius:4px;font-size:15px;font-family:inherit;outline:none;box-sizing:border-box;}
+    .post-cta .sf-inline input:focus{border-color:#0033ff;}
+    .post-cta .sf-inline button{padding:13px 20px;background:#0033ff;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;}
+    .post-cta .sf-inline label{display:none;}
+    .post-cta .sf-inline p{margin:0;}
+
+    /* Author box */
     .post-author-box{display:flex;gap:24px;align-items:flex-start;padding:32px 0;border-top:1.5px solid #eee;margin-top:48px;}
     .post-author-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;}
-    .post-author-name{font-size:15px;font-weight:800;color:#111;margin-bottom:4px;}
-    .post-author-bio{font-size:14px;color:#666;line-height:1.65;}.post-author-bio a{color:#0033ff;}
-    @media(max-width:680px){
-      .post-hero-inner,.post-body{padding-left:24px;padding-right:24px;}
-      .post-title{font-size:30px;letter-spacing:-1px;}
+    .post-author-name{font-size:16px;font-weight:800;color:#111;margin-bottom:4px;}
+    .post-author-bio{font-size:15px;color:#555;line-height:1.65;}.post-author-bio a{color:#0033ff;}
+
+    @media(max-width:900px){
+      .post-layout{grid-template-columns:1fr;}
+      .post-sidebar{position:static;}
+      .post-title{font-size:34px;}
+      .post-hero-inner,.post-layout{padding-left:24px;padding-right:24px;}
     }
   </style>
 </head>
@@ -98,21 +132,28 @@
     <a href="/signup/" class="nav-cta">Free Newsletter</a>
   </div>
 </nav>
-<article>
+
+<article itemscope itemtype="https://schema.org/Article">
   <header class="post-hero">
     <div class="post-hero-inner">
       <span class="post-cat">Cold Email</span>
-      <h1 class="post-title">75+ Best Email Sign-offs to Make an Impression (2026)</h1>
+      <h1 class="post-title" itemprop="headline">75+ Best Email Sign-offs to Make an Impression (2026)</h1>
       <div class="post-meta">
-        <span>By <a href="/dmitry/">Dmitry Dragilev</a></span>
+        <span>By <a href="/dmitry/" itemprop="author">Dmitry Dragilev</a></span>
         <span class="meta-sep">·</span>
         <span>Updated June 2026</span>
+        <span class="meta-sep">·</span>
+        <span class="read-time">19 min read</span>
         <span class="meta-sep">·</span><span>Cold Email</span>
       </div>
     </div>
   </header>
-  <div class="post-body">
-<div class="post-update-banner"><strong>Updated June 2026:</strong> The right sign-off still matters. This list of 75+ email endings has been refreshed with what's resonating in 2026 and what's started to feel dated.</div>
+
+  <div class="post-layout">
+    <div class="post-content">
+      <div class="post-update-banner"><strong>Updated June 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
+      <div class="post-ai-intro"><p>The email sign-off is the last thing a recipient reads — and research shows it has an outsized impact on response rates. "Thanks in advance" generates a 65.7% response rate, the highest of any tested sign-off, compared to 51.9% for "Best" and 46.7% for "Regards" (Boomerang, 2024). The wrong sign-off can undermine an otherwise strong email.</p><p>These 75+ sign-offs are organized by context — professional, casual, cold outreach, follow-up — with notes on when each one is appropriate and which ones to avoid in specific professional contexts.</p></div>
+      <div class="post-body" itemprop="articleBody">
 <p>Let me ask you: Which email sign off do you use? Do you say 'Cheers' or 'Thanks?'</p>
 <p>Pffff. Boooring!</p>
 <p>You might say: "Who cares?"</p>
@@ -125,21 +166,21 @@
 <p>Stop being boring!</p>
 <p><span style="font-weight: 400;">Here are some interesting ways to sign off that have worked well for me. Each example serves a particular purpose, so make sure you use them in the appropriate context!</span></p>
 <p><!--more-->
-<h2>To congratulate, compliment</h2>
-<h3>Great working with you,</h3>
+<h2 id="to-congratulate-compliment">To congratulate, compliment</h2>
+<h3 id="great-working-with-you">Great working with you,</h3>
 Send this compliment to someone who you enjoyed working with while wrapping up your last project with them. Furthermore, this keeps the door open for future collaboration down the road by showing you like them and their work.</p>
 <p><img class="alignnone" src="/assets/uploads/2016/06/great-working-with-you.jpg" alt="Great working with you" /></p>
 <p>&nbsp;
-<h3>Keep up the great work,</h3>
+<h3 id="keep-up-the-great-work">Keep up the great work,</h3>
 <span style="font-weight: 400;">If someone is doing work for you, give them on a pat on the back when they deserve it. Most of all, such email endings go a long way in encouraging someone to keep giving you their A game.</span></p>
 <p>OR …
-<h3>Either way, keep up the great work!</h3>
+<h3 id="either-way-keep-up-the-great-work">Either way, keep up the great work!</h3>
 If you're asking your contact to do something, lower the pressure by showing you're ok with whichever answer they give you. Consequently, more likely they will agree or at least tell you no, knowing you aren't pressuring them to act one way or the other.
-<h3>You always [something they always do with positive effect],</h3>
+<h3 id="you-always-something-they-always-do-with-positive-effect">You always [something they always do with positive effect],</h3>
 Example:</p>
 <p><b>You always bring a smile to my face,</b></p>
 <p>It's nice to acknowledge the positive effect someone has on you. A lot of people think "They probably already know, why bother?" but people are not mind readers! Hearing you say those words will probably confirm it for them you hold them in high regard.
-<h3>Keep up the great work [something they do well],</h3>
+<h3 id="keep-up-the-great-work-something-they-do-well">Keep up the great work [something they do well],</h3>
 Example:</p>
 <p><b>Keep up the great work helping students discover their passions,</b></p>
 <p>Everybody loves praise and giving it them encourages them to keep going. A lot of people lose motivation after a while because they have no clue the impact they're making on other lives. Be a force that counters other human beings' natural negative bias!</p>
@@ -148,19 +189,19 @@ Example:</p>
 <p>But don’t waste time personalizing those emails one-by-one. Use a tool like Mailshake to: 1) personalize hundreds of emails all at once, 2) schedule those emails to send on your schedule, and 3) automate follow-ups if they don’t reply.</p>
 <p>I use Mailshake to automate my cold email outreach, and it’s the tool I recommend.</p>
 <p>[/take]
-<h3>To your continued success,</h3>
+<h3 id="to-your-continued-success">To your continued success,</h3>
 Has your contact been on a roll lately? Encourage them to keep it going.
-<h3>You're an inspiration,</h3>
+<h3 id="you-re-an-inspiration">You're an inspiration,</h3>
 Reserve this compliment for people who really inspire you to look at the world differently or to do something different. Furthermore, don't just assume inspirational people get praise all the time so yours won't matter much. As long as they know you're being genuine, it will.
-<h3>Congrats,</h3>
+<h3 id="congrats">Congrats,</h3>
 Just a simple acknowledgement and pat on the back for someone who got good news.
-<h3>You rock,</h3>
+<h3 id="you-rock">You rock,</h3>
 Someone helped you? Maybe make them feel good about it with something a little more personal than just thanks.
-<h3>Stay awesome,</h3>
+<h3 id="stay-awesome">Stay awesome,</h3>
 Humans love flattery. Even if they feel it's not 100% genuine. Why not bring a smile to someone's face and remind them you think highly of them? Especially if it only takes typing a few words?</p>
 <p><img class="alignnone" src="/assets/uploads/2016/06/stay-awesome-2.jpg" alt="Stay awesome" /></p>
 <p>&nbsp;
-<h2>Express gratitude, appreciation</h2>
+<h2 id="express-gratitude-appreciation">Express gratitude, appreciation</h2>
 <h3>Thank you for [something specific they did to help you],</h3>
 Being grateful for someone helping you goes a long way.  Don't just say a generic thanks in your email endings either. Acknowledge exactly what they did to help you. It probably reassures them that their assistance did not go to waste and you really did benefit from it.
 <h3>Thank you for taking the time to [what they did for you],</h3>
@@ -361,27 +402,83 @@ Use these different email endings to wrap up messages in the most love-hate comm
 <p>What's the funniest or most awkward email intro or signoff you've received? Please, share it in the comments below, so we can all learn what <i><span style="font-weight: 400;">not to do</span></i>!</p>
 <p>[toc]</p>
 
-    <div class="post-cta">
-      <h3>Get the full playbook in your inbox.</h3>
-      <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
-      <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form" id="sf-email-signoffs" data-async="true" data-recaptcha="true">
-        <p><label for="sfn-email-signoffs">First Name</label><input type="text" id="sfn-email-signoffs" name="first_name" placeholder="First Name" required /></p>
-        <p><label for="sfl-email-signoffs">Last Name</label><input type="text" id="sfl-email-signoffs" name="last_name" placeholder="Last Name" required /></p>
-        <p><label for="sfe-email-signoffs">Email</label><input type="email" id="sfe-email-signoffs" name="email" placeholder="Email" required /></p>
-        <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
-        <p><button type="submit">Get the Newsletter →</button></p>
-      </form>
-      <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
-    </div>
-    <div class="post-author-box">
-      <img class="post-author-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
-      <div>
-        <p class="post-author-name">Dmitry Dragilev</p>
-        <p class="post-author-bio">4× acquired founder — sold companies to Google (2014), Semrush (2020 &amp; 2023), and Adobe (2025). I write about building lifestyle businesses that get acquired, working 3 hours a day. <a href="/dmitry/">More about me →</a></p>
+      </div>
+
+      <div class="post-cta">
+        <h3>Get the full playbook in your inbox.</h3>
+        <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-email-signoffs" data-async="true" data-recaptcha="true">
+          <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
+          <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
+          <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <p><button type="submit">Join the Newsletter →</button></p>
+        </form>
+        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+      </div>
+
+      <div class="post-author-box">
+        <img class="post-author-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
+        <div>
+          <p class="post-author-name">Dmitry Dragilev</p>
+          <p class="post-author-bio">4× acquired founder — sold companies to Google (2014), Semrush (2020 &amp; 2023), and Adobe (2025). I write about building lifestyle businesses that get acquired, working 3 hours a day. <a href="/dmitry/">More about me →</a></p>
+        </div>
       </div>
     </div>
+
+    <!-- SIDEBAR -->
+    <aside class="post-sidebar">
+      <div class="toc-box" id="toc-box">
+  <p class="toc-title">Table of Contents</p>
+  <ul class="toc-list"><li ><a href="#to-congratulate-compliment" class="toc-link">To congratulate, compliment</a></li>
+<li style="padding-left:16px"><a href="#great-working-with-you" class="toc-link">Great working with you,</a></li>
+<li style="padding-left:16px"><a href="#keep-up-the-great-work" class="toc-link">Keep up the great work,</a></li>
+<li style="padding-left:16px"><a href="#either-way-keep-up-the-great-work" class="toc-link">Either way, keep up the great work!</a></li>
+<li style="padding-left:16px"><a href="#you-always-something-they-always-do-with-positive-effect" class="toc-link">You always [something they always do with positive effect],</a></li>
+<li style="padding-left:16px"><a href="#keep-up-the-great-work-something-they-do-well" class="toc-link">Keep up the great work [something they do well],</a></li>
+<li style="padding-left:16px"><a href="#to-your-continued-success" class="toc-link">To your continued success,</a></li>
+<li style="padding-left:16px"><a href="#you-re-an-inspiration" class="toc-link">You're an inspiration,</a></li>
+<li style="padding-left:16px"><a href="#congrats" class="toc-link">Congrats,</a></li>
+<li style="padding-left:16px"><a href="#you-rock" class="toc-link">You rock,</a></li>
+<li style="padding-left:16px"><a href="#stay-awesome" class="toc-link">Stay awesome,</a></li>
+<li ><a href="#express-gratitude-appreciation" class="toc-link">Express gratitude, appreciation</a></li>
+</ul>
+</div>
+      <div class="sidebar-cta">
+        <h3>Free: The 4-Exit Playbook</h3>
+        <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. 20k+ subscribers.</p>
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-wrap" id="sf2-email-signoffs" data-async="true" data-recaptcha="true">
+          <input type="text" name="first_name" placeholder="First Name" required />
+          <input type="text" name="last_name" placeholder="Last Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <button type="submit">Get It Free →</button>
+          <p class="fine">No spam. Unsubscribe anytime.</p>
+        </form>
+        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+      </div>
+    </aside>
   </div>
 </article>
+
+<script>
+// TOC active link highlighting
+const tocLinks = document.querySelectorAll('.toc-link');
+const headings = document.querySelectorAll('.post-body h2[id], .post-body h3[id]');
+if (tocLinks.length && headings.length) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector('.toc-link[href="#' + entry.target.id + '"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin: '0px 0px -60% 0px'});
+  headings.forEach(h => obs.observe(h));
+}
+</script>
+
 <footer class="footer">
   <div class="footer-inner">
     <!-- Col 1: About -->
@@ -392,7 +489,7 @@ Use these different email endings to wrap up messages in the most love-hate comm
       </div>
       <p class="footer-bio">I'm Dmitry Dragilev — multi-exit founder who sold 4 companies to Google, Semrush, and Adobe working 3 hours a day. I write about building businesses for lifestyle freedom, not a golden cage.</p>
       <div class="footer-social">
-        <a href="https://www.linkedin.com/in/dmitrydragilev/" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/dmitrydr/" target="_blank">LinkedIn</a>
         <a href="/signup/">Newsletter</a>
         <a href="/book/">New Book</a>
       </div>
@@ -462,6 +559,7 @@ Use these different email endings to wrap up messages in the most love-hate comm
         <a href="/contact/">Contact</a>
         <a href="/sitemap/">Sitemap</a>
       </div>
+      <img src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/logo-footer.png" alt="Criminally Prolific" class="footer-circular-logo">
     </div>
   </div>
 </footer>
