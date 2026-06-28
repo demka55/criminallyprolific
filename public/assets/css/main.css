@@ -69,8 +69,8 @@ img{max-width:100%;display:block;}
 /* ── NEWSLETTER ── */
 .nl{background:#f8f9ff;border:1.5px solid #dde3ff;padding:56px;}
 .nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-.nl-title{font-size:36px;font-weight:900;color:#111;letter-spacing:-1px;line-height:1.15;margin-bottom:12px;}
-.nl-desc{font-size:16px;color:#555;line-height:1.65;}
+.nl-title{font-size:26px;font-weight:900;color:#111;letter-spacing:-.5px;line-height:1.2;margin-bottom:10px;}
+.nl-desc{font-size:14px;color:#555;line-height:1.65;}
 .nl-bullets{list-style:none;margin-bottom:24px;}
 .nl-bullets li{font-size:14px;color:#333;line-height:1.65;padding:5px 0;display:flex;gap:10px;align-items:flex-start;}
 .nl-dot{width:7px;height:7px;border-radius:50%;background:#0033ff;flex-shrink:0;margin-top:7px;}
