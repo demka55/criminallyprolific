@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaxShield — Audit Risk Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0A1628;
+  --navy-light: #152342;
+  --navy-lighter: #1D2F52;
+  --teal: #1FB8AD;
+  --teal-dark: #16998F;
+  --gold: #F4B942;
+  --gold-light: #F7D070;
+  --red: #EF5350;
+  --green: #66BB6A;
+  --amber: #FFA726;
+  --bg: #0D1B2E;
+  --card: #142238;
+  --text: #E8EDF5;
+  --text-muted: #8B9BB3;
+  --border: #243B5C;
+  --shadow: rgba(0,0,0,0.3);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:16px;line-height:1.6;min-height:100%;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:var(--navy-light)}::-webkit-scrollbar-thumb{background:var(--navy-lighter);border-radius:4px}::-webkit-scrollbar-thumb:hover{background:var(--border)}
+
+.mono{font-family:'IBM Plex Mono',monospace}
+.serif{font-family:'Crimson Pro',serif}
+
+/* Inputs */
+.ts-input{background:var(--navy-light);border:1.5px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;padding:12px 16px;width:100%;font-family:inherit;outline:none;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.ts-input:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(31,184,173,.12);background:var(--navy)}
+.ts-input::placeholder{color:var(--text-muted);opacity:.6}
+select.ts-input{cursor:pointer}
+select.ts-input option{background:var(--navy);color:var(--text)}
+textarea.ts-input{resize:vertical;min-height:160px;line-height:1.65;font-size:14px}
+
+/* Buttons */
+.ts-btn{border:none;cursor:pointer;font-family:inherit;font-weight:600;border-radius:12px;transition:all .2s cubic-bezier(.4,0,.2,1);display:inline-flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden}
+.ts-btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 4px 12px var(--shadow)}
+.ts-btn:active:not(:disabled){transform:translateY(0)}
+.ts-btn:disabled{opacity:.4;cursor:not-allowed}
+
+.btn-primary{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-dark) 100%);color:#fff;padding:14px 32px;font-size:15px;box-shadow:0 2px 8px rgba(31,184,173,.25)}
+.btn-primary:hover:not(:disabled){box-shadow:0 4px 16px rgba(31,184,173,.4)}
+
+.btn-secondary{background:var(--navy-lighter);color:var(--text);padding:12px 24px;font-size:14px;border:1.5px solid var(--border)}
+.btn-secondary:hover:not(:disabled){background:var(--navy-light);border-color:var(--teal)}
+
+.btn-ghost{background:transparent;color:var(--text-muted);padding:10px 20px;font-size:14px;border:1.5px solid var(--border)}
+.btn-ghost:hover:not(:disabled){color:var(--text);border-color:var(--teal);background:rgba(31,184,173,.05)}
+
+.btn-upload{background:var(--card);color:var(--text);padding:48px;border:2px dashed var(--border);border-radius:16px;text-align:center;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);font-size:15px}
+.btn-upload:hover{border-color:var(--teal);background:rgba(31,184,173,.03);transform:translateY(-2px)}
+.btn-upload.dragging{border-color:var(--teal);background:rgba(31,184,173,.08);box-shadow:0 0 0 4px rgba(31,184,173,.12)}
+
+/* Cards */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 2px 8px var(--shadow);transition:all .25s cubic-bezier(.4,0,.2,1)}
+.card-hover:hover{border-color:var(--teal);box-shadow:0 4px 16px var(--shadow),0 0 0 1px var(--teal)}
+
+.card-glass{background:rgba(20,34,56,.6);backdrop-filter:blur(20px);border:1.5px solid rgba(255,255,255,.08)}
+
+/* Badge */
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:.3px}
+.badge-red{background:rgba(239,83,80,.15);color:var(--red);border:1px solid rgba(239,83,80,.3)}
+.badge-amber{background:rgba(255,167,38,.15);color:var(--amber);border:1px solid rgba(255,167,38,.3)}
+.badge-green{background:rgba(102,187,106,.15);color:var(--green);border:1px solid rgba(102,187,106,.3)}
+.badge-teal{background:rgba(31,184,173,.15);color:var(--teal);border:1px solid rgba(31,184,173,.3)}
+.badge-gold{background:rgba(244,185,66,.15);color:var(--gold);border:1px solid rgba(244,185,66,.3)}
+
+/* Screen transitions */
+.screen{display:none;animation:fadeUp .5s cubic-bezier(.4,0,.2,1) both}
+.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Micro animations */
+.pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.spin{animation:spin 1s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.shimmer{background:linear-gradient(90deg,transparent,rgba(31,184,173,.1),transparent);animation:shimmer 2s infinite}
+@keyframes shimmer{to{background-position:200% center}}
+
+/* Utilities */
+.hidden{display:none!important}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.text-center{text-align:center}
+.text-muted{color:var(--text-muted)}
+.text-gold{color:var(--gold)}
+.text-teal{color:var(--teal)}
+
+/* Premium visual details */
+.glow-teal{box-shadow:0 0 60px rgba(31,184,173,.15)}
+.glow-gold{box-shadow:0 0 60px rgba(244,185,66,.15)}
+
+/* Stagger delays */
+.stagger-1{animation-delay:.05s}.stagger-2{animation-delay:.1s}.stagger-3{animation-delay:.15s}.stagger-4{animation-delay:.2s}.stagger-5{animation-delay:.25s}
+</style>
+</head>
+<body>
+
+<div style="max-width:1200px;margin:0 auto;padding:24px">
+
+<!-- TOPBAR -->
+<header style="background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:20px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px var(--shadow);position:sticky;top:16px;z-index:100;backdrop-filter:blur(20px)">
+  <div style="display:flex;align-items:center;gap:16px">
+    <div style="width:44px;height:44px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 2px 8px rgba(31,184,173,.3)">🛡️</div>
+    <div>
+      <h1 style="font-family:'Crimson Pro',serif;font-size:26px;font-weight:700;letter-spacing:-0.5px;line-height:1">Tax<span style="color:var(--teal)">Shield</span></h1>
+      <p style="font-size:12px;color:var(--text-muted);font-weight:500;margin-top:2px">Audit Risk Intelligence Platform</p>
+    </div>
+  </div>
+  <nav id="nav" style="display:none;gap:8px">
+    <button class="ts-btn btn-ghost nav-btn" data-screen="dashboard">📊 Dashboard</button>
+    <button class="ts-btn btn-ghost nav-btn" data-screen="analyzer">🔍 Analyzer</button>
+    <button class="ts-btn btn-ghost nav-btn" data-screen="remediation">⚡ Action Plan</button>
+    <button class="ts-btn btn-ghost nav-btn" data-screen="notice">📬 Notice AI</button>
+  </nav>
+  <div style="text-align:right">
+    <div class="badge badge-gold" style="font-size:11px">✦ IRS SOI TY2022</div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:4px">Powered by Claude AI</div>
+  </div>
+</header>
+
+<!-- SCREEN: ONBOARD -->
+<div id="screen-onboard" class="screen active">
+  <div style="max-width:720px;margin:0 auto">
+    <div class="text-center" style="margin-bottom:48px">
+      <div style="width:80px;height:80px;margin:0 auto 24px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:38px;box-shadow:0 4px 24px rgba(31,184,173,.3)">🛡️</div>
+      <h2 style="font-family:'Crimson Pro',serif;font-size:48px;font-weight:700;letter-spacing:-1px;margin-bottom:16px;line-height:1.1">Know Your <span style="color:var(--teal)">Audit Risk</span></h2>
+      <p style="font-size:18px;color:var(--text-muted);line-height:1.6;max-width:600px;margin:0 auto">Powered by real IRS Statistics of Income data (TY2022). Live AI-driven analysis benchmarked against your exact industry code.</p>
+    </div>
+
+    <div class="card stagger-1" style="margin-bottom:24px">
+      <div style="margin-bottom:24px">
+        <label style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:10px">Business Name</label>
+        <input class="ts-input" id="inp-bizname" placeholder="e.g. Apex Kitchen LLC">
+      </div>
+      <div style="margin-bottom:24px">
+        <label style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:10px">NAICS Industry Code</label>
+        <select class="ts-input" id="inp-naics">
+          <option value="">Select your industry...</option>
+          <option value="11">11 — Agriculture, Forestry, Fishing & Hunting</option>
+          <option value="23">23 — Construction</option>
+          <option value="31">31 — Manufacturing</option>
+          <option value="44">44 — Retail Trade</option>
+          <option value="48">48 — Transportation & Warehousing</option>
+          <option value="51">51 — Information / Technology</option>
+          <option value="52">52 — Finance & Insurance</option>
+          <option value="53">53 — Real Estate & Rental</option>
+          <option value="54">54 — Professional, Scientific & Technical Services</option>
+          <option value="56">56 — Administrative & Support Services</option>
+          <option value="61">61 — Educational Services</option>
+          <option value="62">62 — Health Care & Social Assistance</option>
+          <option value="71">71 — Arts, Entertainment & Recreation</option>
+          <option value="72">72 — Accommodation & Food Services</option>
+          <option value="81">81 — Other Services (Personal, Repair, etc.)</option>
+        </select>
+        <div id="naics-confirm" style="display:none;margin-top:12px;padding:12px 16px;background:rgba(31,184,173,.08);border:1.5px solid rgba(31,184,173,.2);border-radius:10px;font-size:14px;color:var(--teal)"></div>
+      </div>
+      <div style="margin-bottom:24px">
+        <label style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:10px">Annual Gross Revenue ($)</label>
+        <input class="ts-input" id="inp-revenue" type="number" placeholder="250,000">
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">Annual Deductions by Category</div>
+        <div class="grid-2" id="expense-grid" style="gap:12px"></div>
+      </div>
+    </div>
+
+    <button class="ts-btn btn-primary stagger-2" id="btn-analyze" disabled style="width:100%;font-size:16px">🔍 Analyze My Audit Risk</button>
+
+    <div class="stagger-3" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:20px;justify-content:center">
+      <span style="font-size:13px;color:var(--text-muted)">Quick demo:</span>
+      <button class="ts-btn btn-secondary demo-btn" data-demo="catering">🍴 Catering Business</button>
+      <button class="ts-btn btn-secondary demo-btn" data-demo="consultant">💼 Consultant</button>
+      <button class="ts-btn btn-secondary demo-btn" data-demo="contractor">🔨 Contractor</button>
+    </div>
+
+    <div class="text-center stagger-4" style="margin-top:32px;padding-top:24px;border-top:1.5px solid var(--border)">
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.6">Data: <strong style="color:var(--gold)">IRS Statistics of Income TY2022</strong> · irs.gov/statistics<br>Notice AI: <strong style="color:var(--teal)">Anthropic Claude API</strong> · IRS Internal Revenue Manual</p>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: DASHBOARD -->
+<div id="screen-dashboard" class="screen">
+  <div class="card glow-teal" style="margin-bottom:32px;padding:40px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);position:relative;overflow:hidden">
+    <div id="score-glow" style="position:absolute;top:-100px;right:-100px;width:300px;height:300px;border-radius:50%;pointer-events:none"></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 280px;gap:40px;position:relative">
+      <div style="text-align:center">
+        <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px">TARS™ Risk Score</div>
+        <svg width="160" height="90" viewBox="0 0 160 90">
+          <defs>
+            <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:var(--teal);stop-opacity:1"/>
+              <stop offset="100%" style="stop-color:var(--gold);stop-opacity:1"/>
+            </linearGradient>
+          </defs>
+          <path d="M 15 85 A 70 70 0 0 1 145 85" fill="none" stroke="var(--navy-lighter)" stroke-width="12" stroke-linecap="round"/>
+          <path id="score-arc" d="M 15 85 A 70 70 0 0 1 145 85" fill="none" stroke="url(#scoreGrad)" stroke-width="12" stroke-linecap="round" stroke-dasharray="0 220"/>
+          <text id="score-num" x="80" y="80" text-anchor="middle" fill="var(--text)" font-size="42" font-weight="700" font-family="'IBM Plex Sans',sans-serif">0</text>
+        </svg>
+        <div id="score-band" class="badge" style="margin-top:12px;font-size:14px">—</div>
+        <div id="score-bizname" style="font-size:14px;color:var(--text);font-weight:500;margin-top:16px"></div>
+        <div id="score-naicsname" style="font-size:12px;color:var(--text-muted);margin-top:4px"></div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px">Score Components</div>
+        <div id="breakdown-rows"></div>
+        <button class="ts-btn btn-secondary hidden" id="btn-to-remed" style="margin-top:16px;width:100%"></button>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px">Industry Benchmark</div>
+        <div style="background:rgba(0,0,0,.2);border:1.5px solid rgba(255,255,255,.06);border-radius:12px;padding:20px;backdrop-filter:blur(10px)">
+          <div id="bench-label" style="font-size:13px;color:var(--text-muted);margin-bottom:16px"></div>
+          <div id="bench-rows"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="flags-section"></div>
+</div>
+
+<!-- SCREEN: ANALYZER -->
+<div id="screen-analyzer" class="screen">
+  <div style="margin-bottom:24px">
+    <h2 style="font-family:'Crimson Pro',serif;font-size:32px;font-weight:700;margin-bottom:8px">Deduction Analyzer</h2>
+    <p id="analyzer-subtitle" style="font-size:15px;color:var(--text-muted)"></p>
+  </div>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 100px;padding:16px 20px;background:var(--navy);border-radius:10px;margin-bottom:12px;font-size:12px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--text-muted)">
+      <div>Category</div><div style="text-align:right">Amount</div><div style="text-align:right">Your %</div><div style="text-align:right">IRS Avg %</div><div style="text-align:right">Risk</div>
+    </div>
+    <div id="analyzer-rows"></div>
+  </div>
+  <div style="margin-top:16px;padding:14px 18px;background:rgba(31,184,173,.06);border:1.5px solid rgba(31,184,173,.15);border-radius:10px;font-size:12px;color:var(--text-muted)">
+    📊 <strong style="color:var(--teal)">Data Source:</strong> IRS Statistics of Income Division · Nonfarm Sole Proprietorship Returns TY2022 · irs.gov/statistics
+  </div>
+</div>
+
+<!-- SCREEN: REMEDIATION -->
+<div id="screen-remediation" class="screen">
+  <div style="margin-bottom:24px">
+    <h2 style="font-family:'Crimson Pro',serif;font-size:32px;font-weight:700;margin-bottom:8px">⚡ Action Plan</h2>
+    <p id="remed-subtitle" style="font-size:15px;color:var(--text-muted)"></p>
+  </div>
+  <div id="remed-items"></div>
+</div>
+
+<!-- SCREEN: NOTICE AI -->
+<div id="screen-notice" class="screen">
+  <div style="margin-bottom:32px">
+    <h2 style="font-family:'Crimson Pro',serif;font-size:32px;font-weight:700;margin-bottom:8px">📬 Notice Intelligence™</h2>
+    <p style="font-size:15px;color:var(--text-muted)">Upload an IRS notice image or paste the text. Our AI identifies it, cites the IRM section, and builds your response plan.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="card">
+        <div style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">Upload Notice Image</div>
+        <input type="file" id="notice-file-input" accept="image/*,.pdf" style="display:none">
+        <div class="btn-upload" id="notice-upload-area">
+          <div style="font-size:48px;margin-bottom:12px">📄</div>
+          <div style="font-size:16px;font-weight:600;margin-bottom:8px;color:var(--text)">Drop an IRS notice here</div>
+          <div style="font-size:14px;color:var(--text-muted)">or click to browse</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:12px">Supports: JPG, PNG, PDF</div>
+        </div>
+        <div id="uploaded-preview" style="display:none;margin-top:16px;padding:16px;background:var(--navy);border:1.5px solid var(--border);border-radius:12px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:48px;height:48px;background:var(--navy-lighter);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px">📄</div>
+            <div style="flex:1">
+              <div id="file-name" style="font-size:14px;font-weight:500;margin-bottom:4px"></div>
+              <div id="file-size" style="font-size:12px;color:var(--text-muted)"></div>
+            </div>
+            <button class="ts-btn btn-ghost" id="btn-clear-file" style="padding:8px 12px">✕</button>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">Or Paste Notice Text</div>
+        <textarea class="ts-input" id="notice-input" placeholder="Paste the full text of your IRS notice here...&#10;&#10;CP2000, CP501, Letter 525, etc."></textarea>
+      </div>
+      <button class="ts-btn btn-primary" id="btn-analyze-notice" disabled style="width:100%">🔍 Analyze Notice with AI</button>
+      <div class="card" style="padding:20px">
+        <div style="font-size:13px;font-weight:600;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">Sample Notices</div>
+        <button class="ts-btn btn-secondary sample-notice" data-notice="cp2000" style="width:100%;justify-content:flex-start;margin-bottom:8px">CP2000 — Underreporter Notice</button>
+        <button class="ts-btn btn-secondary sample-notice" data-notice="cp501" style="width:100%;justify-content:flex-start;margin-bottom:8px">CP501 — Balance Due Notice</button>
+        <button class="ts-btn btn-secondary sample-notice" data-notice="l525" style="width:100%;justify-content:flex-start">Letter 525 — 30-Day Audit Letter</button>
+      </div>
+    </div>
+    <div id="notice-result-area">
+      <div class="card" style="padding:64px 32px;text-align:center">
+        <div style="font-size:56px;margin-bottom:20px;opacity:.6">📬</div>
+        <h3 style="font-family:'Crimson Pro',serif;font-size:24px;font-weight:700;margin-bottom:12px">Upload or Paste a Notice</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;max-width:400px;margin:0 auto">Claude AI will identify the notice type, cite the exact IRM sections, and provide a step-by-step response plan.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /max-width container -->
+
+<script>
+// ─── IRS SOI TY2022 Data ──────────────────────────────────────────────────────
+const BENCH={
+  "11":{name:"Agriculture, Forestry, Fishing & Hunting",short:"Agriculture",exp:81.6,cats:{cogs:38.2,labor:12.1,travel:2.8,meals:0.8,auto:3.4,advertising:0.7,utilities:2.9,rent:3.1,depreciation:8.4,insurance:2.6,homeOffice:0.4,other:6.2},audit:0.4,risk:3},
+  "23":{name:"Construction",short:"Construction",exp:88.6,cats:{cogs:42.1,labor:18.3,travel:3.2,meals:1.1,auto:4.8,advertising:1.2,utilities:0.8,rent:2.4,depreciation:5.6,insurance:3.9,homeOffice:0.9,other:4.3},audit:0.5,risk:6},
+  "31":{name:"Manufacturing",short:"Manufacturing",exp:84.3,cats:{cogs:48.2,labor:12.4,travel:2.1,meals:0.7,auto:2.2,advertising:1.8,utilities:2.6,rent:3.8,depreciation:5.4,insurance:1.9,homeOffice:0.3,other:2.9},audit:0.4,risk:4},
+  "44":{name:"Retail Trade",short:"Retail Trade",exp:85.2,cats:{cogs:52.3,labor:11.2,travel:1.4,meals:0.5,auto:1.8,advertising:2.9,utilities:1.6,rent:5.8,depreciation:2.9,insurance:1.4,homeOffice:0.2,other:3.2},audit:0.4,risk:5},
+  "48":{name:"Transportation & Warehousing",short:"Transportation",exp:87.4,cats:{cogs:18.4,labor:22.8,travel:3.8,meals:1.4,auto:14.2,advertising:0.9,utilities:1.2,rent:4.2,depreciation:8.9,insurance:5.6,homeOffice:0.6,other:5.4},audit:0.6,risk:7},
+  "51":{name:"Information / Technology",short:"Info/Tech",exp:79.2,cats:{cogs:18.6,labor:28.4,travel:4.2,meals:1.8,auto:1.9,advertising:3.4,utilities:1.1,rent:4.8,depreciation:4.2,insurance:1.2,homeOffice:2.1,other:7.5},audit:0.3,risk:3},
+  "52":{name:"Finance & Insurance",short:"Finance/Insurance",exp:76.8,cats:{cogs:8.2,labor:22.1,travel:5.6,meals:2.4,auto:2.8,advertising:4.2,utilities:0.8,rent:6.4,depreciation:2.8,insurance:2.1,homeOffice:1.8,other:17.6},audit:0.4,risk:5},
+  "53":{name:"Real Estate & Rental",short:"Real Estate",exp:82.4,cats:{cogs:4.2,labor:8.6,travel:2.4,meals:0.8,auto:2.6,advertising:3.8,utilities:4.2,rent:6.8,depreciation:18.4,insurance:4.6,homeOffice:1.2,other:24.8},audit:0.5,risk:6},
+  "54":{name:"Professional, Scientific & Technical Services",short:"Prof. Services",exp:78.4,cats:{cogs:8.4,labor:28.6,travel:4.8,meals:1.9,auto:2.4,advertising:2.6,utilities:0.9,rent:5.8,depreciation:2.8,insurance:1.6,homeOffice:2.4,other:16.2},audit:0.3,risk:2},
+  "56":{name:"Administrative & Support Services",short:"Admin/Support",exp:83.6,cats:{cogs:12.4,labor:32.8,travel:3.4,meals:1.2,auto:3.8,advertising:2.4,utilities:0.8,rent:4.6,depreciation:3.2,insurance:2.1,homeOffice:1.4,other:15.5},audit:0.5,risk:5},
+  "61":{name:"Educational Services",short:"Education",exp:72.4,cats:{cogs:4.8,labor:22.4,travel:3.6,meals:1.2,auto:2.8,advertising:2.8,utilities:1.2,rent:6.4,depreciation:2.4,insurance:1.4,homeOffice:3.2,other:20.2},audit:0.3,risk:2},
+  "62":{name:"Health Care & Social Assistance",short:"Health Care",exp:76.2,cats:{cogs:16.8,labor:24.6,travel:2.2,meals:0.9,auto:1.8,advertising:1.8,utilities:1.6,rent:6.2,depreciation:3.4,insurance:3.8,homeOffice:0.8,other:12.3},audit:0.4,risk:3},
+  "71":{name:"Arts, Entertainment & Recreation",short:"Arts/Entertainment",exp:83.8,cats:{cogs:14.2,labor:18.4,travel:6.8,meals:2.6,auto:3.8,advertising:4.8,utilities:1.4,rent:5.6,depreciation:4.8,insurance:2.2,homeOffice:1.8,other:17.4},audit:0.5,risk:6},
+  "72":{name:"Accommodation & Food Services",short:"Food Services",exp:89.9,cats:{cogs:32.4,labor:28.6,travel:2.4,meals:5.1,auto:2.2,advertising:2.8,utilities:4.2,rent:8.4,depreciation:3.6,insurance:2.4,homeOffice:0.3,other:7.5},audit:0.7,risk:8},
+  "81":{name:"Other Services (Personal, Repair, etc.)",short:"Other Services",exp:80.4,cats:{cogs:22.4,labor:18.6,travel:3.2,meals:1.4,auto:4.2,advertising:2.4,utilities:1.8,rent:4.8,depreciation:4.6,insurance:2.6,homeOffice:1.2,other:13.2},audit:0.5,risk:5}
+};
+
+const CATS=[
+  {k:"cogs",l:"Cost of Goods Sold",i:"📦",s:"low"},
+  {k:"labor",l:"Labor / Contract Labor",i:"👷",s:"medium"},
+  {k:"travel",l:"Travel Expenses",i:"✈️",s:"high"},
+  {k:"meals",l:"Meals & Entertainment",i:"🍽️",s:"high"},
+  {k:"auto",l:"Vehicle / Auto",i:"🚗",s:"high"},
+  {k:"advertising",l:"Advertising & Marketing",i:"📢",s:"low"},
+  {k:"utilities",l:"Utilities",i:"💡",s:"low"},
+  {k:"rent",l:"Rent / Lease",i:"🏢",s:"low"},
+  {k:"depreciation",l:"Depreciation",i:"📉",s:"medium"},
+  {k:"insurance",l:"Insurance",i:"🛡️",s:"low"},
+  {k:"homeOffice",l:"Home Office",i:"🏠",s:"high"},
+  {k:"other",l:"Other Deductions",i:"📋",s:"medium"}
+];
+
+const DEMOS={
+  catering:{naics:"72",rev:250000,exp:{cogs:81000,labor:71500,travel:20500,meals:31200,auto:14200,advertising:6250,utilities:10500,rent:21000,depreciation:9000,insurance:6000,homeOffice:8400,other:10000}},
+  consultant:{naics:"54",rev:180000,exp:{cogs:0,labor:42000,travel:22000,meals:9800,auto:8400,advertising:4800,utilities:1200,rent:8400,depreciation:3600,insurance:2800,homeOffice:7200,other:6000}},
+  contractor:{naics:"23",rev:420000,exp:{cogs:168000,labor:84000,travel:21000,meals:7560,auto:29400,advertising:5040,utilities:4200,rent:12600,depreciation:25200,insurance:21000,homeOffice:0,other:16800}}
+};
+
+const SAMPLES={
+  cp2000:"CP2000 Notice of Proposed Changes to Your Tax Return\nTax Year 2023\nNotice Date: January 15, 2026\nProposed increase to tax: $4,820\nResponse deadline: 60 days from notice date\n\nWe received information from third parties (1099-K from Square Inc for $13,200 and 1099-NEC from Sunrise Events LLC for $8,200) that does not match what you reported on your 2023 Form 1040. The total unreported income is $21,400.\n\nIf you agree with these changes, sign and return the response form with payment. If you disagree, provide documentation explaining why the proposed changes are incorrect within 60 days.",
+  cp501:"CP501 Balance Due Notice\nTax Year 2022, Form 1040\nBalance Due: $2,341.00\nNotice Date: January 20, 2026\n\nWe sent you a notice about your unpaid tax balance. The amount is still due. Penalties and interest continue to accrue on the unpaid amount.\n\nIf you cannot pay the full amount, you may qualify for a payment plan (installment agreement). Visit irs.gov/paymentplan or call the number on this notice. Continued non-payment may result in enforced collection action including federal tax lien filing and bank levy.",
+  l525:"Letter 525 — General 30-Day Letter\nExamination Report\nTax Year: 2023\nNotice Date: February 1, 2026\n\nWe have completed the examination of your federal income tax return for the year shown above. We are proposing the following changes:\n\n• Travel and entertainment expenses: $18,400 disallowed (lack of adequate contemporaneous records per IRC §274(d))\n• Home office deduction: $7,200 disallowed (space does not meet the exclusive use requirement of IRC §280A)\n\nTotal proposed additional tax: $7,140\nEstimated penalties and interest: $892\n\nYou have 30 days from the date of this letter to:\n1. Sign the enclosed agreement form and pay the additional tax\n2. Request a conference with our Appeals Office\n3. File a petition with the United States Tax Court"
+};
+
+const REMEDS={
+  travel:{steps:["Create a contemporaneous travel log for each trip: destination, dates, business purpose, and business contacts met","Remove any spouse or dependent travel costs unless they served an independent business purpose for your company","For trips that mixed business and personal travel, allocate expenses proportionally by the number of business days vs. total days","Draft a written Travel Policy memo dated before the travel occurred, documenting the business necessity"],irm:"IRM 4.10.7.2.3 — Travel & Transportation Expenses · Treas. Reg. §1.162-2"},
+  meals:{steps:["Maintain a meal log for every expense: date, business purpose, attendees' names, and their business relationship to you","Verify the 50% limitation was applied before booking the deduction in your accounting system — not after","Separate 100%-deductible employee meals from 50%-deductible client entertainment meals","Remove any personal meals that were miscoded to this business expense category"],irm:"IRM 4.10.7.2.2 — Entertainment & Meal Expenses · IRC §274(d) · Treas. Reg. §1.274-5T"},
+  homeOffice:{steps:["Measure and document the exact square footage of your office space and your total home square footage","Confirm the space is used exclusively and regularly ONLY for business — zero personal use of the space","Consider switching to the Safe Harbor method ($5 per square foot, 300 sq ft maximum = $1,500) which draws less scrutiny","Take dated photographs of the dedicated office space to document its exclusive business use"],irm:"IRM 4.10.7.3 — Business Use of Home · IRC §280A"},
+  auto:{steps:["Maintain a mileage log for every business trip: date, starting and ending odometer readings, destination, business purpose","Calculate your actual annual business-use percentage: total business miles divided by total vehicle miles for the year","Choose either the actual expense method or standard mileage rate — you generally cannot switch methods freely after year one","For vehicles over $60,000, be aware of listed property limitations and additional recordkeeping requirements under IRC §179"],irm:"IRM 4.10.7.4 — Automobile Expenses · IRC §274(d) · Rev. Proc. 2024-25"},
+  labor:{steps:["Ensure all contractors who were paid $600 or more received a 1099-NEC form that was filed with the IRS by January 31","Apply the IRS 20-factor common-law test to each worker to confirm they are truly independent contractors, not employees","Document each contractor's independence: own business entity, serves multiple clients, provides their own tools and equipment","If classification is uncertain, consider filing Form SS-8 to request an IRS determination before any audit occurs"],irm:"IRM 4.23.2 — Employment Tax — Worker Classification · Rev. Rul. 87-41 · IRC §3121(d)"},
+  depreciation:{steps:["Maintain a complete depreciation schedule showing: asset name, acquisition date, cost basis, depreciation method, and useful life","Verify that any Section 179 expense elections do not exceed the 2024 business income limitation of $1,220,000","Confirm you're using the correct bonus depreciation percentage — 60% for property placed in service in 2024, phasing down to 40% in 2025","For real property improvements, ensure you're using the correct recovery period: 15-year for qualified improvement property vs. 39-year for standard building improvements"],irm:"IRM 4.10.7.9 — Depreciation, Depletion & Amortization · IRC §§167, 168, 179"}
+};
+
+let state={naics:"",revenue:0,expenses:{},bizname:"",tars:null};
+let uploadedFile=null;
+
+// ─── TARS Scoring Engine ──────────────────────────────────────────────────────
+function computeTARS(rev,exp,nk){
+  const b=BENCH[nk];if(!b)return null;
+  let score=0,catScore=0,hsPts=0;const flags=[],catD={};
+  for(const {k,l,i,s} of CATS){
+    const amt=exp[k]||0;if(!amt)continue;
+    const yp=(amt/rev)*100,ap=b.cats[k]||0;if(!ap)continue;
+    const ratio=yp/ap;
+    let pts=ratio<=1.5?0:ratio<=2?5:ratio<=2.5?10:15;
+    if(s==="high"&&pts>0){hsPts+=pts*.5;pts*=1.3;}
+    catScore+=pts;catD[k]={yp,ap,ratio,pts:Math.round(pts)};
+    if(pts>0)flags.push({k,l,i,yp:yp.toFixed(1),ap:ap.toFixed(1),ratio:ratio.toFixed(1),pts:Math.round(pts),sev:pts>=10?"high":"medium"});
+  }
+  const catN=Math.min(40,catScore*.6);score+=catN;
+  const totExp=Object.values(exp).reduce((a,v)=>a+(v||0),0);
+  const tep=(totExp/rev)*100,dev=tep-b.exp;
+  const ep=dev>25?20:dev>15?14:dev>8?8:dev>0?3:0;
+  score+=ep+Math.min(15,hsPts)+b.risk;
+  const fs=Math.min(100,Math.round(score));
+  const band=fs<20?{l:"Minimal Risk",c:"var(--green)",bg:"rgba(102,187,106,.15)"}:
+             fs<40?{l:"Low Risk",c:"var(--teal)",bg:"rgba(31,184,173,.15)"}:
+             fs<60?{l:"Moderate Risk",c:"var(--amber)",bg:"rgba(255,167,38,.15)"}:
+             fs<80?{l:"Elevated Risk",c:"var(--gold)",bg:"rgba(244,185,66,.15)"}:
+                   {l:"High Risk",c:"var(--red)",bg:"rgba(239,83,80,.15)"};
+  return{score:fs,band,comp:{cat:Math.round(catN),exp:ep,ind:b.risk},flags:flags.sort((a,b)=>b.pts-a.pts),catD,tep:tep.toFixed(1),btep:b.exp,dev:dev.toFixed(1)};
+}
+
+// ─── Navigation ───────────────────────────────────────────────────────────────
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>{
+    const active=b.dataset.screen===id;
+    b.style.background=active?'var(--navy-lighter)':'transparent';
+    b.style.color=active?'var(--text)':'var(--text-muted)';
+    b.style.borderColor=active?'var(--teal)':'var(--border)';
+  });
+}
+
+// ─── Build Expense Grid ───────────────────────────────────────────────────────
+function buildExpenseGrid(){
+  const grid=document.getElementById('expense-grid');
+  const rev=parseFloat(document.getElementById('inp-revenue').value)||250000;
+  const nk=document.getElementById('inp-naics').value;
+  const b=nk?BENCH[nk]:null;
+  grid.innerHTML=CATS.map(({k,l,i,s})=>`
+    <div>
+      <label style="font-size:12px;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:6px;font-weight:500">
+        <span style="font-size:16px">${i}</span> ${l}
+        ${s==='high'?'<span class="badge badge-amber" style="font-size:10px;padding:3px 8px">HIGH SCRUTINY</span>':''}
+      </label>
+      <input class="ts-input expense-inp" data-cat="${k}" type="number"
+        placeholder="${b?`~$${Math.round(b.cats[k]*rev/100).toLocaleString()}`:'0'}"
+        value="${state.expenses[k]||''}" style="font-size:14px">
+    </div>`).join('');
+  document.querySelectorAll('.expense-inp').forEach(inp=>{
+    inp.addEventListener('input',e=>{state.expenses[e.target.dataset.cat]=parseFloat(e.target.value)||0;});
+  });
+}
+
+// ─── Render Dashboard ─────────────────────────────────────────────────────────
+function renderDashboard(){
+  const t=state.tars,b=BENCH[state.naics];
+  const arc=document.getElementById('score-arc'),num=document.getElementById('score-num');
+  let n=0;const iv=setInterval(()=>{
+    n+=2;if(n>=t.score){n=t.score;clearInterval(iv);}
+    num.textContent=n;
+    arc.setAttribute('stroke-dasharray',`${(n/100)*220} 220`);
+  },20);
+  document.getElementById('score-glow').style.background=`radial-gradient(circle,${t.band.c}25 0%,transparent 70%)`;
+  const band=document.getElementById('score-band');
+  band.textContent=t.band.l;band.style.background=t.band.bg;band.style.color=t.band.c;band.style.border=`1.5px solid ${t.band.c}`;
+  document.getElementById('score-bizname').textContent=state.bizname||'Your Business';
+  document.getElementById('score-naicsname').textContent=b.short;
+
+  const comps=[{l:"Deduction Ratios vs SOI",p:t.comp.cat,m:40},{l:"Total Expense/Revenue",p:t.comp.exp,m:20},{l:"Industry Inherent Risk",p:t.comp.ind,m:10}];
+  document.getElementById('breakdown-rows').innerHTML=comps.map(c=>{
+    const pct=c.p/c.m,col=pct>.7?'var(--red)':pct>.4?'var(--amber)':'var(--green)';
+    return`<div style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+        <span style="font-size:13px;color:var(--text-muted)">${c.l}</span>
+        <span class="mono" style="font-size:13px;font-weight:600;color:${col}">${c.p}/${c.m}</span>
+      </div>
+      <div style="height:6px;background:var(--navy);border-radius:3px;overflow:hidden">
+        <div style="height:100%;width:${pct*100}%;background:${col};border-radius:3px;transition:width 1s cubic-bezier(.4,0,.2,1)"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  if(t.flags.length>0){
+    const rb=document.getElementById('btn-to-remed');
+    rb.classList.remove('hidden');rb.style.display='inline-flex';
+    rb.textContent=`⚡ View ${t.flags.length} Action Items`;
+    rb.onclick=()=>showScreen('remediation');
+  }
+
+  document.getElementById('bench-label').innerHTML=`<strong>${b.short}</strong> · IRS SOI TY2022`;
+  const brows=[
+    {l:'Your Expense/Revenue',v:`${t.tep}%`,hi:parseFloat(t.dev)>5},
+    {l:'Industry Average',v:`${t.btep}%`,teal:true},
+    {l:'Deviation',v:`${parseFloat(t.dev)>0?'+':''}${t.dev}%`,hi:parseFloat(t.dev)>5},
+    {l:'Base Audit Rate',v:`~${b.audit}%`}
+  ];
+  document.getElementById('bench-rows').innerHTML=brows.map(r=>`
+    <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)">
+      <span style="font-size:13px;color:var(--text-muted)">${r.l}</span>
+      <span class="mono" style="font-size:14px;font-weight:600;color:${r.teal?'var(--teal)':r.hi?'var(--amber)':'var(--text)'}">${r.v}</span>
+    </div>`).join('');
+
+  const fs=document.getElementById('flags-section');
+  if(t.flags.length===0){
+    fs.innerHTML=`<div class="card" style="padding:48px;text-align:center;background:rgba(102,187,106,.08);border-color:rgba(102,187,106,.2)">
+      <div style="font-size:48px;margin-bottom:16px">✅</div>
+      <h3 style="font-family:'Crimson Pro',serif;font-size:24px;font-weight:700;color:var(--green);margin-bottom:12px">All Deductions Within Normal Ranges</h3>
+      <p style="font-size:15px;color:var(--text-muted)">Your deductions align with IRS SOI benchmarks for ${b.name}. Maintain thorough documentation as a best practice.</p>
+    </div>`;
+  }else{
+    fs.innerHTML=`<div class="card">
+      <h3 style="font-family:'Crimson Pro',serif;font-size:24px;font-weight:700;margin-bottom:20px">⚠️ Risk Flags (${t.flags.length})</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        ${t.flags.map(f=>`<div class="card-hover" style="padding:20px;background:var(--navy);border-color:${f.sev==='high'?'rgba(239,83,80,.3)':'rgba(255,167,38,.3)'}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+            <div style="font-size:24px">${f.i}</div>
+            <span class="badge badge-${f.sev==='high'?'red':'amber'}" style="font-size:11px">+${f.pts} pts</span>
+          </div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:8px">${f.l}</div>
+          <div style="font-size:13px;color:var(--text-muted)">
+            Your: <strong style="color:${f.sev==='high'?'var(--red)':'var(--amber)'}">${f.yp}%</strong> ·
+            Avg: <strong style="color:var(--teal)">${f.ap}%</strong> ·
+            <strong>${f.ratio}×</strong> norm
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+}
+
+// ─── Render Analyzer ──────────────────────────────────────────────────────────
+function renderAnalyzer(){
+  const t=state.tars,b=BENCH[state.naics];
+  document.getElementById('analyzer-subtitle').textContent=`Benchmarked against IRS SOI TY2022 data for ${b.name}`;
+  document.getElementById('analyzer-rows').innerHTML=CATS.map(({k,l,i,s},idx)=>{
+    const d=t.catD[k],amt=state.expenses[k]||0,pts=d?.pts||0,over=pts>0;
+    return`<div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 100px;padding:16px 20px;border-bottom:${idx<11?'1.5px solid var(--border)':'none'};background:${over?(pts>=10?'rgba(239,83,80,.04)':'rgba(255,167,38,.04)'):'transparent'};transition:background .25s">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:20px">${i}</span>
+        <div>
+          <div style="font-size:14px;font-weight:500">${l}</div>
+          ${s==='high'?`<div style="font-size:11px;color:var(--amber);margin-top:2px">⚠ High IRS scrutiny</div>`:''}
+        </div>
+      </div>
+      <div style="text-align:right" class="mono" style="font-size:14px;color:${amt>0?'var(--text)':'var(--text-muted)'}">${amt>0?`$${amt.toLocaleString()}`:'—'}</div>
+      <div style="text-align:right" class="mono" style="font-size:14px;color:${over?(pts>=10?'var(--red)':'var(--amber)'):'var(--text-muted)'}">${d?.yp>0?d.yp.toFixed(1)+'%':'—'}</div>
+      <div style="text-align:right" class="mono" style="font-size:14px;color:var(--teal)">${b.cats[k]}%</div>
+      <div style="text-align:right">${pts>0?`<span class="badge badge-${pts>=10?'red':'amber'}" style="font-size:11px">+${pts}</span>`:`<span style="font-size:13px;color:var(--green)">✓</span>`}</div>
+    </div>`;
+  }).join('');
+}
+
+// ─── Render Remediation ───────────────────────────────────────────────────────
+function renderRemediation(){
+  const t=state.tars;
+  document.getElementById('remed-subtitle').innerHTML=`${t.flags.length} action items · Potential reduction: <span class="text-gold">−${t.flags.reduce((a,f)=>a+f.pts,0)} points</span>`;
+  if(t.flags.length===0){
+    document.getElementById('remed-items').innerHTML=`<div class="card" style="padding:48px;text-align:center"><div style="font-size:48px;margin-bottom:16px">✅</div><h3 style="font-family:'Crimson Pro',serif;font-size:24px;font-weight:700;color:var(--green)">No Action Required</h3></div>`;
+    return;
+  }
+  document.getElementById('remed-items').innerHTML=t.flags.map((f,idx)=>{
+    const rem=REMEDS[f.k]||{steps:["Review all transactions for proper business-purpose documentation","Ensure every expense has a receipt and documented business reason","Compare to prior years — large increases draw IRS scrutiny","Consult a CPA to verify deductibility"],irm:"IRM 4.10.7 — Business Expense Examination Guidelines"};
+    return`<div class="card card-hover" style="margin-bottom:16px;cursor:pointer" onclick="this.querySelector('.remed-body').classList.toggle('hidden')">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:10px;height:10px;border-radius:50%;background:${f.sev==='high'?'var(--red)':'var(--amber)'}"></div>
+        <div style="flex:1">
+          <div style="font-size:18px;font-weight:600;margin-bottom:4px">${f.i} ${f.l}</div>
+          <div style="font-size:14px;color:var(--text-muted)">${f.yp}% vs ${f.ap}% industry average · <strong>${f.ratio}×</strong> the norm</div>
+        </div>
+        <span class="badge badge-${f.sev==='high'?'red':'amber'}">−${f.pts} pts potential</span>
+      </div>
+      <div class="remed-body hidden" style="margin-top:24px;padding-top:24px;border-top:1.5px solid var(--border)">
+        <div style="padding:16px 20px;background:rgba(31,184,173,.06);border-left:3px solid var(--teal);border-radius:8px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--text-muted)">
+          ${f.l} at ${f.yp}% of revenue is ${f.ratio}× the ${BENCH[state.naics].short} industry average of ${f.ap}%. This deviation contributes ${f.pts} points to your audit risk score.
+        </div>
+        ${rem.steps.map((step,i)=>`<div style="display:flex;gap:14px;padding:14px 16px;background:var(--navy);border-radius:10px;margin-bottom:10px">
+          <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">${i+1}</div>
+          <div style="font-size:14px;line-height:1.7;color:var(--text)">${step}</div>
+        </div>`).join('')}
+        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--navy);border:1.5px solid var(--border);border-radius:10px;margin-top:16px;font-size:13px">
+          <span style="font-size:20px">📖</span>
+          <span class="mono" style="color:var(--teal)">${rem.irm}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── Notice Upload & OCR ──────────────────────────────────────────────────────
+const fileInput=document.getElementById('notice-file-input');
+const uploadArea=document.getElementById('notice-upload-area');
+const preview=document.getElementById('uploaded-preview');
+
+uploadArea.onclick=()=>fileInput.click();
+
+['dragenter','dragover'].forEach(e=>{
+  uploadArea.addEventListener(e,ev=>{ev.preventDefault();ev.stopPropagation();uploadArea.classList.add('dragging');});
+});
+['dragleave','drop'].forEach(e=>{
+  uploadArea.addEventListener(e,ev=>{ev.preventDefault();ev.stopPropagation();uploadArea.classList.remove('dragging');});
+});
+
+uploadArea.addEventListener('drop',e=>{
+  const files=e.dataTransfer.files;
+  if(files.length>0)handleFile(files[0]);
+});
+
+fileInput.addEventListener('change',e=>{
+  if(e.target.files.length>0)handleFile(e.target.files[0]);
+});
+
+function handleFile(file){
+  uploadedFile=file;
+  document.getElementById('file-name').textContent=file.name;
+  document.getElementById('file-size').textContent=`${(file.size/1024).toFixed(1)} KB`;
+  preview.style.display='block';
+  uploadArea.style.display='none';
+  checkNoticeBtn();
+}
+
+document.getElementById('btn-clear-file').onclick=e=>{
+  e.stopPropagation();
+  uploadedFile=null;
+  fileInput.value='';
+  preview.style.display='none';
+  uploadArea.style.display='block';
+  checkNoticeBtn();
+};
+
+function checkNoticeBtn(){
+  const hasInput=uploadedFile||document.getElementById('notice-input').value.trim();
+  document.getElementById('btn-analyze-notice').disabled=!hasInput;
+}
+document.getElementById('notice-input').addEventListener('input',checkNoticeBtn);
+
+// ─── Analyze Notice with Claude API ───────────────────────────────────────────
+async function analyzeNotice(){
+  const area=document.getElementById('notice-result-area');
+  const btn=document.getElementById('btn-analyze-notice');
+  btn.innerHTML='<span class="spin">⟳</span> Analyzing with Claude AI...';btn.disabled=true;
+  
+  area.innerHTML=`<div class="card" style="padding:48px;text-align:center">
+    <div class="pulse" style="font-size:48px;margin-bottom:20px">🤖</div>
+    <h3 style="font-family:'Crimson Pro',serif;font-size:24px;font-weight:700;margin-bottom:12px">Analyzing Notice</h3>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.7">Identifying notice type...<br>Querying IRS Internal Revenue Manual...<br>Building your step-by-step response plan...</p>
+  </div>`;
+
+  let noticeText='';
+  
+  // If file uploaded, use Claude Vision API
+  if(uploadedFile){
+    try {
+      const base64=await new Promise((res,rej)=>{
+        const r=new FileReader();
+        r.onload=()=>res(r.result.split(',')[1]);
+        r.onerror=()=>rej(new Error('File read failed'));
+        r.readAsDataURL(uploadedFile);
+      });
+      
+      const mediaType=uploadedFile.type||'image/jpeg';
+      const contentType=mediaType.startsWith('application/pdf')?'document':'image';
+      
+      // First: OCR the image/PDF
+      const ocrResp=await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          model:'claude-sonnet-4-20250514',max_tokens:2000,
+          messages:[{
+            role:'user',
+            content:[
+              {type:contentType,source:{type:'base64',media_type:mediaType,data:base64}},
+              {type:'text',text:'Extract all text from this IRS notice document. Return ONLY the extracted text, no commentary.'}
+            ]
+          }]
+        })
+      });
+      const ocrData=await ocrResp.json();
+      noticeText=ocrData.content?.[0]?.text||'';
+      
+      if(!noticeText.trim()){
+        throw new Error('Could not extract text from the image');
+      }
+    }catch(e){
+      area.innerHTML=`<div class="card" style="padding:48px;text-align:center;border-color:var(--red)">
+        <div style="font-size:36px;margin-bottom:16px">⚠️</div>
+        <h3 style="font-size:18px;color:var(--red);margin-bottom:8px">OCR Failed</h3>
+        <p style="font-size:14px;color:var(--text-muted)">${e.message}</p>
+      </div>`;
+      btn.innerHTML='🔍 Analyze Notice with AI';btn.disabled=false;
+      return;
+    }
+  }else{
+    noticeText=document.getElementById('notice-input').value.trim();
+  }
+
+  // Now analyze the extracted text
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:1500,
+        system:`You are TaxShield's IRM Intelligence engine with deep knowledge of the IRS Internal Revenue Manual. Analyze IRS notices and respond ONLY in this exact JSON format (no markdown, no code fences, no extra text):\n{"noticeType":"CP2000","noticeName":"Notice of Proposed Changes","plainEnglish":"2-3 plain sentences explaining what this notice means","urgency":"high","deadline":"60 days from notice date","proposedAmount":"$4,820","irmSections":[{"section":"IRM 4.19.2.1","title":"AUR Program Overview","relevance":"Explains the automated process that generated this notice"}],"actionSteps":[{"step":1,"action":"What to do","timeframe":"Within X days"}],"warningIfIgnored":"Consequence of not responding"}`,
+        messages:[{role:'user',content:`Analyze this IRS notice:\n\n${noticeText}`}]
+      })
+    });
+    const data=await resp.json();
+    const raw=(data.content?.[0]?.text||'').replace(/```json|```/g,'').trim();
+    const r=JSON.parse(raw);
+    
+    const urgCol=r.urgency==='high'?'linear-gradient(135deg,#7C0A0A,#B91C1C)':'linear-gradient(135deg,var(--navy),var(--navy-light))';
+    area.innerHTML=`<div class="card" style="padding:0;overflow:hidden">
+      <div style="background:${urgCol};padding:28px 32px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px">
+          <div>
+            <h3 style="font-family:'Crimson Pro',serif;font-size:28px;font-weight:700;margin-bottom:8px">${r.noticeType||'Unknown'}</h3>
+            <p style="font-size:15px;color:rgba(255,255,255,.85);margin-bottom:${r.deadline?'8px':'0'}">${r.noticeName||''}</p>
+            ${r.deadline?`<div style="font-size:14px;color:var(--gold);font-weight:600">⏰ Response deadline: ${r.deadline}</div>`:''}
+          </div>
+          ${r.proposedAmount?`<div style="text-align:right"><div class="mono" style="font-size:32px;font-weight:700;color:var(--gold)">${r.proposedAmount}</div><div style="font-size:13px;color:rgba(255,255,255,.6)">proposed amount</div></div>`:''}
+        </div>
+      </div>
+      <div style="padding:32px;display:flex;flex-direction:column;gap:20px;max-height:600px;overflow-y:auto">
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Plain English Summary</div>
+          <div style="font-size:15px;line-height:1.8;padding:16px 20px;background:rgba(31,184,173,.06);border-left:3px solid var(--teal);border-radius:8px">${r.plainEnglish||''}</div>
+        </div>
+        ${r.irmSections?.length?`<div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">📖 Applicable IRM Sections</div>
+          ${r.irmSections.map(s=>`<div style="background:var(--navy);border:1.5px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:12px">
+            <div class="mono" style="font-size:13px;font-weight:600;color:var(--teal);margin-bottom:6px">${s.section}</div>
+            <div style="font-size:15px;font-weight:500;margin-bottom:6px">${s.title}</div>
+            <div style="font-size:13px;color:var(--text-muted);line-height:1.7">${s.relevance}</div>
+          </div>`).join('')}
+        </div>`:''}
+        ${r.actionSteps?.length?`<div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">✅ Your Response Plan</div>
+          ${r.actionSteps.map(s=>`<div style="display:flex;gap:14px;padding:16px 20px;background:var(--navy);border-radius:10px;margin-bottom:10px">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">${s.step}</div>
+            <div>
+              <div style="font-size:14px;line-height:1.7">${s.action}</div>
+              ${s.timeframe?`<div style="font-size:12px;color:var(--gold);margin-top:6px;font-weight:600">⏱ ${s.timeframe}</div>`:''}
+            </div>
+          </div>`).join('')}
+        </div>`:''}
+        ${r.warningIfIgnored?`<div style="padding:16px 20px;background:rgba(239,83,80,.08);border:1.5px solid rgba(239,83,80,.2);border-radius:10px;font-size:13px;color:var(--text-muted)">
+          ⚠️ <strong style="color:var(--red)">If you ignore this notice:</strong> ${r.warningIfIgnored}
+        </div>`:''}
+        <div style="font-size:11px;color:var(--text-muted);padding-top:16px;border-top:1.5px solid var(--border)">
+          Analysis powered by <strong>Anthropic Claude</strong> with IRS Internal Revenue Manual knowledge · Not legal or tax advice · Consult a licensed CPA or enrolled agent for your situation
+        </div>
+      </div>
+    </div>`;
+  }catch(e){
+    area.innerHTML=`<div class="card" style="padding:48px;text-align:center;border-color:var(--red)">
+      <div style="font-size:36px;margin-bottom:16px">⚠️</div>
+      <h3 style="font-size:18px;color:var(--red);margin-bottom:8px">Analysis Error</h3>
+      <p style="font-size:14px;color:var(--text-muted)">${e.message}</p>
+    </div>`;
+  }
+  btn.innerHTML='🔍 Analyze Notice with AI';btn.disabled=false;
+}
+
+// ─── Main Analysis ────────────────────────────────────────────────────────────
+function runAnalysis(){
+  const nk=document.getElementById('inp-naics').value;
+  const rev=parseFloat(document.getElementById('inp-revenue').value)||0;
+  if(!nk||!rev)return;
+  state.naics=nk;state.revenue=rev;
+  state.bizname=document.getElementById('inp-bizname').value;
+  state.tars=computeTARS(rev,state.expenses,nk);
+  document.getElementById('nav').style.display='flex';
+  renderDashboard();renderAnalyzer();renderRemediation();
+  showScreen('dashboard');
+}
+
+// ─── Event Wiring ─────────────────────────────────────────────────────────────
+document.getElementById('inp-naics').addEventListener('change',function(){
+  const b=BENCH[this.value];
+  const conf=document.getElementById('naics-confirm');
+  if(b){conf.style.display='block';conf.innerHTML=`✓ <strong>IRS SOI TY2022 Benchmark Loaded</strong> — Average expense ratio: <strong>${b.exp}%</strong> of revenue`;}
+  else{conf.style.display='none';}
+  buildExpenseGrid();
+  checkAnalyzeBtn();
+});
+
+document.getElementById('inp-revenue').addEventListener('input',()=>{buildExpenseGrid();checkAnalyzeBtn();});
+
+function checkAnalyzeBtn(){
+  const ok=document.getElementById('inp-naics').value&&document.getElementById('inp-revenue').value;
+  const btn=document.getElementById('btn-analyze');
+  btn.disabled=!ok;
+  btn.style.opacity=ok?'1':'.4';
+}
+
+document.getElementById('btn-analyze').addEventListener('click',runAnalysis);
+
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>showScreen(btn.dataset.screen));
+});
+
+document.querySelectorAll('.demo-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const d=DEMOS[btn.dataset.demo];
+    document.getElementById('inp-naics').value=d.naics;
+    document.getElementById('inp-revenue').value=d.rev;
+    state.expenses={...d.exp};
+    const b=BENCH[d.naics];
+    const conf=document.getElementById('naics-confirm');
+    conf.style.display='block';
+    conf.innerHTML=`✓ <strong>IRS SOI TY2022 Benchmark Loaded</strong> — Average expense ratio: <strong>${b.exp}%</strong> of revenue`;
+    buildExpenseGrid();
+    checkAnalyzeBtn();
+  });
+});
+
+document.querySelectorAll('.sample-notice').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.getElementById('notice-input').value=SAMPLES[btn.dataset.notice];
+    checkNoticeBtn();
+  });
+});
+
+document.getElementById('btn-analyze-notice').addEventListener('click',analyzeNotice);
+
+buildExpenseGrid();
+</script>
+</body>
+</html>

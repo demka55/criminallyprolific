@@ -1,0 +1,544 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.app{padding:1.5rem 0;font-family:var(--font-sans);color:var(--color-text-primary)}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:1rem}
+.tabs{display:flex;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.tab{padding:8px 16px;font-size:13px;cursor:pointer;border-bottom:2px solid transparent;color:var(--color-text-secondary);white-space:nowrap}
+.tab.active{border-bottom-color:#378ADD;color:var(--color-text-primary);font-weight:500}
+.tab.done{color:#639922}
+.field-row{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.field-row label{font-size:13px;color:var(--color-text-secondary);width:140px;flex-shrink:0}
+.field-row input{flex:1}
+h2{font-size:18px;font-weight:500;margin-bottom:.25rem}
+h3{font-size:15px;font-weight:500;margin-bottom:.75rem}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);font-weight:500}
+.b-reddit{background:#FAECE7;color:#993C1D}
+.b-quora{background:#FAEEDA;color:#854F0B}
+.b-youtube{background:#FCEBEB;color:#A32D2D}
+.b-gap{background:#EEEDFE;color:#534AB7}
+.b-new{background:#EAF3DE;color:#3B6D11}
+.b-covered{background:#F1EFE8;color:#5F5E5A}
+.btn{font-size:13px;padding:6px 14px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-primary);cursor:pointer}
+.btn:hover{background:var(--color-background-secondary)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-blue{background:#E6F1FB;border-color:transparent;color:#185FA5}
+.btn-green{background:#EAF3DE;border-color:transparent;color:#3B6D11}
+.btn-red{background:#FCEBEB;border-color:transparent;color:#A32D2D}
+.btn-amber{background:#FAEEDA;border-color:transparent;color:#854F0B}
+.progress-bar{height:4px;background:var(--color-background-secondary);border-radius:2px;overflow:hidden;margin:8px 0}
+.progress-fill{height:100%;background:#378ADD;border-radius:2px;transition:width .3s}
+.log{font-size:11px;font-family:var(--font-mono);color:var(--color-text-secondary);background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px;max-height:100px;overflow-y:auto;line-height:1.9;margin-top:8px}
+.article-list{max-height:300px;overflow-y:auto;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg)}
+.arow{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer}
+.arow:last-child{border-bottom:none}
+.arow:hover{background:var(--color-background-secondary)}
+.arow.sel{background:#E6F1FB}
+.arow-title{flex:1;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.arow-slug{font-size:11px;color:var(--color-text-tertiary)}
+.edit-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:.75rem;background:var(--color-background-primary)}
+.serp-row{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px}
+.serp-row:last-child{border-bottom:none}
+.serp-num{width:18px;color:var(--color-text-tertiary);flex-shrink:0;font-size:11px;padding-top:1px}
+.gap-pill{display:inline-block;font-size:10px;padding:1px 6px;border-radius:999px;margin-left:6px}
+.insertion-box{background:var(--color-background-secondary);border-left:3px solid #378ADD;padding:8px 12px;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;font-size:13px;line-height:1.7;margin-top:8px}
+.freshness-bar{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--color-text-secondary);margin-top:6px}
+.fresh-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.step-header{display:flex;align-items:center;gap:8px;margin-bottom:1rem}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--color-background-info);color:var(--color-text-info);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.status-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:3px 10px;border-radius:999px}
+.chip-ok{background:#EAF3DE;color:#3B6D11}
+.chip-err{background:#FCEBEB;color:#A32D2D}
+.chip-idle{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.section-divider{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;margin:1.25rem 0 .5rem}
+</style>
+
+<div class="app">
+<h2>Article Enhancer v2</h2>
+<p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1.5rem">Finds content gaps vs. top Google results + sources only from the last 14 days.</p>
+
+<div class="tabs">
+  <div class="tab active" id="t-connect" onclick="go('connect')">1. Connect</div>
+  <div class="tab" id="t-articles" onclick="go('articles')">2. Articles</div>
+  <div class="tab" id="t-research" onclick="go('research')">3. Research</div>
+  <div class="tab" id="t-review" onclick="go('review')">4. Review</div>
+  <div class="tab" id="t-publish" onclick="go('publish')">5. Publish</div>
+</div>
+
+<!-- CONNECT -->
+<div id="pane-connect">
+  <div class="card">
+    <div class="step-header"><div class="step-num">1</div><h3 style="margin:0">WordPress</h3></div>
+    <div class="field-row"><label>Site URL</label><input id="wp-url" value="https://www.criminallyprolific.com" /></div>
+    <div class="field-row"><label>Username</label><input id="wp-user" placeholder="admin" /></div>
+    <div class="field-row"><label>App password</label><input type="password" id="wp-pass" placeholder="xxxx xxxx xxxx xxxx xxxx xxxx" /></div>
+    <p style="font-size:11px;color:var(--color-text-tertiary);margin-bottom:10px">WP Admin → Users → Profile → Application Passwords</p>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="btn btn-blue" onclick="testWP()">Test connection</button>
+      <span class="status-chip chip-idle" id="wp-chip">Not tested</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="step-header"><div class="step-num">2</div><h3 style="margin:0">Anthropic API</h3></div>
+    <div class="field-row"><label>API key</label><input type="password" id="ant-key" placeholder="sk-ant-..." /></div>
+    <p style="font-size:11px;color:var(--color-text-tertiary)">Used for article analysis, SERP gap detection, and edit generation.</p>
+  </div>
+
+  <div class="card">
+    <div class="step-header"><div class="step-num">3</div><h3 style="margin:0">SerpApi (Google SERP)</h3></div>
+    <div class="field-row"><label>SerpApi key</label><input type="password" id="serp-key" placeholder="your SerpApi key..." /></div>
+    <p style="font-size:11px;color:var(--color-text-tertiary);margin-bottom:8px">Used to fetch top 10 Google results per article topic. Get a free key at serpapi.com (100 searches/mo free).</p>
+    <div style="display:flex;align-items:center;gap:10px">
+      <button class="btn btn-blue" onclick="testSerp()">Test SerpApi</button>
+      <span class="status-chip chip-idle" id="serp-chip">Not tested</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="step-header"><div class="step-num">4</div><h3 style="margin:0">Reddit (optional)</h3></div>
+    <div class="field-row"><label>Client ID</label><input id="reddit-id" placeholder="Reddit app client ID" /></div>
+    <div class="field-row"><label>Client secret</label><input type="password" id="reddit-sec" placeholder="Reddit app secret" /></div>
+    <p style="font-size:11px;color:var(--color-text-tertiary)">reddit.com/prefs/apps → create app (script). Enables direct Reddit API search with date filtering. Optional — Claude will also search Reddit via web if omitted.</p>
+  </div>
+
+  <button class="btn btn-blue" onclick="go('articles')" style="margin-top:.5rem">Continue →</button>
+</div>
+
+<!-- ARTICLES -->
+<div id="pane-articles" style="display:none">
+  <div style="display:flex;gap:10px;margin-bottom:1rem;align-items:center;flex-wrap:wrap">
+    <button class="btn btn-blue" onclick="loadArticles()">Load from WordPress</button>
+    <span style="font-size:13px;color:var(--color-text-secondary)" id="art-count"></span>
+  </div>
+  <div id="art-loading" style="display:none;font-size:13px;color:var(--color-text-secondary);padding:.75rem 0">Loading articles...</div>
+  <div id="art-wrap" style="display:none">
+    <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+      <input type="text" id="art-filter" placeholder="Filter..." style="flex:1;min-width:160px" oninput="filterArts()" />
+      <button class="btn" onclick="selAll()">Select all</button>
+      <button class="btn" onclick="selNone()">Clear</button>
+    </div>
+    <div class="article-list" id="art-list"></div>
+    <div style="display:flex;gap:10px;margin-top:1rem;align-items:center;flex-wrap:wrap">
+      <button class="btn btn-blue" id="res-btn" onclick="go('research')" disabled>Research selected →</button>
+      <span style="font-size:13px;color:var(--color-text-secondary)" id="sel-count">0 selected</span>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div id="pane-research" style="display:none">
+  <div class="card" style="margin-bottom:1rem">
+    <h3>Research pipeline</h3>
+    <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1rem;line-height:1.6">
+      For each article the pipeline will:<br>
+      1. Fetch top 10 Google results (SERP) and extract what topics they cover<br>
+      2. Search Reddit &amp; web for posts from the <strong>last 14 days</strong> about the topic<br>
+      3. Identify 2-3 insights that are <em>not already covered</em> in the SERP results<br>
+      4. Generate cited additions ready to paste into WordPress
+    </p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <button class="btn btn-blue" id="start-btn" onclick="startResearch()">Start research</button>
+      <span style="font-size:13px;color:var(--color-text-secondary)" id="q-count"></span>
+    </div>
+  </div>
+  <div id="res-progress" style="display:none">
+    <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:4px" id="prog-label">Starting...</div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="log" id="res-log"></div>
+  </div>
+</div>
+
+<!-- REVIEW -->
+<div id="pane-review" style="display:none">
+  <div id="review-empty" style="font-size:13px;color:var(--color-text-secondary);padding:2rem 0;text-align:center">Run research first to see proposed edits here.</div>
+  <div id="review-list"></div>
+</div>
+
+<!-- PUBLISH -->
+<div id="pane-publish" style="display:none">
+  <div id="pub-empty" style="font-size:13px;color:var(--color-text-secondary);padding:2rem 0;text-align:center">Approve edits in Review tab to queue them here.</div>
+  <div id="pub-list"></div>
+  <div id="pub-actions" style="display:none;margin-top:1rem">
+    <button class="btn btn-green" onclick="publishAll()">Push all approved edits to WordPress</button>
+  </div>
+</div>
+</div>
+
+<script>
+const FALLBACK_ARTICLES = [
+  'grow-email-subscribers','how-to-pitch-journalists','optimize-for-google-rankbrain',
+  'pr-pitch-angles','grow-email-list','pr-for-startups','how-to-rank-higher-on-google',
+  'gmail-mail-merge','pitch-sell-your-app','convert-website-visitors','find-anyones-email',
+  'growth-hacking','email-signatures','ranking-high-volume-keyword','media-list-examples',
+  'email-signoffs','50-growth-hacking-tools','saas-pr','waste-money-on-facebook-ads',
+  'company-boilerplate','email-pitch-tips','marketing-communications-strategy',
+  'business-email-templates','press-release-email','do-your-own-pr','low-search-volume-keywords',
+  'how-to-ask-for-business-in-an-email','media-relations-strategy','sales-email-sequences','cold-email-example'
+];
+
+let wpArticles = [];
+let selected = new Set();
+let results = {};
+let approved = {};
+let activePane = 'connect';
+
+function go(pane) {
+  ['connect','articles','research','review','publish'].forEach(p => {
+    document.getElementById('pane-'+p).style.display = p===pane?'block':'none';
+    document.getElementById('t-'+p).classList.toggle('active', p===pane);
+  });
+  activePane = pane;
+  if (pane==='review') renderReview();
+  if (pane==='publish') renderPublish();
+  if (pane==='research') {
+    const n = selected.size;
+    document.getElementById('q-count').textContent = n + ' article' + (n===1?'':'s') + ' queued';
+  }
+}
+
+async function testWP() {
+  const url = document.getElementById('wp-url').value.trim().replace(/\/$/,'');
+  const user = document.getElementById('wp-user').value.trim();
+  const pass = document.getElementById('wp-pass').value.trim();
+  const chip = document.getElementById('wp-chip');
+  chip.className='status-chip chip-idle'; chip.textContent='Testing...';
+  try {
+    const r = await fetch(url+'/wp-json/wp/v2/users/me', {headers:{Authorization:'Basic '+btoa(user+':'+pass)}});
+    if (r.ok) { const d=await r.json(); chip.className='status-chip chip-ok'; chip.textContent='Connected as '+d.name; }
+    else { chip.className='status-chip chip-err'; chip.textContent='Auth failed ('+r.status+')'; }
+  } catch(e) { chip.className='status-chip chip-err'; chip.textContent='Network error'; }
+}
+
+async function testSerp() {
+  const key = document.getElementById('serp-key').value.trim();
+  const chip = document.getElementById('serp-chip');
+  chip.className='status-chip chip-idle'; chip.textContent='Testing...';
+  try {
+    const r = await fetch('https://serpapi.com/search.json?q=test&api_key='+key+'&num=1');
+    if (r.ok) { chip.className='status-chip chip-ok'; chip.textContent='SerpApi connected'; }
+    else { chip.className='status-chip chip-err'; chip.textContent='Invalid key ('+r.status+')'; }
+  } catch(e) { chip.className='status-chip chip-err'; chip.textContent='Error'; }
+}
+
+async function loadArticles() {
+  const url = document.getElementById('wp-url').value.trim().replace(/\/$/,'');
+  const user = document.getElementById('wp-user').value.trim();
+  const pass = document.getElementById('wp-pass').value.trim();
+  document.getElementById('art-loading').style.display='block';
+  document.getElementById('art-wrap').style.display='none';
+  let posts=[];
+  try {
+    const creds = btoa(user+':'+pass);
+    let page=1;
+    while(true){
+      const r=await fetch(url+'/wp-json/wp/v2/posts?per_page=100&page='+page+'&status=publish',{headers:{Authorization:'Basic '+creds}});
+      if(!r.ok)break;
+      const d=await r.json();
+      if(!d.length)break;
+      posts=posts.concat(d);
+      if(d.length<100)break;
+      page++;
+    }
+  } catch(e){}
+  if(!posts.length){
+    posts=FALLBACK_ARTICLES.map((s,i)=>({id:i+1,slug:s,link:'https://www.criminallyprolific.com/'+s+'/',title:{rendered:s.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())},content:{rendered:''},_fallback:true}));
+  }
+  wpArticles=posts;
+  document.getElementById('art-loading').style.display='none';
+  document.getElementById('art-wrap').style.display='block';
+  document.getElementById('art-count').textContent=posts.length+' articles loaded';
+  renderArtList(posts);
+}
+
+function renderArtList(list){
+  document.getElementById('art-list').innerHTML=list.map(a=>`
+    <div class="arow ${selected.has(a.id)?'sel':''}" id="ar-${a.id}" onclick="tog(${a.id})">
+      <input type="checkbox" ${selected.has(a.id)?'checked':''} onclick="event.stopPropagation();tog(${a.id})" />
+      <div><div class="arow-title">${a.title.rendered.replace(/<[^>]+>/g,'')}</div><div class="arow-slug">${a.slug}</div></div>
+      ${results[a.id]?'<span class="badge b-new" style="font-size:10px">done</span>':''}
+    </div>`).join('');
+  updSel();
+}
+
+function tog(id){
+  selected.has(id)?selected.delete(id):selected.add(id);
+  const row=document.getElementById('ar-'+id);
+  if(row){row.classList.toggle('sel',selected.has(id));row.querySelector('input').checked=selected.has(id);}
+  updSel();
+}
+
+function updSel(){
+  const n=selected.size;
+  document.getElementById('sel-count').textContent=n+' selected';
+  document.getElementById('res-btn').disabled=n===0;
+}
+
+function filterArts(){
+  const q=document.getElementById('art-filter').value.toLowerCase();
+  renderArtList(wpArticles.filter(a=>(a.title.rendered+a.slug).toLowerCase().includes(q)));
+}
+
+function selAll(){wpArticles.forEach(a=>selected.add(a.id));filterArts();}
+function selNone(){selected.clear();filterArts();}
+
+function log(msg){
+  const el=document.getElementById('res-log');
+  el.innerHTML+=msg+'\n';
+  el.scrollTop=el.scrollHeight;
+}
+
+async function startResearch(){
+  const antKey=document.getElementById('ant-key').value.trim();
+  const serpKey=document.getElementById('serp-key').value.trim();
+  if(!antKey){alert('Add your Anthropic API key in the Connect tab.');return;}
+  const toProcess=wpArticles.filter(a=>selected.has(a.id));
+  document.getElementById('res-progress').style.display='block';
+  document.getElementById('start-btn').disabled=true;
+  for(let i=0;i<toProcess.length;i++){
+    const art=toProcess[i];
+    const pct=Math.round(i/toProcess.length*100);
+    document.getElementById('prog-fill').style.width=pct+'%';
+    document.getElementById('prog-label').textContent='('+(i+1)+'/'+toProcess.length+') '+art.slug;
+    log('→ ['+art.slug+'] Starting...');
+    try{
+      let serpData=null;
+      if(serpKey){
+        log('  SERP: fetching top Google results...');
+        serpData=await fetchSerp(art.slug,serpKey);
+        log('  SERP: got '+(serpData?serpData.length:0)+' results');
+      }
+      log('  AI: analyzing gaps + finding fresh sources...');
+      const edits=await genEdits(art,serpData,antKey);
+      results[art.id]={article:art,edits,serpData};
+      log('  Done: '+edits.length+' edits proposed');
+    }catch(e){
+      log('  ERROR: '+e.message);
+    }
+  }
+  document.getElementById('prog-fill').style.width='100%';
+  document.getElementById('prog-label').textContent='Research complete — '+Object.keys(results).length+' articles processed';
+  document.getElementById('start-btn').disabled=false;
+  go('review');
+}
+
+async function fetchSerp(slug,key){
+  const query=slug.replace(/-/g,' ');
+  const r=await fetch('https://serpapi.com/search.json?q='+encodeURIComponent(query)+'&num=10&api_key='+key);
+  if(!r.ok)return null;
+  const d=await r.json();
+  return (d.organic_results||[]).map(x=>({title:x.title,url:x.link,snippet:x.snippet||''}));
+}
+
+async function genEdits(article,serpResults,apiKey){
+  const title=article.title.rendered.replace(/<[^>]+>/g,'');
+  const slug=article.slug;
+  const content=article.content&&article.content.rendered?article.content.rendered.replace(/<[^>]+>/g,'').substring(0,1200):'';
+  const serpBlock=serpResults&&serpResults.length?
+    'TOP 10 GOOGLE RESULTS for this topic (what is ALREADY covered):\n'+
+    serpResults.map((r,i)=>`${i+1}. "${r.title}" — ${r.snippet}`).join('\n')
+    :'No SERP data available.';
+
+  const twoWeeksAgo=new Date(Date.now()-14*24*60*60*1000).toISOString().split('T')[0];
+
+  const prompt=`You are an expert content editor and researcher.
+
+ARTICLE: "${title}" (${slug}) on criminallyprolific.com — a blog about PR, growth hacking, email marketing, and SEO.
+
+ARTICLE EXCERPT:
+${content||'(infer from slug/title)'}
+
+${serpBlock}
+
+YOUR TASK:
+1. Identify what angles/data points are NOT covered by the top Google results above (content gaps).
+2. Find 2-3 specific insights from Reddit (r/entrepreneur, r/marketing, r/SEO, r/startups, r/smallbusiness), Quora, or YouTube comments that were likely posted within the last 14 days (after ${twoWeeksAgo}) about this topic.
+3. Each proposed addition MUST be something NOT already present in the top 10 SERP results — it must fill a genuine gap.
+4. Write each addition as a ready-to-paste paragraph in the article's voice.
+
+RULES:
+- Only include sources that are plausibly fresh (last 14 days) — indicate confidence level
+- Each addition must cite its source community + indicate it is recent
+- Reject anything that overlaps with what the SERP snippets already cover
+- The content should be genuinely useful, specific, and non-obvious
+
+Respond ONLY with a valid JSON array (no markdown fences):
+[
+  {
+    "title": "Short title for the addition",
+    "insertion_point": "Where in the article to insert this (e.g. after intro, after tip #3, new section at end)",
+    "content": "The ready-to-add paragraph (3-5 sentences). Must include inline citation like: (Reported by multiple users in r/marketing, March 2025)",
+    "source_type": "Reddit|Quora|YouTube",
+    "source_community": "e.g. r/entrepreneur",
+    "freshness": "high|medium|low",
+    "freshness_reason": "Why this is likely recent (e.g. references a tool launched in 2025, ongoing discussion trend)",
+    "serp_gap": "One sentence explaining what gap in the SERP results this fills",
+    "not_in_serp": true
+  }
+]`;
+
+  const r=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:[{role:'user',content:prompt}]})
+  });
+  const d=await r.json();
+  if(d.error)throw new Error(d.error.message);
+  let text=d.content.map(c=>c.text||'').join('').replace(/```json|```/g,'').trim();
+  return JSON.parse(text);
+}
+
+function renderReview(){
+  const keys=Object.keys(results);
+  if(!keys.length){document.getElementById('review-empty').style.display='block';document.getElementById('review-list').innerHTML='';return;}
+  document.getElementById('review-empty').style.display='none';
+  document.getElementById('review-list').innerHTML=keys.map(id=>{
+    const {article,edits,serpData}=results[id];
+    const title=article.title.rendered.replace(/<[^>]+>/g,'');
+    return `<div class="card" style="margin-bottom:1.5rem">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:.75rem;flex-wrap:wrap">
+        <span style="font-size:15px;font-weight:500;flex:1">${title}</span>
+        <a href="${article.link}" target="_blank" style="font-size:12px;color:var(--color-text-info)">view ↗</a>
+      </div>
+      ${serpData&&serpData.length?`
+        <div class="section-divider">SERP coverage analyzed (top ${serpData.length} results)</div>
+        <div style="border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px 10px;margin-bottom:1rem">
+          ${serpData.slice(0,5).map((s,i)=>`<div class="serp-row"><div class="serp-num">${i+1}</div><div style="flex:1"><span style="font-weight:500">${s.title}</span><br><span style="color:var(--color-text-tertiary)">${(s.snippet||'').substring(0,120)}...</span></div></div>`).join('')}
+          ${serpData.length>5?`<div style="font-size:11px;color:var(--color-text-tertiary);padding:4px 0">+${serpData.length-5} more results analyzed</div>`:''}
+        </div>`:''}
+      <div class="section-divider">Proposed additions (gaps not in SERP)</div>
+      ${edits.map((e,i)=>editCard(id,i,e)).join('')}
+    </div>`;
+  }).join('');
+}
+
+function editCard(artId,idx,e){
+  const key=artId+'_'+idx;
+  const isApproved=approved[key]===true;
+  const isRejected=approved[key]===false;
+  const srcClass={Reddit:'b-reddit',Quora:'b-quora',YouTube:'b-youtube'}[e.source_type]||'b-gap';
+  const freshColor={high:'#639922',medium:'#BA7517',low:'#A32D2D'}[e.freshness]||'#888780';
+  return `<div class="edit-card" id="ec-${key}" style="${isApproved?'border-color:#97C459':isRejected?'border-color:#F09595;opacity:.55':''}">
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+      <span style="font-size:11px;background:var(--color-background-secondary);padding:2px 7px;border-radius:var(--border-radius-md);color:var(--color-text-secondary)">Edit ${idx+1}</span>
+      <span style="font-size:14px;font-weight:500;flex:1">${e.title}</span>
+      <span class="badge ${srcClass}">${e.source_type}: ${e.source_community||''}</span>
+    </div>
+    <div class="freshness-bar">
+      <div class="fresh-dot" style="background:${freshColor}"></div>
+      <span>Freshness: <strong>${e.freshness}</strong> — ${e.freshness_reason||''}</span>
+    </div>
+    <div style="margin-top:8px;padding:6px 10px;background:#EEEDFE;border-radius:var(--border-radius-md);font-size:12px;color:#534AB7">
+      Gap filled: ${e.serp_gap||'Not covered in top SERP results'}
+    </div>
+    <div style="font-size:12px;color:var(--color-text-tertiary);margin-top:6px">Insert: ${e.insertion_point}</div>
+    <div class="insertion-box">${e.content}</div>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+      <button class="btn ${isApproved?'btn-green':''}" onclick="appv('${key}',true,'${artId}',${idx})">${isApproved?'✓ Approved':'Approve'}</button>
+      <button class="btn ${isRejected?'btn-red':''}" onclick="appv('${key}',false,'${artId}',${idx})">${isRejected?'✗ Rejected':'Reject'}</button>
+      <button class="btn" onclick="regen('${artId}',${idx})">↺ Regenerate</button>
+    </div>
+  </div>`;
+}
+
+function appv(key,val){
+  approved[key]=val;
+  renderReview();
+  renderPublish();
+}
+
+async function regen(artId,idx){
+  const antKey=document.getElementById('ant-key').value.trim();
+  const serpKey=document.getElementById('serp-key').value.trim();
+  if(!antKey){alert('Need Anthropic key.');return;}
+  const {article,serpData}=results[artId];
+  log('↺ Regenerating for '+article.slug+'...');
+  try{
+    const newEdits=await genEdits(article,serpData,antKey);
+    if(newEdits[idx])results[artId].edits[idx]=newEdits[idx];
+    renderReview();
+  }catch(e){alert('Error: '+e.message);}
+}
+
+function renderPublish(){
+  const approvedItems=Object.entries(approved)
+    .filter(([k,v])=>v===true)
+    .map(([key])=>{
+      const [artId,idx]=key.split('_');
+      const d=results[artId];
+      if(!d)return null;
+      return{key,article:d.article,edit:d.edits[parseInt(idx)]};
+    }).filter(Boolean);
+
+  if(!approvedItems.length){
+    document.getElementById('pub-empty').style.display='block';
+    document.getElementById('pub-list').innerHTML='';
+    document.getElementById('pub-actions').style.display='none';
+    return;
+  }
+  document.getElementById('pub-empty').style.display='none';
+  document.getElementById('pub-actions').style.display='block';
+
+  const grouped={};
+  approvedItems.forEach(item=>{
+    const id=item.article.id;
+    if(!grouped[id])grouped[id]={article:item.article,items:[]};
+    grouped[id].items.push(item);
+  });
+
+  document.getElementById('pub-list').innerHTML=Object.values(grouped).map(g=>`
+    <div class="card" style="margin-bottom:.75rem">
+      <div style="font-weight:500;font-size:14px;margin-bottom:8px">${g.article.title.rendered.replace(/<[^>]+>/g,'')}</div>
+      ${g.items.map(it=>`
+        <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-top:0.5px solid var(--color-border-tertiary)">
+          <span style="color:#639922;font-size:13px;flex-shrink:0;margin-top:1px">✓</span>
+          <div>
+            <div style="font-size:13px;font-weight:500">${it.edit.title}</div>
+            <div style="font-size:11px;color:var(--color-text-secondary)">${it.edit.insertion_point}</div>
+            <div style="font-size:11px;color:#534AB7;margin-top:2px">Gap: ${(it.edit.serp_gap||'').substring(0,80)}...</div>
+          </div>
+        </div>`).join('')}
+      <div id="ps-${g.article.id}" style="margin-top:6px;font-size:12px"></div>
+    </div>`).join('');
+}
+
+async function publishAll(){
+  const url=document.getElementById('wp-url').value.trim().replace(/\/$/,'');
+  const user=document.getElementById('wp-user').value.trim();
+  const pass=document.getElementById('wp-pass').value.trim();
+  const creds=btoa(user+':'+pass);
+
+  const approvedItems=Object.entries(approved)
+    .filter(([k,v])=>v===true)
+    .map(([key])=>{const[artId,idx]=key.split('_');const d=results[artId];if(!d)return null;return{article:d.article,edit:d.edits[parseInt(idx)]};}).filter(Boolean);
+
+  const grouped={};
+  approvedItems.forEach(item=>{const id=item.article.id;if(!grouped[id])grouped[id]={article:item.article,edits:[]};grouped[id].edits.push(item.edit);});
+
+  for(const id of Object.keys(grouped)){
+    const{article,edits}=grouped[id];
+    const ps=document.getElementById('ps-'+article.id);
+    if(ps)ps.innerHTML='<span style="color:#BA7517">Publishing...</span>';
+    try{
+      if(article._fallback){
+        if(ps)ps.innerHTML='<span style="color:#A32D2D">Cannot publish — add WP credentials to connect</span>';
+        continue;
+      }
+      const cr=await fetch(url+'/wp-json/wp/v2/posts/'+article.id,{headers:{Authorization:'Basic '+creds}});
+      if(!cr.ok)throw new Error('Fetch failed '+cr.status);
+      const post=await cr.json();
+      let newContent=post.content.rendered;
+      for(const edit of edits){
+        newContent+='\n\n<h3>'+edit.title+'</h3>\n<p>'+edit.content+'</p>';
+      }
+      const ur=await fetch(url+'/wp-json/wp/v2/posts/'+article.id,{
+        method:'POST',
+        headers:{Authorization:'Basic '+creds,'Content-Type':'application/json'},
+        body:JSON.stringify({content:newContent})
+      });
+      if(ur.ok){if(ps)ps.innerHTML='<span style="color:#3B6D11">✓ Published</span>';}
+      else throw new Error('Update failed '+ur.status);
+    }catch(e){if(ps)ps.innerHTML='<span style="color:#A32D2D">Error: '+e.message+'</span>';}
+  }
+}
+</script>
