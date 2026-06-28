@@ -135,7 +135,7 @@ img{max-width:100%;display:block;}
 .footer-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:280px 1fr 1fr 1fr;gap:52px;}
 .footer-about{display:flex;flex-direction:column;}
 .footer-photo-row{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
-.footer-photo{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2);flex-shrink:0;}
+.footer-photo{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid rgba(255,255,255,.25);flex-shrink:0;}
 .footer-logo{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;display:block;}
 .footer-bio{font-size:14px;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:20px;}
 .footer-social{display:flex;gap:10px;flex-wrap:wrap;}

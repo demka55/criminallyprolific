@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Testimonials — Criminally Prolific</title>
+  <link rel="icon" type="image/png" href="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <style>
+    .tw-hero{padding:64px 0 48px;border-bottom:1.5px solid #eee;}
+    .tw-hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;}
+    .tw-hero h1{font-size:64px;font-weight:900;color:#000;letter-spacing:-2px;line-height:1;margin-bottom:12px;}
+    .tw-hero p{font-size:18px;color:#555;line-height:1.6;max-width:540px;}
+
+    .tw-grid-wrap{max-width:1100px;margin:0 auto;padding:56px 40px;}
+    .tw-grid{column-count:3;column-gap:20px;}
+
+    /* Video card */
+    .tw-card{background:#fff;border:1.5px solid #e0e0e0;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;break-inside:avoid;display:inline-block;width:100%;margin-bottom:20px;}
+    .tw-card:hover{border-color:#000;box-shadow:0 4px 20px rgba(0,0,0,0.12);}
+    .tw-thumb{position:relative;width:100%;overflow:hidden;background:#111;}
+    .tw-thumb img{width:100%;height:200px;object-fit:cover;display:block;}
+    .tw-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+    .tw-card:hover .tw-play{background:#0033ff;}
+    .tw-card:hover .tw-play svg path{fill:#fff;}
+    .tw-body{padding:18px 20px 22px;}
+    .tw-quote{font-size:14px;color:#333;line-height:1.65;margin-bottom:14px;font-style:italic;}
+    .tw-quote::before{content:'\201C';}
+    .tw-quote::after{content:'\201D';}
+    .tw-name{font-size:15px;font-weight:800;color:#000;margin-bottom:2px;}
+    .tw-info{font-size:12px;color:#888;}
+    .tw-duration{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.7);color:#fff;font-size:11px;font-weight:600;padding:2px 7px;border-radius:3px;}
+
+    /* Static card (no video) */
+    .tw-static{background:#fff;border:1.5px solid #e0e0e0;break-inside:avoid;display:inline-block;width:100%;margin-bottom:20px;overflow:hidden;}
+    .tw-static-photo{width:100%;height:200px;object-fit:cover;object-position:center top;display:block;}
+    .tw-static-body{padding:18px 20px 22px;}
+
+    /* Case study card */
+    .tw-case{background:#fff;border:1.5px solid #e0e0e0;break-inside:avoid;display:inline-block;width:100%;margin-bottom:20px;overflow:hidden;cursor:pointer;}
+    .tw-case:hover{border-color:#000;box-shadow:0 4px 20px rgba(0,0,0,0.12);}
+    .tw-case-thumb{position:relative;width:100%;overflow:hidden;background:#111;}
+    .tw-case-thumb img{width:100%;height:200px;object-fit:cover;display:block;}
+    .tw-case-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+    .tw-case-body{padding:18px 20px 22px;}
+    .tw-case-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:8px;display:block;}
+    .tw-case-title{font-size:16px;font-weight:800;color:#000;line-height:1.3;margin-bottom:10px;}
+    .tw-case-client{font-size:12px;color:#888;margin-bottom:10px;}
+    .tw-case-desc{font-size:13px;color:#555;line-height:1.6;margin-bottom:14px;}
+    .tw-case-pubs{display:flex;flex-wrap:wrap;gap:6px;}
+    .tw-case-pub{font-size:11px;font-weight:600;background:#f0f0f0;color:#333;padding:3px 8px;border-radius:3px;}
+
+    /* Modal */
+    .tw-modal{display:none;position:fixed;inset:0;z-index:99999;align-items:center;justify-content:center;}
+    .tw-modal.active{display:flex;}
+    .tw-modal-back{position:absolute;inset:0;background:rgba(0,0,0,0.92);cursor:pointer;}
+    .tw-modal-box{position:relative;z-index:1;width:90vw;max-width:960px;}
+    .tw-modal-close{position:absolute;top:-44px;right:0;background:none;border:none;cursor:pointer;color:#fff;font-size:32px;line-height:1;padding:4px 10px;}
+    .tw-modal-video{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000;}
+    .tw-modal-video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+
+    @media(max-width:900px){.tw-grid{column-count:2;}}
+    @media(max-width:580px){.tw-grid{column-count:1;}.tw-grid-wrap,.tw-hero-inner{padding-left:24px;padding-right:24px;}.tw-hero h1{font-size:44px;}}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo"><img src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png" alt=""> Criminally Prolific</a>
+  <div class="nav-links">
+    <a href="/dmitry/">About</a><a href="/#interviews">Interviews</a><a href="/book/">Book</a>
+    <a href="/testimonials/" style="color:#0033ff;">Testimonials</a><a href="/press/">Press</a><a href="/contact/">Contact</a>
+    <a href="/signup/" class="nav-cta">Free Newsletter</a>
+  </div>
+</nav>
+
+<!-- VIDEO MODAL -->
+<div class="tw-modal" id="tw-modal">
+  <div class="tw-modal-back" onclick="closeTW()"></div>
+  <div class="tw-modal-box">
+    <button class="tw-modal-close" onclick="closeTW()">&#x2715;</button>
+    <div class="tw-modal-video">
+      <iframe id="tw-iframe" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="tw-hero">
+  <div class="tw-hero-inner">
+    <span class="eyebrow">Kind Words</span>
+    <h1>Kind Words.</h1>
+    <p>Founders, marketers, and CEOs who've worked with me or been through my programs.</p>
+  </div>
+</section>
+
+<!-- GRID -->
+<div class="tw-grid-wrap">
+  <div class="tw-grid">
+
+    <!-- Brian Dean -->
+    <div class="tw-card" onclick="openTW('TG81pZaWfLA')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/TG81pZaWfLA/mqdefault.jpg" alt="Brian Dean"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:45</span></div>
+      <div class="tw-body"><p class="tw-quote">Dmitry was a gamechanger for me in terms of PR outreach.</p><p class="tw-name">Brian Dean</p><p class="tw-info">Founder @ Backlinko.com</p></div>
+    </div>
+
+    <!-- Noah Kagan -->
+    <div class="tw-card" onclick="openTW('v8-iNy1OiMg')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/v8-iNy1OiMg/mqdefault.jpg" alt="Noah Kagan"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:25</span></div>
+      <div class="tw-body"><p class="tw-quote">Dmitry makes things happen, and even if you don't think things are going to happen he is still going to get it done!</p><p class="tw-name">Noah Kagan</p><p class="tw-info">Founder @ AppSumo</p></div>
+    </div>
+
+    <!-- Tim Soulo -->
+    <div class="tw-card" onclick="openTW('ID2PsjnUUuY')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/ID2PsjnUUuY/mqdefault.jpg" alt="Tim Soulo"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:27</span></div>
+      <div class="tw-body"><p class="tw-quote">Dmitry pushes your project forward no matter what obstacles you are facing. He is a force of nature and has surpassed all my expectations.</p><p class="tw-name">Tim Soulo</p><p class="tw-info">Head of Marketing @ Ahrefs.com</p></div>
+    </div>
+
+    <!-- Robokiller Case Study -->
+    <div class="tw-case" onclick="openTW('sH6I2aWvo7g')">
+      <div class="tw-case-thumb"><img src="https://img.youtube.com/vi/sH6I2aWvo7g/mqdefault.jpg" alt="Robokiller"><div class="tw-case-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div></div>
+      <div class="tw-case-body">
+        <span class="tw-case-tag">Case Study</span>
+        <p class="tw-case-title">Acquiring App Users With a Geo-Targeted News Story</p>
+        <p class="tw-case-client">Giulia Palombo, Growth Marketing Manager · TelTech / Robokiller</p>
+        <p class="tw-case-desc">By matching Robokiller's location data with local TV stations in the most affected cities, we landed features across 14 ABC, FOX, and CBS affiliates — driving a sustained flow of app installs.</p>
+        <div class="tw-case-pubs">
+          <span class="tw-case-pub">ABC Chicago</span><span class="tw-case-pub">ABC World News</span><span class="tw-case-pub">Fox Boston 25</span><span class="tw-case-pub">ABC Denver</span><span class="tw-case-pub">FOX Illinois</span><span class="tw-case-pub">CBS Harrisburg</span><span class="tw-case-pub">+ 8 more</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Luke Wroblewski — static -->
+    <div class="tw-static">
+      <img class="tw-static-photo" src="https://www.criminallyprolific.com/wp-content/uploads/2017/10/lukew_highres.jpg" alt="Luke Wroblewski">
+      <div class="tw-static-body"><p class="tw-quote">Dmitry is a dynamo. He's been a critical part of our growth from product launch to acquisition by Google just a few years later.</p><p class="tw-name">Luke Wroblewski</p><p class="tw-info">Product @ Google · Founder of Polar, acquired by Google 2014</p></div>
+    </div>
+
+    <!-- Adam Zais -->
+    <div class="tw-card" onclick="openTW('CwTfoOPl_bg')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/CwTfoOPl_bg/mqdefault.jpg" alt="Adam Zais"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">00:55</span></div>
+      <div class="tw-body"><p class="tw-quote">In a matter of just a few months Dmitry helped us 3x our traffic. We built relationships with Mashable, Lifehacker, Forbes, Gizmodo and tons of others.</p><p class="tw-name">Adam Zais</p><p class="tw-info">CRO @ Wistia</p></div>
+    </div>
+
+    <!-- Alexis Croswell -->
+    <div class="tw-card" onclick="openTW('r4NETfKeXo8')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/r4NETfKeXo8/mqdefault.jpg" alt="Alexis Croswell"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">00:32</span></div>
+      <div class="tw-body"><p class="tw-quote">In a matter of just a few months we were ranking on first page of Google rapidly approaching #1 for our highly coveted key term.</p><p class="tw-name">Alexis Croswell</p><p class="tw-info">Content Marketing Manager @ Culture Amp</p></div>
+    </div>
+
+    <!-- Phong Ly -->
+    <div class="tw-card" onclick="openTW('dVdAIrzcEcc')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/dVdAIrzcEcc/mqdefault.jpg" alt="Phong Ly"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:12</span></div>
+      <div class="tw-body"><p class="tw-quote">In nine months Dmitry helped us get featured in 200+ publications including USAToday, WSJ, Forbes, Fortune, ABCNews. We 5X'd our daily traffic.</p><p class="tw-name">Phong Ly</p><p class="tw-info">Founder @ iSeeCars.com</p></div>
+    </div>
+
+    <!-- Matt Kelly -->
+    <div class="tw-card" onclick="openTW('zRvABQX8ipU')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/zRvABQX8ipU/mqdefault.jpg" alt="Matt Kelly"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">00:17</span></div>
+      <div class="tw-body"><p class="tw-quote">Our domain authority went from 20 to 85 as we 10X increased website visitors. Our PR hacks led to 50+ inquiries a day from prospective customers.</p><p class="tw-name">Matt Kelly</p><p class="tw-info">Partner @ ZURB.com</p></div>
+    </div>
+
+    <!-- Brad Zomick -->
+    <div class="tw-card" onclick="openTW('RlwalhDDRUE')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/RlwalhDDRUE/mqdefault.jpg" alt="Brad Zomick"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:24</span></div>
+      <div class="tw-body"><p class="tw-quote">In a few months we implemented a PR strategy which helped rank #1 for "sales management" — and even outrank Wikipedia.</p><p class="tw-name">Brad Zomick</p><p class="tw-info">Head of Content @ Pipedrive.com</p></div>
+    </div>
+
+    <!-- Igor -->
+    <div class="tw-card" onclick="openTW('640IDGg-w_M')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/640IDGg-w_M/mqdefault.jpg" alt="Igor Gladkoborodov"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:24</span></div>
+      <div class="tw-body"><p class="tw-quote">In 2 months Dmitry built a PR strategy that landed us in USAToday, TIME, MarketWatch — then we got into YCombinator!</p><p class="tw-name">Igor Gladkoborodov</p><p class="tw-info">Founder @ Coub.com</p></div>
+    </div>
+
+    <!-- Jen Reddy — static -->
+    <div class="tw-static">
+      <img class="tw-static-photo" src="https://www.criminallyprolific.com/wp-content/uploads/2017/04/jen.jpg" alt="Jen Reddy">
+      <div class="tw-static-body"><p class="tw-quote">To say he has been transformational for our business is an understatement. He delivered results and opportunities we'd been chasing for years. A disruptive force of nature!</p><p class="tw-name">Jen Reddy</p><p class="tw-info">Marketing @ Communispace.com</p></div>
+    </div>
+
+    <!-- Ariane Fisher -->
+    <div class="tw-card" onclick="openTW('iXlnf8jxL10')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/iXlnf8jxL10/mqdefault.jpg" alt="Ariane Fisher"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">02:05</span></div>
+      <div class="tw-body"><p class="tw-quote">Ariane was featured in three large mainstream publications in the first two months and was even on the homepage of Reddit!</p><p class="tw-name">Ariane Fisher</p><p class="tw-info">Founder @ WeddingMix</p></div>
+    </div>
+
+    <!-- Ben Jackson -->
+    <div class="tw-card" onclick="openTW('puruUuGqUhs')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/puruUuGqUhs/mqdefault.jpg" alt="Ben Jackson"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:02</span></div>
+      <div class="tw-body"><p class="tw-quote">Three weeks into executing a PR strategy, Bungii's monthly growth rate more than tripled — averaging 24%+ growth for four straight months.</p><p class="tw-name">Ben Jackson</p><p class="tw-info">CEO @ Bungii.com</p></div>
+    </div>
+
+    <!-- Martin Boddeker -->
+    <div class="tw-card" onclick="openTW('KkEPF3W-O6Q')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/KkEPF3W-O6Q/mqdefault.jpg" alt="Martin Boddeker"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:00</span></div>
+      <div class="tw-body"><p class="tw-quote">Martin's Quora answer received 1M+ views. Traffic went from 0 to 25,000 uniques in weeks, and he received 500+ new customer leads.</p><p class="tw-name">Martin Boddeker</p><p class="tw-info">Founder @ Findfocus.net</p></div>
+    </div>
+
+    <!-- Arthur Menard -->
+    <div class="tw-card" onclick="openTW('uCtTzcmTsfI')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/uCtTzcmTsfI/mqdefault.jpg" alt="Arthur Menard"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:41</span></div>
+      <div class="tw-body"><p class="tw-quote">After being covered in Mashable, Arthur received so much publicity that he moved his entire company from France to the US.</p><p class="tw-name">Arthur Menard</p><p class="tw-info">CEO @ SpartanUnderwear.com</p></div>
+    </div>
+
+    <!-- Hiro Taylor -->
+    <div class="tw-card" onclick="openTW('gQSr_mzFa3w')">
+      <div class="tw-thumb"><img src="https://img.youtube.com/vi/gQSr_mzFa3w/mqdefault.jpg" alt="Hiro Taylor"><div class="tw-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg></div><span class="tw-duration">01:24</span></div>
+      <div class="tw-body"><p class="tw-quote">Hiro's article was the lead on FastCompany's homepage for 18 hours, tweeted to 2.2 million people. I've never achieved that in 10 years of PR.</p><p class="tw-name">Hiro Taylor</p><p class="tw-info">Founder @ Heropay.com</p></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openTW(code){
+  var m=document.getElementById('tw-modal');
+  document.getElementById('tw-iframe').src='https://www.youtube.com/embed/'+code+'?autoplay=1&rel=0';
+  m.classList.add('active');
+  m.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeTW(){
+  var m=document.getElementById('tw-modal');
+  m.classList.remove('active');
+  m.style.display='none';
+  document.getElementById('tw-iframe').src='';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTW();});
+</script>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-about">
+      <div class="footer-photo-row">
+        <img src="/assets/img/dmitry.jpg" alt="Dmitry Dragilev" class="footer-photo">
+        <a href="/" class="footer-logo">Criminally Prolific</a>
+      </div>
+      <p class="footer-bio">I'm Dmitry Dragilev — multi-exit founder who sold 4 companies to Google, Semrush, and Adobe working 3 hours a day.</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dmitrydr/" target="_blank">LinkedIn</a>
+        <a href="/signup/">Newsletter</a><a href="/book/">Book</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigate</h4><ul>
+      <li><a href="/dmitry/">About</a></li><li><a href="/book/">Book</a></li>
+      <li><a href="/testimonials/">Testimonials</a></li><li><a href="/press/">Press</a></li>
+      <li><a href="/signup/">Newsletter</a></li><li><a href="/contact/">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Articles</h4><ul>
+      <li><a href="/how-to-pitch-journalists/">How to Pitch Journalists</a></li>
+      <li><a href="/pr-for-startups/">PR for Startups</a></li>
+      <li><a href="/cold-email-example/">Cold Email Examples</a></li>
+      <li><a href="/how-to-rank-higher-on-google/">Rank Higher on Google</a></li>
+      <li><a href="/growth-hacking/">Growth Hacking</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul>
+      <li><a href="/privacy-policy/">Privacy Policy</a></li>
+      <li><a href="/terms-of-use/">Terms of Use</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">© 2026 Dmitry Dragilev · Criminally Prolific. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-of-use/">Terms of Use</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

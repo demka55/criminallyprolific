@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Press — Criminally Prolific</title>
+  <meta name="description" content="Dmitry Dragilev press coverage — 1,400+ articles published in Forbes, TechCrunch, Entrepreneur, WIRED, Mashable, Moz, and more.">
+  <link rel="icon" type="image/png" href="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <style>
+    .press-hero{padding:72px 0 56px;border-bottom:1.5px solid #eee;}
+    .press-hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;}
+    .press-hero h1{font-size:52px;font-weight:900;color:#111;letter-spacing:-2px;margin-bottom:12px;}
+    .press-hero p{font-size:18px;color:#666;max-width:560px;line-height:1.65;}
+
+    /* Pub logos strip */
+    .press-logos{background:#f8f8f8;border-bottom:1.5px solid #eee;padding:32px 0;}
+    .press-logos-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:flex;flex-wrap:wrap;gap:28px;align-items:center;}
+    .press-logo{font-size:15px;font-weight:800;color:#888;letter-spacing:-.5px;}
+
+    /* Nav tabs */
+    .press-tabs{border-bottom:1.5px solid #eee;background:#fff;position:sticky;top:64px;z-index:10;}
+    .press-tabs-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:flex;gap:0;}
+    .press-tab{padding:16px 24px;font-size:14px;font-weight:700;color:#888;border-bottom:3px solid transparent;cursor:pointer;text-decoration:none;transition:.15s all;}
+    .press-tab:hover,.press-tab.active{color:#0033ff;border-bottom-color:#0033ff;}
+
+    /* Articles section */
+    .press-section{padding:64px 0;border-bottom:1.5px solid #eee;}
+    .press-section-inner{max-width:1100px;margin:0 auto;padding:0 40px;}
+    .press-section-title{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:32px;display:block;}
+
+    /* Publication blocks */
+    .pub-block{margin-bottom:40px;}
+    .pub-name{font-size:18px;font-weight:800;color:#111;margin-bottom:12px;padding-bottom:10px;border-bottom:1.5px solid #eee;}
+    .pub-articles{list-style:none;padding:0;margin:0;}
+    .pub-articles li{padding:8px 0;border-bottom:1px solid #f5f5f5;display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+    .pub-articles li:last-child{border-bottom:none;}
+    .pub-articles a{font-size:14px;color:#333;line-height:1.5;flex:1;transition:color .15s;}
+    .pub-articles a:hover{color:#0033ff;}
+    .pub-articles .art-date{font-size:12px;color:#aaa;white-space:nowrap;flex-shrink:0;}
+
+    /* Podcast list */
+    .podcast-list{list-style:none;padding:0;margin:0;}
+    .podcast-item{padding:16px 0;border-bottom:1px solid #eee;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;}
+    .podcast-item:last-child{border-bottom:none;}
+    .podcast-title{font-size:15px;font-weight:600;color:#111;margin-bottom:4px;}
+    .podcast-meta{font-size:13px;color:#888;}
+    .podcast-listen{font-size:12px;font-weight:700;color:#0033ff;white-space:nowrap;}
+
+    /* Pub grid for smaller sections */
+    .pub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+
+    @media(max-width:900px){
+      .pub-grid{grid-template-columns:1fr 1fr;}
+      .press-hero h1{font-size:38px;}
+    }
+    @media(max-width:580px){
+      .pub-grid{grid-template-columns:1fr;}
+      .press-section-inner,.press-hero-inner,.press-logos-inner,.press-tabs-inner{padding-left:24px;padding-right:24px;}
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="nav-logo"><img src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png" alt=""> Criminally Prolific</a>
+  <div class="nav-links">
+    <a href="/dmitry/">About</a><a href="/#interviews">Interviews</a><a href="/book/">Book</a>
+    <a href="/testimonials/">Testimonials</a><a href="/press/" style="color:#0033ff;">Press</a><a href="/contact/">Contact</a>
+    <a href="/signup/" class="nav-cta">Free Newsletter</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="press-hero">
+  <div class="press-hero-inner">
+    <span class="eyebrow">Press & Publications</span>
+    <h1>The best from 1,400+ articles I've published.</h1>
+    <p>Featured in Forbes, TechCrunch, Entrepreneur, WIRED, Mashable, Moz, Smashing Magazine, The Next Web, and many more.</p>
+  </div>
+</section>
+
+<!-- LOGO STRIP -->
+<div class="press-logos">
+  <div class="press-logos-inner">
+    <span class="press-logo">Forbes</span>
+    <span class="press-logo">TechCrunch</span>
+    <span class="press-logo">Entrepreneur</span>
+    <span class="press-logo">WIRED</span>
+    <span class="press-logo">Mashable</span>
+    <span class="press-logo">Moz</span>
+    <span class="press-logo">The Next Web</span>
+    <span class="press-logo">Smashing Magazine</span>
+    <span class="press-logo">HubSpot</span>
+    <span class="press-logo">Zapier</span>
+    <span class="press-logo">Intuit</span>
+    <span class="press-logo">AListApart</span>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="press-tabs">
+  <div class="press-tabs-inner">
+    <a href="#articles" class="press-tab active">Articles</a>
+    <a href="#interviews" class="press-tab">Interviews & Talks</a>
+    <a href="#podcasts" class="press-tab">Podcasts</a>
+  </div>
+</div>
+
+<!-- ARTICLES -->
+<section class="press-section" id="articles">
+  <div class="press-section-inner">
+    <span class="press-section-title">Featured Articles</span>
+    <div class="pub-grid">
+
+      <div class="pub-block">
+        <p class="pub-name">Forbes</p>
+        <ul class="pub-articles">
+          <li><a href="https://www.forbes.com/sites/forbestechcouncil/2022/11/30/here-is-what-googles-latest-helpful-algorithm-update-means-for-your-business/" target="_blank">What Google's Helpful Algorithm Update Means For Your Business</a><span class="art-date">Nov 2022</span></li>
+          <li><a href="https://www.forbes.com/sites/forbestechcouncil/2019/09/13/seven-skills-every-modern-day-pr-team-needs/" target="_blank">Seven Skills Every Modern-Day PR Team Needs</a><span class="art-date">Sep 2019</span></li>
+          <li><a href="https://www.forbes.com/sites/elainepofeldt/2017/12/31/can-this-brooklyn-entrepreneur-reinvent-public-relations/" target="_blank">Can This Entrepreneur Reinvent Public Relations?</a><span class="art-date">Dec 2017</span></li>
+          <li><a href="https://www.forbes.com/sites/bryancollinseurope/2019/05/21/why-are-your-still-writing-press-releases-to-promote-your-business-interview-with-dmitry-dragilev/" target="_blank">Why Press Releases Don't Always Work</a><span class="art-date">May 2019</span></li>
+          <li><a href="https://www.forbes.com/sites/forbestechcouncil/2022/08/30/five-uncommon-marketing-strategies-to-scale-your-startup/" target="_blank">Five Uncommon Marketing Strategies To Scale Your Startup</a><span class="art-date">Aug 2022</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-block">
+        <p class="pub-name">Entrepreneur</p>
+        <ul class="pub-articles">
+          <li><a href="https://www.entrepreneur.com/growing-a-business/trying-to-rank-for-a-keyword-on-google-dont-fall-for/439796" target="_blank">Don't Fall for These 3 Google Ranking Myths</a><span class="art-date">Dec 2022</span></li>
+          <li><a href="https://www.entrepreneur.com/article/273036" target="_blank">Why I Am Killing a Startup That Has Over 100,000 Customers</a><span class="art-date">Jun 2017</span></li>
+          <li><a href="https://www.entrepreneur.com/article/351490" target="_blank">3 Ways to Pitch Journalists During Covid-19</a><span class="art-date">Jun 2020</span></li>
+          <li><a href="https://www.entrepreneur.com/article/339281" target="_blank">5 Ways to Optimize Content for Better Google Rankings</a><span class="art-date">Sep 2019</span></li>
+          <li><a href="https://www.entrepreneur.com/article/252709" target="_blank">How I Went From Zero to 5,000 Email Subscribers in Six Months</a><span class="art-date">Nov 2015</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-block">
+        <p class="pub-name">The Next Web</p>
+        <ul class="pub-articles">
+          <li><a href="https://thenextweb.com/socialmedia/2015/02/21/took-startup-0-40m-pageviews-got-acquired-google/" target="_blank">How I Took a Startup from 0 to 40M+ Pageviews and Got Acquired by Google</a><span class="art-date">Feb 2015</span></li>
+          <li><a href="https://thenextweb.com/insider/2015/09/13/how-i-grew-my-email-subscribers-from-0-to-5000-in-6-months/" target="_blank">How I Grew from 0 to 5,000 Email Subscribers in 6 Months</a><span class="art-date">Sep 2015</span></li>
+          <li><a href="https://thenextweb.com/insider/2015/06/01/6-steps-to-getting-free-press-for-your-startup/" target="_blank">6 Steps to Getting Free Press for Your Startup</a><span class="art-date">Jun 2015</span></li>
+          <li><a href="https://thenextweb.com/insider/2016/03/16/5-actionable-seo-tactics-based-actual-data/" target="_blank">5 Actionable SEO Tactics Based on Actual Data</a><span class="art-date">Mar 2016</span></li>
+          <li><a href="https://thenextweb.com/guests/dharmesh-shah-hubspot/" target="_blank">Dharmesh of HubSpot Talks About Taking Risks To Start a Business</a><span class="art-date">Sep 2017</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-block">
+        <p class="pub-name">Moz Blog</p>
+        <ul class="pub-articles">
+          <li><a href="https://moz.com/blog/case-study-ranking-high-volume-keyword" target="_blank">[Case Study] How We Ranked #1 for a High-Volume Keyword in Under 3 Months</a><span class="art-date">Apr 2017</span></li>
+        </ul>
+        <p class="pub-name" style="margin-top:20px;">Smashing Magazine</p>
+        <ul class="pub-articles">
+          <li><a href="https://www.smashingmagazine.com/2011/10/rapid-prototyping-for-any-device-with-foundation/" target="_blank">Rapid Prototyping For Any Device With Foundation</a><span class="art-date">Oct 2015</span></li>
+          <li><a href="https://www.smashingmagazine.com/2010/11/how-to-use-the-seven-deadly-sins-to-turn-visitors-into-customers/" target="_blank">How To Use the "Seven Deadly Sins" To Turn Visitors Into Customers</a><span class="art-date">Nov 2010</span></li>
+          <li><a href="https://www.smashingmagazine.com/2009/12/stronger-better-faster-design-with-css3/" target="_blank">Stronger, Better, Faster Design with CSS3</a><span class="art-date">Dec 2009</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-block">
+        <p class="pub-name">Zapier</p>
+        <ul class="pub-articles">
+          <li><a href="https://zapier.com/blog/generative-engine-optimization/" target="_blank">Generative Engine Optimization: How to Rank on AI Chatbots</a><span class="art-date">Feb 2025</span></li>
+          <li><a href="https://zapier.com/blog/weaknesses-that-prevent-top-ranking-in-search-engine-results/" target="_blank">How to Rank #1 on Google by Analyzing Weaknesses in Search Results</a><span class="art-date">Nov 2022</span></li>
+          <li><a href="https://zapier.com/blog/how-automation-helped-us-get-better-reviews/" target="_blank">How Automating Our Business Helped Us Get Better Customer Reviews</a><span class="art-date">Nov 2021</span></li>
+        </ul>
+        <p class="pub-name" style="margin-top:20px;">HubSpot</p>
+        <ul class="pub-articles">
+          <li><a href="https://blog.hubspot.com/marketing/how-to-rank-youtube-high-keyword" target="_blank">The Ultimate Guide to Ranking #1 on YouTube</a><span class="art-date">Mar 2022</span></li>
+        </ul>
+      </div>
+
+      <div class="pub-block">
+        <p class="pub-name">Mashable</p>
+        <ul class="pub-articles">
+          <li><a href="https://mashable.com/2012/02/27/how-to-pitch-media/?europe=true" target="_blank">How Startups Can Build Lasting Relationships With Journalists</a><span class="art-date">Feb 2012</span></li>
+          <li><a href="https://mashable.com/2013/06/02/mobile-design-tips/?europe=true" target="_blank">5 Pillars of Successful Mobile Design</a><span class="art-date">Jun 2013</span></li>
+        </ul>
+        <p class="pub-name" style="margin-top:20px;">Niche Pursuits</p>
+        <ul class="pub-articles">
+          <li><a href="https://www.nichepursuits.com/dmitry-dragilev/" target="_blank">How This SEO Specialist Sold Three Businesses to Google and Semrush</a><span class="art-date">Mar 2024</span></li>
+        </ul>
+        <p class="pub-name" style="margin-top:20px;">Indie Hackers</p>
+        <ul class="pub-articles">
+          <li><a href="https://www.indiehackers.com/post/after-two-exits-dmitry-dragilev-built-his-latest-product-to-12k-mrr-pre-launch-heres-how-VnDSxmvABxcqIYo3pLLW" target="_blank">After Two Exits, Built to $12k MRR Pre-Launch</a><span class="art-date">May 2024</span></li>
+          <li><a href="https://www.indiehackers.com/post/if-you-don-t-have-to-work-a-9-to-5-don-t-do-it-i-work-half-a-day-igStory-0213fcb30c" target="_blank">If You Don't Have to Work a 9-to-5, Don't Do It</a><span class="art-date">Sep 2019</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p style="margin-top:32px;font-size:14px;color:#888;">View all 1,400+ articles: <a href="https://www.diigo.com/profile/dragilev" target="_blank" style="color:#0033ff;">diigo.com/profile/dragilev →</a></p>
+  </div>
+</section>
+
+<!-- INTERVIEWS & TALKS -->
+<section class="press-section" id="interviews">
+  <div class="press-section-inner">
+    <span class="press-section-title">Interviews & Talks</span>
+    <div class="pub-grid">
+      <div class="pub-block">
+        <p class="pub-name">Video Interviews</p>
+        <ul class="pub-articles">
+          <li><a href="https://www.youtube.com/watch?v=iKMZohthbz0" target="_blank">Niche Pursuits: Sold 3 Businesses to Google and SEMrush</a><span class="art-date">2024</span></li>
+          <li><a href="https://www.youtube.com/watch?v=FeCFeZw7YNg" target="_blank">Cognism: SEO Masterclass — Generative AI & Quality Content</a><span class="art-date">2024</span></li>
+          <li><a href="https://www.youtube.com/watch?v=ZdH7TCMCwZA" target="_blank">GrowthHacker TV: 0 to 40M Pageviews</a><span class="art-date">2023</span></li>
+          <li><a href="https://www.youtube.com/watch?v=0S4yjqlaWto" target="_blank">Art of the Pitch: How to Sell Any Idea to Anyone</a><span class="art-date">2024</span></li>
+        </ul>
+      </div>
+      <div class="pub-block">
+        <p class="pub-name">Conference Talks</p>
+        <ul class="pub-articles">
+          <li><a href="https://growthmarketingconf.com/making-the-press-work-for-you-the-growth-strategy-everybody-forgets/" target="_blank">Growth Marketing Conf: Making the Press Work for You</a><span class="art-date">2020</span></li>
+          <li><a href="#" target="_blank">Traffic Think Tank: How To Do Your Own PR — 4 Actionable Tactics</a><span class="art-date">2018</span></li>
+          <li><a href="#" target="_blank">Rhodium Weekend Las Vegas: SEO and PR To Acquire Customers</a><span class="art-date">2019</span></li>
+          <li><a href="#" target="_blank">Growth Marketing Conf SF: Use PR & SEO to Get Consistent Traffic</a><span class="art-date">2018</span></li>
+        </ul>
+      </div>
+      <div class="pub-block">
+        <p class="pub-name">Notable Profiles</p>
+        <ul class="pub-articles">
+          <li><a href="https://www.failory.com/interview/justreachout" target="_blank">Failory: Bootstrapping a PR SaaS to $360k/year</a><span class="art-date">2019</span></li>
+          <li><a href="https://theygotacquired.com/saas/topicranker-acquired-by-itrinity/" target="_blank">TheyGotAcquired: SaaS Founder Used Acquisition as Growth Strategy</a><span class="art-date">2024</span></li>
+          <li><a href="https://exitwise.com/founders/dmitry-dragilev" target="_blank">ExitWise: Exited Founder Profile</a><span class="art-date">2025</span></li>
+          <li><a href="https://theygotacquired.com/saas/justreachout-acquired-by-seojet/" target="_blank">TheyGotAcquired: JustReachOut Acquisition Story</a><span class="art-date">2020</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PODCASTS -->
+<section class="press-section" id="podcasts">
+  <div class="press-section-inner">
+    <span class="press-section-title">Podcast Appearances (40+)</span>
+    <ul class="podcast-list">
+      <li class="podcast-item">
+        <div><p class="podcast-title">Fast &amp; Furious Exits: Build for a Strategic Acquisition Within 3 Years</p><p class="podcast-meta">May 2026 · 33 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=HE612HhQTag" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">NexChapter: 4X Exits… Working 3 Hours a Day!</p><p class="podcast-meta">April 2026 · 55 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=NGz_YEROQqM" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">ExitWise: Build for a Strategic Acquisition Within 3 Years</p><p class="podcast-meta">March 2026 · 38 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=UpB1aseytfo" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Different Dadpreneurs: Redefining Success — Lessons from 4 Exits</p><p class="podcast-meta">January 2026 · 1hr 39min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=-g8rIHs9hMk" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">ChatRank.ai: How To Rank on Google AI Overviews</p><p class="podcast-meta">December 2025</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=c7aHY8EZjj8" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Jolly SEO: Sold to Google, SEMRush, Mangools — Advice on AI Search</p><p class="podcast-meta">June 2025 · 26 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=Za_36r09YRU" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Growth Architects: Lessons Learned from Selling a Company to Google</p><p class="podcast-meta">July 2025 · 42 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=8xnV7odmn_U" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Cognism In The Loop: SEO Masterclass — Generative AI & Quality Content</p><p class="podcast-meta">November 2024 · 44 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=FeCFeZw7YNg" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Niche Pursuits: This SEO Specialist Sold 3 Businesses to Google and Semrush</p><p class="podcast-meta">March 2024 · 57 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=iKMZohthbz0" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Marketer of the Day: Scale with PR, SEO & Measure Success Beyond Finance</p><p class="podcast-meta">January 2025 · 44 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=WsZuCZDDbaM" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Mixergy: This $250K ARR Startup Just Sold for $800K</p><p class="podcast-meta">April 2021 · 57 min</p></div>
+        <a class="podcast-listen" href="https://mixergy.com/interviews/justreachout-with-dmitry-dragilev/" target="_blank">▶ Listen</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">IndieHackers: Building the Ultimate Lifestyle Business</p><p class="podcast-meta">January 2020 · 56 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=-HOHn5atNqw" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">HyperGrowth: PR Outreach That Gets Results</p><p class="podcast-meta">December 2021 · 48 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=2kkgQZsP_KU" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Mailshake Webinar: Why No Reply? How To Craft Cold Emails That Convert</p><p class="podcast-meta">September 2021 · 57 min</p></div>
+        <a class="podcast-listen" href="https://www.youtube.com/watch?v=sfXcwMsfEoA" target="_blank">▶ Watch</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Mixergy: How to Do Your Own PR Right</p><p class="podcast-meta">January 2019 · 63 min</p></div>
+        <a class="podcast-listen" href="https://mixergy.com/interviews/justreachout-io-with-dmitry-dragilev/" target="_blank">▶ Listen</a>
+      </li>
+      <li class="podcast-item">
+        <div><p class="podcast-title">Entrepreneur On Fire: How Dmitry Dragilev Grew A Startup From 0–40M+</p><p class="podcast-meta">January 2017 · 28 min</p></div>
+        <a class="podcast-listen" href="https://www.eofire.com/podcast/dmitrydragilev/" target="_blank">▶ Listen</a>
+      </li>
+    </ul>
+    <p style="margin-top:24px;font-size:14px;color:#888;">See all 40+ podcast interviews: <a href="/#interviews" style="color:#0033ff;">Interviews section →</a></p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:64px 0;text-align:center;border-top:1.5px solid #eee;">
+  <div class="container">
+    <span class="eyebrow">Work Together</span>
+    <h2 class="section-title" style="margin-bottom:16px;">Want to feature Dmitry?</h2>
+    <p style="font-size:17px;color:#555;margin-bottom:32px;">For podcast interviews, speaking engagements, or press inquiries:</p>
+    <a href="mailto:dmitry@criminallyprolific.com" style="display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#0033ff;color:#fff;font-size:15px;font-weight:700;border-radius:4px;text-decoration:none;margin-right:12px;">dmitry@criminallyprolific.com</a>
+    <a href="/contact/" style="display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#fff;color:#111;font-size:15px;font-weight:700;border:2px solid #ddd;border-radius:4px;text-decoration:none;">Contact page →</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-about">
+      <div class="footer-photo-row">
+        <img src="/assets/img/dmitry.jpg" alt="Dmitry Dragilev" class="footer-photo">
+        <a href="/" class="footer-logo">Criminally Prolific</a>
+      </div>
+      <p class="footer-bio">I'm Dmitry Dragilev — multi-exit founder who sold 4 companies to Google, Semrush, and Adobe working 3 hours a day.</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dmitrydr/" target="_blank">LinkedIn</a>
+        <a href="/signup/">Newsletter</a><a href="/book/">Book</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Navigate</h4><ul>
+      <li><a href="/dmitry/">About</a></li><li><a href="/book/">Book</a></li>
+      <li><a href="/testimonials/">Testimonials</a></li><li><a href="/press/">Press</a></li>
+      <li><a href="/signup/">Newsletter</a></li><li><a href="/contact/">Contact</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Articles</h4><ul>
+      <li><a href="/how-to-pitch-journalists/">How to Pitch Journalists</a></li>
+      <li><a href="/pr-for-startups/">PR for Startups</a></li>
+      <li><a href="/saas-pr/">SaaS PR Guide</a></li>
+      <li><a href="/cold-email-example/">Cold Email Examples</a></li>
+      <li><a href="/how-to-rank-higher-on-google/">Rank Higher on Google</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul>
+      <li><a href="/privacy-policy/">Privacy Policy</a></li>
+      <li><a href="/terms-of-use/">Terms of Use</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">© 2026 Dmitry Dragilev · Criminally Prolific. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-of-use/">Terms of Use</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
