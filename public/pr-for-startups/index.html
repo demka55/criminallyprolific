@@ -49,7 +49,14 @@
     /* Two-column layout */
     .post-layout{max-width:1100px;margin:0 auto;padding:48px 40px 80px;display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start;}
     .post-content{min-width:0;}
-    .post-sidebar{position:sticky;top:88px;}
+    .post-sidebar{display:flex;flex-direction:column;gap:0;}
+    .toc-box{background:#fff;border:1.5px solid #eee;padding:20px 24px;margin-bottom:0;}
+    .toc-title{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#111;margin-bottom:6px;}
+    .toc-article-title{font-size:14px;font-weight:800;color:#111;margin-bottom:14px;line-height:1.4;padding-bottom:12px;border-bottom:1.5px solid #eee;}
+    .toc-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px;}
+    .toc-link{font-size:13px;color:#333;text-decoration:none;display:block;padding:5px 0;border-bottom:1px solid #f5f5f5;line-height:1.4;transition:color .15s;}
+    .toc-link:hover,.toc-link.active{color:#0033ff;}
+    .sidebar-cta-wrap{position:sticky;top:88px;}
 
     /* Update banner */
     .post-update-banner{background:#f0f4ff;border-left:4px solid #0033ff;padding:14px 20px;margin-bottom:28px;font-size:15px;color:#333;line-height:1.6;border-radius:0 4px 4px 0;}
@@ -120,7 +127,6 @@
       .post-hero-inner,.post-layout{padding-left:24px;padding-right:24px;}
     }
   </style>
-<script src="https://www.google.com/recaptcha/api.js?render=6Lemwu0UAAAAAJghn3RQZjwkYxnCTuYDCAcrJJ7S" async defer></script>
 </head>
 <body>
 <nav class="nav">
@@ -660,7 +666,7 @@ There you have it. This is the exact process I follow when I reach out to journa
       <div class="post-cta">
         <h3>Get the full playbook in your inbox.</h3>
         <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
-        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" data-recaptcha="true" id="sf-pr-for-startups" data-async="true">
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-pr-for-startups" data-async="true">
           <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
           <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
           <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
@@ -681,15 +687,16 @@ There you have it. This is the exact process I follow when I reach out to journa
 
     <!-- SIDEBAR -->
     <aside class="post-sidebar">
-      <div class="sidebar-cta">
+      <div class="sidebar-cta-wrap"><div class="sidebar-cta">
         <p class="sidebar-cta-tag">FREE NEWSLETTER</p>
         <h3>The 4-Exit Playbook</h3>
         <p>How I sold to Google, Semrush &amp; Adobe working 3 hrs/day. Read by 20k+ founders.</p>
         <a href="/signup/" class="sidebar-cta-btn">Get it free →</a>
         <p class="fine">No spam. Unsubscribe anytime.</p>
-      </div>
+      </div></div>
       <div class="toc-box" id="toc-box">
   <p class="toc-title">Table of Contents</p>
+  <p class="toc-article-title">PR for Startups in 2026: How to Get Press Without a PR Agency</p>
   <ul class="toc-list"><li ><a href="#1-nail-your-one-sentence-value-prop" class="toc-link">1. Nail Your One Sentence Value Prop</a></li>
 <li ><a href="#2-create-a-contact-list-of-relevant-journalists" class="toc-link">2. Create a Contact List of Relevant Journalists</a></li>
 <li ><a href="#3-find-email-addresses-of-journalists" class="toc-link">3. Find Email Addresses of Journalists</a></li>
@@ -872,5 +879,68 @@ if (tocLinks.length && headings.length) {
 })();
 </script>
 
+<script>
+(function(){
+  // Load recaptcha
+  var s = document.createElement('script');
+  s.src = 'https://www.google.com/recaptcha/api.js?render=6Lemwu0UAAAAAJghn3RQZjwkYxnCTuYDCAcrJJ7S';
+  s.async = true;
+  document.head.appendChild(s);
+
+  function submitForm(form) {
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) btn.disabled = true;
+    var msgEl = form.querySelector('.sendfox-message');
+
+    window.grecaptcha.ready(function() {
+      window.grecaptcha.execute('6Lemwu0UAAAAAJghn3RQZjwkYxnCTuYDCAcrJJ7S', {action: 'embedded_form'})
+        .then(function(token) {
+          var data = new FormData(form);
+          data.append('g-recaptcha-response', token);
+
+          fetch(form.action, {
+            method: 'POST',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            body: data
+          })
+          .then(function(res) { return res.json().then(function(j){ return {status: res.status, body: j}; }); })
+          .then(function(r) {
+            if (btn) btn.disabled = false;
+            if (!msgEl) { msgEl = document.createElement('p'); msgEl.className = 'sendfox-message'; form.appendChild(msgEl); }
+            if (r.status === 200) {
+              window.location.href = '/youre-almost-done/';
+            } else {
+              var err = r.body && r.body.errors && r.body.errors[0] ? r.body.errors[0] : '';
+              if (/already|exist|subscribed/i.test(err)) {
+                msgEl.innerHTML = "&#10003; You're already on the list! Check your inbox for past issues.";
+                msgEl.style.cssText = 'color:#2e7d32;font-size:14px;font-weight:600;margin-top:10px;';
+              } else if (/email/i.test(err)) {
+                msgEl.innerHTML = 'Please check your email address and try again.';
+                msgEl.style.cssText = 'color:#c62828;font-size:14px;font-weight:600;margin-top:10px;';
+              } else {
+                msgEl.innerHTML = err || 'Something went wrong. Please try again.';
+                msgEl.style.cssText = 'color:#c62828;font-size:14px;font-weight:600;margin-top:10px;';
+              }
+            }
+          })
+          .catch(function() {
+            if (btn) btn.disabled = false;
+            if (msgEl) { msgEl.innerHTML = 'Network error. Please try again.'; msgEl.style.cssText = 'color:#c62828;font-size:14px;font-weight:600;margin-top:10px;'; }
+          });
+        });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.sendfox-form').forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        submitForm(form);
+      }, true);
+    });
+  });
+})();
+</script>
 </body>
 </html>
