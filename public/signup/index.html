@@ -33,6 +33,13 @@
     /* RIGHT — form panel */
     .signup-right{background:#fff;padding:72px 64px;display:flex;flex-direction:column;justify-content:center;}
     .signup-right-inner{max-width:420px;}
+    .sendfox-form{position:relative;}
+    .sendfox-form p{margin:0 0 16px;}
+    .sendfox-form label{display:block;font-size:12px;font-weight:700;color:#444;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px;}
+    .sendfox-form input[type="text"],.sendfox-form input[type="email"]{width:100%;padding:14px 16px;font-size:15px;font-family:inherit;border:1.5px solid #ddd;outline:none;border-radius:4px;transition:border-color .15s;color:#111;box-sizing:border-box;}
+    .sendfox-form input:focus{border-color:#0033ff;}
+    .sendfox-form button[type="submit"]{width:100%;padding:16px;background:#0033ff;color:#fff;font-size:16px;font-weight:700;font-family:inherit;border:none;border-radius:4px;cursor:pointer;transition:background .15s;}
+    .sendfox-form button[type="submit"]:hover{background:#0022cc;}
     .signup-form-title{font-size:28px;font-weight:900;color:#111;letter-spacing:-.5px;margin-bottom:8px;}
     .signup-form-sub{font-size:15px;color:#777;margin-bottom:36px;line-height:1.5;}
     .signup-field{margin-bottom:16px;}
@@ -119,26 +126,17 @@
       <p class="signup-form-sub">Free. No spam. Unsubscribe anytime. Read by 20,000+ founders.</p>
 
       <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form" id="3qn7nj" data-async="true" data-recaptcha="true">
-        <div class="signup-field">
-          <label for="sendfox_form_name">First Name: </label>
-          <input type="text" id="sendfox_form_name" placeholder="First Name" name="first_name" required />
-        </div>
-        <div class="signup-field">
-          <label for="sendfox_form_last_name">Last Name: </label>
-          <input type="text" id="sendfox_form_last_name" placeholder="Last Name" name="last_name" required />
-        </div>
-        <div class="signup-field">
-          <label for="sendfox_form_email">Email: </label>
-          <input type="email" id="sendfox_form_email" placeholder="Email" name="email" required />
-        </div>
+        <p><label for="sendfox_form_name">First Name: </label><input type="text" id="sendfox_form_name" placeholder="First Name" name="first_name" required /></p>
+        <p><label for="sendfox_form_last_name">Last Name: </label><input type="text" id="sendfox_form_last_name" placeholder="Last Name" name="last_name" required /></p>
+        <p><label for="sendfox_form_email">Email: </label><input type="email" id="sendfox_form_email" placeholder="Email" name="email" required /></p>
         <!-- no botz please -->
         <div style="position: absolute; left: -5000px;" aria-hidden="true">
           <input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" />
         </div>
-        <button type="submit" class="signup-submit">Submit</button>
-        <p class="signup-fine">No spam. Unsubscribe anytime. <a href="/privacy-policy/">Privacy policy</a>.</p>
+        <p><button type="submit">Submit</button></p>
       </form>
       <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+      <p class="signup-fine">No spam. Unsubscribe anytime. <a href="/privacy-policy/">Privacy policy</a>.</p>
     </div>
   </div>
 

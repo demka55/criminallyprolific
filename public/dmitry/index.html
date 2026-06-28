@@ -28,10 +28,12 @@
     .timeline{padding:80px 0;}
     .timeline-inner{max-width:860px;margin:0 auto;padding:0 40px;}
     .timeline-title{font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#0033ff;margin-bottom:48px;display:block;}
-    .timeline-item{display:grid;grid-template-columns:80px 1fr;gap:32px;padding-bottom:56px;position:relative;}
-    .timeline-item:not(:last-child)::after{content:'';position:absolute;left:39px;top:40px;bottom:0;width:1px;background:#e8e8e8;}
+    .timeline-item{display:grid;grid-template-columns:80px 24px 1fr;gap:0 16px;padding-bottom:56px;position:relative;}
+    .timeline-item:not(:last-child) .timeline-line{position:absolute;left:calc(80px + 27px);top:18px;bottom:0;width:1px;background:#e8e8e8;}
     .timeline-year{font-size:12px;font-weight:700;color:#0033ff;padding-top:4px;text-align:right;letter-spacing:.5px;line-height:1.5;white-space:nowrap;}
-    .timeline-dot{position:absolute;left:35px;top:6px;width:9px;height:9px;border-radius:50%;background:#0033ff;border:2px solid #fff;box-shadow:0 0 0 1px #0033ff;}
+    .timeline-dot-col{display:flex;flex-direction:column;align-items:center;padding-top:5px;}
+    .timeline-dot{width:10px;height:10px;border-radius:50%;background:#0033ff;border:2px solid #fff;box-shadow:0 0 0 1.5px #0033ff;flex-shrink:0;}
+    .timeline-line{width:1px;background:#e8e8e8;flex:1;margin-top:6px;}
     .timeline-body{}
     .timeline-company{font-size:22px;font-weight:900;color:#111;letter-spacing:-.5px;margin-bottom:8px;}
     .timeline-acq{display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:99px;margin-bottom:14px;}
@@ -70,7 +72,7 @@
     }
     @media(max-width:580px){
       .about-hero-inner{padding:0 24px;}
-      .timeline-item{grid-template-columns:60px 1fr;gap:16px;}
+      .timeline-item{grid-template-columns:64px 20px 1fr;gap:0 12px;}
       .about-cta h2{font-size:32px;}
     }
   </style>
@@ -135,7 +137,7 @@
     <!-- Exit 4 -->
     <div class="timeline-item">
       <div class="timeline-year">2022–2025</div>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
       <div class="timeline-body">
         <p class="timeline-company">TopicRanker / SERP Gap Analyzer</p>
         <span class="timeline-acq">Acquired by Semrush · Oct 2025</span>
@@ -146,7 +148,7 @@
     <!-- Exit 3 -->
     <div class="timeline-item">
       <div class="timeline-year">2021–2023</div>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
       <div class="timeline-body">
         <p class="timeline-company">Smallbiz.Tools</p>
         <span class="timeline-acq">Acquired by Semrush · 2023</span>
@@ -157,7 +159,7 @@
     <!-- Exit 2 -->
     <div class="timeline-item">
       <div class="timeline-year">2014–2020</div>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
       <div class="timeline-body">
         <p class="timeline-company">JustReachOut</p>
         <span class="timeline-acq">Acquired by SEOJet · 2020, then ex-Slack team · 2024</span>
@@ -168,7 +170,7 @@
     <!-- Exit 1 -->
     <div class="timeline-item">
       <div class="timeline-year">2012–2014</div>
-      <div class="timeline-dot"></div>
+      <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
       <div class="timeline-body">
         <p class="timeline-company">Polar Polls</p>
         <span class="timeline-acq">Acquired by Google · Sept 2014</span>
