@@ -26,7 +26,7 @@
     .book-kicker{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0033ff;margin-bottom:20px;display:block;}
     .book-h1{font-size:52px;font-weight:900;color:#111;line-height:1.0;letter-spacing:-2px;margin-bottom:8px;}
     .book-h1 em{font-style:normal;color:#0033ff;}
-    .book-sub{font-size:16px;color:#888;line-height:1.5;margin-bottom:28px;font-style:italic;}
+    .book-sub{font-size:17px;font-weight:600;color:#444;line-height:1.5;margin-bottom:28px;font-style:italic;}
     .book-hook{font-size:19px;color:#444;line-height:1.75;margin-bottom:32px;max-width:560px;}
     .book-hook strong{color:#111;}
     .book-ctas{display:flex;gap:12px;flex-wrap:wrap;}
@@ -48,19 +48,19 @@
     .book-about p{font-size:17px;color:#444;line-height:1.8;margin-bottom:20px;}
     .book-about p strong{color:#111;}
     .book-about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
-    .book-about-card{background:#f8f8f8;border-left:4px solid #0033ff;padding:24px 28px;}
-    .book-about-card h4{font-size:14px;font-weight:800;color:#111;letter-spacing:-.2px;margin-bottom:8px;}
-    .book-about-card p{font-size:14px;color:#555;line-height:1.65;margin:0;}
+    .book-about-card{background:#fff;border:1.5px solid #e0e0e0;border-left:4px solid #0033ff;padding:28px 32px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+    .book-about-card h4{font-size:15px;font-weight:800;color:#111;letter-spacing:-.2px;margin-bottom:10px;}
+    .book-about-card p{font-size:15px;color:#333;line-height:1.7;margin:0;}
 
     /* ── CHAPTERS ── */
-    .book-chapters{padding:80px 0;background:#fafafa;border-top:1.5px solid #eee;border-bottom:1.5px solid #eee;}
+    .book-chapters{padding:80px 0;background:#fff;border-top:1.5px solid #eee;border-bottom:1.5px solid #eee;}
     .book-chapters-inner{max-width:860px;margin:0 auto;padding:0 40px;}
     .book-chapters h2{font-size:40px;font-weight:900;color:#111;letter-spacing:-1.5px;margin-bottom:48px;}
-    .chapter-item{display:grid;grid-template-columns:48px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid #e8e8e8;}
+    .chapter-item{display:grid;grid-template-columns:80px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid #eee;align-items:start;}
     .chapter-item:last-child{border-bottom:none;}
-    .chapter-num{font-size:11px;font-weight:700;color:#0033ff;letter-spacing:2px;text-transform:uppercase;padding-top:4px;}
-    .chapter-title{font-size:18px;font-weight:800;color:#111;letter-spacing:-.3px;margin-bottom:6px;}
-    .chapter-desc{font-size:14px;color:#666;line-height:1.65;}
+    .chapter-num{font-size:11px;font-weight:800;color:#fff;letter-spacing:.5px;text-transform:uppercase;background:#0033ff;padding:5px 8px;border-radius:4px;text-align:center;margin-top:2px;display:inline-block;width:100%;box-sizing:border-box;}
+    .chapter-title{font-size:20px;font-weight:800;color:#111;letter-spacing:-.3px;margin-bottom:10px;}
+    .chapter-desc{font-size:16px;color:#444;line-height:1.75;}
 
     /* ── AUTHOR STRIP ── */
     .book-author{padding:80px 0;border-bottom:1.5px solid #eee;}
@@ -195,7 +195,7 @@
     <h2>Inside the book</h2>
 
     <div class="chapter-item">
-      <div class="chapter-num">Foreword</div>
+      <div><span class="chapter-num">Foreword</span></div>
       <div>
         <p class="chapter-title">The Only Metric That Matters</p>
         <p class="chapter-desc">We were sold a definition of success built around revenue, headcount, and exit multiples — none of which have anything to do with your actual life. The dirty truth about why most entrepreneurs aren't building companies. They're building prisons with great branding.</p>
@@ -203,7 +203,7 @@
     </div>
 
     <div class="chapter-item">
-      <div class="chapter-num">01</div>
+      <div><span class="chapter-num">01</span></div>
       <div>
         <p class="chapter-title">Programmed</p>
         <p class="chapter-desc">From Moscow to Nashua — how two countries with opposite ideologies gave one immigrant kid the exact same operating system: you are what you produce. Stop producing and you disappear. And why that wiring follows you into your calendar, your inbox, and your inability to sit still on a Tuesday afternoon without feeling like you're falling behind.</p>
@@ -211,7 +211,7 @@
     </div>
 
     <div class="chapter-item">
-      <div class="chapter-num">02</div>
+      <div><span class="chapter-num">02</span></div>
       <div>
         <p class="chapter-title">The First Exit</p>
         <p class="chapter-desc">The question nobody asks at a SaaS conference: when did you last pick up your daughter from school? How building JustReachOut cracked open the only number that actually matters — 90% of the time you'll ever spend with your kids is already gone by the time they turn eighteen.</p>
@@ -219,7 +219,7 @@
     </div>
 
     <div class="chapter-item">
-      <div class="chapter-num">03</div>
+      <div><span class="chapter-num">03</span></div>
       <div>
         <p class="chapter-title">The Great Refusal</p>
         <p class="chapter-desc">Google acquired the startup Dmitry spent two years building to 40 million pageviews a month. Everyone signed and headed to Mountain View. He walked away. No savings. First kid on the way. No plan. Why that walk in the opposite direction was the first decision he ever made that was actually his.</p>
@@ -227,7 +227,7 @@
     </div>
 
     <div class="chapter-item">
-      <div class="chapter-num">04</div>
+      <div><span class="chapter-num">04</span></div>
       <div>
         <p class="chapter-title">What Do You Actually Want?</p>
         <p class="chapter-desc">In 2011 Tim Ferriss asked a question Dmitry couldn't answer. A few months later Patrick Byrne handed him a clock — six months to live, ten punches on a ticket. What happened when he finally got honest enough to answer both, and why his first reaction to his own answer was shame.</p>
@@ -235,7 +235,7 @@
     </div>
 
     <div class="chapter-item">
-      <div class="chapter-num">05</div>
+      <div><span class="chapter-num">05</span></div>
       <div>
         <p class="chapter-title">The Architecture of Enough</p>
         <p class="chapter-desc">Two backpacks. Six months. Thailand, rural China, Tibet, the Baltics, a Stephen King audiobook in Tallinn with nowhere to be. The actual sequence — messy, slow, occasionally humiliating — that gets you from "I should probably think about this" to knowing exactly what your identity is and being able to defend it in any room.</p>
@@ -243,7 +243,7 @@
     </div>
 
     <div class="chapter-item">
-      <div class="chapter-num">06</div>
+      <div><span class="chapter-num">06</span></div>
       <div>
         <p class="chapter-title">This is Great Dmitry, But I Still Have to Make Money</p>
         <p class="chapter-desc">Your identity won't pay the mortgage. But a soul-crushing job isn't the only other option. Real examples from real people in Dmitry's life — an OB-GYN, a military pilot, a lawyer — who repackaged what they already knew into a life that fits. Also: the exit is the money event. Everything else is just covering your costs while you build.</p>
@@ -251,7 +251,7 @@
     </div>
 
     <div class="chapter-item">
-      <div class="chapter-num">07</div>
+      <div><span class="chapter-num">07</span></div>
       <div>
         <p class="chapter-title">The Blueprint</p>
         <p class="chapter-desc">Not every business is a getaway car — most are just jobs with worse benefits and no HR department. The exact philosophy behind building one that someone will actually pay to take off your hands: start with the exit, find your distribution partner before you build your product, educate your acquirer while you grow, design yourself out of operations from day one.</p>
@@ -259,7 +259,7 @@
     </div>
 
     <div class="chapter-item">
-      <div class="chapter-num">08</div>
+      <div><span class="chapter-num">08</span></div>
       <div>
         <p class="chapter-title">The Blueprint in Action</p>
         <p class="chapter-desc">Three businesses at three different stages — one two months old with live customers, one at 170 paying customers in its first month, one still in discovery — running the same playbook in real time as this book is being written. What the repeatable system actually looks like when it's happening.</p>
@@ -267,7 +267,7 @@
     </div>
 
     <div class="chapter-item">
-      <div class="chapter-num">09</div>
+      <div><span class="chapter-num">09</span></div>
       <div>
         <p class="chapter-title">Finding Your Acquirer Before You Build</p>
         <p class="chapter-desc">Most founders think about the exit at the end. That's exactly backwards. The step-by-step process for researching your acquirer before you write a single line of code — which marketplaces to use, who inside the organization to talk to, why you'll be wrong about the acquirer the first time, and why complete transparency is the most underrated advantage in any acquisition conversation.</p>
