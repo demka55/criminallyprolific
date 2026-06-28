@@ -94,7 +94,7 @@
             <p><label for="sendfox_form_name">First Name: </label><input type="text" id="sendfox_form_name" placeholder="First Name" name="first_name" required /></p>
             <p><label for="sendfox_form_last_name">Last Name: </label><input type="text" id="sendfox_form_last_name" placeholder="Last Name" name="last_name" required /></p>
             <p><label for="sendfox_form_email">Email: </label><input type="email" id="sendfox_form_email" placeholder="Email" name="email" required /></p>
-            <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+            <div style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
             <p><button type="submit">Submit</button></p>
           <p class="sendfox-message"></p></form>
           <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
@@ -748,5 +748,64 @@ function toggleInterviews(){
   }
 }
 </script>
+<script>
+// Custom SendFox form handler — better errors + redirect on success
+(function() {
+  function initSendFoxForms() {
+    var forms = document.querySelectorAll('.sendfox-form');
+    forms.forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+        // Let sendfox's own handler run first (it's already attached)
+        // We patch the XHR response by watching the message div
+        var msgEl = form.querySelector('.sendfox-message');
+        if (!msgEl) return;
+
+        // Poll for sendfox's response and override messaging
+        var observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(m) {
+            m.addedNodes.forEach(function(node) {
+              if (node.nodeType === 1 && node.classList.contains('sendfox-message')) {
+                if (node.classList.contains('success')) {
+                  observer.disconnect();
+                  // Redirect to almost-done page
+                  window.location.href = '/youre-almost-done/';
+                } else if (node.classList.contains('error')) {
+                  observer.disconnect();
+                  var raw = node.innerHTML || '';
+                  var friendly = raw;
+
+                  if (/already|exist|subscribed|duplicate/i.test(raw)) {
+                    friendly = '✓ You\'re already subscribed! Check your inbox for past issues, or <a href="/contact/" style="color:#c62828;text-decoration:underline;">contact us</a> if you\'re not receiving emails.';
+                  } else if (/invalid.*email|email.*invalid/i.test(raw)) {
+                    friendly = 'Please double-check your email address and try again.';
+                  } else if (/recaptcha|robot|bot/i.test(raw)) {
+                    friendly = 'reCAPTCHA verification failed. Please refresh the page and try again.';
+                  } else if (/required|missing|first.name|last.name/i.test(raw)) {
+                    friendly = 'Please fill in all fields — first name, last name, and email.';
+                  } else if (!raw || raw.trim() === '') {
+                    friendly = 'Something went wrong. Please try again in a moment.';
+                  }
+
+                  node.innerHTML = friendly;
+                  node.style.cssText = 'margin-top:12px;font-size:14px;font-weight:600;color:#c62828;line-height:1.5;';
+                }
+              }
+            });
+          });
+        });
+
+        observer.observe(form, { childList: true, subtree: true });
+      }, true); // capture phase — fires before sendfox
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSendFoxForms);
+  } else {
+    initSendFoxForms();
+  }
+})();
+</script>
+
 </body>
 </html>

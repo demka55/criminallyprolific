@@ -227,5 +227,64 @@
     </div>
   </div>
 </footer>
+<script>
+// Custom SendFox form handler — better errors + redirect on success
+(function() {
+  function initSendFoxForms() {
+    var forms = document.querySelectorAll('.sendfox-form');
+    forms.forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+        // Let sendfox's own handler run first (it's already attached)
+        // We patch the XHR response by watching the message div
+        var msgEl = form.querySelector('.sendfox-message');
+        if (!msgEl) return;
+
+        // Poll for sendfox's response and override messaging
+        var observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(m) {
+            m.addedNodes.forEach(function(node) {
+              if (node.nodeType === 1 && node.classList.contains('sendfox-message')) {
+                if (node.classList.contains('success')) {
+                  observer.disconnect();
+                  // Redirect to almost-done page
+                  window.location.href = '/youre-almost-done/';
+                } else if (node.classList.contains('error')) {
+                  observer.disconnect();
+                  var raw = node.innerHTML || '';
+                  var friendly = raw;
+
+                  if (/already|exist|subscribed|duplicate/i.test(raw)) {
+                    friendly = '✓ You\'re already subscribed! Check your inbox for past issues, or <a href="/contact/" style="color:#c62828;text-decoration:underline;">contact us</a> if you\'re not receiving emails.';
+                  } else if (/invalid.*email|email.*invalid/i.test(raw)) {
+                    friendly = 'Please double-check your email address and try again.';
+                  } else if (/recaptcha|robot|bot/i.test(raw)) {
+                    friendly = 'reCAPTCHA verification failed. Please refresh the page and try again.';
+                  } else if (/required|missing|first.name|last.name/i.test(raw)) {
+                    friendly = 'Please fill in all fields — first name, last name, and email.';
+                  } else if (!raw || raw.trim() === '') {
+                    friendly = 'Something went wrong. Please try again in a moment.';
+                  }
+
+                  node.innerHTML = friendly;
+                  node.style.cssText = 'margin-top:12px;font-size:14px;font-weight:600;color:#c62828;line-height:1.5;';
+                }
+              }
+            });
+          });
+        });
+
+        observer.observe(form, { childList: true, subtree: true });
+      }, true); // capture phase — fires before sendfox
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSendFoxForms);
+  } else {
+    initSendFoxForms();
+  }
+})();
+</script>
+
 </body>
 </html>

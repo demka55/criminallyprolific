@@ -23,7 +23,7 @@
   "headline": "How to Do Your Own PR Without a PR Agency (2026)",
   "description": "PR agencies sound great—until you see the price tag and the underwhelming results. Many founders learn the hard way: agencies overcharge, oversell, and often…",
   "datePublished": "2025-09-01",
-  "dateModified": "2026-06-01",
+  "dateModified": "2026-06-07",
   "author": {"@type":"Person","name":"Dmitry Dragilev","url":"https://www.criminallyprolific.com/dmitry/","sameAs":["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]},
   "publisher": {"@type":"Organization","name":"Criminally Prolific","url":"https://www.criminallyprolific.com","logo":{"@type":"ImageObject","url":"https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png"}},
   "image": "https://www.criminallyprolific.com/wp-content/uploads/2022/12/google-search-results.png",
@@ -141,7 +141,7 @@
       <div class="post-meta">
         <span>By <a href="/dmitry/" itemprop="author">Dmitry Dragilev</a></span>
         <span class="meta-sep">·</span>
-        <span>Updated June 2026</span>
+        <span>Updated Jun 7, 2026</span>
         <span class="meta-sep">·</span>
         <span class="read-time">22 min read</span>
         <span class="meta-sep">·</span><span>PR outreach</span>
@@ -151,7 +151,7 @@
 
   <div class="post-layout">
     <div class="post-content">
-      <div class="post-update-banner"><strong>Updated June 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
+      <div class="post-update-banner"><strong>Updated Jun 7, 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
       <div class="post-ai-intro"><p>PR agencies charge $3,000–$10,000/month with no guaranteed results, and 72% of startup founders say they can't afford professional PR. Yet founders who pitch their own stories have a 34% higher response rate from journalists than agency pitches, because personal founder stories are more compelling than polished PR speak (Cision State of the Media, 2024).</p><p>Dmitry Dragilev has done his own PR across 4 company exits without ever hiring a PR agency. He used self-directed outreach to earn coverage in Forbes, TechCrunch, The Next Web, Entrepreneur, and 200+ other outlets. This guide covers the exact process he used.</p></div>
       <div class="post-body" itemprop="articleBody">
 <p>PR agencies sound great—until you see the price tag and the underwhelming results. Many founders learn the hard way: agencies overcharge, oversell, and often miss the mark on telling your story.</p>
@@ -366,7 +366,7 @@ The most damaging mistake is the "spray-and-pray" approach—sending identical p
           <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
           <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
           <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
-          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <div style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
           <p><button type="submit">Join the Newsletter →</button></p>
         <p class="sendfox-message"></p></form>
         <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
@@ -406,7 +406,7 @@ The most damaging mistake is the "spray-and-pray" approach—sending identical p
           <input type="text" name="first_name" placeholder="First Name" required />
           <input type="text" name="last_name" placeholder="Last Name" required />
           <input type="email" name="email" placeholder="Email" required />
-          <div style="position:absolute;left:-5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+          <div style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
           <button type="submit">Get It Free →</button>
           <p class="fine">No spam. Unsubscribe anytime.</p>
         <p class="sendfox-message"></p></form>
@@ -518,6 +518,65 @@ if (tocLinks.length && headings.length) {
     </div>
   </div>
 </footer>
+
+<script>
+// Custom SendFox form handler — better errors + redirect on success
+(function() {
+  function initSendFoxForms() {
+    var forms = document.querySelectorAll('.sendfox-form');
+    forms.forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+        // Let sendfox's own handler run first (it's already attached)
+        // We patch the XHR response by watching the message div
+        var msgEl = form.querySelector('.sendfox-message');
+        if (!msgEl) return;
+
+        // Poll for sendfox's response and override messaging
+        var observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(m) {
+            m.addedNodes.forEach(function(node) {
+              if (node.nodeType === 1 && node.classList.contains('sendfox-message')) {
+                if (node.classList.contains('success')) {
+                  observer.disconnect();
+                  // Redirect to almost-done page
+                  window.location.href = '/youre-almost-done/';
+                } else if (node.classList.contains('error')) {
+                  observer.disconnect();
+                  var raw = node.innerHTML || '';
+                  var friendly = raw;
+
+                  if (/already|exist|subscribed|duplicate/i.test(raw)) {
+                    friendly = '✓ You\'re already subscribed! Check your inbox for past issues, or <a href="/contact/" style="color:#c62828;text-decoration:underline;">contact us</a> if you\'re not receiving emails.';
+                  } else if (/invalid.*email|email.*invalid/i.test(raw)) {
+                    friendly = 'Please double-check your email address and try again.';
+                  } else if (/recaptcha|robot|bot/i.test(raw)) {
+                    friendly = 'reCAPTCHA verification failed. Please refresh the page and try again.';
+                  } else if (/required|missing|first.name|last.name/i.test(raw)) {
+                    friendly = 'Please fill in all fields — first name, last name, and email.';
+                  } else if (!raw || raw.trim() === '') {
+                    friendly = 'Something went wrong. Please try again in a moment.';
+                  }
+
+                  node.innerHTML = friendly;
+                  node.style.cssText = 'margin-top:12px;font-size:14px;font-weight:600;color:#c62828;line-height:1.5;';
+                }
+              }
+            });
+          });
+        });
+
+        observer.observe(form, { childList: true, subtree: true });
+      }, true); // capture phase — fires before sendfox
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSendFoxForms);
+  } else {
+    initSendFoxForms();
+  }
+})();
+</script>
 
 </body>
 </html>
