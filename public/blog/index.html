@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blog — PR, SEO & Growth by Dmitry Dragilev</title>
+  <meta name="description" content="1,400+ articles published. The best of Dmitry Dragilev's writing on PR, cold email, SEO, and growth hacking — all updated for 2026.">
+  <link rel="canonical" href="https://www.criminallyprolific.com/blog/">
+  <link rel="icon" type="image/png" href="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <style>
+    .blog-hero{padding:64px 0 48px;border-bottom:1.5px solid #eee;}
+    .blog-hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;}
+    .blog-hero h1{font-size:56px;font-weight:900;color:#111;letter-spacing:-2px;margin-bottom:12px;}
+    .blog-hero p{font-size:18px;color:#555;max-width:560px;line-height:1.65;}
+
+    .blog-filters{border-bottom:1.5px solid #eee;background:#fff;padding:0;position:sticky;top:64px;z-index:10;}
+    .blog-filters-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:flex;gap:0;overflow-x:auto;}
+    .cat-btn{padding:16px 20px;font-size:13px;font-weight:700;color:#888;background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;font-family:inherit;transition:.15s all;}
+    .cat-btn:hover,.cat-btn.active{color:#0033ff;border-bottom-color:#0033ff;}
+
+    .blog-grid-wrap{max-width:1100px;margin:0 auto;padding:48px 40px 80px;}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+
+    .blog-card{display:flex;flex-direction:column;border:1.5px solid #e8e8e8;text-decoration:none;transition:.2s all;background:#fff;}
+    .blog-card:hover{border-color:#0033ff;box-shadow:0 4px 20px rgba(0,51,255,.08);transform:translateY(-2px);}
+    .blog-card.hidden{display:none;}
+    .blog-card-thumb{width:100%;height:200px;overflow:hidden;background:#f5f5f5;flex-shrink:0;}
+    .blog-card-img{width:100%;height:100%;object-fit:cover;display:block;}
+    .blog-card-no-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f0f4ff;}
+    .blog-card-no-img span{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0033ff;}
+    .blog-card-body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1;}
+    .blog-card-cat{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0033ff;margin-bottom:8px;display:block;}
+    .blog-card-title{font-size:16px;font-weight:800;color:#111;line-height:1.35;margin-bottom:10px;letter-spacing:-.2px;}
+    .blog-card:hover .blog-card-title{color:#0033ff;}
+    .blog-card-excerpt{font-size:13px;color:#666;line-height:1.65;flex:1;margin-bottom:14px;}
+    .blog-card-date{font-size:11px;font-weight:700;color:#0033ff;letter-spacing:.5px;}
+
+    .blog-count{font-size:13px;color:#999;margin-bottom:24px;}
+    .blog-count span{font-weight:700;color:#111;}
+
+    @media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:580px){
+      .blog-grid{grid-template-columns:1fr;}
+      .blog-grid-wrap,.blog-hero-inner{padding-left:24px;padding-right:24px;}
+      .blog-hero h1{font-size:40px;}
+      .blog-filters-inner{padding-left:16px;}
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="/" class="nav-logo"><img src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png" alt=""> Criminally Prolific</a>
+  <div class="nav-links">
+    <a href="/dmitry/">About</a><a href="/#interviews">Interviews</a><a href="/book/">Book</a>
+    <a href="/blog/" style="color:#0033ff;">Blog</a>
+    <a href="/testimonials/">Testimonials</a><a href="/press/">Press</a><a href="/contact/">Contact</a>
+    <a href="/signup/" class="nav-cta">Free Newsletter</a>
+  </div>
+</nav>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <span class="eyebrow">Articles</span>
+    <h1>PR, SEO & Growth.<br>All updated for 2026.</h1>
+    <p>31 in-depth guides on getting press, ranking on Google, writing cold emails that convert, and growing without paid ads.</p>
+  </div>
+</section>
+
+<div class="blog-filters">
+  <div class="blog-filters-inner">
+    <button class="cat-btn active" data-filter="all">All</button><button class="cat-btn" data-filter="Cold Email">Cold Email</button><button class="cat-btn" data-filter="Email Pitches">Email Pitches</button><button class="cat-btn" data-filter="PR strategy">PR strategy</button><button class="cat-btn" data-filter="PR tactics">PR tactics</button><button class="cat-btn" data-filter="SEO">SEO</button><button class="cat-btn" data-filter="PR outreach">PR outreach</button><button class="cat-btn" data-filter="Growth Hacking">Growth Hacking</button>
+  </div>
+</div>
+
+<div class="blog-grid-wrap">
+  <p class="blog-count"><span id="post-count">31</span> articles</p>
+  <div class="blog-grid" id="blog-grid">
+    
+    <a class="blog-card" href="/cold-email-example/" data-cat="Cold Email">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2025/03/unnamed.png" alt="30 Best Cold Email Examples & Proven Tips (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Cold Email</span>
+        <h2 class="blog-card-title">30 Best Cold Email Examples & Proven Tips (2026)</h2>
+        <p class="blog-card-excerpt">Getting replies to cold emails in 2025 is brutal. AI floods inboxes with generic outreach. People delete emails before reading them. The…</p>
+        <span class="blog-card-date">Oct 2025</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/sales-email-sequences/" data-cat="Cold Email">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2025/03/Neil-Patel-blog-post.png" alt="16 Sales Email Sequences You Should Steal (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Cold Email</span>
+        <h2 class="blog-card-title">16 Sales Email Sequences You Should Steal (2026)</h2>
+        <p class="blog-card-excerpt">You built something incredible—a product, a vision. Now comes the hardest part: selling it. Here’s the good news. It’s 2025, and sales no…</p>
+        <span class="blog-card-date">Oct 2025</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/media-relations-strategy/" data-cat="PR strategy">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2022/05/template.png" alt="Media Relations Strategy in 2026: 11 Winning Tactics" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR strategy</span>
+        <h2 class="blog-card-title">Media Relations Strategy in 2026: 11 Winning Tactics</h2>
+        <p class="blog-card-excerpt">The average press release gets ignored by 99% of journalists. But the 1% that breaks through? They generate millions in free publicity,…</p>
+        <span class="blog-card-date">Oct 2025</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/do-your-own-pr/" data-cat="PR outreach">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2022/12/google-search-results.png" alt="How to Do Your Own PR Without a PR Agency (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR outreach</span>
+        <h2 class="blog-card-title">How to Do Your Own PR Without a PR Agency (2026)</h2>
+        <p class="blog-card-excerpt">PR agencies sound great—until you see the price tag and the underwhelming results. Many founders learn the hard way: agencies overcharge,…</p>
+        <span class="blog-card-date">Sep 2025</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/business-email-templates/" data-cat="Cold Email">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2023/01/Statistas-Thoughtful-Customer-Centric-Email.png" alt="27 Business Email Templates That Win Clients (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Cold Email</span>
+        <h2 class="blog-card-title">27 Business Email Templates That Win Clients (2026)</h2>
+        <p class="blog-card-excerpt">Subject: Your follow-up meeting tomorrow - Open rate: 67% Subject: Meeting tomorrow - Open rate: 23% Same email. Different subject line.…</p>
+        <span class="blog-card-date">Sep 2025</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/press-release-email/" data-cat="PR outreach">
+      <div class="blog-card-thumb"><div class="blog-card-img blog-card-no-img"><span>PR outreach</span></div></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR outreach</span>
+        <h2 class="blog-card-title">How to Write a Press Release Email in 2026</h2>
+        <p class="blog-card-excerpt">Your press release is finally done. You spent hours trying to make it perfect. And now it’s ready. But your work isn’t finished! You now…</p>
+        <span class="blog-card-date">Sep 2025</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/low-search-volume-keywords/" data-cat="Growth Hacking">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2021/02/2-keywords-by-search-volume.png" alt="How to Win Big with Low-Volume Keywords (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Growth Hacking</span>
+        <h2 class="blog-card-title">How to Win Big with Low-Volume Keywords (2026)</h2>
+        <p class="blog-card-excerpt">With AI dominating search results and zero-click searches on the rise, many marketers are questioning whether traditional SEO still works.…</p>
+        <span class="blog-card-date">Sep 2025</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/how-to-ask-for-business-in-an-email/" data-cat="Cold Email">
+      <div class="blog-card-thumb"><div class="blog-card-img blog-card-no-img"><span>Cold Email</span></div></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Cold Email</span>
+        <h2 class="blog-card-title">How to Ask for Business in an Email (2026 Templates)</h2>
+        <p class="blog-card-excerpt">Winning new clients often starts with the right words in the proper format. That’s why Business Email Templates are critically important.…</p>
+        <span class="blog-card-date">Sep 2025</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/marketing-communications-strategy/" data-cat="PR outreach">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2018/04/madlibs_final.png" alt="Marketing Communications Strategy in 2026" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR outreach</span>
+        <h2 class="blog-card-title">Marketing Communications Strategy in 2026</h2>
+        <p class="blog-card-excerpt">Marketing communications in 2025 is no longer just about press releases and ad placements—it’s about real-time, AI-enhanced conversations…</p>
+        <span class="blog-card-date">Mar 2025</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/saas-pr/" data-cat="PR outreach">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2020/07/SaaS-PR12.png" alt="SaaS PR in 2026: How to Build the Best PR Strategy" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR outreach</span>
+        <h2 class="blog-card-title">SaaS PR in 2026: How to Build the Best PR Strategy</h2>
+        <p class="blog-card-excerpt">As a SaaS business owner, you want an affordable - yet effective - PR plan. You know the value of a good PR strategy. It helps you get…</p>
+        <span class="blog-card-date">Jan 2023</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/media-list-examples/" data-cat="PR outreach">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2019/03/media-list-3.png" alt="Media List Examples in 2026: Build a List That Gets Press" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR outreach</span>
+        <h2 class="blog-card-title">Media List Examples in 2026: Build a List That Gets Press</h2>
+        <p class="blog-card-excerpt">What is a Media List? A media list is a document with details of specific journalists, bloggers, writers, editors and influencers who write…</p>
+        <span class="blog-card-date">Mar 2022</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/email-signoffs/" data-cat="Cold Email">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2016/06/email-endings.png" alt="75+ Best Email Sign-offs to Make an Impression (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Cold Email</span>
+        <h2 class="blog-card-title">75+ Best Email Sign-offs to Make an Impression (2026)</h2>
+        <p class="blog-card-excerpt">Let me ask you: Which email sign off do you use? Do you say 'Cheers' or 'Thanks?' Pffff. Boooring! You might say: "Who cares?" But think…</p>
+        <span class="blog-card-date">Mar 2022</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/company-boilerplate/" data-cat="PR outreach">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2018/02/apple1.png" alt="How to Write a Company Boilerplate in 2026 [Templates]" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR outreach</span>
+        <h2 class="blog-card-title">How to Write a Company Boilerplate in 2026 [Templates]</h2>
+        <p class="blog-card-excerpt">What is a boilerplate? A boilerplate is a standardized last paragraph that is inserted in all the press releases giving an outline of the…</p>
+        <span class="blog-card-date">Feb 2022</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/email-signatures/" data-cat="Cold Email">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2021/04/personal-email-signature-template-by-wisestamp-user.jpeg" alt="25 Stunning Email Signature Examples (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Cold Email</span>
+        <h2 class="blog-card-title">25 Stunning Email Signature Examples (2026)</h2>
+        <p class="blog-card-excerpt">Ping-ping-ping Hear that? That’s the sound of stale emails getting dropped into inboxes. Boring, right? Aaah! Ooooh! WOW! And that? That's…</p>
+        <span class="blog-card-date">Jun 2021</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/email-subject-lines/" data-cat="Cold Email">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2017/07/email-subject-line-response-short-sweet.png" alt="100 Cold Email Subject Lines That Guarantee a Response (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Cold Email</span>
+        <h2 class="blog-card-title">100 Cold Email Subject Lines That Guarantee a Response (2026)</h2>
+        <p class="blog-card-excerpt">One of the challenges email marketers face today is making sure their messages are actually being read. Emails are an integral part of…</p>
+        <span class="blog-card-date">May 2021</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/ranking-high-volume-keyword/" data-cat="SEO">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2017/05/sales-management-results.png" alt="How to Rank for Tough Keywords in 90 Days (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">SEO</span>
+        <h2 class="blog-card-title">How to Rank for Tough Keywords in 90 Days (2026)</h2>
+        <p class="blog-card-excerpt">Like you, I want to know how to rank higher in Google's search engine. And, just like you, I'm skeptical of claims that read: "Rank #1 for…</p>
+        <span class="blog-card-date">Apr 2021</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/how-to-pitch-journalists/" data-cat="PR outreach">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2017/03/collaboration.jpg" alt="How to Pitch Journalists in 2026: 5 Templates That Get Responses" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR outreach</span>
+        <h2 class="blog-card-title">How to Pitch Journalists in 2026: 5 Templates That Get Responses</h2>
+        <p class="blog-card-excerpt">You can waste your time scrolling through every article about how to pitch journalists like a pro, or … Trust me when I say: I just scoured…</p>
+        <span class="blog-card-date">Mar 2021</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/waste-money-on-facebook-ads/" data-cat="Growth Hacking">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2014/07/save-money-Facebook-ads.png" alt="Are Facebook Ads Worth It in 2026? (Data-Backed Answer)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Growth Hacking</span>
+        <h2 class="blog-card-title">Are Facebook Ads Worth It in 2026? (Data-Backed Answer)</h2>
+        <p class="blog-card-excerpt">Running a Facebook (FB) ad campaign is so damn confusing. Are you including and excluding the right demographics? Are you targeting the…</p>
+        <span class="blog-card-date">Jan 2021</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/optimize-for-google-rankbrain/" data-cat="SEO">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2016/11/01-freshness-last-updated.png" alt="How to Optimize for Google RankBrain in 2026" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">SEO</span>
+        <h2 class="blog-card-title">How to Optimize for Google RankBrain in 2026</h2>
+        <p class="blog-card-excerpt">In early 2015 Google launched something called Google RankBrain, it is the third most important factor in the Google ranking algorithm. If…</p>
+        <span class="blog-card-date">Jan 2021</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/find-anyones-email/" data-cat="Cold Email">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2015/12/cant-find-email.png" alt="Find Anyone's Email Address in 2026: 15 Proven Ways" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Cold Email</span>
+        <h2 class="blog-card-title">Find Anyone's Email Address in 2026: 15 Proven Ways</h2>
+        <p class="blog-card-excerpt">Want to find anyones email address for free by name alone? I've been harping on and on about the importance of email in growing your…</p>
+        <span class="blog-card-date">Dec 2020</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/pr-pitch-angles/" data-cat="PR outreach">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2016/03/press-opportunities-1.png" alt="PR Pitch Angles That Work in 2026: 5 Unusual Approaches" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR outreach</span>
+        <h2 class="blog-card-title">PR Pitch Angles That Work in 2026: 5 Unusual Approaches</h2>
+        <p class="blog-card-excerpt">I answer about ~100 emails a day from our customers. I try to reply to as many as I can myself since I love to help folks. The most common…</p>
+        <span class="blog-card-date">Nov 2020</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/email-pitch-tips/" data-cat="Cold Email">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2016/07/beauty-news.jpg" alt="40 Best Cold Email Pitch Tips to Get Press in 2026" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Cold Email</span>
+        <h2 class="blog-card-title">40 Best Cold Email Pitch Tips to Get Press in 2026</h2>
+        <p class="blog-card-excerpt">If you're a startup founder, then I know how you feel: You want to grow your company...fast! I'm the founder of several successful startups…</p>
+        <span class="blog-card-date">Nov 2020</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/grow-email-list/" data-cat="Growth Hacking">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2015/09/grow-revenue-by-increasing-email-list.png" alt="How to Grow Your Email List 3x Every Month (2026 Methods)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Growth Hacking</span>
+        <h2 class="blog-card-title">How to Grow Your Email List 3x Every Month (2026 Methods)</h2>
+        <p class="blog-card-excerpt">This very blog you are reading right now was launched on January 1, 2015. In the first 9 months of 2015 I used a number of strategies to…</p>
+        <span class="blog-card-date">Sep 2020</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/50-growth-hacking-tools/" data-cat="Growth Hacking">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2020/08/4e5b3faa9236a7914fa542814afa820a.png" alt="50 Best Growth Hacking Tools for Marketers (2026 Update)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Growth Hacking</span>
+        <h2 class="blog-card-title">50 Best Growth Hacking Tools for Marketers (2026 Update)</h2>
+        <p class="blog-card-excerpt">Young startups need to grow 30% year over year or they'll die, while large corporations are happy with 5% annual growth. To get such…</p>
+        <span class="blog-card-date">Aug 2020</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/pr-for-startups/" data-cat="PR outreach">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2015/08/image01.png" alt="PR for Startups in 2026: How to Get Press Without a PR Agency" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">PR outreach</span>
+        <h2 class="blog-card-title">PR for Startups in 2026: How to Get Press Without a PR Agency</h2>
+        <p class="blog-card-excerpt">How do you do PR for startups? For starters, you don't hire an expensive public relations agency. They cost you a ton of money - more than…</p>
+        <span class="blog-card-date">Apr 2020</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/convert-website-visitors/" data-cat="Growth Hacking">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2014/03/Live-Leads-1.png" alt="How to Convert Website Visitors Who Don't Fill Out Forms (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Growth Hacking</span>
+        <h2 class="blog-card-title">How to Convert Website Visitors Who Don't Fill Out Forms (2026)</h2>
+        <p class="blog-card-excerpt">If you are running a SaaS or consulting business which relies on your prospective customers to fill out a contact form, you know that about…</p>
+        <span class="blog-card-date">Mar 2020</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/pitch-sell-your-app/" data-cat="Growth Hacking">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2014/06/sold-app.png" alt="How to Pitch & Sell Your App Before Writing a Line of Code (2026)" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Growth Hacking</span>
+        <h2 class="blog-card-title">How to Pitch & Sell Your App Before Writing a Line of Code (2026)</h2>
+        <p class="blog-card-excerpt">How many of you have seen this in your Google Analytics dashboard? Isn't it depressing? If you're reading my blog I'm sure you've seen…</p>
+        <span class="blog-card-date">Jun 2019</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/how-to-rank-higher-on-google/" data-cat="SEO">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2015/03/growth-hacking.png" alt="How to Rank Higher on Google in 2026: Link Building Study" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">SEO</span>
+        <h2 class="blog-card-title">How to Rank Higher on Google in 2026: Link Building Study</h2>
+        <p class="blog-card-excerpt">Want to learn how to rank higher on Google? Of course you do! Not too long ago I wrote an article titled 50 Growth Hacking Tools for…</p>
+        <span class="blog-card-date">Mar 2019</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/gmail-mail-merge/" data-cat="Growth Hacking">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2015/02/coldmail.jpg" alt="Gmail Mail Merge in 2026: Send Hundreds of Personalized Emails" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Growth Hacking</span>
+        <h2 class="blog-card-title">Gmail Mail Merge in 2026: Send Hundreds of Personalized Emails</h2>
+        <p class="blog-card-excerpt">Just how useful is Gmail mail merge? Here's a little story: When Sapph first reached out to me I immediately clicked on her email (out of…</p>
+        <span class="blog-card-date">Feb 2019</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/growth-hacking/" data-cat="Growth Hacking">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2015/07/research-articles-keywords.png" alt="Growth Hacking in 2026: 10 Actionable Tactics With Proven Results" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Growth Hacking</span>
+        <h2 class="blog-card-title">Growth Hacking in 2026: 10 Actionable Tactics With Proven Results</h2>
+        <p class="blog-card-excerpt">When people ask me what I do I say that I find unconventional, out of the box, scalable and repeatable ways to gain new users, I say: use…</p>
+        <span class="blog-card-date">Jul 2015</span>
+      </div>
+    </a>
+    <a class="blog-card" href="/grow-email-subscribers/" data-cat="Growth Hacking">
+      <div class="blog-card-thumb"><img src="/wp-content/uploads/2015/04/reached-goal-2500-subscribers.png" alt="How to Grow Email Subscribers Fast: From 700 to 3,000 in 2 Months" class="blog-card-img" loading="lazy"></div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Growth Hacking</span>
+        <h2 class="blog-card-title">How to Grow Email Subscribers Fast: From 700 to 3,000 in 2 Months</h2>
+        <p class="blog-card-excerpt">When I started building JustReachOut almost a year ago I knew that my email list for my blog would be a big part of its success or failure.…</p>
+        <span class="blog-card-date">Apr 2015</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<script>
+const btns = document.querySelectorAll('.cat-btn');
+const cards = document.querySelectorAll('.blog-card');
+const countEl = document.getElementById('post-count');
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    let visible = 0;
+    cards.forEach(card => {
+      const show = filter === 'all' || card.dataset.cat === filter;
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    countEl.textContent = visible;
+  });
+});
+</script>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <!-- Col 1: About -->
+    <div class="footer-about">
+      <div class="footer-photo-row">
+        <img src="/assets/img/dmitry.jpg" alt="Dmitry Dragilev" class="footer-photo">
+        <a href="/" class="footer-logo">Criminally Prolific</a>
+      </div>
+      <p class="footer-bio">I'm Dmitry Dragilev — multi-exit founder who sold 4 companies to Google, Semrush, and Adobe working 3 hours a day. I write about building businesses for lifestyle freedom, not a golden cage.</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dmitrydr/" target="_blank">LinkedIn</a>
+        <a href="/signup/">Newsletter</a>
+        <a href="/book/">New Book</a>
+      </div>
+    </div>
+    <!-- Col 2: Companies -->
+    <div class="footer-col">
+      <h4>Companies</h4>
+      <ul>
+        <li><a href="https://www.semrush.com/apps/llm-gap-analyzer/" target="_blank">LLM Gap Analyzer</a></li>
+        <li><a href="https://www.semrush.com/apps/youtube-gap-analyzer/" target="_blank">YouTube Gap Analyzer</a></li>
+        <li><a href="https://irsresolutionservice.com/" target="_blank">IRS Resolution Service</a></li>
+        <li><a href="https://www.semrush.com/apps/serp-gap-analyzer/" target="_blank">SERP Gap Analyzer <span class="acq-tag">— Acquired</span></a></li>
+        <li><a href="https://justreachout.io" target="_blank">JustReachOut <span class="acq-tag">— Acquired</span></a></li>
+        <li><a href="https://smallbiz.tools" target="_blank">Smallbiz.Tools <span class="acq-tag">— Acquired</span></a></li>
+        <li><a href="https://thenextweb.com/news/took-startup-0-40m-pageviews-got-acquired-google" target="_blank">Polar Polls <span class="acq-tag">— Acquired by Google</span></a></li>
+      </ul>
+    </div>
+    <!-- Col 3: PR & Growth -->
+    <div class="footer-col">
+      <h4>PR &amp; Growth</h4>
+      <ul>
+        <li><a href="/how-to-pitch-journalists/">How to Pitch Journalists</a></li>
+        <li><a href="/pr-pitch-angles/">PR Pitch Angles</a></li>
+        <li><a href="/pr-for-startups/">PR for Startups</a></li>
+        <li><a href="/saas-pr/">SaaS PR Guide</a></li>
+        <li><a href="/do-your-own-pr/">Do Your Own PR</a></li>
+        <li><a href="/media-relations-strategy/">Media Relations Strategy</a></li>
+        <li><a href="/marketing-communications-strategy/">Marketing Comms Strategy</a></li>
+        <li><a href="/media-list-examples/">Media List Examples</a></li>
+        <li><a href="/company-boilerplate/">Company Boilerplate</a></li>
+        <li><a href="/growth-hacking/">Growth Hacking</a></li>
+        <li><a href="/50-growth-hacking-tools/">50 Growth Hacking Tools</a></li>
+        <li><a href="/press-release-email/">Press Release Email</a></li>
+        <li><a href="/pitch-sell-your-app/">How to Pitch &amp; Sell Your App</a></li>
+        <li><a href="/waste-money-on-facebook-ads/">Stop Wasting Money on Facebook Ads</a></li>
+        <li><a href="/convert-website-visitors/">Convert Website Visitors</a></li>
+      </ul>
+    </div>
+    <!-- Col 4: Email & SEO -->
+    <div class="footer-col">
+      <h4>Email &amp; SEO</h4>
+      <ul>
+        <li><a href="/cold-email-example/">Cold Email Examples</a></li>
+        <li><a href="/email-pitch-tips/">Email Pitch Tips</a></li>
+        <li><a href="/business-email-templates/">Business Email Templates</a></li>
+        <li><a href="/sales-email-sequences/">Sales Email Sequences</a></li>
+        <li><a href="/gmail-mail-merge/">Gmail Mail Merge</a></li>
+        <li><a href="/find-anyones-email/">Find Anyone's Email</a></li>
+        <li><a href="/email-signatures/">Email Signatures</a></li>
+        <li><a href="/email-signoffs/">Email Sign-offs</a></li>
+        <li><a href="/how-to-ask-for-business-in-an-email/">How to Ask for Business</a></li>
+        <li><a href="/how-to-rank-higher-on-google/">Rank Higher on Google</a></li>
+        <li><a href="/optimize-for-google-rankbrain/">Optimize for RankBrain</a></li>
+        <li><a href="/ranking-high-volume-keyword/">High-Volume Keywords</a></li>
+        <li><a href="/low-search-volume-keywords/">Low Search Volume Keywords</a></li>
+        <li><a href="/grow-email-list/">Grow Your Email List</a></li>
+        <li><a href="/grow-email-subscribers/">Grow Email Subscribers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">© 2026 Dmitry Dragilev · Criminally Prolific. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-of-use/">Terms of Use</a>
+        <a href="/contact/">Contact</a>
+        <a href="/sitemap/">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
