@@ -3,75 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>About Dmitry Dragilev — Criminally Prolific</title>
-  <meta name="description" content="Dmitry Dragilev is a solo SaaS founder acquired 4x by Google, Semrush & Adobe. Building businesses on 3 hours a day for 12 years.">
+  <title>The Getaway Car — Dmitry Dragilev</title>
+  <meta name="description" content="The Getaway Car: How a Soviet Immigrant Said No to Google, Sold Four Companies, and Reclaimed a 3-Hour Workday. A book by Dmitry Dragilev.">
   <link rel="icon" type="image/png" href="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png">
   <link rel="shortcut icon" href="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/dist/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/main.css">
   <style>
-    /* ── ABOUT PAGE SPECIFIC ── */
-    .about-hero{padding:80px 0 60px;border-bottom:1.5px solid #eee;}
-    .about-hero-inner{display:grid;grid-template-columns:1fr 420px;gap:72px;align-items:center;max-width:1100px;margin:0 auto;padding:0 40px;}
-    .about-kicker{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0033ff;margin-bottom:16px;display:block;}
-    .about-h1{font-size:56px;font-weight:900;color:#111;line-height:1.0;letter-spacing:-2px;margin-bottom:24px;}
-    .about-lead{font-size:18px;color:#444;line-height:1.75;margin-bottom:32px;}
-    .about-stats{display:flex;gap:32px;flex-wrap:wrap;}
-    .about-stat-num{font-size:36px;font-weight:900;color:#111;letter-spacing:-1px;display:block;line-height:1;}
-    .about-stat-label{font-size:12px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-top:4px;display:block;}
-    .about-photo-wrap{position:relative;}
-    .about-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block;}
-    .about-photo-badge{position:absolute;bottom:24px;left:24px;background:#0033ff;color:#fff;padding:12px 20px;font-size:13px;font-weight:700;line-height:1.4;}
+    /* ── BOOK HERO ── */
+    .book-hero{background:#fff;padding:80px 0;border-bottom:1.5px solid #eee;}
+    .book-hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:340px 1fr;gap:72px;align-items:center;}
+    .book-cover-wrap{position:relative;flex-shrink:0;}
+    .book-cover-img{width:100%;display:block;box-shadow:0 40px 80px rgba(0,0,0,.6);}
+    .book-cover-placeholder{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,#0033ff 0%,#001a80 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;box-shadow:0 40px 80px rgba(0,0,0,.6);}
+    .book-cover-placeholder .bcp-title{font-size:28px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-1px;margin-bottom:16px;}
+    .book-cover-placeholder .bcp-sub{font-size:12px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:24px;}
+    .book-cover-placeholder .bcp-author{font-size:14px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:2px;text-transform:uppercase;}
+    .book-pub{display:flex;gap:16px;align-items:center;margin-top:20px;}
+    .book-pub span{font-size:11px;color:#aaa;letter-spacing:1px;text-transform:uppercase;}
+    .book-pub a{font-size:13px;font-weight:600;color:#0033ff;transition:color .15s;}
+    .book-pub a:hover{color:#0022cc;}
 
-    /* ── TIMELINE ── */
-    .timeline{padding:80px 0;}
-    .timeline-inner{max-width:860px;margin:0 auto;padding:0 40px;}
-    .timeline-title{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0033ff;margin-bottom:48px;display:block;}
-    .timeline-item{display:grid;grid-template-columns:80px 1fr;gap:32px;padding-bottom:56px;position:relative;}
-    .timeline-item:not(:last-child)::after{content:'';position:absolute;left:39px;top:40px;bottom:0;width:1px;background:#e8e8e8;}
-    .timeline-year{font-size:13px;font-weight:700;color:#0033ff;padding-top:6px;text-align:right;letter-spacing:.5px;}
-    .timeline-dot{position:absolute;left:35px;top:6px;width:9px;height:9px;border-radius:50%;background:#0033ff;border:2px solid #fff;box-shadow:0 0 0 1px #0033ff;}
-    .timeline-body{}
-    .timeline-company{font-size:22px;font-weight:900;color:#111;letter-spacing:-.5px;margin-bottom:8px;}
-    .timeline-acq{display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:99px;margin-bottom:14px;}
-    .timeline-acq img{height:14px;width:auto;filter:brightness(0) invert(1);}
-    .timeline-desc{font-size:16px;color:#444;line-height:1.75;}
-    .timeline-desc a{color:#0033ff;border-bottom:1px solid rgba(0,51,255,.3);}
-    .timeline-desc a:hover{border-color:#0033ff;}
+    .book-text{color:#111;}
+    .book-kicker{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0033ff;margin-bottom:20px;display:block;}
+    .book-h1{font-size:52px;font-weight:900;color:#111;line-height:1.0;letter-spacing:-2px;margin-bottom:8px;}
+    .book-h1 em{font-style:normal;color:#0033ff;}
+    .book-sub{font-size:16px;color:#888;line-height:1.5;margin-bottom:28px;font-style:italic;}
+    .book-hook{font-size:19px;color:#444;line-height:1.75;margin-bottom:32px;max-width:560px;}
+    .book-hook strong{color:#111;}
+    .book-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn-book-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#0033ff;color:#fff;font-size:15px;font-weight:700;border-radius:4px;transition:background .15s;}
+    .btn-book-primary:hover{background:#0022cc;}
+    .btn-book-secondary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:transparent;color:#111;font-size:15px;font-weight:700;border:2px solid #ddd;border-radius:4px;transition:all .15s;}
+    .btn-book-secondary:hover{border-color:#111;}
 
-    /* ── PUBLISHING & CLIENTS ── */
-    .about-press{background:#f8f8f8;padding:72px 0;border-top:1.5px solid #eee;border-bottom:1.5px solid #eee;}
-    .about-press-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
-    .about-press h3{font-size:28px;font-weight:900;color:#111;letter-spacing:-.5px;margin-bottom:16px;}
-    .about-press p{font-size:15px;color:#555;line-height:1.75;margin-bottom:20px;}
-    .pub-logos{display:flex;flex-wrap:wrap;gap:20px;align-items:center;margin-top:8px;}
-    .pub-logos span{font-size:13px;font-weight:700;color:#888;letter-spacing:.5px;}
-    .clients-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
-    .client-tag{font-size:13px;font-weight:600;color:#333;background:#fff;border:1.5px solid #e8e8e8;padding:6px 14px;border-radius:4px;}
+    /* ── PULLQUOTE STRIP ── */
+    .book-pullquote{background:#0033ff;padding:40px 0;}
+    .book-pullquote-inner{max-width:860px;margin:0 auto;padding:0 40px;text-align:center;}
+    .book-pullquote blockquote{font-size:24px;font-weight:800;color:#fff;line-height:1.4;letter-spacing:-.5px;}
+    .book-pullquote cite{display:block;margin-top:12px;font-size:13px;color:rgba(255,255,255,.65);font-style:normal;letter-spacing:1px;text-transform:uppercase;}
 
-    /* ── CONTACT CTA ── */
-    .about-cta{padding:80px 0;text-align:center;}
-    .about-cta h2{font-size:44px;font-weight:900;color:#111;letter-spacing:-1.5px;margin-bottom:16px;}
-    .about-cta p{font-size:17px;color:#555;margin-bottom:32px;}
-    .about-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#0033ff;color:#fff;font-size:15px;font-weight:700;border-radius:4px;transition:background .15s;}
-    .btn-primary:hover{background:#0022cc;}
-    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#fff;color:#111;font-size:15px;font-weight:700;border:2px solid #111;border-radius:4px;transition:all .15s;}
-    .btn-secondary:hover{background:#111;color:#fff;}
+    /* ── WHAT THIS BOOK IS ── */
+    .book-about{padding:80px 0;border-bottom:1.5px solid #eee;}
+    .book-about-inner{max-width:860px;margin:0 auto;padding:0 40px;}
+    .book-about h2{font-size:40px;font-weight:900;color:#111;letter-spacing:-1.5px;margin-bottom:32px;line-height:1.1;}
+    .book-about p{font-size:17px;color:#444;line-height:1.8;margin-bottom:20px;}
+    .book-about p strong{color:#111;}
+    .book-about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
+    .book-about-card{background:#f8f8f8;border-left:4px solid #0033ff;padding:24px 28px;}
+    .book-about-card h4{font-size:14px;font-weight:800;color:#111;letter-spacing:-.2px;margin-bottom:8px;}
+    .book-about-card p{font-size:14px;color:#555;line-height:1.65;margin:0;}
+
+    /* ── CHAPTERS ── */
+    .book-chapters{padding:80px 0;background:#fafafa;border-top:1.5px solid #eee;border-bottom:1.5px solid #eee;}
+    .book-chapters-inner{max-width:860px;margin:0 auto;padding:0 40px;}
+    .book-chapters h2{font-size:40px;font-weight:900;color:#111;letter-spacing:-1.5px;margin-bottom:48px;}
+    .chapter-item{display:grid;grid-template-columns:48px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid #e8e8e8;}
+    .chapter-item:last-child{border-bottom:none;}
+    .chapter-num{font-size:11px;font-weight:700;color:#0033ff;letter-spacing:2px;text-transform:uppercase;padding-top:4px;}
+    .chapter-title{font-size:18px;font-weight:800;color:#111;letter-spacing:-.3px;margin-bottom:6px;}
+    .chapter-desc{font-size:14px;color:#666;line-height:1.65;}
+
+    /* ── AUTHOR STRIP ── */
+    .book-author{padding:80px 0;border-bottom:1.5px solid #eee;}
+    .book-author-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:start;}
+    .book-author-photo{width:100%;border-radius:2px;display:block;}
+    .book-author h2{font-size:36px;font-weight:900;color:#111;letter-spacing:-1px;margin-bottom:20px;}
+    .book-author p{font-size:16px;color:#444;line-height:1.8;margin-bottom:16px;}
+    .book-author-stats{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap;}
+    .book-author-stat span:first-child{font-size:28px;font-weight:900;color:#111;letter-spacing:-1px;display:block;}
+    .book-author-stat span:last-child{font-size:11px;color:#888;letter-spacing:1px;text-transform:uppercase;}
+
+    /* ── FOREWORD EXCERPT ── */
+    .book-excerpt{background:#f5f8ff;padding:80px 0;border-top:1.5px solid #eee;border-bottom:1.5px solid #eee;}
+    .book-excerpt-inner{max-width:760px;margin:0 auto;padding:0 40px;}
+    .book-excerpt .eyebrow{color:#0033ff;margin-bottom:24px;}
+    .book-excerpt h2{font-size:36px;font-weight:900;color:#111;letter-spacing:-1px;margin-bottom:32px;}
+    .book-excerpt-text{font-size:17px;color:#444;line-height:1.85;}
+    .book-excerpt-text p{margin-bottom:24px;}
+    .book-excerpt-text strong{color:#111;}
+    .book-excerpt-text em{color:#0033ff;font-style:normal;}
+
+    /* ── FINAL CTA ── */
+    .book-final-cta{padding:80px 0;text-align:center;}
+    .book-final-cta h2{font-size:44px;font-weight:900;color:#111;letter-spacing:-1.5px;margin-bottom:16px;}
+    .book-final-cta p{font-size:17px;color:#555;max-width:520px;margin:0 auto 36px;line-height:1.7;}
 
     @media(max-width:900px){
-      .about-hero-inner{grid-template-columns:1fr;gap:40px;}
-      .about-photo-wrap{order:-1;}
-      .about-photo{aspect-ratio:3/2;object-position:center top;}
-      .about-h1{font-size:40px;}
-      .about-press-inner{grid-template-columns:1fr;}
-      .timeline-inner{padding:0 24px;}
+      .book-hero-inner{grid-template-columns:1fr;gap:40px;}
+      .book-cover-wrap{max-width:280px;margin:0 auto;}
+      .book-h1{font-size:38px;}
+      .book-about-grid{grid-template-columns:1fr;}
+      .book-author-inner{grid-template-columns:1fr;}
+      .book-author-photo{max-width:200px;}
+      .book-hero-inner,.book-about-inner,.book-chapters-inner,.book-excerpt-inner{padding:0 24px;}
     }
     @media(max-width:580px){
-      .about-hero-inner{padding:0 24px;}
-      .timeline-item{grid-template-columns:60px 1fr;gap:16px;}
-      .about-cta h2{font-size:32px;}
+      .book-h1{font-size:32px;}
+      .book-pullquote blockquote{font-size:18px;}
+      .book-final-cta h2{font-size:32px;}
     }
   </style>
 </head>
@@ -84,9 +115,9 @@
     Criminally Prolific
   </a>
   <div class="nav-links">
-    <a href="/dmitry/" style="color:#0033ff;">About</a>
+    <a href="/dmitry/">About</a>
     <a href="/#interviews">Interviews</a>
-    <a href="/book/">Book</a>
+    <a href="/book/" style="color:#0033ff;">Book</a>
     <a href="/testimonials/">Testimonials</a>
     <a href="/press/">Press</a>
     <a href="/contact/">Contact</a>
@@ -95,129 +126,223 @@
 </nav>
 
 <!-- HERO -->
-<section class="about-hero">
-  <div class="about-hero-inner">
-    <div>
-      <span class="about-kicker">Nice to meet you</span>
-      <h1 class="about-h1">I build businesses that serve my life.</h1>
-      <p class="about-lead">Not the other way around. I've sold 4 companies in 12 years — to Google, SEOJet, and Semrush twice — working 3 hours a day. Now I'm teaching entrepreneurs how to do the same.</p>
-      <div class="about-stats">
-        <div>
-          <span class="about-stat-num">4×</span>
-          <span class="about-stat-label">Acquired</span>
-        </div>
-        <div>
-          <span class="about-stat-num">3 hrs</span>
-          <span class="about-stat-label">Per day</span>
-        </div>
-        <div>
-          <span class="about-stat-num">12 yrs</span>
-          <span class="about-stat-label">Building</span>
-        </div>
-        <div>
-          <span class="about-stat-num">20k+</span>
-          <span class="about-stat-label">Subscribers</span>
-        </div>
+<section class="book-hero">
+  <div class="book-hero-inner">
+    <div class="book-cover-wrap">
+      <div class="book-cover-placeholder">
+        <p class="bcp-title">The Getaway Car</p>
+        <p class="bcp-sub">How a Soviet Immigrant Said No to Google, Sold Four Companies, and Reclaimed a 3-Hour Workday</p>
+        <p class="bcp-author">Dmitry Dragilev</p>
+      </div>
+      <div class="book-pub">
+        <span>Publishing with</span>
+        <a href="https://about.damngravity.com/" target="_blank">Damn Gravity</a>
+        <span>/</span>
+        <a href="https://www.hachettebookgroup.com/" target="_blank">Hachette Book Group</a>
       </div>
     </div>
-    <div class="about-photo-wrap">
-      <img class="about-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
-      <div class="about-photo-badge">4× Acquired Founder<br>Google · Semrush · Adobe</div>
+
+    <div class="book-text">
+      <span class="book-kicker">The Book</span>
+      <h1 class="book-h1">The <em>Getaway</em> Car</h1>
+      <p class="book-sub">How a Soviet Immigrant Said No to Google, Sold Four Companies, and Reclaimed a 3-Hour Workday</p>
+      <p class="book-hook">You're hitting your numbers. You're grinding. And somewhere in the back of your mind, a quiet voice keeps asking: <strong>is this actually what I want?</strong><br><br>This book is for founders who are winning by every metric — and still feel like something is off.</p>
+      <div class="book-ctas">
+        <a href="/signup/" class="btn-book-primary">Get notified at launch →</a>
+        <a href="#excerpt" class="btn-book-secondary">Read the foreword</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TIMELINE -->
-<section class="timeline">
-  <div class="timeline-inner">
-    <span class="timeline-title">— The Exit Playbook, in order</span>
+<!-- PULLQUOTE -->
+<div class="book-pullquote">
+  <div class="book-pullquote-inner">
+    <blockquote>"Wealth isn't a number. Wealth is owning your Tuesday afternoon. This book will show you how to build both."</blockquote>
+    <cite>— Dmitry Dragilev</cite>
+  </div>
+</div>
 
-    <!-- Exit 4 -->
-    <div class="timeline-item">
-      <div class="timeline-year">2022–<br>2025</div>
-      <div class="timeline-dot"></div>
-      <div class="timeline-body">
-        <p class="timeline-company">TopicRanker / SERP Gap Analyzer</p>
-        <span class="timeline-acq">Acquired by Semrush · Oct 2025</span>
-        <p class="timeline-desc">My fourth venture was a direct response to the noise in keyword research. I built and launched it as an app on the Semrush App Center called <a href="https://www.semrush.com/apps/serp-gap-analyzer/" target="_blank">SERP Gap Analyzer</a> — designed to find easy-to-rank keywords by identifying where competitors were weak. It rapidly became the top-performing app in the entire Semrush App Center, which led to its acquisition by Semrush in October 2025. Semrush was itself acquired by Adobe shortly after.</p>
+<!-- WHAT THIS BOOK IS -->
+<section class="book-about">
+  <div class="book-about-inner">
+    <h2>This is not a productivity book.</h2>
+    <p>It's not a hustle bible. It won't tell you to wake up at 4 AM and cold plunge your way to a seven-figure exit. This is a raw account of how one immigrant kid — programmed from birth to grind — figured out slowly, painfully, with a lot of bad decisions along the way, that <strong>the only metric worth optimizing for is the life you're actually living.</strong></p>
+    <p>Dmitry Dragilev arrived in America at eleven with three layers of clothes on his back and one belief drilled into him by two countries that agreed on nothing else: work or disappear. He spent the next two decades doing exactly that — scaling startups, walking away from a Google acquisition while everyone around him took the payout, then building three more companies, acquired by Semrush and Adobe — all while working three hours a day and being home when his kids walked through the door at 3 PM.</p>
+    <p>The milestone kept moving. The time never came. <strong>Until he stopped waiting for it.</strong></p>
+
+    <div class="book-about-grid">
+      <div class="book-about-card">
+        <h4>What it's not</h4>
+        <p>A growth playbook. An exit strategy guide. A meditation on hustle culture. A framework for squeezing more productivity out of every hour.</p>
+      </div>
+      <div class="book-about-card">
+        <h4>What it is</h4>
+        <p>A blueprint for building a business that funds your life — and a brutally honest account of what it actually costs to figure out what your life is supposed to look like.</p>
+      </div>
+      <div class="book-about-card">
+        <h4>Who it's for</h4>
+        <p>Founders winning by every external metric and losing something they can't name. Anyone who's answered "once we hit the next milestone" to questions about their kids, their health, their marriage.</p>
+      </div>
+      <div class="book-about-card">
+        <h4>What you'll leave with</h4>
+        <p>The exact sequence — messy, slow, sometimes humiliating — for finding your real identity and building a business around it. Not a framework. A practice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTERS -->
+<section class="book-chapters">
+  <div class="book-chapters-inner">
+    <h2>Inside the book</h2>
+
+    <div class="chapter-item">
+      <div class="chapter-num">Foreword</div>
+      <div>
+        <p class="chapter-title">The Only Metric That Matters</p>
+        <p class="chapter-desc">We were sold a definition of success built around revenue, headcount, and exit multiples — none of which have anything to do with your actual life. The dirty truth about why most entrepreneurs aren't building companies. They're building prisons with great branding.</p>
       </div>
     </div>
 
-    <!-- Exit 3 -->
-    <div class="timeline-item">
-      <div class="timeline-year">2021–<br>2023</div>
-      <div class="timeline-dot"></div>
-      <div class="timeline-body">
-        <p class="timeline-company">Smallbiz.Tools</p>
-        <span class="timeline-acq">Acquired by Semrush · 2023</span>
-        <p class="timeline-desc">I founded my third venture to help entrepreneurs navigate the crowded world of business software. We focused on building a trusted affiliate review site with honest, in-depth reviews — all powered by SEO targeting comparison and alternative keywords, zero paid ads. The site quickly became a go-to resource and was <a href="https://www.nichepursuits.com/dmitry-dragilev/" target="_blank">acquired by Semrush in 2023</a>.</p>
+    <div class="chapter-item">
+      <div class="chapter-num">01</div>
+      <div>
+        <p class="chapter-title">Programmed</p>
+        <p class="chapter-desc">From Moscow to Nashua — how two countries with opposite ideologies gave one immigrant kid the exact same operating system: you are what you produce. Stop producing and you disappear. And why that wiring follows you into your calendar, your inbox, and your inability to sit still on a Tuesday afternoon without feeling like you're falling behind.</p>
       </div>
     </div>
 
-    <!-- Exit 2 -->
-    <div class="timeline-item">
-      <div class="timeline-year">2014–<br>2020</div>
-      <div class="timeline-dot"></div>
-      <div class="timeline-body">
-        <p class="timeline-company">JustReachOut</p>
-        <span class="timeline-acq">Acquired by SEOJet · 2020, then ex-Slack team · 2024</span>
-        <p class="timeline-desc">I founded <a href="https://justreachout.io" target="_blank">JustReachOut</a> to help small businesses handle PR without a PR firm. Over six years I built it into an AI-powered SaaS used by 5,000+ customers including Airbnb and HubSpot. The company was <a href="https://theygotacquired.com/saas/justreachout-acquired-by-seojet/" target="_blank">acquired by SEOJet in 2020</a>, then re-acquired by a team of early Slack employees in January 2024.</p>
+    <div class="chapter-item">
+      <div class="chapter-num">02</div>
+      <div>
+        <p class="chapter-title">The First Exit</p>
+        <p class="chapter-desc">The question nobody asks at a SaaS conference: when did you last pick up your daughter from school? How building JustReachOut cracked open the only number that actually matters — 90% of the time you'll ever spend with your kids is already gone by the time they turn eighteen.</p>
       </div>
     </div>
 
-    <!-- Exit 1 -->
-    <div class="timeline-item">
-      <div class="timeline-year">2012–<br>2014</div>
-      <div class="timeline-dot"></div>
-      <div class="timeline-body">
-        <p class="timeline-company">Polar Polls</p>
-        <span class="timeline-acq">Acquired by Google · Sept 2014</span>
-        <p class="timeline-desc">My journey started as the only marketer on a 5-person team at <a href="https://thenextweb.com/news/took-startup-0-40m-pageviews-got-acquired-google" target="_blank">Polar Polls</a>. I used PR outreach and SEO to grow from zero to 40 million pageviews/month. That growth captured Google's attention, leading to an acquisition in September 2014 — <a href="https://en.wikipedia.org/wiki/List_of_mergers_and_acquisitions_by_Alphabet" target="_blank">Google's 166th acquisition</a>.</p>
+    <div class="chapter-item">
+      <div class="chapter-num">03</div>
+      <div>
+        <p class="chapter-title">The Great Refusal</p>
+        <p class="chapter-desc">Google acquired the startup Dmitry spent two years building to 40 million pageviews a month. Everyone signed and headed to Mountain View. He walked away. No savings. First kid on the way. No plan. Why that walk in the opposite direction was the first decision he ever made that was actually his.</p>
+      </div>
+    </div>
+
+    <div class="chapter-item">
+      <div class="chapter-num">04</div>
+      <div>
+        <p class="chapter-title">What Do You Actually Want?</p>
+        <p class="chapter-desc">In 2011 Tim Ferriss asked a question Dmitry couldn't answer. A few months later Patrick Byrne handed him a clock — six months to live, ten punches on a ticket. What happened when he finally got honest enough to answer both, and why his first reaction to his own answer was shame.</p>
+      </div>
+    </div>
+
+    <div class="chapter-item">
+      <div class="chapter-num">05</div>
+      <div>
+        <p class="chapter-title">The Architecture of Enough</p>
+        <p class="chapter-desc">Two backpacks. Six months. Thailand, rural China, Tibet, the Baltics, a Stephen King audiobook in Tallinn with nowhere to be. The actual sequence — messy, slow, occasionally humiliating — that gets you from "I should probably think about this" to knowing exactly what your identity is and being able to defend it in any room.</p>
+      </div>
+    </div>
+
+    <div class="chapter-item">
+      <div class="chapter-num">06</div>
+      <div>
+        <p class="chapter-title">This is Great Dmitry, But I Still Have to Make Money</p>
+        <p class="chapter-desc">Your identity won't pay the mortgage. But a soul-crushing job isn't the only other option. Real examples from real people in Dmitry's life — an OB-GYN, a military pilot, a lawyer — who repackaged what they already knew into a life that fits. Also: the exit is the money event. Everything else is just covering your costs while you build.</p>
+      </div>
+    </div>
+
+    <div class="chapter-item">
+      <div class="chapter-num">07</div>
+      <div>
+        <p class="chapter-title">The Blueprint</p>
+        <p class="chapter-desc">Not every business is a getaway car — most are just jobs with worse benefits and no HR department. The exact philosophy behind building one that someone will actually pay to take off your hands: start with the exit, find your distribution partner before you build your product, educate your acquirer while you grow, design yourself out of operations from day one.</p>
+      </div>
+    </div>
+
+    <div class="chapter-item">
+      <div class="chapter-num">08</div>
+      <div>
+        <p class="chapter-title">The Blueprint in Action</p>
+        <p class="chapter-desc">Three businesses at three different stages — one two months old with live customers, one at 170 paying customers in its first month, one still in discovery — running the same playbook in real time as this book is being written. What the repeatable system actually looks like when it's happening.</p>
+      </div>
+    </div>
+
+    <div class="chapter-item">
+      <div class="chapter-num">09</div>
+      <div>
+        <p class="chapter-title">Finding Your Acquirer Before You Build</p>
+        <p class="chapter-desc">Most founders think about the exit at the end. That's exactly backwards. The step-by-step process for researching your acquirer before you write a single line of code — which marketplaces to use, who inside the organization to talk to, why you'll be wrong about the acquirer the first time, and why complete transparency is the most underrated advantage in any acquisition conversation.</p>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- PUBLISHING & CLIENTS -->
-<section class="about-press">
-  <div class="about-press-inner">
+<!-- AUTHOR -->
+<section class="book-author">
+  <div class="book-author-inner">
     <div>
-      <span class="about-kicker">Publishing & Speaking</span>
-      <h3>Writing for the world's top publications since 2009.</h3>
-      <p>I'm a contributor for Forbes, Entrepreneur, TechCrunch, TheNextWeb, Moz, Mashable, WIRED, HuffPost, AListApart, Intuit, and SEMRush. I also founded the <a href="http://zurbsoapbox.com/" target="_blank" style="color:#0033ff;">ZURBsoapbox</a> speaker series, where I've personally interviewed Tim Ferriss, Neil Patel, Dan Martell, the Winklevoss Twins, and the founders of LinkedIn, Twitter, WordPress, Dribbble, Eventbrite, Pandora, StackOverflow, and many more.</p>
-      <a href="/press/" class="btn-secondary" style="margin-top:8px;display:inline-flex;">View press & articles →</a>
+      <img class="book-author-photo" src="https://www.criminallyprolific.com/wp-content/themes/sage-8.5.2/assets/img/about-dmitry-picture.jpg" alt="Dmitry Dragilev">
     </div>
     <div>
-      <span class="about-kicker">Clients & Results</span>
-      <h3>500+ companies ranked #1 on Google.</h3>
-      <p>I've helped market leaders dominate Google and LLMs since 2009 — taking companies from hundreds of visitors to tens of thousands within months.</p>
-      <div class="clients-list">
-        <span class="client-tag">Dow Jones</span>
-        <span class="client-tag">Realtor.com</span>
-        <span class="client-tag">Nextiva</span>
-        <span class="client-tag">Aura</span>
-        <span class="client-tag">Pipedrive</span>
-        <span class="client-tag">Wistia</span>
-        <span class="client-tag">CultureAmp</span>
-        <span class="client-tag">Backlinko</span>
-        <span class="client-tag">Help Scout</span>
-        <span class="client-tag">HubSpot</span>
-        <span class="client-tag">Airbnb</span>
+      <span class="eyebrow">About the Author</span>
+      <h2>Dmitry Dragilev</h2>
+      <p>Dmitry Dragilev is a serial SaaS founder who has built and sold four companies — to Google, SEOJet, and Semrush (twice, most recently in 2025 as part of Adobe's acquisition of Semrush) — while working three hours a day and being home when his kids walked through the door at 3 PM.</p>
+      <p>He's a contributor to Forbes, TechCrunch, Entrepreneur, WIRED, Moz, Mashable, and The Next Web. He founded the ZURBsoapbox speaker series, where he interviewed Tim Ferriss, Neil Patel, Guy Kawasaki, and the founders of LinkedIn, Twitter, WordPress, and Pandora.</p>
+      <p>He lives in New Hampshire with his wife and kids. He is, as of this writing, home for school pickup every single day.</p>
+      <div class="book-author-stats">
+        <div class="book-author-stat">
+          <span>4×</span>
+          <span>Acquired</span>
+        </div>
+        <div class="book-author-stat">
+          <span>3 hrs</span>
+          <span>Per day</span>
+        </div>
+        <div class="book-author-stat">
+          <span>20k+</span>
+          <span>Subscribers</span>
+        </div>
+        <div class="book-author-stat">
+          <span>500+</span>
+          <span>Companies ranked #1</span>
+        </div>
       </div>
-      <a href="/testimonials/" class="btn-secondary" style="margin-top:20px;display:inline-flex;">See case studies →</a>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="about-cta">
+<!-- EXCERPT -->
+<section class="book-excerpt" id="excerpt">
+  <div class="book-excerpt-inner">
+    <span class="eyebrow">From the Foreword</span>
+    <h2>The Only Metric That Matters</h2>
+    <div class="book-excerpt-text">
+      <p>Let me ask you something before we go any further.</p>
+      <p>When was the last time you sat at dinner with your kids — actually sat there, phone face-down, not mentally drafting a reply to the Slack message you just felt buzz in your pocket — and thought: <em>this is exactly where I want to be?</em></p>
+      <p>I'm not asking to judge you. I'm asking because I spent years not being able to answer it. I was too busy. Too "on." Too convinced that the next milestone — the next MRR target, the next product launch, the next acquisition conversation — would be the one that finally gave me permission to show up for my own life.</p>
+      <p>It didn't.</p>
+      <p><strong>Here's the dirty truth about the world you and I were sold: most entrepreneurs aren't building companies. They're building prisons with great branding.</strong> The cell is lined with pitch decks and Notion docs and "quick syncs" that eat your Tuesday alive. The warden is a culture that has decided your exhaustion is a virtue signal.</p>
+      <p>Clayton Christensen — Harvard Business School professor, author of The Innovator's Dilemma — watched his classmates from the Class of '79 across decades of reunions. Not a single one had planned to end up estranged from their kids or hollowed out behind their success. They just kept allocating time and energy toward whatever gave the fastest, most measurable return.</p>
+      <p>Work does that. Work gives you feedback. It closes loops. It lets you feel like you're winning.</p>
+      <p>A three-year-old who needs you to sit on the floor and play doesn't give you feedback. She just needs you there. And if you're not, she doesn't file a complaint. She just learns, slowly, quietly, what to expect from you.</p>
+      <p><strong>I did not want to be the founder who learned that lesson too late.</strong></p>
+      <p>I call what I built the Getaway Car — because the whole point was never to get rich in the Jack Welch sense. The point was to get free. Free enough to be at school pickup. Free enough to deal with your health before a doctor makes it urgent. Free enough to actually show up for the people you keep meaning to call back.</p>
+      <p><em>Everything else is infrastructure for that. Let's build it.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="book-final-cta">
   <div class="container">
-    <h2>Let's work together.</h2>
-    <p>Business inquiries, speaking, or just want to say hi.</p>
-    <div class="about-cta-btns">
-      <a href="mailto:dmitry@criminallyprolific.com" class="btn-primary">dmitry@criminallyprolific.com</a>
-      <a href="/signup/" class="btn-secondary">Join the newsletter</a>
+    <h2>Get notified when it launches.</h2>
+    <p>Sign up for the newsletter and you'll be the first to know — plus get the exact playbook Dmitry used to build and sell four companies on 3 hours a day.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="/signup/" class="btn-book-primary">Join 20,000+ subscribers →</a>
+      <a href="/dmitry/" style="display:inline-flex;align-items:center;gap:8px;padding:16px 28px;font-size:15px;font-weight:700;color:#111;border:2px solid #ddd;border-radius:4px;transition:all .15s;">Learn about Dmitry →</a>
     </div>
   </div>
 </section>
@@ -258,7 +383,6 @@
         <li><a href="/saas-pr/">SaaS PR Guide</a></li>
         <li><a href="/do-your-own-pr/">Do Your Own PR</a></li>
         <li><a href="/media-relations-strategy/">Media Relations Strategy</a></li>
-        <li><a href="/marketing-communications-strategy/">Marketing Comms Strategy</a></li>
         <li><a href="/growth-hacking/">Growth Hacking</a></li>
         <li><a href="/50-growth-hacking-tools/">50 Growth Hacking Tools</a></li>
       </ul>
@@ -273,7 +397,6 @@
         <li><a href="/gmail-mail-merge/">Gmail Mail Merge</a></li>
         <li><a href="/find-anyones-email/">Find Anyone's Email</a></li>
         <li><a href="/how-to-rank-higher-on-google/">Rank Higher on Google</a></li>
-        <li><a href="/ranking-high-volume-keyword/">High-Volume Keywords</a></li>
         <li><a href="/low-search-volume-keywords/">Low Search Volume Keywords</a></li>
         <li><a href="/grow-email-list/">Grow Your Email List</a></li>
       </ul>
