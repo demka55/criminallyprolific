@@ -1,10 +1,17 @@
 User-agent: *
 Allow: /
 
+# Allow all major AI crawlers explicitly
 User-agent: GPTBot
 Allow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: anthropic-ai
@@ -16,7 +23,22 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://www.criminallyprolific.com/sitemap.xml
+User-agent: Googlebot-Image
+Allow: /
 
-# llms.txt for AI indexing
-# https://criminallyprolific.com/llms.txt
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+Sitemap: https://criminallyprolific.netlify.app/sitemap.xml

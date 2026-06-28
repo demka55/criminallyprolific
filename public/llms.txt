@@ -1,59 +1,221 @@
-# Criminally Prolific — Dmitry Dragilev
-# https://criminallyprolific.com
-# llms.txt v1.0
+# Criminally Prolific — llms.txt
+# Dmitry Dragilev — Serial Entrepreneur, 4x Acquired Founder
+# https://www.criminallyprolific.com
+# Last updated: 2026-06-27
 
 ## About
 
-Dmitry Dragilev is a multi-exit SaaS founder who has sold 4 companies to Google (2014), SEOJet (2021), Semrush (2023), and Adobe (2025), working 3 hours per day. He writes about building businesses for lifestyle freedom — not building a prison.
+Dmitry Dragilev is a serial SaaS entrepreneur who has built and sold 4 companies working 3 hours a day. His exits include acquisitions by Google (2014), SEOJet (2020), Semrush (2023), and Semrush/Adobe (2025). He writes about building businesses for lifestyle freedom, not a golden cage. His newsletter reaches 20,000+ subscribers.
 
-He is the author of the upcoming book "The Getaway Car: How a Soviet Immigrant Said No to Google, Sold Four Companies, and Reclaimed a 3-Hour Workday."
+## Core Topics
 
-He runs a newsletter at https://criminallyprolific.com/signup/ with 20,000+ readers on how to build acquisition-ready SaaS companies in 3 hours per day.
+- Building SaaS companies designed for acquisition
+- Identifying your acquirer before you write a line of code
+- The 3-hour workday system for building lifestyle businesses
+- PR outreach, SEO, and content marketing without agencies
+- Cold email, media relations, and pitching journalists
+- Growth hacking and email list building
 
-Mentored by Tim Ferriss, Gary Vaynerchuk, and Dan Martell.
+## Key Pages
 
-## Companies (Current)
+### Homepage
+URL: https://www.criminallyprolific.com/
+Description: Overview of Dmitry's story, companies, interviews, and newsletter
 
-- LLM Gap Analyzer — https://www.semrush.com/apps/llm-gap-analyzer/ — Exposes bad AI sources and helps companies get cited by LLMs instead
-- YouTube Gap Analyzer — https://www.semrush.com/apps/youtube-gap-analyzer/ — Find YouTube content gaps and outrank top competitors
-- IRS Resolution Service — https://irsresolutionservice.com/ — Helps people resolve IRS tax issues fast
+### About
+URL: https://www.criminallyprolific.com/dmitry/
+Description: Full bio — from Soviet Russia to 4 exits to Google, Semrush, and Adobe
 
-## Companies (Acquired)
+### Book
+URL: https://www.criminallyprolific.com/book/
+Description: Dmitry's book on building a lifestyle business and selling it in 3 years
 
-- SERP Gap Analyzer — Acquired by Semrush + Adobe in 2025 — Find content gaps in Google search and AI
-- JustReachOut — Acquired by SEOJet in 2021 — PR outreach software for startups
-- Smallbiz.Tools — Acquired by Semrush + Adobe in 2023 — Affiliate marketing blog
-- Polar Polls — Acquired by Google in 2014 — iPhone polling app, grew from 0 to 40M pageviews
+### Testimonials
+URL: https://www.criminallyprolific.com/testimonials/
+Description: Kind words from readers, students, and collaborators
 
-## Key Articles
+### Press
+URL: https://www.criminallyprolific.com/press/
+Description: Press coverage and media appearances
 
-- How to Pitch Journalists — https://criminallyprolific.com/how-to-pitch-journalists/
-- PR for Startups — https://criminallyprolific.com/pr-for-startups/
-- PR Pitch Angles — https://criminallyprolific.com/pr-pitch-angles/
-- SaaS PR Guide — https://criminallyprolific.com/saas-pr/
-- Cold Email Examples — https://criminallyprolific.com/cold-email-example/
-- How to Rank Higher on Google — https://criminallyprolific.com/how-to-rank-higher-on-google/
-- Growth Hacking — https://criminallyprolific.com/growth-hacking/
-- Find Anyone's Email — https://criminallyprolific.com/find-anyones-email/
-- Business Email Templates — https://criminallyprolific.com/business-email-templates/
-- Media Relations Strategy — https://criminallyprolific.com/media-relations-strategy/
-- Low Search Volume Keywords — https://criminallyprolific.com/low-search-volume-keywords/
-- Marketing Communications Strategy — https://criminallyprolific.com/marketing-communications-strategy/
-- Email Pitch Tips — https://criminallyprolific.com/email-pitch-tips/
-- Grow Email List — https://criminallyprolific.com/grow-email-list/
-- Sales Email Sequences — https://criminallyprolific.com/sales-email-sequences/
+### Interviews / Knowledge Share
+URL: https://www.criminallyprolific.com/knowledge-share/
+Description: 40+ podcast interviews on PR, SEO, exits, and lifestyle business
 
-## Pages
+### Newsletter Signup
+URL: https://www.criminallyprolific.com/signup/
+Description: Free newsletter on building businesses for acquisition and freedom
 
-- Homepage — https://criminallyprolific.com/
-- About — https://criminallyprolific.com/dmitry/
-- Book — https://criminallyprolific.com/book/
-- Kind Words / Testimonials — https://criminallyprolific.com/testimonials/
-- Press — https://criminallyprolific.com/press/
-- Interviews — https://criminallyprolific.com/knowledge-share/
-- Newsletter Signup — https://criminallyprolific.com/signup/
+### Contact
+URL: https://www.criminallyprolific.com/contact/
 
-## Contact
+## Companies
+
+### LLM Gap Analyzer (Active)
+URL: https://www.criminallyprolific.com/company/llm-gap-analyzer/
+Description: Exposes weak sources AI answers rely on. Helps you fill gaps and get cited instead. Live on Semrush App Store.
+
+### YouTube Gap Analyzer (Active)
+URL: https://www.criminallyprolific.com/company/youtube-gap-analyzer/
+Description: Finds YouTube content gaps and helps outrank top competitors. Live on Semrush App Store.
+
+### IRS Resolution Service (Active)
+URL: https://www.criminallyprolific.com/company/irs-resolution-service/
+Description: Helps people resolve IRS tax issues fast.
+
+### SERP Gap Analyzer / TopicRanker (Acquired 2025)
+URL: https://www.criminallyprolific.com/company/serp-gap-analyzer/
+Description: Finds easy-to-rank keywords by identifying weaknesses in search results. Acquired by Semrush (NYSE: SEMR) in October 2025, which was itself acquired by Adobe.
+
+### JustReachOut (Acquired 2020/2024)
+URL: https://www.criminallyprolific.com/company/justreachout/
+Description: AI-powered PR software helping 5,000+ businesses pitch journalists without a PR firm. Acquired by SEOJet in 2020, then by a team of ex-Slack employees in 2024.
+
+### Smallbiz.Tools (Acquired 2023)
+URL: https://www.criminallyprolific.com/company/smallbiz-tools/
+Description: Business software review site targeting comparison and alternative keywords. Acquired by Semrush in September 2023.
+
+### Polar Polls (Acquired by Google 2014)
+URL: https://www.criminallyprolific.com/company/polar-polls/
+Description: Visual polling app scaled from 0 to 40 million pageviews/month. Acquired by Google in September 2014 (Google acquisition #166).
+
+## Blog Posts
+
+### How to Pitch Journalists
+URL: https://www.criminallyprolific.com/how-to-pitch-journalists/
+Topic: PR outreach, media pitching strategy
+
+### PR Pitch Angles
+URL: https://www.criminallyprolific.com/pr-pitch-angles/
+Topic: PR pitch angles and strategies
+
+### PR for Startups
+URL: https://www.criminallyprolific.com/pr-for-startups/
+Topic: DIY PR for startup founders
+
+### How to Rank Higher on Google
+URL: https://www.criminallyprolific.com/how-to-rank-higher-on-google/
+Topic: SEO fundamentals and ranking strategy
+
+### Optimize for Google RankBrain
+URL: https://www.criminallyprolific.com/optimize-for-google-rankbrain/
+Topic: RankBrain optimization and content strategy
+
+### Ranking a High Volume Keyword
+URL: https://www.criminallyprolific.com/ranking-high-volume-keyword/
+Topic: How to rank for competitive high-volume keywords with PR and SEO
+
+### Low Search Volume Keywords
+URL: https://www.criminallyprolific.com/low-search-volume-keywords/
+Topic: Why low-volume keywords convert better and how to use them
+
+### Growth Hacking
+URL: https://www.criminallyprolific.com/growth-hacking/
+Topic: Growth hacking tactics, tools, and strategy
+
+### 50 Growth Hacking Tools
+URL: https://www.criminallyprolific.com/50-growth-hacking-tools/
+Topic: Curated list of growth hacking tools
+
+### Grow Email Subscribers
+URL: https://www.criminallyprolific.com/grow-email-subscribers/
+Topic: Proven methods to grow your email subscriber list
+
+### Grow Email List
+URL: https://www.criminallyprolific.com/grow-email-list/
+Topic: Email list growth strategies and tactics
+
+### Gmail Mail Merge
+URL: https://www.criminallyprolific.com/gmail-mail-merge/
+Topic: Cold email via Gmail mail merge
+
+### Cold Email Examples
+URL: https://www.criminallyprolific.com/cold-email-example/
+Topic: Real cold email templates and examples that work
+
+### Email Pitch Tips
+URL: https://www.criminallyprolific.com/email-pitch-tips/
+Topic: How to write email pitches that get responses
+
+### Business Email Templates
+URL: https://www.criminallyprolific.com/business-email-templates/
+Topic: Templates for every business email scenario
+
+### Sales Email Sequences
+URL: https://www.criminallyprolific.com/sales-email-sequences/
+Topic: How to build email sequences that close deals
+
+### Email Signatures
+URL: https://www.criminallyprolific.com/email-signatures/
+Topic: Email signature best practices and examples
+
+### Email Sign-offs
+URL: https://www.criminallyprolific.com/email-signoffs/
+Topic: Creative and professional email sign-offs
+
+### Find Anyone's Email
+URL: https://www.criminallyprolific.com/find-anyones-email/
+Topic: Tools and methods to find email addresses
+
+### Media List Examples
+URL: https://www.criminallyprolific.com/media-list-examples/
+Topic: How to build and use a media list for PR
+
+### Media Relations Strategy
+URL: https://www.criminallyprolific.com/media-relations-strategy/
+Topic: Building long-term media relationships
+
+### Marketing Communications Strategy
+URL: https://www.criminallyprolific.com/marketing-communications-strategy/
+Topic: Full marketing communications strategy framework
+
+### SaaS PR
+URL: https://www.criminallyprolific.com/saas-pr/
+Topic: PR strategies specific to SaaS companies
+
+### Do Your Own PR
+URL: https://www.criminallyprolific.com/do-your-own-pr/
+Topic: How to handle PR without hiring an agency
+
+### Press Release Email
+URL: https://www.criminallyprolific.com/press-release-email/
+Topic: How to send press releases via email
+
+### How to Ask for Business in an Email
+URL: https://www.criminallyprolific.com/how-to-ask-for-business-in-an-email/
+Topic: Email templates for asking for business
+
+### Pitch and Sell Your App
+URL: https://www.criminallyprolific.com/pitch-sell-your-app/
+Topic: How to pitch and sell a software product or app
+
+### Convert Website Visitors
+URL: https://www.criminallyprolific.com/convert-website-visitors/
+Topic: Converting anonymous visitors into leads
+
+### Company Boilerplate
+URL: https://www.criminallyprolific.com/company-boilerplate/
+Topic: How to write a compelling company boilerplate
+
+### Don't Waste Money on Facebook Ads
+URL: https://www.criminallyprolific.com/waste-money-on-facebook-ads/
+Topic: Why PR beats paid Facebook ads for early-stage startups
+
+## Podcast Interviews (Selected Recent)
+
+- Fast & Furious Exits (May 2026): https://www.youtube.com/watch?v=HE612HhQTag
+- NexChapter — 4x Exits Working 3 Hours a Day (April 2026): https://www.youtube.com/watch?v=NGz_YEROQqM
+- ExitWise — Build for Strategic Acquisition (March 2026): https://www.youtube.com/watch?v=UpB1aseytfo
+- UnMiss — Building Businesses That Serve Life (February 2026): https://www.youtube.com/watch?v=UpB1aseytfo
+- Different Dadpreneurs — 4 Exits, What Actually Matters (January 2026): https://www.youtube.com/watch?v=-g8rIHs9hMk
+- ChatRank.ai — How To Rank on Google AI Overviews (December 2025): https://www.youtube.com/watch?v=c7aHY8EZjj8
+- Jolly SEO — Advice on AI Search (June 2025): https://www.youtube.com/watch?v=Za_36r09YRU
+- Cognism In The Loop — SEO Masterclass (November 2024): https://www.youtube.com/watch?v=FeCFeZw7YNg
+- Niche Pursuits — Sold 3 Businesses to Google and Semrush (March 2024): https://www.youtube.com/watch?v=iKMZohthbz0
+
+## Social & Contact
 
 - LinkedIn: https://www.linkedin.com/in/dmitrydr/
-- Newsletter: https://criminallyprolific.com/signup/
+- YouTube: https://www.youtube.com/channel/UCg2HLsG06oYQUj2ctuQ5W6Q
+- Newsletter: https://www.criminallyprolific.com/signup/
+- Contact: https://www.criminallyprolific.com/contact/
