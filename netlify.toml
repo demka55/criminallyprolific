@@ -1,0 +1,44 @@
+[build]
+  publish = "public"
+
+[[redirects]]
+  from = "/dmitry"
+  to = "/about/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/dmitry/"
+  to = "/about/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/knowledge-share"
+  to = "/interviews/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/knowledge-share/"
+  to = "/interviews/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/testimonials"
+  to = "/kind-words/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/testimonials/"
+  to = "/kind-words/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
