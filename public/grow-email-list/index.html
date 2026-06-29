@@ -129,7 +129,18 @@
     <a href="/contact/">Contact</a>
     <a href="/signup/" class="nav-cta">Free Newsletter</a>
   </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navMobile').classList.toggle('open')" aria-label="Menu">&#9776;</button>
 </nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="/dmitry/">About</a>
+  <a href="/#interviews">Interviews</a>
+  <a href="/book/">Book</a>
+  <a href="/blog/">Blog</a>
+  <a href="/testimonials/">Testimonials</a>
+  <a href="/press/">Press</a>
+  <a href="/contact/">Contact</a>
+  <a href="/signup/" class="nav-cta">Free Newsletter</a>
+</div>
 
 <article itemscope itemtype="https://schema.org/Article">
   <header class="post-hero">
@@ -472,14 +483,13 @@ I published an article'¦</blockquote>
       <div class="post-cta">
         <h3>Get the full playbook in your inbox.</h3>
         <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
-        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-grow-email-list" data-async="true">
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-grow-email-list">
           <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
           <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
           <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
           <div style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
           <p><button type="submit">Join the Newsletter →</button></p>
         <p class="sendfox-message"></p></form>
-        <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
       </div>
 
       <div class="post-author-box">
@@ -688,14 +698,14 @@ if (tocLinks.length && headings.length) {
     var msgEl = form.querySelector('.sendfox-message');
 
     window.grecaptcha.ready(function() {
-      window.grecaptcha.execute('6Lemwu0UAAAAAJghn3RQZjwkYxnCTuYDCAcrJJ7S', {action: 'embedded_form'})
+      window.grecaptcha.execute('6Lemwu0UAAAAAJghn3RQZjwkYxnCTuYDCAcrJJ7S', {action: 'submit'})
         .then(function(token) {
           var data = new FormData(form);
           data.append('g-recaptcha-response', token);
 
           fetch(form.action, {
             method: 'POST',
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            headers: {'Accept': 'application/json'},
             body: data
           })
           .then(function(res) { return res.json().then(function(j){ return {status: res.status, body: j}; }); })

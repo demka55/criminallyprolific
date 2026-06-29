@@ -90,14 +90,13 @@
           <p class="nl-desc">3 hours a day. 4 exits. Free weekly playbook.</p>
         </div>
         <div style="position:relative;">
-          <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form nl-form" id="3qn7nj" data-async="true">
+          <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form nl-form" id="3qn7nj">
             <p><label for="sendfox_form_name">First Name: </label><input type="text" id="sendfox_form_name" placeholder="First Name" name="first_name" required /></p>
             <p><label for="sendfox_form_last_name">Last Name: </label><input type="text" id="sendfox_form_last_name" placeholder="Last Name" name="last_name" required /></p>
             <p><label for="sendfox_form_email">Email: </label><input type="email" id="sendfox_form_email" placeholder="Email" name="email" required /></p>
             <div style="position:absolute;left:-5000px;width:0;height:0;overflow:hidden;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
             <p><button type="submit">Submit</button></p>
           <p class="sendfox-message"></p></form>
-          <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
           <p class="nl-fine">No spam. Unsubscribe anytime.</p>
         </div>
       </div>
@@ -821,14 +820,14 @@ function toggleInterviews(){
     var msgEl = form.querySelector('.sendfox-message');
 
     window.grecaptcha.ready(function() {
-      window.grecaptcha.execute('6Lemwu0UAAAAAJghn3RQZjwkYxnCTuYDCAcrJJ7S', {action: 'embedded_form'})
+      window.grecaptcha.execute('6Lemwu0UAAAAAJghn3RQZjwkYxnCTuYDCAcrJJ7S', {action: 'submit'})
         .then(function(token) {
           var data = new FormData(form);
           data.append('g-recaptcha-response', token);
 
           fetch(form.action, {
             method: 'POST',
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            headers: {'Accept': 'application/json'},
             body: data
           })
           .then(function(res) { return res.json().then(function(j){ return {status: res.status, body: j}; }); })
