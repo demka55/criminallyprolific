@@ -218,7 +218,7 @@ img{max-width:100%;display:block;}
   .section{padding:56px 0;}
   .section-title{font-size:36px;}
 }
-@media(max-width:580px){
+@media(max-width:900px){
   .nav-links{display:none;}
   .nav-hamburger{display:block;}
   .interviews-grid{grid-template-columns:1fr;}

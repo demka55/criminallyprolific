@@ -959,65 +959,20 @@ if (tocLinks.length && headings.length) {
 })();
 </script>
 
+
 <script>
 (function(){
-  // Load recaptcha
-  var s = document.createElement('script');
-  s.src = 'https://www.google.com/recaptcha/api.js?render=6Lemwu0UAAAAAJghn3RQZjwkYxnCTuYDCAcrJJ7S';
-  s.async = true;
-  document.head.appendChild(s);
-
-  function submitForm(form) {
-    var btn = form.querySelector('button[type="submit"]');
-    if (btn) btn.disabled = true;
-    var msgEl = form.querySelector('.sendfox-message');
-
-    window.grecaptcha.ready(function() {
-      window.grecaptcha.execute('6Lemwu0UAAAAAJghn3RQZjwkYxnCTuYDCAcrJJ7S', {action: 'submit'})
-        .then(function(token) {
-          var data = new FormData(form);
-          data.append('g-recaptcha-response', token);
-
-          fetch(form.action, {
-            method: 'POST',
-            headers: {'Accept': 'application/json'},
-            body: data
-          })
-          .then(function(res) { return res.json().then(function(j){ return {status: res.status, body: j}; }); })
-          .then(function(r) {
-            if (btn) btn.disabled = false;
-            if (!msgEl) { msgEl = document.createElement('p'); msgEl.className = 'sendfox-message'; form.appendChild(msgEl); }
-            if (r.status === 200) {
-              window.location.href = '/youre-almost-done/';
-            } else {
-              var err = r.body && r.body.errors && r.body.errors[0] ? r.body.errors[0] : '';
-              if (/already|exist|subscribed/i.test(err)) {
-                msgEl.innerHTML = "&#10003; You're already on the list! Check your inbox for past issues.";
-                msgEl.style.cssText = 'color:#2e7d32;font-size:14px;font-weight:600;margin-top:10px;';
-              } else if (/email/i.test(err)) {
-                msgEl.innerHTML = 'Please check your email address and try again.';
-                msgEl.style.cssText = 'color:#c62828;font-size:14px;font-weight:600;margin-top:10px;';
-              } else {
-                msgEl.innerHTML = err || 'Something went wrong. Please try again.';
-                msgEl.style.cssText = 'color:#c62828;font-size:14px;font-weight:600;margin-top:10px;';
-              }
-            }
-          })
-          .catch(function() {
-            if (btn) btn.disabled = false;
-            if (msgEl) { msgEl.innerHTML = 'Network error. Please try again.'; msgEl.style.cssText = 'color:#c62828;font-size:14px;font-weight:600;margin-top:10px;'; }
-          });
-        });
-    });
-  }
-
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.sendfox-form').forEach(function(form) {
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        submitForm(form);
-      }, true);
+      // Add redirect URL so sendfox sends user to our confirmation page on success
+      var redirect = document.createElement('input');
+      redirect.type = 'hidden';
+      redirect.name = 'redirect_url';
+      redirect.value = window.location.origin + '/youre-almost-done/';
+      form.appendChild(redirect);
+      
+      // Remove our old fetch handler — let form submit natively
+      // This avoids CORS issues entirely
     });
   });
 })();
