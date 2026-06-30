@@ -200,6 +200,8 @@ img{max-width:100%;display:block;}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
+  .nav-links{display:none!important;}
+  .nav-hamburger{display:block!important;}
   .testi-grid{grid-template-columns:1fr;}
   .book-teaser-inner{flex-direction:column;gap:28px;}
   .book-cover{width:120px;}
@@ -211,18 +213,12 @@ img{max-width:100%;display:block;}
   .nl-inner{grid-template-columns:1fr;}
   .nl{padding:32px 24px;}
   .companies-split{grid-template-columns:1fr;}
-  .interviews-grid{grid-template-columns:1fr 1fr;}
-  .footer-inner{grid-template-columns:1fr 1fr;gap:36px;}
+  .interviews-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr;}
+  .footer-bottom-inner{flex-direction:column;align-items:flex-start;}
   .container{padding:0 24px;}
   .proof{padding:16px 24px;}
   .section{padding:56px 0;}
   .section-title{font-size:36px;}
-}
-@media(max-width:900px){
-  .nav-links{display:none;}
-  .nav-hamburger{display:block;}
-  .interviews-grid{grid-template-columns:1fr;}
-  .footer-inner{grid-template-columns:1fr;}
-  .footer-bottom-inner{flex-direction:column;align-items:flex-start;}
   .article-h1{font-size:32px;}
 }
