@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>How to Write a Company Boilerplate in 2026 [Templates] — Criminally Prolific</title>
+  <title>27 Company Boilerplate Examples That Actually Work (2026) — Criminally Prolific</title>
   <meta name="description" content="What is a boilerplate? A boilerplate is a standardized last paragraph that is inserted in all the press releases giving an outline of the company’s products,…">
   <meta property="og:title" content="How to Write a Company Boilerplate in 2026 [Templates]">
   <meta property="og:description" content="What is a boilerplate? A boilerplate is a standardized last paragraph that is inserted in all the press releases giving an outline of the company’s products,…">
@@ -23,7 +23,7 @@
   "headline": "How to Write a Company Boilerplate in 2026 [Templates]",
   "description": "What is a boilerplate? A boilerplate is a standardized last paragraph that is inserted in all the press releases giving an outline of the company’s products,…",
   "datePublished": "2022-02-07",
-  "dateModified": "2026-06-25",
+  "dateModified": "2026-07-02",
   "author": {"@type":"Person","name":"Dmitry Dragilev","url":"https://www.criminallyprolific.com/dmitry/","sameAs":["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]},
   "publisher": {"@type":"Organization","name":"Criminally Prolific","url":"https://www.criminallyprolific.com","logo":{"@type":"ImageObject","url":"/assets/img/favicon.png"}},
   "image": "/assets/uploads/2018/02/apple1.png",
@@ -146,11 +146,11 @@
   <header class="post-hero">
     <div class="post-hero-inner">
       <span class="post-cat">PR outreach</span>
-      <h1 class="post-title" itemprop="headline">How to Write a Company Boilerplate in 2026 [Templates]</h1>
+      <h1 class="post-title" itemprop="headline">27 Company Boilerplate Examples That Actually Work (2026)</h1>
       <div class="post-meta">
         <span>By <a href="/dmitry/" itemprop="author">Dmitry Dragilev</a></span>
         <span class="meta-sep">·</span>
-        <span>Updated Jun 25, 2026</span>
+        <span>Updated Jul 2, 2026</span>
         <span class="meta-sep">·</span>
         <span class="read-time">19 min read</span>
         <span class="meta-sep">·</span><span>PR outreach</span>
@@ -160,8 +160,12 @@
 
   <div class="post-layout">
     <div class="post-content">
-      <div class="post-update-banner"><strong>Updated Jun 25, 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
-      <div class="post-ai-intro"><p>A company boilerplate — the standardized "About the Company" paragraph appended to press releases and media kit materials — is often the first text a journalist copies when writing about your company. An effective boilerplate establishes credibility, explains what the company does in one sentence, and includes a key metric or differentiator that journalists can quote. Most boilerplates fail because they use vague language ("innovative solutions") rather than specific facts ("used by 5,000+ companies in 40 countries").</p><p>These templates and examples are drawn from companies across SaaS, consumer tech, and professional services — with notes on what makes each element effective for press coverage.</p></div>
+      <div class="post-update-banner"><strong>Updated Jul 2, 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
+      <div class="post-ai-intro">
+<p><strong>What is a company boilerplate?</strong> A boilerplate is the standardized "About [Company]" paragraph at the bottom of every press release. It's the first thing journalists copy when writing about you — and most companies get it completely wrong. Generic phrases like "innovative solutions" and "industry-leading platform" are useless. The boilerplate that gets quoted has one specific number, one clear differentiator, and one sentence that explains exactly who you help and how.</p>
+<p>In 2026, boilerplates also appear in AI-generated summaries — when ChatGPT, Perplexity, or Google AI Overviews describe your company, they frequently pull from your boilerplate language. That makes it more important than ever to have factual, specific, citable language rather than marketing fluff.</p>
+<p>Dmitry Dragilev has written boilerplates for companies acquired by Google, Semrush, and Adobe. The 27 examples below are drawn from real press releases — with notes on what makes each one work and templates you can adapt immediately.</p>
+</div>
       <div class="post-body" itemprop="articleBody">
 <p><h2 id="what-is-a-boilerplate">What is a boilerplate?</h2>
 A boilerplate is a standardized last paragraph that is inserted in all the press releases giving an outline of the company’s products, services, clients, awards, its purpose and positioning, and often, its size, presence, key locations as well as its website and social media profile links.</p>
@@ -397,7 +401,7 @@ The company boilerplate is one of the most important parts of any press release.
       <div class="post-cta">
         <h3>Get the full playbook in your inbox.</h3>
         <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
-        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-company-boilerplate">
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj?redirect=https://www.criminallyprolific.com/youre-almost-done/" class="sendfox-form sf-inline" id="sf-company-boilerplate">
           <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
           <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
           <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
@@ -607,15 +611,36 @@ if (tocLinks.length && headings.length) {
 (function(){
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.sendfox-form').forEach(function(form) {
-      // Add redirect URL so sendfox sends user to our confirmation page on success
-      var redirect = document.createElement('input');
-      redirect.type = 'hidden';
-      redirect.name = 'redirect_url';
-      redirect.value = window.location.origin + '/youre-almost-done/';
-      form.appendChild(redirect);
-      
-      // Remove our old fetch handler — let form submit natively
-      // This avoids CORS issues entirely
+      var msgEl = form.querySelector('.sendfox-message');
+      if (!msgEl) {
+        msgEl = document.createElement('p');
+        msgEl.className = 'sendfox-message';
+        form.appendChild(msgEl);
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
+        msgEl.textContent = '';
+        msgEl.style.cssText = '';
+
+        var data = new FormData(form);
+        fetch('https://sendfox.com/form/1gj4x1/3qn7nj', {
+          method: 'POST',
+          body: data,
+          mode: 'no-cors' // avoids CORS preflight, we won't read response body
+        })
+        .then(function() {
+          // no-cors means we can't read response — assume success and redirect
+          window.location.href = '/youre-almost-done/';
+        })
+        .catch(function(err) {
+          if (btn) { btn.disabled = false; btn.textContent = 'Submit'; }
+          msgEl.innerHTML = 'Network error — please check your connection and try again.';
+          msgEl.style.cssText = 'color:#c62828;font-size:14px;font-weight:600;margin-top:10px;';
+        });
+      });
     });
   });
 })();

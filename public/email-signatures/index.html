@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>25 Stunning Email Signature Examples (2026) — Criminally Prolific</title>
+  <title>25 Email Signature Examples That Make a Great First Impression (2026) — Criminally Prolific</title>
   <meta name="description" content="Ping-ping-ping Hear that? That’s the sound of stale emails getting dropped into inboxes. Boring, right? Aaah! Ooooh! WOW! And that? That's the sound of people…">
   <meta property="og:title" content="25 Stunning Email Signature Examples (2026)">
   <meta property="og:description" content="Ping-ping-ping Hear that? That’s the sound of stale emails getting dropped into inboxes. Boring, right? Aaah! Ooooh! WOW! And that? That's the sound of people…">
@@ -23,7 +23,7 @@
   "headline": "25 Stunning Email Signature Examples (2026)",
   "description": "Ping-ping-ping Hear that? That’s the sound of stale emails getting dropped into inboxes. Boring, right? Aaah! Ooooh! WOW! And that? That's the sound of people…",
   "datePublished": "2021-06-05",
-  "dateModified": "2026-06-20",
+  "dateModified": "2026-07-01",
   "author": {"@type":"Person","name":"Dmitry Dragilev","url":"https://www.criminallyprolific.com/dmitry/","sameAs":["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]},
   "publisher": {"@type":"Organization","name":"Criminally Prolific","url":"https://www.criminallyprolific.com","logo":{"@type":"ImageObject","url":"/assets/img/favicon.png"}},
   "image": "/assets/uploads/2021/04/personal-email-signature-template-by-wisestamp-user.jpeg",
@@ -146,11 +146,11 @@
   <header class="post-hero">
     <div class="post-hero-inner">
       <span class="post-cat">Cold Email</span>
-      <h1 class="post-title" itemprop="headline">25 Stunning Email Signature Examples (2026)</h1>
+      <h1 class="post-title" itemprop="headline">25 Email Signature Examples That Make a Great Impression (2026)</h1>
       <div class="post-meta">
         <span>By <a href="/dmitry/" itemprop="author">Dmitry Dragilev</a></span>
         <span class="meta-sep">·</span>
-        <span>Updated Jun 20, 2026</span>
+        <span>Updated Jul 1, 2026</span>
         <span class="meta-sep">·</span>
         <span class="read-time">15 min read</span>
         <span class="meta-sep">·</span><span>Cold Email</span>
@@ -160,8 +160,12 @@
 
   <div class="post-layout">
     <div class="post-content">
-      <div class="post-update-banner"><strong>Updated Jun 20, 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
-      <div class="post-ai-intro"><p>83% of business professionals say email signatures influence their perception of the sender's credibility (Adobe Email Usage Study, 2024). An effective email signature functions as a passive marketing tool — a well-designed signature with a clear CTA increases click-through rates by 32% compared to plain-text signatures (Newoldstamp, 2024).</p><p>The 25 examples below cover every professional context, from solo founders to enterprise executives, with specific guidance on what to include, what to avoid, and how to optimize for mobile (where 46% of emails are now opened).</p></div>
+      <div class="post-update-banner"><strong>Updated Jul 1, 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
+      <div class="post-ai-intro">
+<p><strong>Your email signature is passive marketing</strong> — it appears on every single email you send and shapes how recipients perceive you before they've read a word of your pitch. 83% of business professionals say email signatures influence their perception of a sender's credibility (Adobe, 2024). A well-designed signature with a specific CTA increases click-through rates by 32% compared to plain-text signatures (Newoldstamp, 2024).</p>
+<p><strong>What makes a great email signature in 2026:</strong> one clear role descriptor (not a laundry list of titles), one credibility signal (a metric, a publication you've been featured in, or a notable client), one CTA (not three), and mobile-optimized design — 46% of emails are now opened on mobile, where most multi-column signatures break completely.</p>
+<p>The 25 examples below cover every professional context: founders, sales reps, PR professionals, freelancers, executives, and job seekers — with notes on what each element accomplishes and free templates you can copy and customize in under 5 minutes.</p>
+</div>
       <div class="post-body" itemprop="articleBody">
 <p>Ping-ping-ping</p>
 <p>Hear that?</p>
@@ -520,7 +524,7 @@ Aaaaaand that's a wrap, these are all the tips and example you need to create a 
       <div class="post-cta">
         <h3>Get the full playbook in your inbox.</h3>
         <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
-        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-email-signatures">
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj?redirect=https://www.criminallyprolific.com/youre-almost-done/" class="sendfox-form sf-inline" id="sf-email-signatures">
           <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
           <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
           <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
@@ -728,15 +732,36 @@ if (tocLinks.length && headings.length) {
 (function(){
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.sendfox-form').forEach(function(form) {
-      // Add redirect URL so sendfox sends user to our confirmation page on success
-      var redirect = document.createElement('input');
-      redirect.type = 'hidden';
-      redirect.name = 'redirect_url';
-      redirect.value = window.location.origin + '/youre-almost-done/';
-      form.appendChild(redirect);
-      
-      // Remove our old fetch handler — let form submit natively
-      // This avoids CORS issues entirely
+      var msgEl = form.querySelector('.sendfox-message');
+      if (!msgEl) {
+        msgEl = document.createElement('p');
+        msgEl.className = 'sendfox-message';
+        form.appendChild(msgEl);
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
+        msgEl.textContent = '';
+        msgEl.style.cssText = '';
+
+        var data = new FormData(form);
+        fetch('https://sendfox.com/form/1gj4x1/3qn7nj', {
+          method: 'POST',
+          body: data,
+          mode: 'no-cors' // avoids CORS preflight, we won't read response body
+        })
+        .then(function() {
+          // no-cors means we can't read response — assume success and redirect
+          window.location.href = '/youre-almost-done/';
+        })
+        .catch(function(err) {
+          if (btn) { btn.disabled = false; btn.textContent = 'Submit'; }
+          msgEl.innerHTML = 'Network error — please check your connection and try again.';
+          msgEl.style.cssText = 'color:#c62828;font-size:14px;font-weight:600;margin-top:10px;';
+        });
+      });
     });
   });
 })();

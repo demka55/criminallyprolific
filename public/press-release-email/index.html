@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>How to Write a Press Release Email in 2026 — Criminally Prolific</title>
+  <title>Press Release Email: 10 Examples + Subject Lines That Get Opened (2026) — Criminally Prolific</title>
   <meta name="description" content="Your press release is finally done. You spent hours trying to make it perfect. And now it’s ready. But your work isn’t finished! You now have the tough task of…">
   <meta property="og:title" content="How to Write a Press Release Email in 2026">
   <meta property="og:description" content="Your press release is finally done. You spent hours trying to make it perfect. And now it’s ready. But your work isn’t finished! You now have the tough task of…">
@@ -23,7 +23,7 @@
   "headline": "How to Write a Press Release Email in 2026",
   "description": "Your press release is finally done. You spent hours trying to make it perfect. And now it’s ready. But your work isn’t finished! You now have the tough task of…",
   "datePublished": "2025-09-01",
-  "dateModified": "2026-06-27",
+  "dateModified": "2026-07-01",
   "author": {"@type":"Person","name":"Dmitry Dragilev","url":"https://www.criminallyprolific.com/dmitry/","sameAs":["https://www.linkedin.com/in/dmitrydragilev/","https://twitter.com/dragilev"]},
   "publisher": {"@type":"Organization","name":"Criminally Prolific","url":"https://www.criminallyprolific.com","logo":{"@type":"ImageObject","url":"/assets/img/favicon.png"}},
   "image": "/assets/img/dmitry.jpg",
@@ -146,11 +146,11 @@
   <header class="post-hero">
     <div class="post-hero-inner">
       <span class="post-cat">PR outreach</span>
-      <h1 class="post-title" itemprop="headline">How to Write a Press Release Email in 2026</h1>
+      <h1 class="post-title" itemprop="headline">Press Release Email: 10 Examples + Subject Lines That Get Opened (2026)</h1>
       <div class="post-meta">
         <span>By <a href="/dmitry/" itemprop="author">Dmitry Dragilev</a></span>
         <span class="meta-sep">·</span>
-        <span>Updated Jun 27, 2026</span>
+        <span>Updated Jul 1, 2026</span>
         <span class="meta-sep">·</span>
         <span class="read-time">27 min read</span>
         <span class="meta-sep">·</span><span>PR outreach</span>
@@ -160,8 +160,12 @@
 
   <div class="post-layout">
     <div class="post-content">
-      <div class="post-update-banner"><strong>Updated Jun 27, 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
-      <div class="post-ai-intro"><p>Traditional press releases have a 3% pickup rate — 97% are ignored (Cision, 2024). But a well-crafted press release email to the right journalist at the right time achieves 15–25% pickup rates. The difference is format (email, not wire service), personalization (reference the journalist's recent coverage), and newsworthiness (data, milestone, or exclusive angle rather than a product announcement).</p><p>These templates are based on press release emails that actually generated coverage — for JustReachOut clients including Airbnb, Wistia, and Pipedrive — with notes on subject lines, timing, and the specific elements that prompted journalists to follow up.</p></div>
+      <div class="post-update-banner"><strong>Updated Jul 1, 2026</strong> — this article has been reviewed and updated with current data, tools, and examples.</div>
+      <div class="post-ai-intro">
+<p><strong>The average press release has a 3% pickup rate</strong> — meaning 97 out of 100 press releases sent are completely ignored (Cision, 2024). The difference between the 3% that get covered and the 97% that don't is almost never the quality of the news itself. It's the email. Specifically: the subject line, the first sentence, and whether the pitch is addressed to the right journalist at the right time.</p>
+<p>In 2026, press release emails compete not just with other PR pitches but with newsletters, Slack notifications, and AI-generated content summaries. Journalists at top publications receive 100–200 pitches per day. Your subject line has approximately 3 seconds.</p>
+<p><strong>What works:</strong> a subject line under 50 characters that names a specific data point or exclusive angle. What doesn't: "FOR IMMEDIATE RELEASE" in the subject line, attachments, or anything that looks like a mass send. Dmitry Dragilev used press release emails to earn coverage in Forbes, TechCrunch, Mashable, and 200+ other publications across 4 company exits. The 10 templates below are from pitches that actually generated coverage.</p>
+</div>
       <div class="post-body" itemprop="articleBody">
 <p><span style="font-weight: 400;">Your press release is finally done.</span></p>
 <p><span style="font-weight: 400;">You spent hours trying to make it perfect.</span></p>
@@ -528,7 +532,7 @@
       <div class="post-cta">
         <h3>Get the full playbook in your inbox.</h3>
         <p>20,000+ founders read my newsletter on building to acquisition in 3 years, working 3 hours a day.</p>
-        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj" class="sendfox-form sf-inline" id="sf-press-release-email">
+        <form method="post" action="https://sendfox.com/form/1gj4x1/3qn7nj?redirect=https://www.criminallyprolific.com/youre-almost-done/" class="sendfox-form sf-inline" id="sf-press-release-email">
           <p><label>First Name</label><input type="text" name="first_name" placeholder="First Name" required /></p>
           <p><label>Last Name</label><input type="text" name="last_name" placeholder="Last Name" required /></p>
           <p><label>Email</label><input type="email" name="email" placeholder="Email" required /></p>
@@ -738,15 +742,36 @@ if (tocLinks.length && headings.length) {
 (function(){
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.sendfox-form').forEach(function(form) {
-      // Add redirect URL so sendfox sends user to our confirmation page on success
-      var redirect = document.createElement('input');
-      redirect.type = 'hidden';
-      redirect.name = 'redirect_url';
-      redirect.value = window.location.origin + '/youre-almost-done/';
-      form.appendChild(redirect);
-      
-      // Remove our old fetch handler — let form submit natively
-      // This avoids CORS issues entirely
+      var msgEl = form.querySelector('.sendfox-message');
+      if (!msgEl) {
+        msgEl = document.createElement('p');
+        msgEl.className = 'sendfox-message';
+        form.appendChild(msgEl);
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
+        msgEl.textContent = '';
+        msgEl.style.cssText = '';
+
+        var data = new FormData(form);
+        fetch('https://sendfox.com/form/1gj4x1/3qn7nj', {
+          method: 'POST',
+          body: data,
+          mode: 'no-cors' // avoids CORS preflight, we won't read response body
+        })
+        .then(function() {
+          // no-cors means we can't read response — assume success and redirect
+          window.location.href = '/youre-almost-done/';
+        })
+        .catch(function(err) {
+          if (btn) { btn.disabled = false; btn.textContent = 'Submit'; }
+          msgEl.innerHTML = 'Network error — please check your connection and try again.';
+          msgEl.style.cssText = 'color:#c62828;font-size:14px;font-weight:600;margin-top:10px;';
+        });
+      });
     });
   });
 })();
