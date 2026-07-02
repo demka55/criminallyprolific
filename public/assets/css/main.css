@@ -80,6 +80,9 @@ img{max-width:100%;display:block;}
 .nl-form button{padding:14px 24px;background:#0033ff;color:#fff;font-size:15px;font-weight:700;font-family:inherit;border:none;cursor:pointer;transition:background .15s;}
 .nl-form button:hover{background:#0022cc;}
 .nl-form label{display:none;}
+.nl-gdpr{margin:4px 0 8px!important;}
+.nl-gdpr label{display:flex!important;align-items:flex-start;gap:8px;font-size:13px;color:#555;font-weight:500;cursor:pointer;}
+.nl-gdpr input[type="checkbox"]{margin-top:2px;flex-shrink:0;}
 .nl-form p{margin:0;}
 .sendfox-message{margin:8px 0 0;font-size:14px;font-weight:600;}
 .sendfox-message.success{color:#2e7d32;}
