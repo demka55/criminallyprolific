@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dmitry Dragilev — Criminally Prolific</title>
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="shortcut icon" href="/assets/img/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dmitry Dragilev — Multi-Exit Founder · Criminally Prolific</title>
+<meta name="description" content="I build SaaS companies designed to be acquired. 4 exits to Google, Semrush & Adobe. Working 3 hours a day. This is the playbook.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <div class="modal-frame">
+      <iframe id="videoIframe" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/assets/img/favicon.png" alt="">
+    Criminally Prolific
+  </a>
+  <div class="nav-links">
+    <a href="/dmitry/">About</a>
+    <a href="/#interviews">Interviews</a>
+    <a href="/book/">Book</a>
+    <a href="/blog/">Blog</a>
+    <a href="/testimonials/">Testimonials</a>
+    <a href="/press/">Press</a>
+    <a href="/contact/">Contact</a>
+    <a href="/signup/" class="nav-cta">Free Newsletter</a>
+  </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navMobile').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="/dmitry/">About</a>
+  <a href="/#interviews">Interviews</a>
+  <a href="/book/">Book</a>
+  <a href="/blog/">Blog</a>
+  <a href="/testimonials/">Testimonials</a>
+  <a href="/press/">Press</a>
+  <a href="/contact/">Contact</a>
+  <a href="/signup/" class="nav-cta">Free Newsletter</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-photo" onclick="openModal('https://fast.wistia.net/embed/iframe/r8kdf43w6p?autoPlay=true&videoFoam=true')">
+    <img src="/assets/img/home-video-background.jpg" alt="Dmitry Dragilev">
+    <div class="hero-photo-overlay">
+      <div class="hero-play">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#111"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <div class="hero-watch">— Watch &nbsp;<span>My story · 7 minutes</span></div>
+    </div>
+  </div>
+  <div class="hero-text">
+    <p class="hero-kicker">Multi-exit founder</p>
+    <h1 class="hero-h1">I build SaaS companies <em>designed</em> to be acquired.</h1>
+    <p class="hero-acq-label">Acquired by</p>
+    <div class="hero-logos">
+      <img src="/assets/uploads/2026/01/sem.png" alt="Semrush">
+      <img src="/assets/uploads/2026/01/google.png" alt="Google">
+      <img src="/assets/uploads/2026/01/adobe.png" alt="Adobe">
+    </div>
+    <a href="/dmitry/" class="hero-btn">About Me →</a>
+  </div>
+</div>
+
+<!-- PROOF STRIP -->
+<div class="proof">
+  <div class="proof-item"><span class="proof-num">4</span><span class="proof-label">exits</span></div>
+  <div class="proof-sep"></div>
+  <div class="proof-item"><span class="proof-num">3 yrs</span><span class="proof-label">avg time to exit</span></div>
+  <div class="proof-sep"></div>
+  <div class="proof-item"><span class="proof-num">3 hrs/day</span><span class="proof-label">to build each</span></div>
+  <div class="proof-sep"></div>
+  <div class="proof-item"><span class="proof-num">20k+</span><span class="proof-label">newsletter readers</span></div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="section" style="background:#fff;border-top:1.5px solid #eee;border-bottom:1.5px solid #eee;">
+  <div class="container">
+    <div class="nl">
+      <div class="nl-inner">
+        <div>
+          <p class="eyebrow">— Newsletter</p>
+          <h2 class="nl-title">Your business<br>shouldn't own you.</h2>
+          <p class="nl-desc">3 hours a day. 4 exits. Free biweekly playbook.</p>
+        </div>
+        <div style="position:relative;">
+          <form method="post" action="https://sendfox.com/form/1gj4x1/3o9y64" class="sendfox-form nl-form" id="3o9y64" data-async="true" data-recaptcha="true">
+            <p><label for="sendfox_form_name">First Name: </label><input type="text" id="sendfox_form_name" placeholder="First Name" name="first_name" required /></p>
+            <p><label for="sendfox_form_last_name">Last Name: </label><input type="text" id="sendfox_form_last_name" placeholder="Last Name" name="last_name" required /></p>
+            <p><label for="sendfox_form_email">Email: </label><input type="email" id="sendfox_form_email" placeholder="Email" name="email" required /></p>
+            <p class="nl-gdpr"><label><input type="checkbox" name="gdpr" value="1" required /> I agree to receive email updates from Dmitry Dragilev.</label></p>
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="a_password" tabindex="-1" value="" autocomplete="off" /></div>
+            <p><button type="submit">Submit</button></p>
+            <p class="sendfox-message"></p>
+          </form>
+          <script src="https://cdn.sendfox.com/js/form.js" charset="utf-8"></script>
+          <p class="nl-fine">No spam. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPANIES -->
+<div class="section" id="companies" style="background:#fff;">
+  <div class="container">
+    <p class="eyebrow">— Portfolio</p>
+    <h2 class="section-title">What I'm building &amp; what I've built.</h2>
+
+    <!-- CURRENT PROJECTS -->
+    <h3 style="font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#0033ff;margin:40px 0 24px;padding-bottom:12px;border-bottom:2px solid #0033ff;">Current Projects</h3>
+    <div class="curr-grid">
+
+      <!-- LLM Gap Analyzer -->
+      <div class="curr-card">
+        <div class="curr-card-head">
+          <img src="/assets/uploads/2026/04/llm-gap-analyzer-150x150.png" alt="LLM Gap Analyzer" class="curr-logo">
+          <div>
+            <p class="curr-title">LLM Gap Analyzer</p>
+            <p class="curr-launch">Launched on Semrush App Store · May 2026 · 150+ paying customers</p>
+          </div>
+        </div>
+        <p class="curr-desc">Find why competitors get cited in ChatGPT and Google AI — and fix your content to get cited instead.</p>
+        <div class="curr-bullets">
+          <span>✓ Analyze AI responses for your keywords</span>
+          <span>✓ See exactly why competitors rank above you</span>
+          <span>✓ Get ready-to-paste fixes for every gap</span>
+        </div>
+        <a href="https://www.semrush.com/apps/llm-gap-analyzer/" class="curr-btn" target="_blank">Free Trial →</a>
+      </div>
+
+      <!-- IRS Resolution Service -->
+      <div class="curr-card">
+        <div class="curr-card-head">
+          <img src="/assets/uploads/2026/04/irs-resolution-150x150.png" alt="IRS Resolution Service" class="curr-logo">
+          <div>
+            <p class="curr-title">IRS Resolution Service</p>
+            <p class="curr-launch">Launched May 2026 · Currently onboarding new clients</p>
+          </div>
+        </div>
+        <p class="curr-desc">The IRS sends 200M notices a year. Most people pay too much or miss programs that could eliminate what they owe. Get direct access to a former IRS Auditor who knows exactly how to resolve it.</p>
+        <div class="curr-bullets">
+          <span>✓ Unfiled returns, back taxes, audits &amp; OIC</span>
+          <span>✓ Former IRS Auditor &amp; licensed CPA</span>
+          <span>✓ Free AI-powered IRS notice decoder</span>
+        </div>
+        <a href="https://irsresolutionservice.com/" class="curr-btn" target="_blank">Get Help Now →</a>
+      </div>
+
+      <!-- PRThatConverts -->
+      <div class="curr-card">
+        <div class="curr-card-head">
+          <div class="curr-logo-text">PR</div>
+          <div>
+            <p class="curr-title">PRThatConverts.com</p>
+            <p class="curr-launch">Active · SEO &amp; PR coaching program</p>
+          </div>
+        </div>
+        <p class="curr-desc">SEO, GEO &amp; PR coaching for founders who want to rank on Google, get cited by AI, and earn press — without an agency or paid ads.</p>
+        <div class="curr-bullets">
+          <span>✓ 500+ students across 25+ countries</span>
+          <span>✓ Rank #1 on Google for your keyword</span>
+          <span>✓ Get press without a PR firm</span>
+        </div>
+        <a href="https://www.prthatconverts.com" class="curr-btn" target="_blank">Visit Website →</a>
+      </div>
+
+      <!-- YouTube Gap Analyzer -->
+      <div class="curr-card">
+        <div class="curr-card-head">
+          <img src="/assets/uploads/2026/01/youtube-gap-analyzer-1-150x150.png" alt="YouTube Gap Analyzer" class="curr-logo">
+          <div>
+            <p class="curr-title">YouTube Gap Analyzer</p>
+            <p class="curr-launch">Live on Semrush App Store</p>
+          </div>
+        </div>
+        <p class="curr-desc">Find what your competitors are missing on YouTube and create videos that rank #1.</p>
+        <div class="curr-bullets">
+          <span>✓ Spot gaps competitors are missing</span>
+          <span>✓ Rank higher on YouTube search</span>
+          <span>✓ Built on Semrush keyword data</span>
+        </div>
+        <a href="https://www.semrush.com/apps/youtube-gap-analyzer/" class="curr-btn" target="_blank">Free Trial →</a>
+      </div>
+
+    </div>
+
+    <!-- ACQUIRED COMPANIES -->
+    <h3 style="font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#555;margin:56px 0 24px;padding-bottom:12px;border-bottom:2px solid #111;">Acquired Companies — The Exit Playbook, In Order</h3>
+    <div class="acq-timeline">
+
+      <div class="acq-item">
+        <div class="acq-year-col">
+          <span class="acq-year">2022–2025</span>
+          <span class="acq-badge">Semrush · Adobe</span>
+        </div>
+        <div class="acq-body">
+          <p class="acq-name">TopicRanker / SERP Gap Analyzer</p>
+          <p class="acq-acquired">Acquired by Semrush · Oct 2025 — then Adobe acquired Semrush (incl. SERP Gap Analyzer) for $1.9B · Apr 28, 2026</p>
+          <p class="acq-desc">Built as a Semrush App Center tool to find easy-to-rank keywords by identifying where competitors were weak. Rapidly became the top-performing app in the entire Semrush App Center — acquired by Semrush in Oct 2025. Adobe then acquired Semrush and all its assets — including SERP Gap Analyzer — for $1.9B, completed April 28, 2026.</p>
+          <a href="https://www.semrush.com/apps/serp-gap-analyzer/" class="acq-link" target="_blank">View on Semrush →</a>
+        </div>
+      </div>
+
+      <div class="acq-item">
+        <div class="acq-year-col">
+          <span class="acq-year">2021–2023</span>
+          <span class="acq-badge">Semrush</span>
+        </div>
+        <div class="acq-body">
+          <p class="acq-name">Smallbiz.Tools</p>
+          <p class="acq-acquired">Acquired by Semrush · 2023</p>
+          <p class="acq-desc">Trusted affiliate review site for small business software — honest, in-depth reviews powered by SEO targeting comparison and alternative keywords. Zero paid ads. Acquired by Semrush in 2023.</p>
+          <a href="https://www.nichepursuits.com/dmitry-dragilev/" class="acq-link" target="_blank">Read the case study →</a>
+        </div>
+      </div>
+
+      <div class="acq-item">
+        <div class="acq-year-col">
+          <span class="acq-year">2014–2020</span>
+          <span class="acq-badge">SEOJet · ChatRank.ai</span>
+        </div>
+        <div class="acq-body">
+          <p class="acq-name">JustReachOut</p>
+          <p class="acq-acquired">Acquired by SEOJet · 2020 — re-acquired by ChatRank.ai · Jan 2024</p>
+          <p class="acq-desc">AI-powered SaaS that helped 5,000+ customers (including Airbnb and HubSpot) handle PR without a PR agency. Acquired by SEOJet in 2020, then re-acquired by ChatRank.ai in January 2024.</p>
+          <a href="https://theygotacquired.com/saas/justreachout-acquired-by-seojet/" class="acq-link" target="_blank">Read the case study →</a>
+        </div>
+      </div>
+
+      <div class="acq-item" style="border-bottom:none;">
+        <div class="acq-year-col">
+          <span class="acq-year">2012–2014</span>
+          <span class="acq-badge">Google</span>
+        </div>
+        <div class="acq-body">
+          <p class="acq-name">Polar Polls</p>
+          <p class="acq-acquired">Acquired by Google · September 2014 — Google's 166th acquisition</p>
+          <p class="acq-desc">Grew from zero to 40 million pageviews/month as the only marketer on a 5-person team using PR outreach and SEO. Acquired by Google in September 2014 — Google's 166th acquisition.</p>
+          <a href="https://thenextweb.com/news/took-startup-0-40m-pageviews-got-acquired-google" class="acq-link" target="_blank">Read the story →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- INTERVIEWS -->
+<div class="section" id="interviews" style="background:#fafafa;border-top:1px solid #eee;">
+  <div class="container">
+    <p class="eyebrow">— Interviews</p>
+    <h2 class="section-title">Podcast interviews</h2>
+    <div class="interviews-grid" id="interviewsGrid">
+
+      <!-- Fast & Furious Exits — YouTube -->
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=HE612HhQTag" target="_blank">
+        <div class="interview-thumb">
+          <img src="https://img.youtube.com/vi/HE612HhQTag/mqdefault.jpg" alt="Fast &amp; Furious Exits" loading="lazy">
+          <div class="interview-play">▶</div>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">Fast &amp; Furious Exits</p>
+          <p class="interview-title">Fast &amp; Furious Exits with Exited Founder Dmitry Dragilev</p>
+          <p class="interview-meta">May 4, 2026 · 33 min · ▶ YouTube</p>
+        </div>
+      </a>
+
+      <!-- NexChapter — YouTube -->
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=NGz_YEROQqM" target="_blank">
+        <div class="interview-thumb">
+          <img src="https://img.youtube.com/vi/NGz_YEROQqM/mqdefault.jpg" alt="NexChapter" loading="lazy">
+          <div class="interview-play">▶</div>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">NexChapter</p>
+          <p class="interview-title">4X Exits… Working 3 Hours a Day!</p>
+          <p class="interview-meta">April 15, 2026 · 55 min · ▶ YouTube</p>
+        </div>
+      </a>
+
+      <!-- ExitWise — YouTube -->
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=UpB1aseytfo" target="_blank">
+        <div class="interview-thumb">
+          <img src="https://img.youtube.com/vi/UpB1aseytfo/mqdefault.jpg" alt="ExitWise" loading="lazy">
+          <div class="interview-play">▶</div>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">ExitWise</p>
+          <p class="interview-title">Build for a Strategic Acquisition Within 3 Years</p>
+          <p class="interview-meta">March 18, 2026 · 38 min · ▶ YouTube</p>
+        </div>
+      </a>
+
+      <!-- Different Dadpreneurs — YouTube -->
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=-g8rIHs9hMk" target="_blank">
+        <div class="interview-thumb">
+          <img src="https://img.youtube.com/vi/-g8rIHs9hMk/mqdefault.jpg" alt="Different Dadpreneurs" loading="lazy">
+          <div class="interview-play">▶</div>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">Different Dadpreneurs</p>
+          <p class="interview-title">Redefining Success: Lessons from 4 Exits on What Actually Matters</p>
+          <p class="interview-meta">January 15, 2026 · 1hr 39min · ▶ YouTube</p>
+        </div>
+      </a>
+
+      <!-- ChatRank.ai — YouTube -->
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=c7aHY8EZjj8" target="_blank">
+        <div class="interview-thumb">
+          <img src="https://img.youtube.com/vi/c7aHY8EZjj8/mqdefault.jpg" alt="ChatRank.ai" loading="lazy">
+          <div class="interview-play">▶</div>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">ChatRank.ai</p>
+          <p class="interview-title">How To Rank on Google AI Overviews</p>
+          <p class="interview-meta">December 18, 2025 · ▶ YouTube</p>
+        </div>
+      </a>
+
+      <!-- Growth Architects — YouTube -->
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=8xnV7odmn_U" target="_blank">
+        <div class="interview-thumb">
+          <img src="https://img.youtube.com/vi/8xnV7odmn_U/mqdefault.jpg" alt="Growth Architects" loading="lazy">
+          <div class="interview-play">▶</div>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">Growth Architects</p>
+          <p class="interview-title">Lessons Learned from Selling a Company to Google</p>
+          <p class="interview-meta">July 7, 2025 · 42 min · ▶ YouTube</p>
+        </div>
+      </a>
+
+      <!-- Hidden until expanded -->
+      <div class="interviews-hidden" id="moreInterviews">
+        <a class="interview-card interview-card--audio" href="/assets/uploads/2025/08/How-to-Rank-1-on-Google_-Lessons-from-4-SaaS-Exits-w-Dmitry-Dragilev.mp3" target="_blank">
+          <div class="interview-thumb interview-thumb--audio">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0033ff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="#0033ff" stroke="none"/></svg>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Best Morning Routine, Ever!</p>
+            <p class="interview-title">How to Rank #1 on Google: Lessons from 4 SaaS Exits</p>
+            <p class="interview-meta">August 4, 2025 · 43 min · ▶ Listen</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=Za_36r09YRU" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/Za_36r09YRU/mqdefault.jpg" alt="Jolly SEO" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Jolly SEO</p>
+            <p class="interview-title">Sold to Google, SEMRush, Mangools… Dmitry's advice on AI search</p>
+            <p class="interview-meta">June 18, 2025 · 26 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=iWl7uScOKBU" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/iWl7uScOKBU/mqdefault.jpg" alt="Digital Slice" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Digital Slice</p>
+            <p class="interview-title">How To Get Your Brand Noticed In The Age Of AI Search And Zero-Click Results</p>
+            <p class="interview-meta">June 3, 2025 · 31 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=WsZuCZDDbaM" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/WsZuCZDDbaM/mqdefault.jpg" alt="Marketer of the Day" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Marketer of the Day</p>
+            <p class="interview-title">How To Scale Your Business w/ PR, SEO &amp; Measure Success Beyond Finance</p>
+            <p class="interview-meta">January 3, 2025 · 44 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=0S4yjqlaWto" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/0S4yjqlaWto/mqdefault.jpg" alt="Voices of Search" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Voices of Search</p>
+            <p class="interview-title">Focus less on building backlinks, focus more on content</p>
+            <p class="interview-meta">December 12, 2024 · 35 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=FeCFeZw7YNg" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/FeCFeZw7YNg/mqdefault.jpg" alt="Cognism Loop" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Cognism Loop</p>
+            <p class="interview-title">Identifying weak spots, generative AI and what it means to create quality SEO content</p>
+            <p class="interview-meta">November 26, 2024 · 44 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=iKMZohthbz0" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/iKMZohthbz0/mqdefault.jpg" alt="Niche Pursuits" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Niche Pursuits</p>
+            <p class="interview-title">This SEO Specialist Sold 3 Businesses to Google and Semrush</p>
+            <p class="interview-meta">March 25, 2024 · 57 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=7dGRDpX0LBw" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/7dGRDpX0LBw/mqdefault.jpg" alt="MarketMuse" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">MarketMuse Podcast</p>
+            <p class="interview-title">How To Adjust Your Keyword Research Strategy For The Google Helpful Content Update</p>
+            <p class="interview-meta">November 1, 2022 · 13 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=ZdH7TCMCwZA" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/ZdH7TCMCwZA/mqdefault.jpg" alt="GrowthHacker TV" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">GrowthHacker TV</p>
+            <p class="interview-title">Secrets to Build a High-Traffic Startup from 0 to 40M Pageviews</p>
+            <p class="interview-meta">January 17, 2024 · 38 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--audio" href="/assets/uploads/2025/04/Daily-Grind-S7-E2.mp3" target="_blank">
+          <div class="interview-thumb interview-thumb--audio">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0033ff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="#0033ff" stroke="none"/></svg>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">DailyGrind</p>
+            <p class="interview-title">Are you living a life true to yourself?</p>
+            <p class="interview-meta">April 3, 2025 · 36 min · ▶ Listen</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=HAi9XwNdz00" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/HAi9XwNdz00/mqdefault.jpg" alt="Dr. Bee Well" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Dr. Bee Well</p>
+            <p class="interview-title">Why Building Real Relationships Should Be Priority For Everyone</p>
+            <p class="interview-meta">March 12, 2025 · 114 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=2kkgQZsP_KU" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/2kkgQZsP_KU/mqdefault.jpg" alt="HyperGrowth" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">HyperGrowth Podcast</p>
+            <p class="interview-title">PR Outreach That Gets Results</p>
+            <p class="interview-meta">December 15, 2021 · 48 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=sfXcwMsfEoA" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/sfXcwMsfEoA/mqdefault.jpg" alt="Mailshake" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Mailshake Live Webinar</p>
+            <p class="interview-title">Why No Reply? How To Craft Cold Emails That Convert</p>
+            <p class="interview-meta">September 16, 2021 · 57 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=xpCDl-hiBzI" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/xpCDl-hiBzI/mqdefault.jpg" alt="Zapier" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Zapier Podcast</p>
+            <p class="interview-title">The road to better customer reviews is paved with automation</p>
+            <p class="interview-meta">October 20, 2022 · 21 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <!-- UnMiss 2022 — YouTube -->
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=SkEyy0XHYF0" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/SkEyy0XHYF0/mqdefault.jpg" alt="UnMiss 2022" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">UnMiss Podcast</p>
+            <p class="interview-title">Modern Link Building Techniques With Dmitry Dragilev</p>
+            <p class="interview-meta">June 3, 2022 · 43 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <!-- Mixergy 2021 — Wistia -->
+        <a class="interview-card interview-card--video" href="https://fast.wistia.net/embed/iframe/s5rwmspfpr" target="_blank">
+          <div class="interview-thumb interview-thumb--wistia">
+            <img src="https://embed-ssl.wistia.com/deliveries/s5rwmspfpr/image.jpg" alt="Mixergy 2021" loading="lazy" onerror="this.src='/assets/uploads/2025/01/podcast-icon.png';this.style.width='80px';this.style.height='80px';this.style.objectFit='contain';this.style.margin='auto'">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Mixergy</p>
+            <p class="interview-title">This $250K ARR startup just sold for $800K</p>
+            <p class="interview-meta">April 20, 2021 · 57 min · ▶ Watch</p>
+          </div>
+        </a>
+        <!-- Mixergy 2019 — Wistia -->
+        <a class="interview-card interview-card--video" href="https://fast.wistia.net/embed/iframe/llpicktvh0" target="_blank">
+          <div class="interview-thumb interview-thumb--wistia">
+            <img src="https://embed-ssl.wistia.com/deliveries/llpicktvh0/image.jpg" alt="Mixergy 2019" loading="lazy" onerror="this.src='/assets/uploads/2025/01/podcast-icon.png';this.style.width='80px';this.style.height='80px';this.style.objectFit='contain';this.style.margin='auto'">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Mixergy</p>
+            <p class="interview-title">How to do your own PR right with Dmitry Dragilev</p>
+            <p class="interview-meta">January 14, 2019 · 63 min · ▶ Watch</p>
+          </div>
+        </a>
+        <!-- Mixergy 2018 — Wistia -->
+        <a class="interview-card interview-card--video" href="https://fast.wistia.net/embed/iframe/a3rvbwq2y1" target="_blank">
+          <div class="interview-thumb interview-thumb--wistia">
+            <img src="https://embed-ssl.wistia.com/deliveries/a3rvbwq2y1/image.jpg" alt="Mixergy 2018" loading="lazy" onerror="this.src='/assets/uploads/2025/01/podcast-icon.png';this.style.width='80px';this.style.height='80px';this.style.objectFit='contain';this.style.margin='auto'">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Mixergy</p>
+            <p class="interview-title">How Dmitry became such a good marketer he got on Mixergy TWICE</p>
+            <p class="interview-meta">January 24, 2018 · ▶ Watch</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=-HOHn5atNqw" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/-HOHn5atNqw/mqdefault.jpg" alt="IndieHackers" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">IndieHackers</p>
+            <p class="interview-title">Thinking One Step Ahead to Grow Your Business via PR</p>
+            <p class="interview-meta">August 10, 2020 · 65 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=_IRplN925O0" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/_IRplN925O0/mqdefault.jpg" alt="Digital Savage" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Digital Savage</p>
+            <p class="interview-title">The Power of Relationship Building at JustReachOut</p>
+            <p class="interview-meta">April 21, 2022 · 41 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=REyhovjKbw4" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/REyhovjKbw4/mqdefault.jpg" alt="HopOnline" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">HopOnline Podcast</p>
+            <p class="interview-title">How to Make Your Content Evergreen with Dmitry Dragilev</p>
+            <p class="interview-meta">January 31, 2022 · 48 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=J1IB6juzXiA" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/J1IB6juzXiA/mqdefault.jpg" alt="PR Tech Wednesdays" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">PR Tech Wednesdays</p>
+            <p class="interview-title">How To Get Press Without Hiring a PR Agency</p>
+            <p class="interview-meta">April 10, 2020 · 47 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=RrBWcL4tfYA" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/RrBWcL4tfYA/mqdefault.jpg" alt="InspiredInsider" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">InspiredInsider</p>
+            <p class="interview-title">How To Grow from 0 to 5M customers w/ Dmitry Dragilev</p>
+            <p class="interview-meta">March 12, 2020 · 86 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=st-nI4EchTI" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/st-nI4EchTI/mqdefault.jpg" alt="Stand Out Podcast" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Stand Out Podcast</p>
+            <p class="interview-title">Create a Consistent Stream of PR w/ Dmitry Dragilev</p>
+            <p class="interview-meta">February 20, 2017 · 28 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=Mo-D0r0YQl8" target="_blank">
+          <div class="interview-thumb">
+            <img src="https://img.youtube.com/vi/Mo-D0r0YQl8/mqdefault.jpg" alt="Evolving SEO" loading="lazy">
+            <div class="interview-play">▶</div>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">Evolving SEO Podcast</p>
+            <p class="interview-title">Replying to Journalist Requests (HARO) During COVID</p>
+            <p class="interview-meta">April 24, 2020 · 60 min · ▶ YouTube</p>
+          </div>
+        </a>
+        <a class="interview-card interview-card--audio" href="/assets/uploads/2020/01/142-dmitry-dragilev-of-just-reach-out.mp3" target="_blank">
+          <div class="interview-thumb interview-thumb--audio">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0033ff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="#0033ff" stroke="none"/></svg>
+          </div>
+          <div class="interview-info">
+            <p class="interview-pod">IndieHackers</p>
+            <p class="interview-title">Building the Ultimate Lifestyle Business</p>
+            <p class="interview-meta">January 14, 2020 · 56 min · ▶ Listen</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+    <div style="display:flex;align-items:center;gap:20px;margin-top:28px;">
+      <button class="show-more-btn" id="showMoreBtn" onclick="toggleInterviews()">Show all interviews ↓</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <!-- Col 1: About -->
+    <div class="footer-about">
+      <div class="footer-photo-row">
+        <img src="/assets/img/dmitry.jpg" alt="Dmitry Dragilev" class="footer-photo">
+        <a href="/" class="footer-logo">Criminally Prolific</a>
+      </div>
+      <p class="footer-bio">I'm Dmitry Dragilev — multi-exit founder who sold 4 companies to Google, Semrush, and Adobe working 3 hours a day. I write about building businesses for lifestyle freedom, not a golden cage.</p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/dmitrydragilev/" target="_blank">LinkedIn</a>
+        <a href="/signup/">Newsletter</a>
+        <a href="/book/">New Book</a>
+      </div>
+    </div>
+    <!-- Col 2: Companies -->
+    <div class="footer-col">
+      <h4>Companies</h4>
+      <ul>
+        <li><a href="https://www.semrush.com/apps/llm-gap-analyzer/" target="_blank">LLM Gap Analyzer</a></li>
+        <li><a href="https://www.semrush.com/apps/youtube-gap-analyzer/" target="_blank">YouTube Gap Analyzer</a></li>
+        <li><a href="https://irsresolutionservice.com/" target="_blank">IRS Resolution Service</a></li>
+        <li><a href="https://www.semrush.com/apps/serp-gap-analyzer/" target="_blank">SERP Gap Analyzer <span class="acq-tag">— Acquired</span></a></li>
+        <li><a href="https://justreachout.io" target="_blank">JustReachOut <span class="acq-tag">— Acquired</span></a></li>
+        <li><a href="https://smallbiz.tools" target="_blank">Smallbiz.Tools <span class="acq-tag">— Acquired</span></a></li>
+        <li><a href="https://thenextweb.com/news/took-startup-0-40m-pageviews-got-acquired-google" target="_blank">Polar Polls <span class="acq-tag">— Acquired by Google</span></a></li>
+      </ul>
+    </div>
+    <!-- Col 3: PR & Growth -->
+    <div class="footer-col">
+      <h4>PR &amp; Growth</h4>
+      <ul>
+        <li><a href="/how-to-pitch-journalists/">How to Pitch Journalists</a></li>
+        <li><a href="/pr-pitch-angles/">PR Pitch Angles</a></li>
+        <li><a href="/pr-for-startups/">PR for Startups</a></li>
+        <li><a href="/saas-pr/">SaaS PR Guide</a></li>
+        <li><a href="/do-your-own-pr/">Do Your Own PR</a></li>
+        <li><a href="/media-relations-strategy/">Media Relations Strategy</a></li>
+        <li><a href="/marketing-communications-strategy/">Marketing Comms Strategy</a></li>
+        <li><a href="/media-list-examples/">Media List Examples</a></li>
+        <li><a href="/company-boilerplate/">Company Boilerplate</a></li>
+        <li><a href="/growth-hacking/">Growth Hacking</a></li>
+        <li><a href="/50-growth-hacking-tools/">50 Growth Hacking Tools</a></li>
+        <li><a href="/press-release-email/">Press Release Email</a></li>
+        <li><a href="/pitch-sell-your-app/">How to Pitch &amp; Sell Your App</a></li>
+        <li><a href="/waste-money-on-facebook-ads/">Stop Wasting Money on Facebook Ads</a></li>
+        <li><a href="/convert-website-visitors/">Convert Website Visitors</a></li>
+      </ul>
+    </div>
+    <!-- Col 4: Email & SEO -->
+    <div class="footer-col">
+      <h4>Email &amp; SEO</h4>
+      <ul>
+        <li><a href="/cold-email-example/">Cold Email Examples</a></li>
+        <li><a href="/email-pitch-tips/">Email Pitch Tips</a></li>
+        <li><a href="/business-email-templates/">Business Email Templates</a></li>
+        <li><a href="/sales-email-sequences/">Sales Email Sequences</a></li>
+        <li><a href="/gmail-mail-merge/">Gmail Mail Merge</a></li>
+        <li><a href="/find-anyones-email/">Find Anyone's Email</a></li>
+        <li><a href="/email-signatures/">Email Signatures</a></li>
+        <li><a href="/email-signoffs/">Email Sign-offs</a></li>
+        <li><a href="/how-to-ask-for-business-in-an-email/">How to Ask for Business</a></li>
+        <li><a href="/how-to-rank-higher-on-google/">Rank Higher on Google</a></li>
+        <li><a href="/optimize-for-google-rankbrain/">Optimize for RankBrain</a></li>
+        <li><a href="/ranking-high-volume-keyword/">High-Volume Keywords</a></li>
+        <li><a href="/low-search-volume-keywords/">Low Search Volume Keywords</a></li>
+        <li><a href="/grow-email-list/">Grow Your Email List</a></li>
+        <li><a href="/grow-email-subscribers/">Grow Email Subscribers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">© 2026 Criminally Prolific LLC. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-of-use/">Terms of Use</a>
+        <a href="/contact/">Contact</a>
+        <a href="/sitemap/">Sitemap</a>
+      </div>
+      <img src="/assets/img/logo-footer.png" alt="Criminally Prolific" class="footer-circular-logo">
+    </div>
+  </div>
+</footer>
+
+
+<script src="/assets/js/main.js"></script>
+<script>
+function openModal(url){
+  document.getElementById('videoIframe').src=url;
+  document.getElementById('videoModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('videoModal').classList.remove('open');
+  document.getElementById('videoIframe').src='';
+  document.body.style.overflow='';
+}
+document.getElementById('videoModal').addEventListener('click',function(e){
+  if(e.target===this)closeModal();
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
+function toggleInterviews(){
+  var more=document.getElementById('moreInterviews');
+  var btn=document.getElementById('showMoreBtn');
+  if(more.classList.contains('visible')){
+    more.classList.remove('visible');
+    btn.textContent='Show all interviews ↓';
+  } else {
+    more.classList.add('visible');
+    btn.textContent='Show fewer ↑';
+  }
+}
+</script>
+
+</body>
+</html>
