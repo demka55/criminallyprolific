@@ -209,7 +209,6 @@ export default async (req) => {
   return fail('Unknown action', 400)
 }
 
-export const config = { path: '/api/sma-seo-track', method: ['GET', 'OPTIONS'] }
 
 async function checkKeyword(keyword, apiKey) {
   const result = {

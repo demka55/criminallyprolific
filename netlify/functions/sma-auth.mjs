@@ -32,4 +32,3 @@ export default async (req) => {
   }
 }
 
-export const config = { path: '/api/sma-auth', method: ['POST', 'OPTIONS'] }

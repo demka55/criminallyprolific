@@ -322,7 +322,6 @@ export default async (req) => {
   return fail('Unknown action', 400)
 }
 
-export const config = { path: '/api/seo-track', method: ['GET', 'OPTIONS'] }
 
 // ── Check one keyword — handles page_token for deferred AIO ──────────────────
 // No client-side timeout — let ValueSERP take up to 60s per Google's recommendation
