@@ -145,7 +145,14 @@ export default async (req) => {
         const slug = kw.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 60)
         const kwRaw = await store.get(`kw:${slug}`).catch(() => null)
         const kwData = tryParse(kwRaw)
-        if (kwData) kwResults.push(kwData)
+        if (kwData) {
+          // Attach per-keyword history if not already present
+          if (!kwData.history) {
+            const histRaw = await store.get(`kw-hist:${slug}`).catch(() => null)
+            kwData.history = tryParse(histRaw) || []
+          }
+          kwResults.push(kwData)
+        }
       }
       let results = stored
       if (kwResults.length > 0) {
@@ -176,9 +183,30 @@ export default async (req) => {
   if (action === 'check') {
     const kw = url.searchParams.get('kw') || ''
     if (!kw) return fail('Missing kw param', 400)
+
+    const store = getStore(STORE)
+    const slug  = kw.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 60)
+    const today = new Date().toISOString().slice(0, 10)
+
+    // One check per keyword per day — return cached if already checked today
+    const existing = JSON.parse(await store.get(`kw:${slug}`).catch(() => 'null') || 'null')
+    if (existing && existing.checkedAt && existing.checkedAt.slice(0, 10) === today) {
+      return ok({ ...existing, skipped: true, reason: 'already_checked_today' })
+    }
+
     const result = await checkKeyword(kw, API_KEY)
-    const store  = getStore(STORE)
-    const slug   = kw.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 60)
+
+    // Append to per-keyword history (keep last 30 days)
+    const histRaw = await store.get(`kw-hist:${slug}`).catch(() => null)
+    let kwHist = []
+    try { kwHist = histRaw ? JSON.parse(histRaw) : [] } catch {}
+    kwHist.unshift({ date: today, organic_rank: result.organic_rank || null, in_aio: result.in_aio, site_cited: result.site_cited })
+    if (kwHist.length > 30) kwHist = kwHist.slice(0, 30)
+    await store.set(`kw-hist:${slug}`, JSON.stringify(kwHist)).catch(() => {})
+
+    // Attach history to result for client display
+    result.history = kwHist
+
     await store.set(`kw:${slug}`, JSON.stringify(result)).catch(() => {})
     return ok(result)
   }

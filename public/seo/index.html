@@ -212,18 +212,41 @@ function renderEmpty(){
 async function runNow(){
   const btn=document.getElementById('runBtn');
   btn.disabled=true;
-  const total=ALL_KWS.length;
-  let done=0;
-  for(const kw of ALL_KWS){
+  const today=new Date().toISOString().slice(0,10);
+  const resultMap={};
+  allResults.forEach(r=>{ resultMap[r.keyword.toLowerCase()]=r; });
+  const toCheck=ALL_KWS.filter(kw=>{
+    const r=resultMap[kw.toLowerCase()];
+    if(!r||!r.checkedAt) return true;
+    return r.checkedAt.slice(0,10)!==today;
+  });
+  if(toCheck.length===0){
+    setStatus('green','All 166 keywords already checked today ✓');
+    btn.disabled=false; btn.innerHTML='↻ Run now'; return;
+  }
+  let progEl=document.getElementById('runProgress');
+  if(!progEl){
+    progEl=document.createElement('div'); progEl.id='runProgress'; progEl.style.cssText='margin-bottom:12px';
+    progEl.innerHTML=`<div style="font-size:12px;color:var(--ink-muted);margin-bottom:4px" id="runProgressLabel"></div>
+      <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden">
+        <div id="runProgressFill" style="height:100%;background:var(--blue);border-radius:2px;transition:width .3s;width:0%"></div>
+      </div>`;
+    document.getElementById('filterBar').before(progEl);
+  }
+  progEl.style.display='block';
+  let done=0; const total=toCheck.length; const skipped=ALL_KWS.length-total;
+  for(const kw of toCheck){
+    document.getElementById('runProgressFill').style.width=Math.round((done/total)*100)+'%';
+    document.getElementById('runProgressLabel').textContent=`Checking ${done+1}/${total} keywords${skipped?' · '+skipped+' already checked today':''}…`;
     btn.innerHTML=`<span class="spinner"></span> ${done}/${total}`;
-    setStatus('amber',`Checking ${done}/${total} keywords…`);
     await fetch(`/api/seo-track?action=check&kw=${encodeURIComponent(kw)}&password=${encodeURIComponent(apw)}`).catch(()=>null);
     done++;
   }
-  setStatus('amber','Saving results…');
+  document.getElementById('runProgressFill').style.width='100%';
+  document.getElementById('runProgressLabel').textContent='Saving results…';
   await fetch(`/api/seo-track?action=finish&password=${encodeURIComponent(apw)}`).catch(()=>null);
-  btn.disabled=false;btn.innerHTML='↻ Run now';
-  loadResults();
+  setTimeout(()=>{ if(progEl) progEl.style.display='none'; },3000);
+  btn.disabled=false; btn.innerHTML='↻ Run now'; loadResults();
 }
 
 function setStatus(state,txt){
@@ -259,96 +282,139 @@ function renderHistory(history){
 }
 
 function renderFilters(){
+  const today=new Date().toISOString().slice(0,10);
+  const checked=allResults.length;
+  const allKwCount=ALL_KWS.length;
   const appearing=allResults.filter(r=>r.our_pages&&r.our_pages.length>0).length;
-  const filters=[
-    {id:'all',label:`All (${allResults.length})`},
-    {id:'we_appear',label:`✓ We appear (${appearing})`},
-    {id:'organic',label:'Organic rank'},
-    {id:'cited',label:'In AIO'},
-    {id:'no_us',label:'Not found'},
-  ];
-  document.getElementById('filterBar').innerHTML=filters.map(f=>`<button class="ftab ${curFilter===f.id?'active':''}" onclick="setF('${f.id}',this)">${esc(f.label)}</button>`).join('');
+  const unchecked=allKwCount-checked;
+  document.getElementById('filterBar').innerHTML=[
+    {id:'all',       label:`All (${allKwCount})`},
+    {id:'we_appear', label:`✓ Appear (${appearing})`},
+    {id:'organic',   label:'Organic rank'},
+    {id:'cited',     label:'In AIO'},
+    {id:'no_us',     label:'Not ranking'},
+    {id:'unchecked', label:`Not checked (${unchecked})`},
+  ].map(f=>`<button class="ftab ${curFilter===f.id?'active':''}" onclick="setF('${f.id}',this)">${esc(f.label)}</button>`).join('');
 }
 function setF(f,el){curFilter=f;document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderTable(f);}
 
+
 function renderTable(filter){
-  let rows=allResults;
-  if(filter==='we_appear') rows=rows.filter(r=>r.our_pages&&r.our_pages.length>0);
-  if(filter==='organic') rows=rows.filter(r=>r.organic_rank);
-  if(filter==='cited') rows=rows.filter(r=>r.site_cited);
-  if(filter==='no_us') rows=rows.filter(r=>!r.our_pages||!r.our_pages.length);
+  const today=new Date().toISOString().slice(0,10);
+  const resultMap={};
+  allResults.forEach(r=>{ resultMap[r.keyword.toLowerCase()]=r; });
 
-  document.getElementById('tblCount').textContent=`${rows.length} keyword${rows.length!==1?'s':''}`;
-  if(!rows.length){document.getElementById('tblBody').innerHTML='<div class="empty">No keywords match this filter</div>';return;}
-
-  const grouped=KEYWORD_GROUPS.map(g=>({
-    ...g,rows:rows.filter(r=>g.kws.some(k=>k.toLowerCase()===r.keyword.toLowerCase()))
-  })).filter(g=>g.rows.length>0);
-
-  let html=`<table class="kw"><thead><tr>
-    <th style="width:26%">Keyword</th>
-    <th>Article Page</th>
-    <th style="width:74px">Checked</th>
-    <th style="width:86px">AIO</th>
-    <th>Where We Appear</th>
-    <th style="width:86px">Organic</th>
-  </tr></thead><tbody>`;
-
-  for(const g of grouped){
-    html+=`<tr><td colspan="6" class="page-group">📄 ${esc(g.label)} — <a href="https://criminallyprolific.com${g.page}" target="_blank" style="color:var(--blue);font-weight:400;text-transform:none;letter-spacing:0">${g.page}</a></td></tr>`;
-    html+=g.rows.map(r=>rowHtml(r,g.page)).join('');
-    // Show unchecked keywords in this group (no data yet)
-    const checked=g.rows.map(r=>r.keyword.toLowerCase());
-    const unchecked=g.kws.filter(k=>!checked.includes(k.toLowerCase()));
-    if(unchecked.length&&filter==='all'){
-      html+=unchecked.map(k=>`<tr style="opacity:.45"><td><span style="font-size:13px">${esc(k)}</span></td><td style="font-size:12px;color:var(--ink-muted)">${g.page}</td><td colspan="4" style="font-size:12px;color:var(--ink-muted);font-style:italic">Not yet checked</td></tr>`).join('');
+  // Flatten all keywords with group info
+  let allKws=[];
+  for(const g of KEYWORD_GROUPS){
+    for(const kw of g.kws){
+      allKws.push({kw, g, r: resultMap[kw.toLowerCase()]||null});
     }
   }
-  html+='</tbody></table>';
-  document.getElementById('tblBody').innerHTML=html;
-}
 
-function rowHtml(r,page){
-  const dt=r.checkedAt?r.checkedAt.slice(5,10):'—';
-  const aioBadge=r.error?`<span class="badge red" title="${esc(r.error)}">Error</span>`:r.in_aio?`<span class="badge blue">✓ AIO</span>`:`<span class="badge grey">No AIO</span>`;
-  const aioBtn=(r.in_aio&&(r.aio_text||(r.aio_sources&&r.aio_sources.length)))?`<button class="btn-aio" onclick='openAio(this)' data-r='${esc(JSON.stringify(r))}'>View AIO ↗</button>`:'';
-  let appearHtml='';
-  if(r.our_pages&&r.our_pages.length>0){
-    appearHtml=`<div style="display:flex;flex-direction:column;gap:3px">${r.our_pages.map(p=>{
-      const col=p.where.startsWith('AIO')?'var(--green)':p.where.startsWith('Organic')?'var(--blue)':'var(--amber)';
-      const lnk=p.link?`<a class="our-page-link" href="${esc(p.link)}" target="_blank">${esc(slugify(p.link))}</a>`:'';
-      return `<div style="display:flex;gap:5px;align-items:baseline;flex-wrap:wrap"><span style="font-size:11px;font-weight:700;color:${col};white-space:nowrap">${esc(p.where)}</span>${lnk}</div>`;
-    }).join('')}</div>`;
-  } else { appearHtml=`<span class="not-found">Not found</span>`; }
-  const orgBadge=r.organic_rank?`<span class="badge amber">#${r.organic_rank}</span>`:`<span class="badge grey">—</span>`;
-  const highlighted=r.site_cited?'background:linear-gradient(90deg,#edfaf1,transparent)':r.in_aio?'background:linear-gradient(90deg,#fffbeb,transparent)':'';
-  return `<tr style="${highlighted}">
-    <td><strong style="font-size:13px">${esc(r.keyword)}</strong></td>
-    <td><a href="https://criminallyprolific.com${page}" target="_blank" style="color:var(--blue);font-size:12px">${page}</a></td>
-    <td style="color:var(--ink-muted);font-size:12px">${dt}</td>
-    <td>${aioBadge}${aioBtn}</td>
-    <td>${appearHtml}</td>
-    <td>${orgBadge}</td>
-  </tr>`;
-}
+  // Apply filter
+  let filtered=allKws;
+  if(filter==='we_appear') filtered=allKws.filter(({r})=>r&&r.our_pages&&r.our_pages.length>0);
+  else if(filter==='organic') filtered=allKws.filter(({r})=>r&&r.organic_rank);
+  else if(filter==='cited') filtered=allKws.filter(({r})=>r&&r.site_cited);
+  else if(filter==='no_us') filtered=allKws.filter(({r})=>r&&(!r.our_pages||!r.our_pages.length));
+  else if(filter==='unchecked') filtered=allKws.filter(({r})=>!r);
 
-function openAio(btn){
-  let r;try{r=JSON.parse(btn.dataset.r||'{}')}catch{return}
-  document.getElementById('aioKw').textContent=`"${r.keyword}" · ${r.checkedAt?new Date(r.checkedAt).toLocaleString():'—'}`;
-  const sources=(r.aio_sources||[]).map((s,i)=>{
-    const isOurs=s.link&&s.link.includes(SITE);
-    let dom='';try{dom=new URL(s.link).hostname.replace('www.','')}catch{dom=s.link||''}
-    return `<div class="src-row"><span class="src-num">${i+1}</span><div><a href="${esc(s.link)}" target="_blank" class="${isOurs?'ours':''}">${esc(s.title||dom)}</a><div style="font-size:11px;color:var(--ink-muted)">${esc(dom)}${isOurs?' ← our site':''}</div></div></div>`;
-  }).join('');
-  document.getElementById('aioBody').innerHTML=`
-    ${r.aio_text?`<div class="aio-fulltext">${esc(r.aio_text)}</div>`:'<p style="color:var(--ink-muted);font-size:13px;margin-bottom:12px">No AIO text captured.</p>'}
-    ${sources?`<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-muted);margin-bottom:8px">Sources (${(r.aio_sources||[]).length})</div>${sources}`:''}`;
-  document.getElementById('aioModal').classList.add('open');
+  // Sort: appearing items first (organic rank asc), then AIO cited, then rest
+  if(filter==='we_appear'||filter==='all'){
+    filtered=[...filtered].sort((a,b)=>{
+      const aApp=a.r&&a.r.our_pages&&a.r.our_pages.length?0:1;
+      const bApp=b.r&&b.r.our_pages&&b.r.our_pages.length?0:1;
+      if(aApp!==bApp) return aApp-bApp;
+      const aPos=a.r&&a.r.organic_rank?a.r.organic_rank:999;
+      const bPos=b.r&&b.r.organic_rank?b.r.organic_rank:999;
+      return aPos-bPos;
+    });
+  }
+
+  document.getElementById('tblCount').textContent=`${filtered.length} of ${ALL_KWS.length} keywords`;
+
+  if(!filtered.length){
+    document.getElementById('tblBody').innerHTML='<div class="empty">No keywords match this filter</div>';
+    return;
+  }
+
+  const showGrouped=(filter==='all'||filter==='unchecked'||filter==='no_us');
+
+  const thead=`<thead><tr>
+    <th style="width:24%">Keyword</th>
+    <th>Article Page</th>
+    <th style="width:64px">Checked</th>
+    <th style="width:52px">Today?</th>
+    <th style="width:76px">AIO</th>
+    <th>Ranking URL</th>
+    <th style="width:76px">Position</th>
+  </tr></thead><tbody>`;
+
+  function kwRow({kw,g,r}){
+    if(!r) return`<tr style="opacity:.45">
+      <td style="font-size:12px">${esc(kw)}</td>
+      <td style="font-size:11px;color:var(--ink-muted)">${g.page}</td>
+      <td colspan="5" style="font-size:11px;color:var(--ink-muted);font-style:italic">Not checked yet</td>
+    </tr>`;
+    const dt=r.checkedAt?r.checkedAt.slice(5,10):'—';
+    const checkedToday=r.checkedAt&&r.checkedAt.slice(0,10)===today;
+    const todayBadge=checkedToday
+      ?`<span style="font-size:9px;font-weight:700;color:var(--green);background:var(--green-bg);padding:2px 5px;border-radius:3px">✓</span>`
+      :`<span style="font-size:9px;color:var(--ink-muted)">—</span>`;
+    const aio=r.error?`<span class="badge err" style="font-size:9px">Err</span>`
+      :r.in_aio?`<span class="badge aio" style="font-size:9px">✓ AIO</span>`
+      :`<span class="badge no-aio" style="font-size:9px">—</span>`;
+    let rankCell='';
+    if(r.our_pages&&r.our_pages.length){
+      const sorted=[...r.our_pages].sort((a,b)=>{
+        const o=x=>x.where.startsWith('Organic')?0:x.where.startsWith('AIO')?1:2;
+        return o(a)-o(b);
+      });
+      rankCell=sorted.map(p=>{
+        const col=p.where.startsWith('AIO')?'var(--green)':p.where.startsWith('Organic')?'var(--blue)':'var(--amber)';
+        const lnk=p.link?`<a href="${esc(p.link)}" target="_blank" style="color:${col};font-size:11px;word-break:break-all">${esc(p.link)}</a>`
+          :`<span style="color:${col};font-size:11px">${esc(p.title||p.where)}</span>`;
+        return`<div style="display:flex;gap:4px;align-items:flex-start;margin-bottom:2px">
+          <span style="font-size:9px;font-weight:800;color:${col};white-space:nowrap;min-width:64px;padding-top:2px">${esc(p.where)}</span>${lnk}
+        </div>`;
+      }).join('');
+    } else {
+      rankCell=`<span style="font-size:11px;color:var(--ink-muted);font-style:italic">Not ranking</span>`;
+    }
+    const orgBadge=r.organic_rank?`<span class="badge rank">#${r.organic_rank}</span>`:`<span class="badge no-rank">—</span>`;
+    const hl=r.site_cited?'background:linear-gradient(90deg,#edfaf1 0%,transparent 70%)':r.in_aio?'background:linear-gradient(90deg,#fffbeb 0%,transparent 70%)':'';
+    const isYT=g.page&&g.page.startsWith('https://');
+    const pageLink=isYT
+      ?`<a href="${esc(g.page)}" target="_blank" style="color:#c00;font-size:11px">▶ YouTube</a>`
+      :`<a href="https://criminallyprolific.com${g.page}" target="_blank" style="color:var(--blue);font-size:11px">${g.page}</a>`;
+    return`<tr style="${hl}">
+      <td><strong style="font-size:13px">${esc(kw)}</strong></td>
+      <td>${pageLink}</td>
+      <td style="color:var(--ink-muted);font-size:11px">${dt}</td>
+      <td style="text-align:center">${todayBadge}</td>
+      <td>${aio}</td>
+      <td>${rankCell}</td>
+      <td>${orgBadge}</td>
+    </tr>`;
+  }
+
+  let html_out='';
+  if(showGrouped){
+    const byGroup={};
+    filtered.forEach(item=>{
+      if(!byGroup[item.g.label]) byGroup[item.g.label]={g:item.g,items:[]};
+      byGroup[item.g.label].items.push(item);
+    });
+    html_out=`<table class="kw">${thead}`;
+    for(const key of Object.keys(byGroup)){
+      const {g,items}=byGroup[key];
+      html_out+=`<tr><td colspan="7" class="page-group">📄 ${esc(g.label)} — <a href="https://criminallyprolific.com${g.page}" target="_blank" style="color:var(--blue);font-weight:400;font-size:11px;text-transform:none;letter-spacing:0">${g.page}</a></td></tr>`;
+      html_out+=items.map(kwRow).join('');
+    }
+    html_out+='</table>';
+  } else {
+    html_out=`<table class="kw">${thead}`+filtered.map(kwRow).join('')+'</table>';
+  }
+  document.getElementById('tblBody').innerHTML=html_out;
 }
-function closeAio(){document.getElementById('aioModal').classList.remove('open');}
-document.getElementById('aioModal').addEventListener('click',e=>{if(e.target===document.getElementById('aioModal'))closeAio();});
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function slugify(url){try{const u=new URL(url);return u.hostname.replace('www.','')+u.pathname}catch{return url}}
-</script>
-</body>
-</html>

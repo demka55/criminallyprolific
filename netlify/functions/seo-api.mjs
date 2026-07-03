@@ -288,9 +288,28 @@ export default async (req) => {
   if (action === 'check') {
     const kw = url.searchParams.get('kw') || ''
     if (!kw) return fail('Missing kw param', 400)
+
+    const store = getStore(STORE)
+    const slug  = kw.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 60)
+    const today = new Date().toISOString().slice(0, 10)
+
+    // One check per keyword per day
+    const existing = JSON.parse(await store.get(`kw:${slug}`).catch(() => 'null') || 'null')
+    if (existing && existing.checkedAt && existing.checkedAt.slice(0, 10) === today) {
+      return ok({ ...existing, skipped: true, reason: 'already_checked_today' })
+    }
+
     const result = await checkKeyword(kw, API_KEY)
-    const store  = getStore(STORE)
-    const slug   = kw.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 60)
+
+    // Per-keyword history (30 days)
+    const histRaw = await store.get(`kw-hist:${slug}`).catch(() => null)
+    let kwHist = []
+    try { kwHist = histRaw ? JSON.parse(histRaw) : [] } catch {}
+    kwHist.unshift({ date: today, organic_rank: result.organic_rank || null, in_aio: result.in_aio, site_cited: result.site_cited })
+    if (kwHist.length > 30) kwHist = kwHist.slice(0, 30)
+    await store.set(`kw-hist:${slug}`, JSON.stringify(kwHist)).catch(() => {})
+    result.history = kwHist
+
     await store.set(`kw:${slug}`, JSON.stringify(result)).catch(() => {})
     return ok(result)
   }
