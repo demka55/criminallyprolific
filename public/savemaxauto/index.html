@@ -587,7 +587,14 @@ table.kw tr:hover td{background:#fafafa}
 
     <!-- What Dmitry accomplished before the agency contract -->
     <div style="background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:20px;margin-bottom:20px">
-      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-muted);margin-bottom:10px">📋 How This Was Accomplished — Pre-Contract (Dmitry)</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-muted)">📋 How This Was Accomplished</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span style="font-size:11px;font-weight:700;color:var(--ink)">Firm:</span>
+          <span style="font-size:12px;font-weight:800;color:var(--blue);background:var(--blue-bg);padding:3px 10px;border-radius:4px">Fery — Search Intelligence</span>
+          <span style="font-size:10px;color:var(--ink-muted)">Invoice: INV-3214</span>
+        </div>
+      </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
         <div>
           <div style="font-size:13px;font-weight:700;margin-bottom:6px">Car Theft Study — 29 Placements</div>
@@ -642,17 +649,20 @@ table.kw tr:hover td{background:#fafafa}
     </div>
 
     <div class="kpis" style="margin-bottom:16px">
-      <div class="kpi"><div class="kpi-l">Total Links</div><div class="kpi-v green">29</div><div class="kpi-s">earned</div></div>
-      <div class="kpi"><div class="kpi-l">DR 80+</div><div class="kpi-v blue">8</div><div class="kpi-s">high authority</div></div>
-      <div class="kpi"><div class="kpi-l">DR 60–79</div><div class="kpi-v">11</div><div class="kpi-s">mid authority</div></div>
-      <div class="kpi"><div class="kpi-l">DR 40–59</div><div class="kpi-v amber">7</div><div class="kpi-s"></div></div>
-      <div class="kpi"><div class="kpi-l">DR &lt;40</div><div class="kpi-v" style="color:var(--ink-muted)">3</div><div class="kpi-s"></div></div>
-      <div class="kpi"><div class="kpi-l">Avg DR</div><div class="kpi-v amber">74</div><div class="kpi-s">all placements</div></div>
+      <div class="kpi"><div class="kpi-l">Total Links</div><div class="kpi-v green">29</div><div class="kpi-s">24 live · 5 requested</div></div>
+      <div class="kpi"><div class="kpi-l">DR 80+</div><div class="kpi-v blue">14</div><div class="kpi-s">high authority</div></div>
+      <div class="kpi"><div class="kpi-l">DR 60–79</div><div class="kpi-v">12</div><div class="kpi-s">mid authority</div></div>
+      <div class="kpi"><div class="kpi-l">DR 40–59</div><div class="kpi-v amber">1</div><div class="kpi-s"></div></div>
+      <div class="kpi"><div class="kpi-l">DR &lt;40</div><div class="kpi-v" style="color:var(--ink-muted)">2</div><div class="kpi-s"></div></div>
+      <div class="kpi"><div class="kpi-l">Avg DR</div><div class="kpi-v amber">75</div><div class="kpi-s">all placements</div></div>
     </div>
     <div class="tbl-wrap">
       <div class="tbl-count">29 placements — Car Theft Study (May–Jun 2026)</div>
+      <div style="font-size:11px;color:var(--ink-muted);margin-bottom:8px">
+        All links obtained by <strong style="color:var(--ink)">Fery — Search Intelligence</strong> · Campaign: Car Theft Study · Invoice: INV-3214
+      </div>
       <table class="kw"><thead><tr>
-        <th>Date</th><th>Publication</th><th>DR</th><th>Headline / Notes</th><th>Status</th>
+        <th>Date</th><th>Publication + Full Article URL</th><th>DR</th><th>Campaign</th><th>Status</th><th>Invoice</th>
       </tr></thead><tbody id="blBody"></tbody></table>
     </div>
   </div>
@@ -696,7 +706,7 @@ const KEYWORD_GROUPS=[
   // Video 2: Is SaveMaxAuto Legit?
   {page:'https://www.youtube.com/watch?v=U3zlcEFGuo0',label:"📹 Video: Is SaveMaxAuto Legit?",kws:['is save max auto legit','is savemaxauto legit','is savemaxauto a scam','savemaxauto legit or scam','save max auto scam']},
   // Video 3: Insurify vs Zebra
-  {page:'https://www.youtube.com/watch?v=mUVrZmdeZbE',label:"📹 Video: Insurify vs Zebra",kws:['insurify vs zebra','insurify vs the zebra','zebra vs insurify','best car insurance comparison site','compare car insurance rates online','insurify or zebra which is better']},
+  {page:'https://www.youtube.com/watch?v=mUVrZmdeZbE',label:"📹 Video: Insurify vs Zebra ✓ AIO",kws:['insurify vs zebra','insurify vs the zebra','zebra vs insurify','best car insurance comparison site','compare car insurance rates online','insurify or zebra which is better']},
   // Video 4: Insurify Review / Is Insurify Legit?
   {page:'https://www.youtube.com/watch?v=fONdmO8uyJU',label:"📹 Video: Insurify Review / Is It Legit?",kws:['insurify review','is insurify legit','insurify insurance reviews','how does insurify work','insurify legit or scam','insurify car insurance review']},
 ];
@@ -726,35 +736,35 @@ const MONTH3_AI=[
 ];
 
 const BACKLINKS=[
-  {date:'2026-06-24',pub:'Hobbs Independent',url:'hobbsindependent.net',dr:25,headline:'New study reveals US states car most likely stolen',syn:false},
-  {date:'2026-06-21',pub:'NewsBreak / Fox31',url:'newsbreak.com',dr:83,headline:'Auto theft numbers down, Colorado still ranks high',syn:false},
-  {date:'2026-06-21',pub:'MSN',url:'msn.com',dr:92,headline:'Auto theft numbers down, Colorado still ranks high',syn:false},
-  {date:'2026-06-21',pub:'AOL News',url:'aol.com',dr:91,headline:'Auto theft numbers down, Colorado still ranks high',syn:false},
-  {date:'2026-06-21',pub:'Yahoo News',url:'yahoo.com',dr:94,headline:'Auto theft numbers down, Colorado still ranks high',syn:false},
-  {date:'2026-06-21',pub:'KDVR (Fox Denver)',url:'kdvr.com',dr:80,headline:'Auto theft numbers down, Colorado still ranks high',syn:false},
-  {date:'2026-06-19',pub:'CW33 Texas',url:'cw33.com',dr:72,headline:'Texas ranks 10th in nation for vehicle thefts',syn:false},
-  {date:'2026-05-27',pub:'KVI Radio',url:'kvi.com',dr:43,headline:'Washington ranks #2 in America for car theft',syn:false},
-  {date:'2026-05-26',pub:'Jackson Sun',url:'jacksonsun.com',dr:67,headline:'Tennessee car thefts — how to protect your car',syn:true},
-  {date:'2026-05-26',pub:'Columbia Daily Herald',url:'columbiadailyherald.com',dr:63,headline:'Tennessee car thefts — how to protect your car',syn:true},
-  {date:'2026-05-26',pub:'The Leaf Chronicle',url:'theleafchronicle.com',dr:65,headline:'Tennessee car thefts — how to protect your car',syn:true},
-  {date:'2026-05-26',pub:'Oak Ridger',url:'oakridger.com',dr:61,headline:'Tennessee car thefts — how to protect your car',syn:true},
-  {date:'2026-05-26',pub:'Knox News',url:'knoxnews.com',dr:78,headline:'Tennessee car thefts — how to protect your car',syn:true},
-  {date:'2026-05-26',pub:'Commercial Appeal',url:'commercialappeal.com',dr:78,headline:'Tennessee car thefts — how to protect your car',syn:true},
-  {date:'2026-05-26',pub:'DNJ (Daily News Journal)',url:'dnj.com',dr:70,headline:'Tennessee car thefts — how to protect your car',syn:true},
-  {date:'2026-05-26',pub:'The Tennessean',url:'tennessean.com',dr:83,headline:'Tennessee car thefts — how to protect your car',syn:false},
-  {date:'2026-05-26',pub:'Yahoo News',url:'yahoo.com',dr:94,headline:'Car more at risk of theft in Tennessee',syn:false},
-  {date:'2026-05-26',pub:'AOL News',url:'aol.com',dr:91,headline:'Car more at risk of theft in Tennessee',syn:false},
-  {date:'2026-05-20',pub:'AOL News',url:'aol.com',dr:91,headline:'Texas ranks in top 10 states for vehicle theft',syn:false},
-  {date:'2026-05-20',pub:'Yahoo News',url:'yahoo.com',dr:94,headline:'Texas ranks in top 10 states for vehicle theft',syn:false},
-  {date:'2026-05-20',pub:'KXAN Austin',url:'kxan.com',dr:80,headline:'Texas ranks in top 10 states for car thefts',syn:false},
-  {date:'2026-05-13',pub:'MSN',url:'msn.com',dr:92,headline:'Colorado tops US in car thefts with highest rate per capita',syn:false},
-  {date:'2026-05-13',pub:'AOL News',url:'aol.com',dr:91,headline:'Colorado tops US in car thefts',syn:false},
-  {date:'2026-05-13',pub:'Yahoo News',url:'yahoo.com',dr:94,headline:'Colorado tops US in car thefts',syn:false},
-  {date:'2026-05-13',pub:'Fox21 News',url:'fox21news.com',dr:73,headline:'Colorado tops US in car thefts with highest rate per capita',syn:false},
-  {date:'2026-05-09',pub:'Weekly Focus TX',url:'weeklyfocustx.com',dr:16,headline:'Local auto theft report',syn:false},
-  {date:'2026-05-06',pub:'Denver Gazette',url:'denvergazette.com',dr:74,headline:'Colorado State Patrol issues reminder for auto theft victims',syn:false},
-  {date:'2026-05-05',pub:'Everything Lubbock',url:'everythinglubbock.com',dr:70,headline:'Texas 10th state with highest vehicle theft rates',syn:false},
-  {date:'2026-05-01',pub:'CW33 Texas',url:'cw33.com',dr:72,headline:'Texas 10th highest in US for vehicle theft — study',syn:false},
+  {date:'2026-06-24',pub:'Hobbs Independent',articleUrl:'https://www.hobbsindependent.net/new-study-reveals-us-states-car-most-likely-stolen/',dr:25,headline:'Where in the US your car is least likely to be stolen?',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-06-21',pub:'NewsBreak / Fox31 Denver',articleUrl:'https://www.newsbreak.com/fox31-denver-1589915/4724402990646-auto-theft-numbers-down-colorado-still-ranks-high',dr:83,headline:'Where in the US your car is least likely to be stolen?',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-06-21',pub:'MSN',articleUrl:'https://www.msn.com/en-us/news/us/auto-theft-numbers-down-colorado-still-ranks-high/ar-AA26e85q',dr:92,headline:'Where in the US your car is least likely to be stolen?',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-06-21',pub:'AOL News',articleUrl:'https://www.aol.com/news/auto-theft-numbers-down-colorado-024528074.html',dr:91,headline:'Where in the US your car is least likely to be stolen?',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-06-21',pub:'Yahoo News',articleUrl:'https://www.yahoo.com/news/us/articles/auto-theft-numbers-down-colorado-024528686.html?guccounter=1',dr:94,headline:'Where in the US your car is least likely to be stolen?',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-06-21',pub:'KDVR (Fox Denver)',articleUrl:'https://kdvr.com/news/local/auto-theft-numbers-down-colorado-still-ranks-high/',dr:80,headline:'Where in the US your car is least likely to be stolen?',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-06-19',pub:'CW33 Texas',articleUrl:'https://cw33.com/news/texas/texas-ranks-10th-in-nation-for-vehicle-thefts-study-finds/',dr:72,headline:'Where in the US your car is least likely to be stolen?',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-27',pub:'KVI Radio',articleUrl:'https://www.kvi.com/2026/05/27/washington-ranks-no-2-in-america-for-car-theft-after-years-of-soft-on-crime-policies/',dr:43,headline:'Where in the US your car is least likely to be stolen?',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'Jackson Sun',articleUrl:'https://jacksonsun.com/story/news/crime/2026/05/26/tennessee-car-thefts-how-to-protect-your-car/90213299007/',dr:67,headline:'The states where your car is most likely to get stolen',status:'live',syn:true,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'Columbia Daily Herald',articleUrl:'https://columbiadailyherald.com/story/news/crime/2026/05/26/tennessee-car-thefts-how-to-protect-your-car/90213299007/',dr:63,headline:'The states where your car is most likely to get stolen',status:'live',syn:true,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'The Leaf Chronicle',articleUrl:'https://theleafchronicle.com/story/news/crime/2026/05/26/tennessee-car-thefts-how-to-protect-your-car/90213299007/',dr:65,headline:'The states where your car is most likely to get stolen',status:'live',syn:true,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'Oak Ridger',articleUrl:'https://oakridger.com/story/news/crime/2026/05/26/tennessee-car-thefts-how-to-protect-your-car/90213299007/',dr:61,headline:'The states where your car is most likely to get stolen',status:'live',syn:true,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'Knox News',articleUrl:'https://knoxnews.com/story/news/crime/2026/05/26/tennessee-car-thefts-how-to-protect-your-car/90213299007/',dr:78,headline:'The states where your car is most likely to get stolen',status:'live',syn:true,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'Commercial Appeal',articleUrl:'https://commercialappeal.com/story/news/crime/2026/05/26/tennessee-car-thefts-how-to-protect-your-car/90213299007/',dr:78,headline:'The states where your car is most likely to get stolen',status:'live',syn:true,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'DNJ (Daily News Journal)',articleUrl:'https://dnj.com/story/news/crime/2026/05/26/tennessee-car-thefts-how-to-protect-your-car/90213299007/',dr:70,headline:'The states where your car is most likely to get stolen',status:'live',syn:true,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'The Tennessean',articleUrl:'https://tennessean.com/story/news/crime/2026/05/26/tennessee-car-thefts-how-to-protect-your-car/90213299007/',dr:83,headline:'The states where your car is most likely to get stolen',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'Yahoo News',articleUrl:'https://www.yahoo.com/news/us/articles/car-more-risk-theft-tennessee-100322132.html',dr:94,headline:'The states where your car is most likely to get stolen',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-26',pub:'AOL News',articleUrl:'https://www.aol.com/news/car-more-risk-theft-tennessee-100322935.html',dr:91,headline:'The states where your car is most likely to get stolen',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-20',pub:'AOL News',articleUrl:'https://www.aol.com/news/articles/texas-ranks-top-10-states-195820550.html?guccounter=1',dr:91,headline:'The states where your car is most likely to get stolen',status:'requested',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-20',pub:'Yahoo News',articleUrl:'https://www.yahoo.com/news/articles/texas-ranks-top-10-states-195820550.html',dr:94,headline:'The states where your car is most likely to get stolen',status:'requested',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-20',pub:'KXAN Austin',articleUrl:'https://www.kxan.com/news/texas/texas-ranks-in-top-10-states-for-car-thefts-new-study-shows/',dr:80,headline:'The states where your car is most likely to get stolen',status:'requested',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-13',pub:'MSN',articleUrl:'https://www.msn.com/en-us/news/other/colorado-tops-us-in-car-thefts-with-highest-rate-per-capita/ar-AA237oxL?ocid=BingNewsSerp',dr:92,headline:'The states where your car is most likely to get stolen',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-13',pub:'AOL News',articleUrl:'https://www.aol.com/news/articles/colorado-tops-us-car-thefts-183511227.html',dr:91,headline:'The states where your car is most likely to get stolen',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-13',pub:'Yahoo News',articleUrl:'https://www.yahoo.com/news/articles/colorado-tops-us-car-thefts-183511227.html',dr:94,headline:'The states where your car is most likely to get stolen',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-13',pub:'Fox21 News',articleUrl:'https://www.fox21news.com/news/colorado-tops-us-in-car-thefts-with-highest-rate-per-capita/',dr:73,headline:'The states where your car is most likely to get stolen',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-09',pub:'Weekly Focus TX',articleUrl:'https://www.weeklyfocustx.com/news/articleView.html?idxno=4240',dr:16,headline:'The states where your car is most likely to get stolen',status:'requested',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-06',pub:'Denver Gazette',articleUrl:'https://www.denvergazette.com/2026/05/06/colorado-state-patrol-issues-reminder-for-auto-theft-victim-assistance/',dr:74,headline:'The states where your car is most likely to get stolen',status:'requested',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-05',pub:'Everything Lubbock',articleUrl:'https://www.everythinglubbock.com/news/local-news/texas-is-10th-state-with-highest-vehicle-theft-rates-2026-study-finds/',dr:70,headline:'The states where your car is most likely to get stolen',status:'live',syn:false,invoice:'INV-3214'},
+  {date:'2026-05-01',pub:'CW33 Texas',articleUrl:'https://cw33.com/news/texas/texas-10th-highest-in-us-for-vehicle-theft-study-reveals/',dr:72,headline:'The states where your car is most likely to get stolen',status:'live',syn:false,invoice:'INV-3214'},
 ];
 
 const VIDEOS=[
@@ -792,6 +802,55 @@ function switchTab(tab,el){
 // ── Keywords ──────────────────────────────────────────────────────────────────
 const ALL_KWS=KEYWORD_GROUPS.flatMap(g=>g.kws);
 
+// ── Hardcoded confirmed rankings (from manual SERP verification) ──────────────
+// These are pre-populated so the dashboard shows known results immediately
+// without waiting for a ValueSERP check. Will be overwritten if a live check runs.
+const HARDCODED_RESULTS = {
+  'insurify vs zebra': {
+    keyword: 'insurify vs zebra',
+    in_aio: true,
+    site_cited: true,
+    aio_text: 'Both Insurify and The Zebra are reputable, free comparison marketplaces that allow you to compare auto, home, and other insurance rates in one place. Insurify tends to provide more instant, bindable quotes, while The Zebra is highly regarded for its educational resources and strict privacy.',
+    aio_sources: [
+      { title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE' }
+    ],
+    our_pages: [
+      { where: 'AIO source', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE', title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski' },
+      { where: 'Video carousel', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE', title: 'Insurify vs Zebra: Ultimate Comparison (2026) — 120+ views' },
+    ],
+    organic_rank: null,
+    checkedAt: '2026-07-03T10:41:00.000Z',
+    verified: true,
+    verified_note: 'Manually verified Jul 3 2026 — video in AIO + organic YouTube video carousel',
+  },
+  'is insurify legit': {
+    keyword: 'is insurify legit',
+    in_aio: false,
+    site_cited: false,
+    aio_sources: [],
+    our_pages: [
+      { where: 'Video carousel #1', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski' },
+    ],
+    organic_rank: null,
+    checkedAt: '2026-07-03T10:45:00.000Z',
+    verified: true,
+    verified_note: 'Manually verified Jul 3 2026 — video ranking #1 in Videos carousel (1 week ago)',
+  },
+  'insurify review': {
+    keyword: 'insurify review',
+    in_aio: false,
+    site_cited: false,
+    aio_sources: [],
+    our_pages: [
+      { where: 'Video carousel', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski' },
+    ],
+    organic_rank: null,
+    checkedAt: '2026-07-03T10:45:00.000Z',
+    verified: true,
+    verified_note: 'Manually verified Jul 3 2026 — video appears in Videos carousel for "insurify review"',
+  },
+};
+
 async function loadResults(){
   setStatus('amber','Fetching…');
   try{
@@ -822,8 +881,15 @@ async function runNow(){
 
   // Build set of keywords already checked TODAY
   const today=new Date().toISOString().slice(0,10); // YYYY-MM-DD
-  const resultMap={};
-  allResults.forEach(r=>{ resultMap[r.keyword.toLowerCase()]=r; });
+  // Merge hardcoded verified results with live API results
+  // Live results take precedence if they exist and are newer
+  const resultMap={...HARDCODED_RESULTS};
+  allResults.forEach(r=>{
+    const key=r.keyword.toLowerCase();
+    const hard=HARDCODED_RESULTS[key];
+    // Live result wins unless it has no data and hardcoded does
+    if(!hard || r.checkedAt > hard.checkedAt) resultMap[key]=r;
+  });
   const toCheck=ALL_KWS.filter(kw=>{
     const r=resultMap[kw.toLowerCase()];
     if(!r||!r.checkedAt) return true; // never checked
@@ -880,15 +946,24 @@ function setStatus(state,txt){
 }
 
 function renderKpis(){
-  const ranked=allResults.filter(r=>r.organic_rank).length;
-  const inAio=allResults.filter(r=>r.in_aio).length;
-  const cited=allResults.filter(r=>r.site_cited).length;
+  // Merge hardcoded into counts
+  const allKwKeys=ALL_KWS.map(k=>k.toLowerCase());
+  const liveMap={};
+  allResults.forEach(r=>{liveMap[r.keyword.toLowerCase()]=r;});
+  const merged=allKwKeys.map(k=>{
+    const live=liveMap[k], hard=HARDCODED_RESULTS[k];
+    if(live&&hard) return live.checkedAt>hard.checkedAt?live:hard;
+    return live||hard||null;
+  }).filter(Boolean);
+  const ranked=merged.filter(r=>r.organic_rank).length;
+  const inAio=merged.filter(r=>r.in_aio).length;
+  const cited=merged.filter(r=>r.site_cited).length;
   document.getElementById('kpis').innerHTML=`
     <div class="kpi"><div class="kpi-l">Keywords</div><div class="kpi-v">${allResults.length}</div><div class="kpi-s">checked</div></div>
     <div class="kpi"><div class="kpi-l">Ranking</div><div class="kpi-v ${ranked>0?'green':''}">${ranked}</div><div class="kpi-s">top 10</div></div>
     <div class="kpi"><div class="kpi-l">In AIO</div><div class="kpi-v ${inAio>0?'blue':''}">${inAio}</div><div class="kpi-s">shown</div></div>
     <div class="kpi"><div class="kpi-l">AIO Cited</div><div class="kpi-v ${cited>0?'green':''}">${cited}</div><div class="kpi-s">our site</div></div>
-    <div class="kpi"><div class="kpi-l">Backlinks</div><div class="kpi-v purple">29</div><div class="kpi-s">earned</div></div>
+    <div class="kpi"><div class="kpi-l">Backlinks</div><div class="kpi-v purple">29</div><div class="kpi-s">earned · Fery SI</div></div>
     <div class="kpi"><div class="kpi-l">Avg DR</div><div class="kpi-v amber">74</div><div class="kpi-s">placement</div></div>
   `;
 }
@@ -911,8 +986,15 @@ function setF(f,el){curFilter=f;document.querySelectorAll('.ftab').forEach(t=>t.
 
 function renderTable(filter){
   const today=new Date().toISOString().slice(0,10);
-  const resultMap={};
-  allResults.forEach(r=>{ resultMap[r.keyword.toLowerCase()]=r; });
+  // Merge hardcoded verified results with live API results
+  // Live results take precedence if they exist and are newer
+  const resultMap={...HARDCODED_RESULTS};
+  allResults.forEach(r=>{
+    const key=r.keyword.toLowerCase();
+    const hard=HARDCODED_RESULTS[key];
+    // Live result wins unless it has no data and hardcoded does
+    if(!hard || r.checkedAt > hard.checkedAt) resultMap[key]=r;
+  });
 
   // For "we_appear" in All mode, sort: ranking first, then by organic position
   // Build full keyword list with results
@@ -1051,8 +1133,9 @@ function kwRow(kw,r,today){
 
   const orgBadge=r.organic_rank?`<span class="badge amber">#${r.organic_rank}</span>`:`<span class="badge grey" style="font-size:9px">—</span>`;
   const hl=r.site_cited?'background:linear-gradient(90deg,#edfaf1 0%,transparent 70%)':r.in_aio?'background:linear-gradient(90deg,#fffbeb 0%,transparent 70%)':'';
+  const verifiedBadge=r.verified?`<span title="${esc(r.verified_note||'Manually verified from SERP screenshot')}" style="font-size:9px;font-weight:700;color:var(--green);background:var(--green-bg);padding:1px 5px;border-radius:3px;margin-left:4px;cursor:help">✓ verified</span>`:'';
   return`<tr style="${hl}">
-    <td><strong style="font-size:12px">${esc(kw)}</strong></td>
+    <td><strong style="font-size:12px">${esc(kw)}</strong>${verifiedBadge}</td>
     <td style="color:var(--ink-muted);font-size:11px;white-space:nowrap">${dt}</td>
     <td style="text-align:center">${todayBadge}</td>
     <td>${aio}</td>
@@ -1064,8 +1147,15 @@ function kwRow(kw,r,today){
 
 
 function renderVideos(){
-  const resultMap={};
-  allResults.forEach(r=>{ resultMap[r.keyword.toLowerCase()]=r; });
+  // Merge hardcoded verified results with live API results
+  // Live results take precedence if they exist and are newer
+  const resultMap={...HARDCODED_RESULTS};
+  allResults.forEach(r=>{
+    const key=r.keyword.toLowerCase();
+    const hard=HARDCODED_RESULTS[key];
+    // Live result wins unless it has no data and hardcoded does
+    if(!hard || r.checkedAt > hard.checkedAt) resultMap[key]=r;
+  });
   document.getElementById('videoCards').innerHTML=VIDEOS.map(v=>{
     const rows=v.kws.map(kw=>{
       const r=resultMap[kw.toLowerCase()];
@@ -1146,22 +1236,21 @@ function renderBacklinks(){
   if(!el) return;
   el.innerHTML=BACKLINKS.map(b=>{
     const drClass=b.dr>=80?'high':b.dr>=50?'mid':'';
-    const hasFullUrl=b.articleUrl&&b.articleUrl.length>0;
-    const linkUrl=hasFullUrl?b.articleUrl:'https://'+b.url;
-    const displayUrl=hasFullUrl?b.articleUrl:'https://'+b.url;
-    const urlStyle=hasFullUrl?'color:var(--blue)':'color:var(--ink-muted)';
+    const statusBadge=b.status==='live'
+      ?`<span class="badge green" style="font-size:9px">✓ Live</span>`
+      :`<span class="badge amber" style="font-size:9px">Requested</span>`;
+    const synBadge=b.syn?`<span class="syn-badge" style="margin-left:4px;font-size:9px">Syndicated</span>`:'';
     return`<tr>
       <td style="white-space:nowrap;font-size:11px;color:var(--ink-muted)">${b.date}</td>
       <td>
-        <strong style="font-size:13px">${esc(b.pub)}</strong>
-        ${b.syn?'<span class="syn-badge" style="margin-left:4px">Syn</span>':''}
+        <strong style="font-size:13px">${esc(b.pub)}</strong>${synBadge}
         <br>
-        <a href="${linkUrl}" target="_blank" style="${urlStyle};font-size:11px;word-break:break-all">${esc(displayUrl)}</a>
-        ${!hasFullUrl?'<span style="font-size:9px;color:var(--amber);display:block;margin-top:2px">⚠ Full article URL needed</span>':''}
+        <a href="${esc(b.articleUrl)}" target="_blank" style="color:var(--blue);font-size:11px;word-break:break-all">${esc(b.articleUrl)}</a>
       </td>
       <td><span class="bl-dr ${drClass}">${b.dr}</span></td>
-      <td style="font-size:12px;line-height:1.5">${esc(b.headline)}</td>
-      <td><span class="badge green">✓ Live</span></td>
+      <td style="font-size:12px;line-height:1.5;color:var(--ink-muted)">${esc(b.headline)}</td>
+      <td>${statusBadge}</td>
+      <td style="font-size:10px;color:var(--ink-muted)">${esc(b.invoice||'')}</td>
     </tr>`;
   }).join('');
 }
