@@ -127,7 +127,23 @@ table.kw tr:hover td{background:#fafafa}
   </div>
 </div>
 
+
+<!-- AIO detail modal -->
+<div class="modal-bg" id="aioModal">
+  <div class="modal">
+    <div class="modal-hd">
+      <h2>AI Overview</h2>
+      <button class="modal-x" onclick="closeAio()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-kw" id="aioKw"></div>
+      <div id="aioBody"></div>
+    </div>
+  </div>
+</div>
+
 <script>
+
 const SITE = 'criminallyprolific.com';
 const PW_KEY = 'cp_seo_pw';
 let apw='', allResults=[], curFilter='all';
@@ -418,3 +434,52 @@ function renderTable(filter){
   }
   document.getElementById('tblBody').innerHTML=html_out;
 }
+
+// ── AIO modal ─────────────────────────────────────────────────────────────────
+function openAio(btn) {
+  let r;
+  try { r = JSON.parse(btn.dataset.r || '{}'); } catch { return; }
+  document.getElementById('aioKw').textContent = `Keyword: "${r.keyword}" · checked ${r.checkedAt ? new Date(r.checkedAt).toLocaleString() : '—'}`;
+
+  const sources = (r.aio_sources || []).map((s, i) => {
+    const isOurs = s.link && s.link.includes('criminallyprolific.com');
+    let dom = '';
+    try { dom = new URL(s.link).hostname.replace('www.',''); } catch { dom = s.link || ''; }
+    return `<div class="src-row">
+      <span class="src-num">${i+1}</span>
+      <div>
+        <a href="${esc(s.link)}" target="_blank" rel="noopener" class="${isOurs?'ours':''}">${esc(s.title || dom)}</a>
+        <div class="src-domain">${esc(dom)}${isOurs?' ← our site':''}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('aioBody').innerHTML = `
+    ${r.aio_text
+      ? `<div class="aio-fulltext">${esc(r.aio_text)}</div>`
+      : '<p style="color:var(--ink-muted);font-size:13px;margin-bottom:1rem">No AIO text captured — re-run to fetch.</p>'}
+    ${sources
+      ? `<div class="src-heading">Sources cited in AI Overview (${(r.aio_sources||[]).length})</div>${sources}`
+      : '<p style="color:var(--ink-muted);font-size:13px">No sources recorded</p>'}`;
+
+  document.getElementById('aioModal').classList.add('open');
+}
+
+function closeAio() { document.getElementById('aioModal').classList.remove('open'); }
+document.getElementById('aioModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('aioModal')) closeAio();
+});
+
+// ── Utilities ─────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function slugify(url) {
+  try {
+    const u = new URL(url);
+    return u.hostname.replace('www.','') + u.pathname;
+  } catch { return url; }
+}
+</script>
+</body>
+</html>

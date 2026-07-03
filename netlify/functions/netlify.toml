@@ -4,6 +4,12 @@
 [functions]
   node_bundler = "esbuild"
 
+[functions."sma-seo-track"]
+  timeout = 30
+
+[functions."seo-api"]
+  timeout = 30
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -52,4 +58,9 @@
 [[redirects]]
   from = "/api/seo-track"
   to = "/.netlify/functions/seo-api"
+  status = 200
+
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/assets/img/favicon.png"
   status = 200

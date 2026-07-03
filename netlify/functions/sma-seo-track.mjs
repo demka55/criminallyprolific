@@ -251,7 +251,7 @@ async function checkKeyword(keyword, apiKey) {
       google_domain: 'google.com', gl: 'us', hl: 'en',
       device: 'desktop', include_ai_overview: 'true', num: '10',
     })
-    const res = await fetch(`https://api.valueserp.com/search?${params}`)
+    const res = await fetch(`https://api.valueserp.com/search?${params}`, { signal: AbortSignal.timeout(9000) })
     if (!res.ok) {
       let e = `ValueSERP HTTP ${res.status}`
       try { const t = await res.text(); if (t) e += ': ' + t.slice(0, 150) } catch {}

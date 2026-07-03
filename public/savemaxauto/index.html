@@ -214,7 +214,7 @@ table.kw tr:hover td{background:#fafafa}
       <div class="m1-card"><h4>/ev-battery-replacement-cost/</h4><p>KD 10. Top competitors DR 21 & DR 53. Very beatable.</p><span class="badge green">Easy win</span></div>
     </div>
 
-    <div class="section-head">Rewrites — Comparison Pages <span>7 comparison rewrites + 2 vehicle anchor page rewrites (test)</span></div>
+    <div class="section-head">Rewrites — Comparison Pages <span>6 pages that exist + 3 net-new pages to build + 2 vehicle anchor rewrites</span></div>
 
     <div style="background:var(--amber-bg);border:1.5px solid var(--amber);border-radius:6px;padding:16px 20px;margin-bottom:16px;font-size:13px;line-height:1.65;color:var(--ink-soft)">
       <strong style="color:var(--amber)">⚠ Vehicle Pages — Test First Strategy</strong><br>
@@ -619,7 +619,8 @@ table.kw tr:hover td{background:#fafafa}
           <div style="font-weight:700;margin-bottom:6px;font-size:13px">Pending Deliverables (Month 1)</div>
           <div style="display:flex;flex-direction:column;gap:5px">
             <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox"> 3 EV Articles (/cheapest-electric-cars-to-insure/, /tesla-model-y-insurance-cost-by-state/, /ev-battery-replacement-cost/)</label>
-            <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox"> 7 Comparison rewrites (AAA vs General, American Family vs Amica, Amica vs Safeco, Erie vs Mercury, Travelers vs Erie + 2 already ranking)</label>
+            <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox"> 6 Comparison <strong>rewrites</strong> (pages that exist, ranked #2–#6 — optimize for better position + AIO): AAA vs The General (#2), American Family vs Amica (#2), Mercury vs Root (#4), Travelers vs AAA (#5, missing AIO), Amica vs Safeco (#6), Travelers vs Erie (#6)</label>
+            <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox"> 3 Comparison <strong>new pages</strong> (don't exist yet, currently not ranking): Insurify vs Policygenius, Erie vs Mercury, USAA vs Farmers</label>
             <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox"> 2 Vehicle anchor page rewrites (F-150, Explorer)</label>
             <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox"> 5 AI Quick Answer articles (credit score, why went up, after accident, per month, how to lower)</label>
             <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox"> Insurance Penalty Map study — data pull from Nathan R</label>
@@ -1112,6 +1113,73 @@ function closeAio(){document.getElementById('aioModal').classList.remove('open')
 document.getElementById('aioModal').addEventListener('click',e=>{if(e.target===document.getElementById('aioModal'))closeAio();});
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function slugify(url){try{const u=new URL(url);return u.hostname.replace('www.','')+u.pathname}catch{return url}}
+
+// ── AI Articles renderer ──────────────────────────────────────────────────────
+function diffBadge(d){
+  const cls=d.toLowerCase().startsWith('easy')?'diff-easy':d.toLowerCase().startsWith('hard')?'diff-hard':'diff-medium';
+  return`<span class="diff-badge ${cls}">${esc(d)}</span>`;
+}
+function diffClass(d){return d.toLowerCase().startsWith('easy')?'easy':d.toLowerCase().startsWith('hard')?'hard':'medium';}
+function artCard(a){
+  return`<div class="art-card ${diffClass(a.diff)}">
+    ${diffBadge(a.diff)}
+    <h3>${esc(a.title)}</h3>
+    <div class="art-slug">${esc(a.slug)}</div>
+    <div class="art-angle"><strong>Angle:</strong> ${esc(a.angle)}</div>
+    <div class="art-why"><strong>Why it wins:</strong> ${esc(a.why)}</div>
+    <div class="art-kws">${a.kws.map(k=>`<span class="art-kw">${esc(k)}</span>`).join('')}</div>
+  </div>`;
+}
+function renderAiArticles(){
+  const g1=document.getElementById('m1AiGrid');
+  const g2=document.getElementById('m2AiGrid');
+  const g3=document.getElementById('m3AiGrid');
+  if(g1) g1.innerHTML=MONTH1_AI.map(artCard).join('');
+  if(g2) g2.innerHTML=MONTH2_AI.map(artCard).join('');
+  if(g3) g3.innerHTML=MONTH3_AI.map(artCard).join('');
+}
+function renderMonth1Targets(){}  // static HTML in page
+
+// ── Backlinks renderer ────────────────────────────────────────────────────────
+function renderBacklinks(){
+  const el=document.getElementById('blBody');
+  if(!el) return;
+  el.innerHTML=BACKLINKS.map(b=>{
+    const drClass=b.dr>=80?'high':b.dr>=50?'mid':'';
+    const hasFullUrl=b.articleUrl&&b.articleUrl.length>0;
+    const linkUrl=hasFullUrl?b.articleUrl:'https://'+b.url;
+    const displayUrl=hasFullUrl?b.articleUrl:'https://'+b.url;
+    const urlStyle=hasFullUrl?'color:var(--blue)':'color:var(--ink-muted)';
+    return`<tr>
+      <td style="white-space:nowrap;font-size:11px;color:var(--ink-muted)">${b.date}</td>
+      <td>
+        <strong style="font-size:13px">${esc(b.pub)}</strong>
+        ${b.syn?'<span class="syn-badge" style="margin-left:4px">Syn</span>':''}
+        <br>
+        <a href="${linkUrl}" target="_blank" style="${urlStyle};font-size:11px;word-break:break-all">${esc(displayUrl)}</a>
+        ${!hasFullUrl?'<span style="font-size:9px;color:var(--amber);display:block;margin-top:2px">⚠ Full article URL needed</span>':''}
+      </td>
+      <td><span class="bl-dr ${drClass}">${b.dr}</span></td>
+      <td style="font-size:12px;line-height:1.5">${esc(b.headline)}</td>
+      <td><span class="badge green">✓ Live</span></td>
+    </tr>`;
+  }).join('');
+}
+
+// ── AIO Modal ─────────────────────────────────────────────────────────────────
+function openAio(btn){
+  let r;try{r=JSON.parse(btn.dataset.r||'{}')}catch{return}
+  document.getElementById('aioKw').textContent=`"${r.keyword}"`;
+  const sources=(r.aio_sources||[]).map((s,i)=>{
+    const isOurs=s.link&&s.link.includes(SITE);
+    let dom='';try{dom=new URL(s.link).hostname.replace('www.','')}catch{dom=s.link||''}
+    return`<div class="src-row"><span class="src-num">${i+1}</span><div><a href="${esc(s.link)}" target="_blank" class="${isOurs?'ours':''}">${esc(s.title||dom)}</a><div style="font-size:10px;color:var(--ink-muted)">${esc(dom)}${isOurs?' ← us':''}</div></div></div>`;
+  }).join('');
+  document.getElementById('aioBody').innerHTML=(r.aio_text?`<div class="aio-fulltext">${esc(r.aio_text)}</div>`:'')+sources;
+  document.getElementById('aioModal').classList.add('open');
+}
+function closeAio(){document.getElementById('aioModal').classList.remove('open');}
+document.getElementById('aioModal').addEventListener('click',e=>{if(e.target===document.getElementById('aioModal'))closeAio();});
 </script>
 </body>
 </html>
