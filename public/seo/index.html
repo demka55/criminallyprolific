@@ -489,7 +489,10 @@ function renderTable(filter){
       rankCell=`<span style="font-size:11px;color:var(--ink-muted);font-style:italic">Not ranking</span>`;
     }
     const orgBadge=r.organic_rank?`<span class="badge rank">#${r.organic_rank}</span>`:`<span class="badge no-rank">—</span>`;
-    const hl=r.site_cited?'background:linear-gradient(90deg,#edfaf1 0%,transparent 70%)':r.in_aio?'background:linear-gradient(90deg,#fffbeb 0%,transparent 70%)':'';
+    const hl=(r.site_cited||(r.our_pages&&r.our_pages.length>0)||r.organic_rank!=null)
+      ?'background:linear-gradient(90deg,#edfaf1 0%,transparent 70%)'
+      :r.in_aio?'background:linear-gradient(90deg,#fffbeb 0%,transparent 70%)'
+      :'';
     const isYT=g.page&&g.page.startsWith('https://');
     const pageLink=isYT
       ?`<a href="${esc(g.page)}" target="_blank" style="color:#c00;font-size:11px">▶ YouTube</a>`
