@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SEO Dashboard — Criminally Prolific</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#0033ff;--blue-dim:#0022cc;--blue-bg:#f0f4ff;--ink:#111;--ink-soft:#333;--ink-muted:#666;--bg:#f8f8f8;--white:#fff;--border:#e0e0e0;--green:#1a6e35;--green-bg:#edfaf1;--red:#c62828;--red-bg:#fff0f0;--amber:#b7791f;--amber-bg:#fffbeb;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:14px}
+#login{display:flex;align-items:center;justify-content:center;min-height:100vh}
+.lbox{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:40px;width:100%;max-width:380px;text-align:center}
+.lbox h2{font-size:20px;font-weight:800;margin-bottom:6px}
+.lbox p{font-size:13px;color:var(--ink-muted);margin-bottom:24px}
+.linput{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:4px;font-family:inherit;font-size:15px;margin-bottom:10px;outline:none}
+.linput:focus{border-color:var(--blue)}
+.lbtn{width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:4px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.lerr{font-size:13px;color:var(--red);margin-top:8px;display:none}
+#app{display:none;max-width:1280px;margin:0 auto;padding:28px 24px 60px}
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.topbar h1{font-size:24px;font-weight:900;letter-spacing:-.5px}
+.topbar p{font-size:13px;color:var(--ink-muted);margin-top:3px}
+.actions{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:8px 16px;border-radius:4px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--ink)}
+.btn:hover{border-color:#999}
+.btn.blue{background:var(--blue);color:#fff;border-color:transparent}.btn.blue:hover{background:var(--blue-dim)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.sbar{display:flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--border);border-radius:4px;padding:9px 16px;font-size:13px;color:var(--ink-muted);margin-bottom:16px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0}
+.dot.green{background:#27ae60}.dot.amber{background:var(--amber);animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:20px}
+.kpi{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:16px 18px}
+.kpi-l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-muted);margin-bottom:6px}
+.kpi-v{font-size:28px;font-weight:900;color:var(--ink)}
+.kpi-s{font-size:12px;color:var(--ink-muted);margin-top:3px}
+.kpi-v.blue{color:var(--blue)}.kpi-v.green{color:var(--green)}.kpi-v.amber{color:var(--amber)}
+.hist{background:var(--white);border:1.5px solid var(--border);border-radius:6px;padding:20px;margin-bottom:20px}
+.hist h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-muted);margin-bottom:14px}
+.hchart{display:flex;align-items:flex-end;gap:3px;height:64px;overflow-x:auto}
+.hcol{display:flex;flex-direction:column;align-items:center;gap:1px;flex-shrink:0;position:relative;cursor:pointer}
+.hcol:hover .htip{display:block}
+.htip{display:none;position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:4px;padding:8px 12px;font-size:12px;white-space:nowrap;z-index:100;min-width:180px}
+.hbar{width:18px;border-radius:2px 2px 0 0;min-height:2px}
+.hdate{font-size:9px;color:var(--ink-muted);writing-mode:vertical-lr;transform:rotate(180deg);margin-top:4px}
+.filters{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.ftab{padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--ink-muted);font-family:inherit}
+.ftab.active{background:var(--ink);color:#fff;border-color:transparent}
+.tbl-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:6px;overflow:hidden}
+.tbl-count{padding:8px 16px;font-size:12px;color:var(--ink-muted);border-bottom:1.5px solid var(--border)}
+table.kw{width:100%;border-collapse:collapse}
+table.kw th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-muted);padding:8px 14px;text-align:left;background:var(--bg);border-bottom:1.5px solid var(--border)}
+table.kw td{padding:11px 14px;border-bottom:1px solid var(--border);font-size:14px;color:var(--ink-soft);vertical-align:top}
+table.kw tr:last-child td{border-bottom:none}
+table.kw tr:hover td{background:#fafafa}
+.badge{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:3px;white-space:nowrap}
+.badge.green{background:var(--green-bg);color:var(--green)}
+.badge.blue{background:var(--blue-bg);color:var(--blue)}
+.badge.grey{background:var(--bg);color:var(--ink-muted)}
+.badge.amber{background:var(--amber-bg);color:var(--amber)}
+.badge.red{background:var(--red-bg);color:var(--red)}
+.page-group{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);background:var(--bg);padding:6px 14px;border-bottom:1px solid var(--border)}
+.our-page-link{color:var(--blue);text-decoration:none;font-size:12px;word-break:break-all}
+.our-page-link:hover{text-decoration:underline}
+.not-found{font-size:12px;color:var(--ink-muted);font-style:italic}
+.btn-aio{font-size:12px;color:var(--blue);background:none;border:none;cursor:pointer;font-family:inherit;padding:2px 0;text-decoration:underline;display:block;margin-top:3px}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-bg.open{display:flex}
+.modal{background:var(--white);border-radius:6px;width:100%;max-width:740px;max-height:88vh;overflow-y:auto;border-top:3px solid var(--blue);box-shadow:0 16px 48px rgba(0,0,0,.18)}
+.modal-hd{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px 14px;gap:12px;border-bottom:1.5px solid var(--border)}
+.modal-hd h2{font-size:18px;font-weight:800;flex:1}
+.modal-x{background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-muted)}
+.modal-body{padding:20px 24px 24px}
+.aio-fulltext{font-size:14px;line-height:1.75;color:var(--ink-soft);background:var(--bg);border-radius:4px;padding:16px;margin-bottom:16px;white-space:pre-wrap;max-height:300px;overflow-y:auto}
+.src-row{display:flex;align-items:baseline;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px}
+.src-row:last-child{border-bottom:none}
+.src-num{color:var(--ink-muted);font-size:12px;min-width:18px}
+.src-row a{color:var(--blue);text-decoration:none;word-break:break-all}
+.src-row a.ours{color:var(--green);font-weight:700}
+.empty{text-align:center;padding:48px;color:var(--ink-muted);font-size:14px}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="login">
+  <div class="lbox">
+    <div style="font-size:22px;font-weight:900;color:var(--blue);margin-bottom:16px">CP</div>
+    <h2>Criminally Prolific</h2>
+    <p>SEO Dashboard — internal use only</p>
+    <input type="password" class="linput" id="pw" placeholder="Password">
+    <button class="lbtn" onclick="doLogin()">Sign in →</button>
+    <div class="lerr" id="lerr">Incorrect password</div>
+  </div>
+</div>
+
+<div id="app">
+  <div class="topbar">
+    <div>
+      <h1>SEO Dashboard</h1>
+      <p id="lastChecked">criminallyprolific.com · 31 articles · 166 keywords · Updated daily 6am UTC</p>
+    </div>
+    <div class="actions">
+      <button class="btn" onclick="logout()">Sign out</button>
+      <button class="btn blue" id="runBtn" onclick="runNow()">↻ Run now</button>
+    </div>
+  </div>
+  <div class="sbar"><span class="dot" id="statusDot"></span><span id="statusText">Loading…</span></div>
+  <div class="kpis" id="kpis"></div>
+  <div class="hist" id="histWrap" style="display:none">
+    <h3>30-day trend — keywords where we rank</h3>
+    <div class="hchart" id="hchart"></div>
+  </div>
+  <div class="filters" id="filterBar"></div>
+  <div class="tbl-wrap">
+    <div class="tbl-count" id="tblCount"></div>
+    <div id="tblBody"><div class="empty">Loading…</div></div>
+  </div>
+</div>
+
+<div class="modal-bg" id="aioModal">
+  <div class="modal">
+    <div class="modal-hd"><h2>AI Overview</h2><button class="modal-x" onclick="closeAio()">✕</button></div>
+    <div class="modal-body"><div id="aioKw" style="font-size:13px;color:var(--ink-muted);margin-bottom:12px"></div><div id="aioBody"></div></div>
+  </div>
+</div>
+
+<script>
+const SITE = 'criminallyprolific.com';
+const PW_KEY = 'cp_seo_pw';
+let apw='', allResults=[], curFilter='all';
+
+const KEYWORD_GROUPS = [
+  { page:'/company-boilerplate/', label:'Company Boilerplate', kws:['company boilerplate','company boilerplate examples','boilerplate','boilerplate content','what is a boilerplate','press release boilerplate','about the company boilerplate','boilerplate template','company description template','boiler plate'] },
+  { page:'/cold-email-example/', label:'Cold Email Examples', kws:['cold email example','cold email examples','cold email','best cold email examples','cold email template','cold email tips','cold email 2026','cold email outreach examples'] },
+  { page:'/press-release-email/', label:'Press Release Email', kws:['press release email example','press release email','press release subject line','subject line for press release email','how to send a press release email','press release email template','media pitch email'] },
+  { page:'/find-anyones-email/', label:"Find Anyone's Email", kws:['find anyones email','find email address by name free','find all emails associated with my name free','how to find email address by name','find email address free','email lookup by name','find anyone email address free'] },
+  { page:'/email-signatures/', label:'Email Signatures', kws:['email signature examples','email signature ideas','professional email signature','best email signature examples','email signature template','good email signature','email signature 2026'] },
+  { page:'/how-to-pitch-journalists/', label:'Pitch Journalists', kws:['how to pitch journalists','pitch journalists','how to pitch a journalist','journalist pitch template','media pitch','how to pitch to press'] },
+  { page:'/pr-pitch-angles/', label:'PR Pitch Angles', kws:['pr pitch angles','pitch angles for journalists','pr pitch ideas','unusual pr pitch angles','creative pr pitch'] },
+  { page:'/pr-for-startups/', label:'PR for Startups', kws:['pr for startups','startup pr','how to do pr for a startup','startup press coverage','startup media coverage','how to get press coverage startup'] },
+  { page:'/saas-pr/', label:'SaaS PR', kws:['saas pr','saas pr strategy','saas public relations','b2b saas pr','saas press coverage'] },
+  { page:'/do-your-own-pr/', label:'Do Your Own PR', kws:['do your own pr','diy pr','how to do your own pr','pr without a pr agency','how to get press coverage without pr agency'] },
+  { page:'/media-relations-strategy/', label:'Media Relations Strategy', kws:['media relations strategy','media relations','pr media strategy','how to build media relationships','journalist relationship building'] },
+  { page:'/media-list-examples/', label:'Media List Examples', kws:['media list examples','media list','how to build a media list','journalist contact list','pr media list template'] },
+  { page:'/marketing-communications-strategy/', label:'Marketing Comms Strategy', kws:['marketing communications strategy','marketing communications','marcom strategy','integrated marketing communications'] },
+  { page:'/how-to-rank-higher-on-google/', label:'Rank Higher on Google', kws:['how to rank higher on google','rank higher on google','link building study','how to rank on google','google ranking tips 2026'] },
+  { page:'/optimize-for-google-rankbrain/', label:'Optimize for RankBrain', kws:['optimize for google rankbrain','rankbrain seo','google rankbrain optimization','rankbrain ranking factors'] },
+  { page:'/ranking-high-volume-keyword/', label:'Rank High Volume Keywords', kws:['how to rank for high volume keywords','ranking high volume keyword','rank competitive keyword 90 days','rank difficult keyword'] },
+  { page:'/low-search-volume-keywords/', label:'Low Search Volume Keywords', kws:['low search volume keywords','long tail keywords strategy','low volume keyword seo','why target low volume keywords'] },
+  { page:'/growth-hacking/', label:'Growth Hacking', kws:['growth hacking','growth hacking tactics','growth hacking examples','growth hacking strategies 2026','growth hacking tools'] },
+  { page:'/50-growth-hacking-tools/', label:'50 Growth Hacking Tools', kws:['growth hacking tools','best growth hacking tools','marketing growth tools','growth tools for startups','50 growth hacking tools'] },
+  { page:'/convert-website-visitors/', label:'Convert Website Visitors', kws:['how to convert website visitors','convert website visitors without forms','website visitor conversion','increase website conversion rate'] },
+  { page:'/waste-money-on-facebook-ads/', label:'Facebook Ads Worth It?', kws:['are facebook ads worth it','facebook ads worth it 2026','waste money on facebook ads','facebook ads roi 2026','should i use facebook ads'] },
+  { page:'/email-pitch-tips/', label:'Email Pitch Tips', kws:['email pitch tips','cold email pitch','how to pitch journalists by email','pr email tips','email pitch to journalist'] },
+  { page:'/email-subject-lines/', label:'Email Subject Lines', kws:['cold email subject lines','email subject lines that get responses','best email subject lines','subject lines for cold email','email subject line examples'] },
+  { page:'/email-signoffs/', label:'Email Sign-offs', kws:['email sign offs','best email sign offs','professional email sign off','email closing examples','how to end an email'] },
+  { page:'/business-email-templates/', label:'Business Email Templates', kws:['business email templates','professional email templates','business email examples','email templates for business','formal email template'] },
+  { page:'/sales-email-sequences/', label:'Sales Email Sequences', kws:['sales email sequences','email sequence examples','cold email sequence','sales email drip sequence','best sales email sequences'] },
+  { page:'/gmail-mail-merge/', label:'Gmail Mail Merge', kws:['gmail mail merge','mail merge gmail','how to mail merge in gmail','gmail mail merge 2026','send personalized emails gmail'] },
+  { page:'/grow-email-list/', label:'Grow Email List', kws:['how to grow email list','grow email list fast','email list building','grow newsletter subscribers','build email list from scratch'] },
+  { page:'/grow-email-subscribers/', label:'Grow Email Subscribers', kws:['grow email subscribers','increase email subscribers','how to get more email subscribers','700 to 3000 subscribers','grow newsletter fast'] },
+  { page:'/how-to-ask-for-business-in-an-email/', label:'Ask for Business in Email', kws:['how to ask for business in an email','ask for business email template','sales ask email','how to ask for a sale in email','closing email for business'] },
+  { page:'/pitch-sell-your-app/', label:'Pitch & Sell Your App', kws:['how to pitch an app','how to sell your app','pitch app to investors','sell saas app','build app for acquisition'] },
+];
+
+const ALL_KWS = KEYWORD_GROUPS.flatMap(g => g.kws);
+
+async function doLogin(){
+  const pw=document.getElementById('pw').value.trim();
+  if(!pw)return;
+  const r=await fetch('/api/admin-auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw})}).catch(()=>null);
+  if(r&&r.ok){apw=pw;sessionStorage.setItem(PW_KEY,pw);showApp();}
+  else document.getElementById('lerr').style.display='block';
+}
+function logout(){sessionStorage.removeItem(PW_KEY);location.reload();}
+document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+const saved=sessionStorage.getItem(PW_KEY);
+if(saved){
+  fetch('/api/admin-auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:saved})})
+    .then(r=>{if(r.ok){apw=saved;showApp();}else sessionStorage.removeItem(PW_KEY);}).catch(()=>{});
+}
+
+function showApp(){document.getElementById('login').style.display='none';document.getElementById('app').style.display='block';loadResults();}
+
+async function loadResults(){
+  setStatus('amber','Fetching latest results…');
+  try{
+    const r=await fetch('/api/seo-track?action=results');
+    if(!r.ok){setStatus('amber',`Server error ${r.status}`);renderEmpty();return;}
+    const d=await r.json().catch(()=>null);
+    if(d&&d.results&&d.results.keywords&&d.results.keywords.length){
+      allResults=d.results.keywords.filter(k=>ALL_KWS.some(ak=>ak.toLowerCase()===k.keyword.toLowerCase()));
+      if(!allResults.length) allResults=d.results.keywords;
+      renderKpis();renderFilters();renderTable(curFilter);renderHistory(d.history||[]);
+      const dt=new Date(d.results.checkedAt);
+      const dtStr=isNaN(dt)?'—':`${dt.toLocaleDateString('en-US',{month:'short',day:'numeric'})} at ${dt.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})}`;
+      document.getElementById('lastChecked').textContent=`criminallyprolific.com · 31 articles · 166 keywords · Last checked: ${dtStr}`;
+      setStatus('green',`${allResults.length} of 166 keywords have data`);
+    } else {renderEmpty();setStatus('amber','No data yet — click "Run now" to fetch rankings');}
+  }catch(e){setStatus('amber','Error: '+e.message);renderEmpty();}
+}
+
+function renderEmpty(){
+  document.getElementById('kpis').innerHTML='';
+  document.getElementById('tblBody').innerHTML='<div class="empty">No keyword data yet.<br><br>Click "↻ Run now" to check all 166 keywords.<br><span style="font-size:12px;color:var(--ink-muted)">First run takes ~15 minutes.</span></div>';
+  document.getElementById('tblCount').textContent='0 keywords';
+}
+
+async function runNow(){
+  const btn=document.getElementById('runBtn');
+  btn.disabled=true;
+  const total=ALL_KWS.length;
+  let done=0;
+  for(const kw of ALL_KWS){
+    btn.innerHTML=`<span class="spinner"></span> ${done}/${total}`;
+    setStatus('amber',`Checking ${done}/${total} keywords…`);
+    await fetch(`/api/seo-track?action=check&kw=${encodeURIComponent(kw)}&password=${encodeURIComponent(apw)}`).catch(()=>null);
+    done++;
+  }
+  setStatus('amber','Saving results…');
+  await fetch(`/api/seo-track?action=finish&password=${encodeURIComponent(apw)}`).catch(()=>null);
+  btn.disabled=false;btn.innerHTML='↻ Run now';
+  loadResults();
+}
+
+function setStatus(state,txt){
+  document.getElementById('statusDot').className='dot'+(state==='green'?' green':state==='amber'?' amber':'');
+  document.getElementById('statusText').textContent=txt;
+}
+
+function renderKpis(){
+  const ranked=allResults.filter(r=>r.organic_rank).length;
+  const inAio=allResults.filter(r=>r.in_aio).length;
+  const cited=allResults.filter(r=>r.site_cited).length;
+  const total=allResults.length;
+  document.getElementById('kpis').innerHTML=`
+    <div class="kpi"><div class="kpi-l">Keywords</div><div class="kpi-v">${total}<span style="font-size:14px;color:var(--ink-muted)">/166</span></div><div class="kpi-s">checked</div></div>
+    <div class="kpi"><div class="kpi-l">Articles</div><div class="kpi-v">31</div><div class="kpi-s">tracked</div></div>
+    <div class="kpi"><div class="kpi-l">Organic Rank</div><div class="kpi-v ${ranked>0?'green':''}">${ranked}</div><div class="kpi-s">in top 10</div></div>
+    <div class="kpi"><div class="kpi-l">In AIO</div><div class="kpi-v ${inAio>0?'blue':''}">${inAio}</div><div class="kpi-s">AI overviews</div></div>
+    <div class="kpi"><div class="kpi-l">AIO Cited</div><div class="kpi-v ${cited>0?'green':''}">${cited}</div><div class="kpi-s">we appear</div></div>
+  `;
+}
+
+function renderHistory(history){
+  const w=document.getElementById('histWrap');
+  if(!history||!history.length){w.style.display='none';return;}
+  w.style.display='block';
+  const max=Math.max(...history.map(h=>h.ranked||h.in_aio||1),1);
+  document.getElementById('hchart').innerHTML=history.slice(0,30).reverse().map(h=>`
+    <div class="hcol">
+      <div class="hbar" style="height:${Math.max(4,((h.ranked||h.in_aio||0)/max)*60)}px;background:var(--blue)"></div>
+      <div class="hdate">${(h.date||'').slice(5)}</div>
+      <div class="htip">${h.date}<br>Ranking: ${h.ranked||0} · AIO: ${h.in_aio||0}</div>
+    </div>`).join('');
+}
+
+function renderFilters(){
+  const appearing=allResults.filter(r=>r.our_pages&&r.our_pages.length>0).length;
+  const filters=[
+    {id:'all',label:`All (${allResults.length})`},
+    {id:'we_appear',label:`✓ We appear (${appearing})`},
+    {id:'organic',label:'Organic rank'},
+    {id:'cited',label:'In AIO'},
+    {id:'no_us',label:'Not found'},
+  ];
+  document.getElementById('filterBar').innerHTML=filters.map(f=>`<button class="ftab ${curFilter===f.id?'active':''}" onclick="setF('${f.id}',this)">${esc(f.label)}</button>`).join('');
+}
+function setF(f,el){curFilter=f;document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderTable(f);}
+
+function renderTable(filter){
+  let rows=allResults;
+  if(filter==='we_appear') rows=rows.filter(r=>r.our_pages&&r.our_pages.length>0);
+  if(filter==='organic') rows=rows.filter(r=>r.organic_rank);
+  if(filter==='cited') rows=rows.filter(r=>r.site_cited);
+  if(filter==='no_us') rows=rows.filter(r=>!r.our_pages||!r.our_pages.length);
+
+  document.getElementById('tblCount').textContent=`${rows.length} keyword${rows.length!==1?'s':''}`;
+  if(!rows.length){document.getElementById('tblBody').innerHTML='<div class="empty">No keywords match this filter</div>';return;}
+
+  const grouped=KEYWORD_GROUPS.map(g=>({
+    ...g,rows:rows.filter(r=>g.kws.some(k=>k.toLowerCase()===r.keyword.toLowerCase()))
+  })).filter(g=>g.rows.length>0);
+
+  let html=`<table class="kw"><thead><tr>
+    <th style="width:26%">Keyword</th>
+    <th>Article Page</th>
+    <th style="width:74px">Checked</th>
+    <th style="width:86px">AIO</th>
+    <th>Where We Appear</th>
+    <th style="width:86px">Organic</th>
+  </tr></thead><tbody>`;
+
+  for(const g of grouped){
+    html+=`<tr><td colspan="6" class="page-group">📄 ${esc(g.label)} — <a href="https://criminallyprolific.com${g.page}" target="_blank" style="color:var(--blue);font-weight:400;text-transform:none;letter-spacing:0">${g.page}</a></td></tr>`;
+    html+=g.rows.map(r=>rowHtml(r,g.page)).join('');
+    // Show unchecked keywords in this group (no data yet)
+    const checked=g.rows.map(r=>r.keyword.toLowerCase());
+    const unchecked=g.kws.filter(k=>!checked.includes(k.toLowerCase()));
+    if(unchecked.length&&filter==='all'){
+      html+=unchecked.map(k=>`<tr style="opacity:.45"><td><span style="font-size:13px">${esc(k)}</span></td><td style="font-size:12px;color:var(--ink-muted)">${g.page}</td><td colspan="4" style="font-size:12px;color:var(--ink-muted);font-style:italic">Not yet checked</td></tr>`).join('');
+    }
+  }
+  html+='</tbody></table>';
+  document.getElementById('tblBody').innerHTML=html;
+}
+
+function rowHtml(r,page){
+  const dt=r.checkedAt?r.checkedAt.slice(5,10):'—';
+  const aioBadge=r.error?`<span class="badge red" title="${esc(r.error)}">Error</span>`:r.in_aio?`<span class="badge blue">✓ AIO</span>`:`<span class="badge grey">No AIO</span>`;
+  const aioBtn=(r.in_aio&&(r.aio_text||(r.aio_sources&&r.aio_sources.length)))?`<button class="btn-aio" onclick='openAio(this)' data-r='${esc(JSON.stringify(r))}'>View AIO ↗</button>`:'';
+  let appearHtml='';
+  if(r.our_pages&&r.our_pages.length>0){
+    appearHtml=`<div style="display:flex;flex-direction:column;gap:3px">${r.our_pages.map(p=>{
+      const col=p.where.startsWith('AIO')?'var(--green)':p.where.startsWith('Organic')?'var(--blue)':'var(--amber)';
+      const lnk=p.link?`<a class="our-page-link" href="${esc(p.link)}" target="_blank">${esc(slugify(p.link))}</a>`:'';
+      return `<div style="display:flex;gap:5px;align-items:baseline;flex-wrap:wrap"><span style="font-size:11px;font-weight:700;color:${col};white-space:nowrap">${esc(p.where)}</span>${lnk}</div>`;
+    }).join('')}</div>`;
+  } else { appearHtml=`<span class="not-found">Not found</span>`; }
+  const orgBadge=r.organic_rank?`<span class="badge amber">#${r.organic_rank}</span>`:`<span class="badge grey">—</span>`;
+  const highlighted=r.site_cited?'background:linear-gradient(90deg,#edfaf1,transparent)':r.in_aio?'background:linear-gradient(90deg,#fffbeb,transparent)':'';
+  return `<tr style="${highlighted}">
+    <td><strong style="font-size:13px">${esc(r.keyword)}</strong></td>
+    <td><a href="https://criminallyprolific.com${page}" target="_blank" style="color:var(--blue);font-size:12px">${page}</a></td>
+    <td style="color:var(--ink-muted);font-size:12px">${dt}</td>
+    <td>${aioBadge}${aioBtn}</td>
+    <td>${appearHtml}</td>
+    <td>${orgBadge}</td>
+  </tr>`;
+}
+
+function openAio(btn){
+  let r;try{r=JSON.parse(btn.dataset.r||'{}')}catch{return}
+  document.getElementById('aioKw').textContent=`"${r.keyword}" · ${r.checkedAt?new Date(r.checkedAt).toLocaleString():'—'}`;
+  const sources=(r.aio_sources||[]).map((s,i)=>{
+    const isOurs=s.link&&s.link.includes(SITE);
+    let dom='';try{dom=new URL(s.link).hostname.replace('www.','')}catch{dom=s.link||''}
+    return `<div class="src-row"><span class="src-num">${i+1}</span><div><a href="${esc(s.link)}" target="_blank" class="${isOurs?'ours':''}">${esc(s.title||dom)}</a><div style="font-size:11px;color:var(--ink-muted)">${esc(dom)}${isOurs?' ← our site':''}</div></div></div>`;
+  }).join('');
+  document.getElementById('aioBody').innerHTML=`
+    ${r.aio_text?`<div class="aio-fulltext">${esc(r.aio_text)}</div>`:'<p style="color:var(--ink-muted);font-size:13px;margin-bottom:12px">No AIO text captured.</p>'}
+    ${sources?`<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-muted);margin-bottom:8px">Sources (${(r.aio_sources||[]).length})</div>${sources}`:''}`;
+  document.getElementById('aioModal').classList.add('open');
+}
+function closeAio(){document.getElementById('aioModal').classList.remove('open');}
+document.getElementById('aioModal').addEventListener('click',e=>{if(e.target===document.getElementById('aioModal'))closeAio();});
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function slugify(url){try{const u=new URL(url);return u.hostname.replace('www.','')+u.pathname}catch{return url}}
+</script>
+</body>
+</html>
