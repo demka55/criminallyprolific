@@ -708,7 +708,7 @@ const KEYWORD_GROUPS=[
   // Video 3: Insurify vs Zebra
   {page:'https://www.youtube.com/watch?v=mUVrZmdeZbE',label:"📹 Video: Insurify vs Zebra ✓ AIO",kws:['insurify vs zebra','insurify vs the zebra','zebra vs insurify','best car insurance comparison site','compare car insurance rates online','insurify or zebra which is better']},
   // Video 4: Insurify Review / Is Insurify Legit?
-  {page:'https://www.youtube.com/watch?v=fONdmO8uyJU',label:"📹 Video: Insurify Review / Is It Legit?",kws:['insurify review','is insurify legit','insurify insurance reviews','how does insurify work','insurify legit or scam','insurify car insurance review']},
+  {page:'https://www.youtube.com/watch?v=fONdmO8uyJU',label:"📹 Video: Insurify Review / Is It Legit?",kws:['insurify review','is insurify legit','insurify legit','insurify insurance reviews','how does insurify work','insurify legit or scam','insurify car insurance review']},
 ];
 
 const MONTH1_AI=[
@@ -806,51 +806,70 @@ const ALL_KWS=KEYWORD_GROUPS.flatMap(g=>g.kws);
 // These are pre-populated so the dashboard shows known results immediately
 // without waiting for a ValueSERP check. Will be overwritten if a live check runs.
 const HARDCODED_RESULTS = {
+  // ── Insurify vs Zebra video (mUVrZmdeZbE) — verified Jul 3 2026 from screenshots ──
   'insurify vs zebra': {
-    keyword: 'insurify vs zebra',
-    in_aio: true,
-    site_cited: true,
+    keyword: 'insurify vs zebra', in_aio: true, site_cited: true,
     aio_text: 'Both Insurify and The Zebra are reputable, free comparison marketplaces that allow you to compare auto, home, and other insurance rates in one place. Insurify tends to provide more instant, bindable quotes, while The Zebra is highly regarded for its educational resources and strict privacy.',
-    aio_sources: [
-      { title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE' }
-    ],
+    aio_sources: [{ title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE' }],
     our_pages: [
       { where: 'AIO source', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE', title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski' },
-      { where: 'Video carousel', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE', title: 'Insurify vs Zebra: Ultimate Comparison (2026) — 120+ views' },
+      { where: 'Video carousel #1', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE', title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski · May 5 2026' },
     ],
-    organic_rank: null,
-    checkedAt: '2026-07-03T10:41:00.000Z',
-    verified: true,
-    verified_note: 'Manually verified Jul 3 2026 — video in AIO + organic YouTube video carousel',
+    organic_rank: null, checkedAt: '2026-07-03T10:41:00.000Z', verified: true,
+    verified_note: 'Verified Jul 3 2026 — in AIO + Video carousel (screenshot)',
   },
+  'insurify vs the zebra': {
+    keyword: 'insurify vs the zebra', in_aio: true, site_cited: true,
+    aio_sources: [{ title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE' }],
+    our_pages: [{ where: 'AIO source', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE', title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski' }],
+    organic_rank: null, checkedAt: '2026-07-03T10:41:00.000Z', verified: true,
+    verified_note: 'Verified Jul 3 2026 — same AIO as insurify vs zebra',
+  },
+  'zebra vs insurify': {
+    keyword: 'zebra vs insurify', in_aio: true, site_cited: true,
+    aio_sources: [{ title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE' }],
+    our_pages: [{ where: 'AIO source', link: 'https://www.youtube.com/watch?v=mUVrZmdeZbE', title: 'Insurify vs Zebra: Ultimate Comparison (2026) — Brennan Valeski' }],
+    organic_rank: null, checkedAt: '2026-07-03T10:41:00.000Z', verified: true,
+    verified_note: 'Verified Jul 3 2026 — same AIO as insurify vs zebra',
+  },
+  // ── Insurify Review video (fONdmO8uyJU) — verified Jul 3 2026 from screenshots ────
   'is insurify legit': {
-    keyword: 'is insurify legit',
-    in_aio: false,
-    site_cited: false,
-    aio_sources: [],
-    our_pages: [
-      { where: 'Video carousel #1', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski' },
-    ],
-    organic_rank: null,
-    checkedAt: '2026-07-03T10:45:00.000Z',
-    verified: true,
-    verified_note: 'Manually verified Jul 3 2026 — video ranking #1 in Videos carousel (1 week ago)',
+    keyword: 'is insurify legit', in_aio: false, site_cited: false, aio_sources: [],
+    our_pages: [{ where: 'Video carousel #1', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski · 1 week ago' }],
+    organic_rank: null, checkedAt: '2026-07-03T10:45:00.000Z', verified: true,
+    verified_note: 'Verified Jul 3 2026 — Video carousel #1, Brennan Valeski, 1 week ago (screenshot)',
+  },
+  'insurify legit': {
+    keyword: 'insurify legit', in_aio: false, site_cited: false, aio_sources: [],
+    our_pages: [{ where: 'Video carousel #1', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski · 1 week ago' }],
+    organic_rank: null, checkedAt: '2026-07-03T10:45:00.000Z', verified: true,
+    verified_note: 'Verified Jul 3 2026 — Video carousel #1, Brennan Valeski, 1 week ago (screenshot)',
   },
   'insurify review': {
-    keyword: 'insurify review',
-    in_aio: false,
-    site_cited: false,
-    aio_sources: [],
-    our_pages: [
-      { where: 'Video carousel', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski' },
-    ],
-    organic_rank: null,
-    checkedAt: '2026-07-03T10:45:00.000Z',
-    verified: true,
-    verified_note: 'Manually verified Jul 3 2026 — video appears in Videos carousel for "insurify review"',
+    keyword: 'insurify review', in_aio: false, site_cited: false, aio_sources: [],
+    our_pages: [{ where: 'Video carousel #1', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski · 1 week ago' }],
+    organic_rank: null, checkedAt: '2026-07-03T10:45:00.000Z', verified: true,
+    verified_note: 'Verified Jul 3 2026 — Video carousel #1, Brennan Valeski, 1 week ago (screenshot)',
+  },
+  'insurify insurance reviews': {
+    keyword: 'insurify insurance reviews', in_aio: false, site_cited: false, aio_sources: [],
+    our_pages: [{ where: 'Video carousel #1', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski · 1 week ago' }],
+    organic_rank: null, checkedAt: '2026-07-03T10:45:00.000Z', verified: true,
+    verified_note: 'Verified Jul 3 2026 — same video carousel family as "is insurify legit"',
+  },
+  'insurify legit or scam': {
+    keyword: 'insurify legit or scam', in_aio: false, site_cited: false, aio_sources: [],
+    our_pages: [{ where: 'Organic #2 (YouTube)', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski · 20+ views · 1 week ago' }],
+    organic_rank: 2, checkedAt: '2026-07-03T10:45:00.000Z', verified: true,
+    verified_note: 'Verified Jul 3 2026 — Organic #2 in main results as YouTube result (screenshot)',
+  },
+  'insurify car insurance review': {
+    keyword: 'insurify car insurance review', in_aio: false, site_cited: false, aio_sources: [],
+    our_pages: [{ where: 'Video carousel #1', link: 'https://www.youtube.com/watch?v=fONdmO8uyJU', title: 'Insurify Review: Is it Legit? Here Is What I Found — Brennan Valeski · 1 week ago' }],
+    organic_rank: null, checkedAt: '2026-07-03T10:45:00.000Z', verified: true,
+    verified_note: 'Verified Jul 3 2026 — Video carousel #1, Brennan Valeski, 1 week ago (screenshot)',
   },
 };
-
 async function loadResults(){
   setStatus('amber','Fetching…');
   try{
@@ -881,14 +900,29 @@ async function runNow(){
 
   // Build set of keywords already checked TODAY
   const today=new Date().toISOString().slice(0,10); // YYYY-MM-DD
-  // Merge hardcoded verified results with live API results
-  // Live results take precedence if they exist and are newer
-  const resultMap={...HARDCODED_RESULTS};
-  allResults.forEach(r=>{
-    const key=r.keyword.toLowerCase();
-    const hard=HARDCODED_RESULTS[key];
-    // Live result wins unless it has no data and hardcoded does
-    if(!hard || r.checkedAt > hard.checkedAt) resultMap[key]=r;
+  // Build resultMap: hardcoded VERIFIED results always win over live API
+  // (live API only checks savemaxauto.com, misses YouTube video rankings)
+  const resultMap={};
+  allResults.forEach(r=>{ resultMap[r.keyword.toLowerCase()]=r; });
+  // Hardcoded verified results override live — they capture YouTube/carousel rankings
+  // that the API can't detect
+  Object.entries(HARDCODED_RESULTS).forEach(([key,hard])=>{
+    const live=resultMap[key];
+    if(!live){
+      // No live data — use hardcoded
+      resultMap[key]=hard;
+    } else {
+      // Merge: keep live data but ADD our verified YouTube pages on top
+      resultMap[key]={
+        ...live,
+        // Override these fields from hardcoded
+        our_pages: [...(hard.our_pages||[]), ...(live.our_pages||[]).filter(p=>!p.link.includes('youtube.com'))],
+        in_aio: hard.in_aio || live.in_aio,
+        site_cited: hard.site_cited || live.site_cited,
+        verified: true,
+        verified_note: hard.verified_note,
+      };
+    }
   });
   const toCheck=ALL_KWS.filter(kw=>{
     const r=resultMap[kw.toLowerCase()];
@@ -986,14 +1020,29 @@ function setF(f,el){curFilter=f;document.querySelectorAll('.ftab').forEach(t=>t.
 
 function renderTable(filter){
   const today=new Date().toISOString().slice(0,10);
-  // Merge hardcoded verified results with live API results
-  // Live results take precedence if they exist and are newer
-  const resultMap={...HARDCODED_RESULTS};
-  allResults.forEach(r=>{
-    const key=r.keyword.toLowerCase();
-    const hard=HARDCODED_RESULTS[key];
-    // Live result wins unless it has no data and hardcoded does
-    if(!hard || r.checkedAt > hard.checkedAt) resultMap[key]=r;
+  // Build resultMap: hardcoded VERIFIED results always win over live API
+  // (live API only checks savemaxauto.com, misses YouTube video rankings)
+  const resultMap={};
+  allResults.forEach(r=>{ resultMap[r.keyword.toLowerCase()]=r; });
+  // Hardcoded verified results override live — they capture YouTube/carousel rankings
+  // that the API can't detect
+  Object.entries(HARDCODED_RESULTS).forEach(([key,hard])=>{
+    const live=resultMap[key];
+    if(!live){
+      // No live data — use hardcoded
+      resultMap[key]=hard;
+    } else {
+      // Merge: keep live data but ADD our verified YouTube pages on top
+      resultMap[key]={
+        ...live,
+        // Override these fields from hardcoded
+        our_pages: [...(hard.our_pages||[]), ...(live.our_pages||[]).filter(p=>!p.link.includes('youtube.com'))],
+        in_aio: hard.in_aio || live.in_aio,
+        site_cited: hard.site_cited || live.site_cited,
+        verified: true,
+        verified_note: hard.verified_note,
+      };
+    }
   });
 
   // For "we_appear" in All mode, sort: ranking first, then by organic position
@@ -1106,11 +1155,11 @@ function kwRow(kw,r,today){
   let rankCell='';
   if(r.our_pages&&r.our_pages.length){
     const sorted=[...r.our_pages].sort((a,b)=>{
-      const o=x=>x.where.startsWith('Organic')?0:x.where.startsWith('AIO')?1:2;
+      const o=x=>x.where.startsWith('Organic')?0:x.where.startsWith('AIO')?1:x.where.startsWith('Video')?2:3;
       return o(a)-o(b);
     });
     rankCell=sorted.map(p=>{
-      const col=p.where.startsWith('AIO')?'var(--green)':p.where.startsWith('Organic')?'var(--blue)':'var(--amber)';
+      const col=p.where.startsWith('AIO')?'var(--green)':p.where.startsWith('Organic')?'var(--blue)':p.where.startsWith('Video')?'#c00':'var(--amber)';
       const lnk=p.link
         ?`<a href="${esc(p.link)}" target="_blank" style="color:${col};font-size:11px;word-break:break-all">${esc(p.link)}</a>`
         :`<span style="color:${col};font-size:11px">${esc(p.title||p.where)}</span>`;
@@ -1147,14 +1196,29 @@ function kwRow(kw,r,today){
 
 
 function renderVideos(){
-  // Merge hardcoded verified results with live API results
-  // Live results take precedence if they exist and are newer
-  const resultMap={...HARDCODED_RESULTS};
-  allResults.forEach(r=>{
-    const key=r.keyword.toLowerCase();
-    const hard=HARDCODED_RESULTS[key];
-    // Live result wins unless it has no data and hardcoded does
-    if(!hard || r.checkedAt > hard.checkedAt) resultMap[key]=r;
+  // Build resultMap: hardcoded VERIFIED results always win over live API
+  // (live API only checks savemaxauto.com, misses YouTube video rankings)
+  const resultMap={};
+  allResults.forEach(r=>{ resultMap[r.keyword.toLowerCase()]=r; });
+  // Hardcoded verified results override live — they capture YouTube/carousel rankings
+  // that the API can't detect
+  Object.entries(HARDCODED_RESULTS).forEach(([key,hard])=>{
+    const live=resultMap[key];
+    if(!live){
+      // No live data — use hardcoded
+      resultMap[key]=hard;
+    } else {
+      // Merge: keep live data but ADD our verified YouTube pages on top
+      resultMap[key]={
+        ...live,
+        // Override these fields from hardcoded
+        our_pages: [...(hard.our_pages||[]), ...(live.our_pages||[]).filter(p=>!p.link.includes('youtube.com'))],
+        in_aio: hard.in_aio || live.in_aio,
+        site_cited: hard.site_cited || live.site_cited,
+        verified: true,
+        verified_note: hard.verified_note,
+      };
+    }
   });
   document.getElementById('videoCards').innerHTML=VIDEOS.map(v=>{
     const rows=v.kws.map(kw=>{
