@@ -1544,6 +1544,8 @@ function openAio(btn){
 }
 function closeAio(){document.getElementById('aioModal').classList.remove('open');}
 document.getElementById('aioModal').addEventListener('click',e=>{if(e.target===document.getElementById('aioModal'))closeAio();});
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function slugify(url){try{const u=new URL(url);return u.hostname.replace('www.','')+u.pathname}catch{return url}}
 </script>
 </body>
 </html>
