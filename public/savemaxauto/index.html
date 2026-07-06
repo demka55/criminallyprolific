@@ -217,6 +217,7 @@ table.kw tr:hover td{background:#fafafa}
     <div class="actions">
       <button class="btn" onclick="logout()">Sign out</button>
       <button class="btn blue" id="runBtn" onclick="runNow()" style="white-space:nowrap">↻ Run</button>
+      <button class="btn" id="retryBtn" onclick="retryErrors()" style="white-space:nowrap;color:var(--red);border-color:var(--red)">↻ Retry errors</button>
     </div>
   </div>
 
@@ -1070,7 +1071,7 @@ async function loadResults(){
       const dt=new Date(d.results.checkedAt);
       const dtStr=isNaN(dt)?'—':`${dt.toLocaleDateString('en-US',{month:'short',day:'numeric'})} ${dt.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})}`;
       document.getElementById('lastChecked').textContent=`savemaxauto.com · Last checked: ${dtStr}`;
-      setStatus('green',`${allResults.length} keywords have data`);
+      setStatus('green',`${allResults.length} of ${ALL_KWS.length} keywords checked`);
     }else{renderEmpty();setStatus('amber','No data yet — click Run now');}
   }catch(e){setStatus('amber','Error: '+e.message);renderEmpty();}
 }
@@ -1150,6 +1151,8 @@ async function runNow(){
     setStatus('amber',`${done}/${total} done · ${skipped} skipped (checked today)`);
     await fetch(`/api/sma-seo-track?action=check&kw=${encodeURIComponent(kw)}&password=${encodeURIComponent(apw)}`).catch(()=>null);
     done++;
+    // Small delay to avoid ValueSERP rate limiting (max ~1 req/sec on free plans)
+    await new Promise(r=>setTimeout(r,1100));
   }
 
   document.getElementById('runProgressFill').style.width='100%';
@@ -1158,6 +1161,24 @@ async function runNow(){
 
   setTimeout(()=>{ if(progEl) progEl.style.display='none'; },3000);
   btn.disabled=false; btn.innerHTML='↻ Run now';
+  loadResults();
+}
+
+async function retryErrors(){
+  const btn=document.getElementById('retryBtn');
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span> Retrying…';
+  const errored=allResults.filter(r=>r.error);
+  if(!errored.length){ btn.disabled=false; btn.innerHTML='↻ Retry errors'; setStatus('green','No errors to retry ✓'); return; }
+  setStatus('amber',`Retrying ${errored.length} errored keywords…`);
+  let done=0;
+  for(const r of errored){
+    await fetch(`/api/sma-seo-track?action=check&kw=${encodeURIComponent(r.keyword)}&password=${encodeURIComponent(apw)}&force=1`).catch(()=>null);
+    done++;
+    btn.innerHTML=`<span class="spinner"></span> ${done}/${errored.length}`;
+    await new Promise(resolve=>setTimeout(resolve,1200));
+  }
+  await fetch(`/api/sma-seo-track?action=finish&password=${encodeURIComponent(apw)}`).catch(()=>null);
+  btn.disabled=false; btn.innerHTML='↻ Retry errors';
   loadResults();
 }
 
@@ -1180,7 +1201,7 @@ function renderKpis(){
   const inAio=merged.filter(r=>r.in_aio).length;
   const cited=merged.filter(r=>r.site_cited).length;
   document.getElementById('kpis').innerHTML=`
-    <div class="kpi"><div class="kpi-l">Keywords</div><div class="kpi-v">${allResults.length}</div><div class="kpi-s">checked</div></div>
+    <div class="kpi"><div class="kpi-l">Keywords</div><div class="kpi-v">${ALL_KWS.length}</div><div class="kpi-s">${allResults.length} checked</div></div>
     <div class="kpi"><div class="kpi-l">Ranking</div><div class="kpi-v ${ranked>0?'green':''}">${ranked}</div><div class="kpi-s">top 10</div></div>
     <div class="kpi"><div class="kpi-l">In AIO</div><div class="kpi-v ${inAio>0?'blue':''}">${inAio}</div><div class="kpi-s">shown</div></div>
     <div class="kpi"><div class="kpi-l">AIO Cited</div><div class="kpi-v ${cited>0?'green':''}">${cited}</div><div class="kpi-s">our site</div></div>
@@ -1334,8 +1355,12 @@ function kwRow(kw,r,today){
   const todayBadge=checkedToday
     ?`<span style="font-size:9px;font-weight:700;color:var(--green);background:var(--green-bg);padding:2px 5px;border-radius:3px">✓</span>`
     :`<span style="font-size:9px;color:var(--ink-muted)">—</span>`;
+  const errMsg=r.error||'';
+  const isRateLimit=errMsg.includes('429')||errMsg.includes('rate')||errMsg.toLowerCase().includes('limit');
+  const isTimeout=errMsg.includes('timeout')||errMsg.includes('abort')||errMsg.includes('AbortError');
+  const errLabel=isRateLimit?'Rate limit':isTimeout?'Timeout':'Error';
   const aio=r.error
-    ?`<span class="badge red" style="font-size:9px" title="${esc(r.error)}">Err</span>`
+    ?`<span class="badge red" style="font-size:9px;cursor:help" title="${esc(errMsg)}">${errLabel}</span>`
     :r.in_aio?`<span class="badge blue" style="font-size:9px">✓ AIO</span>`
     :`<span class="badge grey" style="font-size:9px">—</span>`;
 

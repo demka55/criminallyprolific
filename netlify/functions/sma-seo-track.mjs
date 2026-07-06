@@ -201,12 +201,63 @@ const KEYWORDS = [
   "is progressive snapshot worth it",
   "does state farm drive safe and save track location",
   "allstate drivewise how much can you save",
+  // Additional long-tail variants — synced from dashboard
+  "is savemaxauto legit",
+  "save max auto insurance review",
+  "save max auto scam",
+  "savemaxauto legit or scam",
+  "brennan savemaxauto review",
+  "insurify or zebra which is better",
+  "car insurance comparison tool",
+  "insurify car insurance review",
+  "insurify legit",
+  "car insurance bad credit cost by state",
+  "how much more is car insurance with bad credit",
+  "car insurance increase at renewal no changes",
+  "why is my car insurance increasing without claims",
+  "does insurance go up after a claim",
+  "how much does insurance go up after accident",
+  "insurance rate increase after at fault accident",
+  "is $200 a month for car insurance normal",
+  "what is a good monthly car insurance rate",
+  "average car insurance cost per month 2026",
+  "usage based car insurance savings",
+  "how much can i save with usage based insurance",
+  "full coverage on old car worth it",
+  "is full coverage worth it on older car",
+  "is full coverage worth it on a 10 year old car",
+  "at what car value should i drop full coverage",
+  "how old should car be to drop full coverage",
+  "when to drop full coverage car insurance",
+  "accident on driving record how many years",
+  "insurance surcharge how long does it last",
+  "how long does car accident stay on your record",
+  "no car insurance ticket penalty",
+  "uninsured driver penalty by state 2026",
+  "what happens if you drive without insurance first offense",
+  "$500 vs $1000 deductible car insurance",
+  "car insurance deductible which is better",
+  "higher deductible lower premium how much",
+  "sr-22 how long required by state",
+  "sr22 certificate how to get off it",
+  "gap insurance should i get it",
+  "gap insurance on new car worth it",
+  "when does gap insurance make sense",
+  "switch car insurance mid policy",
+  "cancel car insurance and switch",
+  "how to switch car insurance without penalty",
+  "cheapest car insurance after dui",
+  "dui car insurance rate increase by company",
+  "how long does dui affect car insurance",
+  "car insurance adjuster tips",
+  "what to say to car insurance adjuster after accident",
+  "what not to tell car insurance after accident",
   // YouTube Videos
   // https://www.youtube.com/watch?v=U3zlcEFGuo0 — SaveMaxAuto Review
   "save max auto review",
   "is save max auto legit",
   "is savemaxauto a scam",
-  "savemaxauto legit",
+
   // https://www.youtube.com/watch?v=mUVrZmdeZbE — Insurify vs Zebra
   "insurify vs zebra",
   "insurify vs the zebra",
@@ -299,9 +350,10 @@ export default async (req) => {
     const slug  = kw.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 60)
     const today = new Date().toISOString().slice(0, 10)
 
-    // One check per keyword per day — return cached if already checked today
+    // One check per keyword per day — skip if checked today (unless force=1 or previous run errored)
+    const force = url.searchParams.get('force') === '1'
     const existing = JSON.parse(await store.get(`kw:${slug}`).catch(() => 'null') || 'null')
-    if (existing && existing.checkedAt && existing.checkedAt.slice(0, 10) === today) {
+    if (!force && existing && existing.checkedAt && existing.checkedAt.slice(0, 10) === today && !existing.error) {
       return ok({ ...existing, skipped: true, reason: 'already_checked_today' })
     }
 
