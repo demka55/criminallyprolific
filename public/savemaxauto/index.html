@@ -1546,6 +1546,33 @@ function closeAio(){document.getElementById('aioModal').classList.remove('open')
 document.getElementById('aioModal').addEventListener('click',e=>{if(e.target===document.getElementById('aioModal'))closeAio();});
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function slugify(url){try{const u=new URL(url);return u.hostname.replace('www.','')+u.pathname}catch{return url}}
+
+// ── AI Article card renderers ─────────────────────────────────────────────────
+function diffClass(d){return d.toLowerCase().startsWith('easy')?'easy':d.toLowerCase().startsWith('hard')?'hard':'medium';}
+function diffBadge(d){
+  const cls=d.toLowerCase().startsWith('easy')?'diff-easy':d.toLowerCase().startsWith('hard')?'diff-hard':'diff-medium';
+  return`<span class="diff-badge ${cls}">${esc(d)}</span>`;
+}
+function artCard(a){
+  return`<div class="art-card ${diffClass(a.diff)}">
+    ${diffBadge(a.diff)}
+    <h3>${esc(a.title)}</h3>
+    <div class="art-slug">${esc(a.slug)}</div>
+    <div class="art-angle"><strong>Angle:</strong> ${esc(a.angle)}</div>
+    <div class="art-why"><strong>Why it wins:</strong> ${esc(a.why)}</div>
+    <div class="art-kws">${(a.kws||[]).map(k=>`<span class="art-kw">${esc(k)}</span>`).join('')}</div>
+  </div>`;
+}
+function renderAiArticles(){
+  const g1=document.getElementById('m1AiGrid');
+  const g2=document.getElementById('m2AiGrid');
+  const g3=document.getElementById('m3AiGrid');
+  if(g1) g1.innerHTML=MONTH1_AI.map(artCard).join('');
+  if(g2) g2.innerHTML=MONTH2_AI.map(artCard).join('');
+  if(g3) g3.innerHTML=MONTH3_AI.map(artCard).join('');
+}
+function renderMonth1Targets(){} // static HTML in page
+
 </script>
 </body>
 </html>
