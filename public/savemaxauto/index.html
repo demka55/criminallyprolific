@@ -193,6 +193,24 @@ table.kw tr:hover td{background:#fafafa}
   .topbar h1{font-size:17px}
   table.kw{min-width:420px}
 }
+
+/* ── Video keyword rows ────────────────────────────────────────────────── */
+.vkw-row{display:flex;align-items:flex-start;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);gap:12px}
+.vkw-row:last-child{border-bottom:none}
+.vkw-row.vkw-ranking{background:linear-gradient(90deg,#edfaf1 0%,transparent 60%)}
+.vkw-unchecked{opacity:.55}
+.vkw-label{font-size:13px;flex:1;min-width:0}
+.vkw-status{display:flex;gap:5px;flex-wrap:wrap;flex-shrink:0;align-items:center;justify-content:flex-end}
+.vpill{font-size:11px;font-weight:700;padding:3px 8px;border-radius:12px;white-space:nowrap;cursor:default}
+.vpill-aio{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0}
+.vpill-carousel{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.vpill-organic{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.vpill-none{background:var(--bg);color:var(--ink-muted);border:1px solid var(--border)}
+.vpill-verified{background:var(--green-bg);color:var(--green);border:1px solid #bbf7d0;font-size:10px}
+@media(max-width:768px){
+  .vkw-row{flex-direction:column;gap:6px}
+  .vkw-status{justify-content:flex-start}
+}
 </style>
 </head>
 <body>
@@ -1413,105 +1431,80 @@ function kwRow(kw,r,today){
 
 
 function renderVideos(){
-  // Build resultMap: hardcoded VERIFIED results always win over live API
-  // (live API only checks savemaxauto.com, misses YouTube video rankings)
+  // Build resultMap merging live + hardcoded (hardcoded always wins for YouTube rankings)
   const resultMap={};
   allResults.forEach(r=>{ resultMap[r.keyword.toLowerCase()]=r; });
-  // Hardcoded verified results override live — they capture YouTube/carousel rankings
-  // that the API can't detect
   Object.entries(HARDCODED_RESULTS).forEach(([key,hard])=>{
     const live=resultMap[key];
-    if(!live){
-      // No live data — use hardcoded
-      resultMap[key]=hard;
-    } else {
-      // Merge: keep live data but ADD our verified YouTube pages on top
-      resultMap[key]={
-        ...live,
-        // Override these fields from hardcoded
-        our_pages: [...(hard.our_pages||[]), ...(live.our_pages||[]).filter(p=>!p.link.includes('youtube.com'))],
-        in_aio: hard.in_aio || live.in_aio,
-        site_cited: hard.site_cited || live.site_cited,
-        verified: true,
-        verified_note: hard.verified_note,
-      };
-    }
+    if(!live){ resultMap[key]=hard; }
+    else { resultMap[key]={...live, our_pages:[...(hard.our_pages||[]),...(live.our_pages||[]).filter(p=>!p.link.includes('youtube.com'))], in_aio:hard.in_aio||live.in_aio, site_cited:hard.site_cited||live.site_cited, verified:true, verified_note:hard.verified_note}; }
   });
+
   document.getElementById('videoCards').innerHTML=VIDEOS.map(v=>{
     const rows=v.kws.map(kw=>{
       const r=resultMap[kw.toLowerCase()];
-      if(!r) return`<div class="video-kw-row">
-        <span style="font-size:12px">${esc(kw)}</span>
-        <span class="badge grey" style="font-size:9px">Not checked</span>
-      </div>`;
-      // Check if Brennan's YouTube video is ranking (youtube.com in organic results)
-      const ytRanking=r.our_pages&&r.our_pages.some(p=>p.link&&p.link.includes('youtube.com'));
-      const smaRanking=r.our_pages&&r.our_pages.some(p=>p.link&&p.link.includes('savemaxauto.com'));
-      const orgRank=r.organic_rank?`<span class="badge amber">#${r.organic_rank}</span>`:null;
-      const ytBadge=ytRanking?`<span class="badge green">▶ YT ranking</span>`:null;
-      const smaBadge=smaRanking?`<span class="badge blue">SMA ranking</span>`:null;
-      const noRank=!ytRanking&&!smaRanking?`<span class="badge grey" style="font-size:9px">Not ranking</span>`:null;
-      // Full ranking URLs
-      const rankUrls=r.our_pages&&r.our_pages.length
-        ?r.our_pages.map(p=>p.link?`<a href="${esc(p.link)}" target="_blank" style="font-size:10px;color:var(--blue);word-break:break-all;display:block">${esc(p.link)}</a>`:'').join(''):'';
-      return`<div class="video-kw-row" style="flex-direction:column;align-items:flex-start;gap:4px;padding:8px 0">
-        <div style="display:flex;justify-content:space-between;width:100%;align-items:center">
-          <span style="font-size:12px;font-weight:600">${esc(kw)}</span>
-          <div style="display:flex;gap:4px;flex-shrink:0">${[orgRank,ytBadge,smaBadge,noRank].filter(Boolean).join('')}</div>
+
+      if(!r){
+        return`<div class="vkw-row vkw-unchecked">
+          <span class="vkw-label">${esc(kw)}</span>
+          <span class="vkw-status">
+            <span style="font-size:11px;color:var(--ink-muted);font-style:italic">Not checked yet</span>
+          </span>
+        </div>`;
+      }
+
+      // Determine exactly WHERE we appear
+      const pages=r.our_pages||[];
+      const orgPages=pages.filter(p=>p.where.startsWith('Organic'));
+      const aioPages=pages.filter(p=>p.where.startsWith('AIO'));
+      const carouselPages=pages.filter(p=>p.where.startsWith('Video carousel'));
+      const hasAny=pages.length>0;
+
+      // Build placement pills
+      let pills='';
+      if(aioPages.length){
+        pills+=`<span class="vpill vpill-aio" title="Video appears in Google AI Overview">🤖 Google AIO</span>`;
+      }
+      if(carouselPages.length){
+        const pos=carouselPages[0].where; // e.g. "Video carousel #1"
+        const num=pos.match(/#(\d+)/)?.[1]||'';
+        pills+=`<span class="vpill vpill-carousel" title="Video appears in Google Videos carousel">▶ Video carousel${num?' #'+num:''}</span>`;
+      }
+      if(orgPages.length){
+        const pos=orgPages[0].where; // e.g. "Organic #2 (YouTube)"
+        const num=pos.match(/#(\d+)/)?.[1]||'';
+        pills+=`<span class="vpill vpill-organic" title="Video ranks as organic search result">🔍 Organic #${num||'?'}</span>`;
+      }
+      if(!hasAny){
+        pills=`<span class="vpill vpill-none">Not ranking</span>`;
+      }
+
+      // Show full YouTube URL
+      const ytUrl=pages[0]?.link||v.url;
+      const verifiedBadge=r.verified?`<span class="vpill vpill-verified" title="${esc(r.verified_note||'Manually verified')}">✓ verified</span>`:'';
+
+      return`<div class="vkw-row ${hasAny?'vkw-ranking':''}">
+        <div class="vkw-label">
+          <strong>${esc(kw)}</strong>
+          ${verifiedBadge}
+          ${hasAny?`<div style="font-size:10px;color:var(--blue);margin-top:2px;word-break:break-all"><a href="${esc(ytUrl)}" target="_blank" style="color:var(--blue)">${esc(ytUrl)}</a></div>`:''}
         </div>
-        ${rankUrls?`<div style="padding-left:4px;border-left:2px solid var(--border)">${rankUrls}</div>`:''}
+        <div class="vkw-status">${pills}</div>
       </div>`;
     }).join('');
+
     return`<div class="video-card">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px">
-        <h3>${esc(v.title)}</h3>
-        <span style="font-size:11px;color:var(--ink-muted);white-space:nowrap;margin-left:12px">${esc(v.channel||'')}</span>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;gap:12px">
+        <h3 style="font-size:14px;font-weight:800">${esc(v.title)}</h3>
+        <span style="font-size:11px;color:var(--ink-muted);white-space:nowrap;flex-shrink:0">${esc(v.channel||'')}</span>
       </div>
-      <a href="${esc(v.url)}" target="_blank">${esc(v.url)}</a>
-      <div style="margin-top:12px">${rows}</div>
+      <a href="${esc(v.url)}" target="_blank" style="color:var(--blue);font-size:12px">${esc(v.url)}</a>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:0">${rows}</div>
     </div>`;
   }).join('');
 }
 
-// ── AIO Modal ─────────────────────────────────────────────────────────────────
-function openAio(btn){let r;try{r=JSON.parse(btn.dataset.r||'{}')}catch{return}
-  document.getElementById('aioKw').textContent=`"${r.keyword}"`;
-  const sources=(r.aio_sources||[]).map((s,i)=>{const isOurs=s.link&&s.link.includes(SITE);let dom='';try{dom=new URL(s.link).hostname.replace('www.','')}catch{dom=s.link||''}return`<div class="src-row"><span class="src-num">${i+1}</span><div><a href="${esc(s.link)}" target="_blank" class="${isOurs?'ours':''}">${esc(s.title||dom)}</a><div style="font-size:10px;color:var(--ink-muted)">${esc(dom)}${isOurs?' ← us':''}</div></div></div>`;}).join('');
-  document.getElementById('aioBody').innerHTML=(r.aio_text?`<div class="aio-fulltext">${esc(r.aio_text)}</div>`:'')+sources;
-  document.getElementById('aioModal').classList.add('open');
-}
-function closeAio(){document.getElementById('aioModal').classList.remove('open');}
-document.getElementById('aioModal').addEventListener('click',e=>{if(e.target===document.getElementById('aioModal'))closeAio();});
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function slugify(url){try{const u=new URL(url);return u.hostname.replace('www.','')+u.pathname}catch{return url}}
 
-// ── AI Articles renderer ──────────────────────────────────────────────────────
-function diffBadge(d){
-  const cls=d.toLowerCase().startsWith('easy')?'diff-easy':d.toLowerCase().startsWith('hard')?'diff-hard':'diff-medium';
-  return`<span class="diff-badge ${cls}">${esc(d)}</span>`;
-}
-function diffClass(d){return d.toLowerCase().startsWith('easy')?'easy':d.toLowerCase().startsWith('hard')?'hard':'medium';}
-function artCard(a){
-  return`<div class="art-card ${diffClass(a.diff)}">
-    ${diffBadge(a.diff)}
-    <h3>${esc(a.title)}</h3>
-    <div class="art-slug">${esc(a.slug)}</div>
-    <div class="art-angle"><strong>Angle:</strong> ${esc(a.angle)}</div>
-    <div class="art-why"><strong>Why it wins:</strong> ${esc(a.why)}</div>
-    <div class="art-kws">${a.kws.map(k=>`<span class="art-kw">${esc(k)}</span>`).join('')}</div>
-  </div>`;
-}
-function renderAiArticles(){
-  const g1=document.getElementById('m1AiGrid');
-  const g2=document.getElementById('m2AiGrid');
-  const g3=document.getElementById('m3AiGrid');
-  if(g1) g1.innerHTML=MONTH1_AI.map(artCard).join('');
-  if(g2) g2.innerHTML=MONTH2_AI.map(artCard).join('');
-  if(g3) g3.innerHTML=MONTH3_AI.map(artCard).join('');
-}
-function renderMonth1Targets(){}  // static HTML in page
-
-// ── Backlinks renderer ────────────────────────────────────────────────────────
 function renderBacklinks(){
   const el=document.getElementById('blBody');
   if(!el) return;
