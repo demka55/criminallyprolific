@@ -19,7 +19,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;font-size:14px}
-#login{display:flex;align-items:center;justify-content:center;min-height:100vh}
+#login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:16px}
 .lbox{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:40px;width:100%;max-width:380px;text-align:center}
 .lbox h2{font-size:20px;font-weight:800;margin-bottom:6px}
 .lbox p{font-size:13px;color:var(--ink-muted);margin-bottom:24px}
@@ -36,7 +36,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 .btn:hover{border-color:#999}
 .btn.blue{background:var(--blue);color:#fff;border-color:transparent}.btn.blue:hover{background:var(--blue-dim)}
 .btn:disabled{opacity:.4;cursor:not-allowed}
-.tabbar{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px;overflow-x:auto}
+.tabbar{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .tab{padding:10px 18px;font-size:14px;font-weight:600;color:var(--ink-muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit;white-space:nowrap}
 .tab:hover{color:var(--ink)}
 .tab.active{color:var(--blue);border-bottom-color:var(--blue)}
@@ -106,7 +106,7 @@ table.kw tr:hover td{background:#fafafa}
 .art-card .art-slug{font-size:11px;color:var(--blue);margin-bottom:8px;font-family:monospace}
 .art-card .art-angle{font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:10px}
 .art-card .art-why{font-size:12px;color:var(--ink-soft);line-height:1.55;border-top:1px solid var(--border);padding-top:8px;margin-top:8px}
-.art-card .art-kws{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.art-card .art-kws{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;max-width:100%}
 .art-kw{font-size:10px;padding:2px 7px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-muted)}
 .diff-badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;margin-bottom:8px}
 .diff-easy{background:var(--green-bg);color:var(--green)}
@@ -142,6 +142,57 @@ table.kw tr:hover td{background:#fafafa}
 .video-kw-row:last-child{border-bottom:none}
 
 @media(max-width:900px){.art-grid,.pr-grid,.m1-grid{grid-template-columns:1fr}}
+
+/* ── Mobile responsive ─────────────────────────────────────────────────── */
+@media(max-width:768px){
+  .responsive-grid{grid-template-columns:1fr!important}
+  
+  #app{padding:16px 12px 48px}
+  .topbar{flex-direction:column;gap:8px}
+  .topbar h1{font-size:20px}
+  .actions{width:100%;justify-content:flex-end}
+  .tabbar{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:2px}
+  .tab{flex-shrink:0;padding:10px 14px;font-size:13px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpi-v{font-size:22px}
+  .kpi{padding:12px 14px}
+  .filters{gap:5px}
+  .ftab{padding:7px 12px;font-size:12px}
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table.kw{min-width:500px}
+  table.kw th,table.kw td{padding:8px 10px;font-size:12px}
+  table.kw th{font-size:10px}
+  .sbar{font-size:12px;padding:8px 12px}
+  .art-grid,.pr-grid,.m1-grid{grid-template-columns:1fr}
+  .art-card{padding:14px}
+  .art-card h3{font-size:13px}
+  .art-angle,.art-why{font-size:11px}
+  .section-head{font-size:10px;margin:20px 0 10px}
+  .page-group{font-size:10px;padding:5px 10px}
+  .video-card{padding:14px}
+  .video-kw-row{flex-direction:column;align-items:flex-start;gap:4px}
+  .lbox{padding:28px 20px;margin:16px}
+  .pr-card{padding:14px}
+  .pr-card h3{font-size:14px}
+  .pr-card p{font-size:12px}
+  .pub-tag{font-size:10px}
+  .m1-card{padding:12px}
+  .m1-card h4{font-size:12px}
+  .m1-card p{font-size:11px}
+  .btn{padding:8px 12px;font-size:12px}
+  .hbar{width:14px}
+  .hchart{gap:2px}
+  /* Hide history sparklines on mobile — too small */
+  td:last-child .hbar{width:6px}
+  /* Resolve contract grid goes 1-col */
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+}
+@media(max-width:480px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .kpi-v{font-size:20px}
+  .topbar h1{font-size:17px}
+  table.kw{min-width:420px}
+}
 </style>
 </head>
 <body>
@@ -165,7 +216,7 @@ table.kw tr:hover td{background:#fafafa}
     </div>
     <div class="actions">
       <button class="btn" onclick="logout()">Sign out</button>
-      <button class="btn blue" id="runBtn" onclick="runNow()">↻ Run now</button>
+      <button class="btn blue" id="runBtn" onclick="runNow()" style="white-space:nowrap">↻ Run</button>
     </div>
   </div>
 
@@ -184,7 +235,7 @@ table.kw tr:hover td{background:#fafafa}
   <div class="tab-panel active" id="tab-keywords">
     <div class="sbar"><span class="dot" id="statusDot"></span><span id="statusText">Loading…</span></div>
     <div class="kpis" id="kpis"></div>
-    <div class="filters" id="filterBar"></div>
+    <div class="filters" id="filterBar" style="overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;padding-bottom:4px"></div>
     <div class="tbl-wrap">
       <div class="tbl-count" id="tblCount"></div>
       <div id="tblBody"><div class="empty">Loading…</div></div>
@@ -400,7 +451,7 @@ table.kw tr:hover td{background:#fafafa}
     </div>
 
     <div class="section-head">Month 1 — Full Deliverable Count</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:28px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:24px">
       <div class="kpi"><div class="kpi-l">New Articles</div><div class="kpi-v blue">8</div><div class="kpi-s">3 EV + 5 AI answers</div></div>
       <div class="kpi"><div class="kpi-l">Rewrites</div><div class="kpi-v amber">9</div><div class="kpi-s">comparison pages</div></div>
       <div class="kpi"><div class="kpi-l">PR Campaign</div><div class="kpi-v green">1</div><div class="kpi-s">Insurance Penalty Map</div></div>
@@ -518,7 +569,7 @@ table.kw tr:hover td{background:#fafafa}
     </div>
 
     <div class="section-head">Month 2 — Full Deliverable Count</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:28px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:24px">
       <div class="kpi"><div class="kpi-l">Comparison Rewrites</div><div class="kpi-v blue">7</div><div class="kpi-s">2 deferred + 5 new open SERPs</div></div>
       <div class="kpi"><div class="kpi-l">Vehicle Rewrites</div><div class="kpi-v purple">3</div><div class="kpi-s">if M1 test moved</div></div>
       <div class="kpi"><div class="kpi-l">EV New Content</div><div class="kpi-v amber">3</div><div class="kpi-s">original M1 EV targets</div></div>
@@ -623,7 +674,7 @@ table.kw tr:hover td{background:#fafafa}
     </div>
 
     <div class="section-head">Month 3 — Full Deliverable Count</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:28px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:24px">
       <div class="kpi"><div class="kpi-l">New Comparisons</div><div class="kpi-v blue">6</div><div class="kpi-s">high-intent matchups</div></div>
       <div class="kpi"><div class="kpi-l">Vehicle Pages</div><div class="kpi-v purple">5</div><div class="kpi-s">full scale if M2 test moved</div></div>
       <div class="kpi"><div class="kpi-l">AI Articles</div><div class="kpi-v teal">5</div><div class="kpi-s">M3 higher-intent</div></div>
@@ -686,7 +737,7 @@ table.kw tr:hover td{background:#fafafa}
           <span style="font-size:10px;color:var(--ink-muted)">Invoice: INV-3214</span>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" class="responsive-grid">
         <div>
           <div style="font-size:13px;font-weight:700;margin-bottom:6px">Car Theft Study — 29 Placements</div>
           <p style="font-size:12px;color:var(--ink-muted);line-height:1.65;margin-bottom:8px">Dmitry designed and ran the full PR campaign before the agency was engaged. Used SaveMaxAuto's internal quote/data database to build a state-by-state car theft study, then pitched local TV affiliates, news syndication networks, and national outlets directly using the JustReachOut methodology.</p>
