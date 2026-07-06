@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI Overview Tracker — Criminally Prolific</title>
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
 <meta name="robots" content="noindex,nofollow">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -352,8 +353,8 @@ async function loadResults(){
       renderKpis();renderFilters();renderTable(curFilter);renderHistory(d.history||[]);
       const dt=new Date(d.results.checkedAt);
       const dtStr=isNaN(dt)?'—':`${dt.toLocaleDateString('en-US',{month:'short',day:'numeric'})} at ${dt.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})}`;
-      document.getElementById('lastChecked').textContent=`criminallyprolific.com · 31 articles · 166 keywords · Last checked: ${dtStr}`;
-      setStatus('green',`${allResults.length} of 166 keywords have data`);
+      document.getElementById('lastChecked').textContent=`criminallyprolific.com · 31 articles · Last checked: ${dtStr}`;
+      setStatus('green',`${allResults.length} of ${ALL_KWS.length} keywords checked`);
     } else {renderEmpty();setStatus('amber','No data yet — click "Run now" to fetch rankings');}
   }catch(e){setStatus('amber','Error: '+e.message);renderEmpty();}
 }
@@ -415,7 +416,7 @@ function renderKpis(){
   const cited=allResults.filter(r=>r.site_cited).length;
   const total=allResults.length;
   document.getElementById('kpis').innerHTML=`
-    <div class="kpi"><div class="kpi-l">Keywords</div><div class="kpi-v">${total}<span style="font-size:14px;color:var(--ink-muted)">/166</span></div><div class="kpi-s">checked</div></div>
+    <div class="kpi"><div class="kpi-l">Keywords</div><div class="kpi-v">${ALL_KWS.length}</div><div class="kpi-s">${total} checked</div></div>
     <div class="kpi"><div class="kpi-l">Articles</div><div class="kpi-v">31</div><div class="kpi-s">tracked</div></div>
     <div class="kpi"><div class="kpi-l">Organic Rank</div><div class="kpi-v ${ranked>0?'green':''}">${ranked}</div><div class="kpi-s">in top 10</div></div>
     <div class="kpi"><div class="kpi-l">In AIO</div><div class="kpi-v ${inAio>0?'blue':''}">${inAio}</div><div class="kpi-s">AI overviews</div></div>
@@ -487,7 +488,7 @@ function renderTable(filter){
     });
   }
 
-  document.getElementById('tblCount').textContent=`${filtered.length} of ${ALL_KWS.length} keywords`;
+  document.getElementById('tblCount').textContent=`${filtered.length} of ${ALL_KWS.length} total keywords`;
 
   if(!filtered.length){
     document.getElementById('tblBody').innerHTML='<div class="empty">No keywords match this filter</div>';
