@@ -1272,10 +1272,15 @@ function renderKpis(){
   allResults.forEach(r=>{liveMap[r.keyword.toLowerCase()]=r;});
   const merged=allKwKeys.map(k=>{
     const live=liveMap[k], hard=HARDCODED_RESULTS[k];
-    if(live&&hard) return live.checkedAt>hard.checkedAt?live:hard;
+    if(live&&hard) return {
+      ...live,
+      our_pages:[...(hard.our_pages||[]),...(live.our_pages||[]).filter(p=>!p.link.includes('youtube.com'))],
+      in_aio:hard.in_aio||live.in_aio,
+      site_cited:hard.site_cited||live.site_cited,
+    };
     return live||hard||null;
   }).filter(Boolean);
-  const ranked=merged.filter(r=>r.our_pages&&r.our_pages.length>0).length; // includes video carousel + organic + AIO
+  const ranked=merged.filter(r=>r.our_pages&&r.our_pages.length>0).length;
   const inAio=merged.filter(r=>r.in_aio).length;
   const cited=merged.filter(r=>r.site_cited).length;
   document.getElementById('kpis').innerHTML=`
@@ -1290,7 +1295,16 @@ function renderKpis(){
 
 function renderFilters(){
   const checked=allResults.length;
-  const app=allResults.filter(r=>r.our_pages&&r.our_pages.length>0).length;
+  // Count from merged resultMap so hardcoded verified results are included
+  const mergedMap={};
+  allResults.forEach(r=>{mergedMap[r.keyword.toLowerCase()]=r;});
+  Object.entries(HARDCODED_RESULTS).forEach(([key,hard])=>{
+    const live=mergedMap[key];
+    if(!live) mergedMap[key]=hard;
+    else mergedMap[key]={...live,our_pages:[...(hard.our_pages||[]),...(live.our_pages||[]).filter(p=>!p.link.includes('youtube.com'))],verified:true};
+  });
+  const allMerged=Object.values(mergedMap);
+  const app=allMerged.filter(r=>r.our_pages&&r.our_pages.length>0).length;
   const all_kw_count=ALL_KWS.length;
   document.getElementById('filterBar').innerHTML=[
     {id:'all',      l:`All (${all_kw_count})`},
