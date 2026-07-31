@@ -52,6 +52,47 @@
     .clients-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
     .client-tag{font-size:13px;font-weight:600;color:#333;background:#fff;border:1.5px solid #e8e8e8;padding:6px 14px;border-radius:4px;}
 
+    /* ── INTERVIEWS I'VE HOSTED ── */
+    .interviews{padding:80px 0;border-top:1.5px solid #eee;}
+    .interviews-inner{max-width:1100px;margin:0 auto;padding:0 40px;}
+    .interviews-intro{max-width:700px;margin-bottom:56px;}
+    .interviews-h2{font-size:38px;font-weight:900;color:#111;letter-spacing:-1px;margin:8px 0 16px;line-height:1.1;}
+    .interviews-intro p{font-size:16px;color:#555;line-height:1.75;}
+    .interviews-intro a{color:#0033ff;border-bottom:1px solid rgba(0,51,255,.3);}
+
+    .featured-interview{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:start;margin-bottom:56px;padding-bottom:56px;border-bottom:1.5px solid #eee;}
+    .video-frame{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#111;border-radius:4px;}
+    .video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+    .interview-recap-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#0033ff;margin-bottom:12px;}
+    .interview-recap h3{font-size:25px;font-weight:900;color:#111;letter-spacing:-.5px;margin-bottom:4px;line-height:1.2;}
+    .interview-recap .role{font-size:13px;color:#888;margin-bottom:18px;display:block;}
+    .interview-recap ul{margin:0 0 20px;padding:0;list-style:none;}
+    .interview-recap li{font-size:15px;color:#444;line-height:1.7;padding-left:20px;position:relative;margin-bottom:12px;}
+    .interview-recap li:before{content:"—";position:absolute;left:0;color:#0033ff;font-weight:700;}
+    .watch-link{font-size:14px;font-weight:700;color:#0033ff;}
+
+    .more-interviews{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-bottom:40px;}
+    .mini-interview .video-frame{margin-bottom:16px;}
+    .mini-interview h4{font-size:17px;font-weight:800;color:#111;margin-bottom:4px;}
+    .mini-interview p{font-size:14px;color:#666;line-height:1.6;margin:0;}
+
+    .quote-strip{background:#f8f8f8;border-radius:4px;padding:28px 32px;margin-bottom:64px;display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:space-between;}
+    .quote-strip blockquote{font-size:18px;font-weight:700;color:#111;line-height:1.4;margin:0;letter-spacing:-.3px;flex:1;min-width:260px;}
+    .quote-strip cite{display:block;font-size:13px;font-weight:600;color:#888;font-style:normal;margin-top:8px;}
+    .quote-strip a{white-space:nowrap;font-size:13px;font-weight:700;color:#0033ff;}
+
+    .archive-block h3{font-size:20px;font-weight:900;color:#111;margin-bottom:8px;}
+    .archive-block > p{font-size:15px;color:#555;margin-bottom:24px;line-height:1.7;}
+    .guest-archive{display:flex;flex-wrap:wrap;gap:10px;}
+    .guest-tag{font-size:13px;font-weight:600;color:#333;background:#fff;border:1.5px solid #e8e8e8;padding:7px 14px;border-radius:4px;text-decoration:none;transition:all .15s;display:inline-block;}
+    .guest-tag:hover{border-color:#0033ff;color:#0033ff;}
+    .guest-tag .role{color:#999;font-weight:500;}
+
+    @media(max-width:900px){
+      .featured-interview{grid-template-columns:1fr;}
+      .more-interviews{grid-template-columns:1fr;}
+    }
+
     /* ── CONTACT CTA ── */
     .about-cta{padding:80px 0;text-align:center;}
     .about-cta h2{font-size:44px;font-weight:900;color:#111;letter-spacing:-1.5px;margin-bottom:16px;}
@@ -226,6 +267,128 @@
         <span class="client-tag">Airbnb</span>
       </div>
       <a href="/testimonials/" class="btn-secondary" style="margin-top:20px;display:inline-flex;">See case studies →</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEWS I'VE HOSTED -->
+<section class="interviews" id="hosted-interviews">
+  <div class="interviews-inner">
+    <div class="interviews-intro">
+      <span class="about-kicker">— Interviews I've Hosted</span>
+      <h2 class="interviews-h2">60+ candid conversations, one soapbox at a time.</h2>
+      <p>Back in 2010 I founded <a href="http://zurbsoapbox.com/" target="_blank">ZURBsoapbox</a>, a monthly speaker series where I sat down with founders, investors and designers for unscripted, hour-long Q&As — no scripts, just a stool and a microphone. Over the years I got to interview Tim Ferriss, Neil Patel, the Winklevoss Twins, and the founders of LinkedIn, Twitter, WordPress, Stack Overflow, Eventbrite, Pandora, Second Life, Box and dozens more. Here's a look back at a few of my favorites.</p>
+    </div>
+
+    <!-- FEATURED: TIM FERRISS -->
+    <div class="featured-interview">
+      <div class="video-frame">
+        <iframe src="https://player.vimeo.com/video/21315159?title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="A Lesson in Self-Promotion with Tim Ferriss"></iframe>
+      </div>
+      <div class="interview-recap">
+        <span class="interview-recap-badge">Featured Conversation</span>
+        <h3>A Lesson in Self-Promotion with Tim Ferriss</h3>
+        <span class="role">Author, "The 4-Hour Workweek" · Entrepreneur &amp; Investor</span>
+        <ul>
+          <li>Tim's launch order for any startup: marketing &amp; messaging first (find your 1,000 true fans), then conversion, then PR — hitting big outlets before you're ready wastes the one shot most publications give you.</li>
+          <li>How he built buzz for The 4-Hour Workweek by getting to know 10-15 target bloggers in person at conferences, then mailing them review copies instead of ever pitching them directly.</li>
+          <li>His zero-tolerance policy on abusive comments, borrowed from "Broken Windows" theory, and why he believes building an online community is the community's job, not the host's.</li>
+        </ul>
+        <a class="watch-link" href="https://zurb.com/soapbox/tim-ferriss-s-soapbox-a-lesson-in-self-promotion-with-tim-ferriss" target="_blank">Read the full recap &amp; transcript →</a>
+      </div>
+    </div>
+
+    <!-- NEIL PATEL + JANICE -->
+    <div class="more-interviews">
+      <div class="mini-interview">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/-Qp_gl8UoI0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Neil Patel interview"></iframe>
+        </div>
+        <h4>Neil Patel</h4>
+        <p>Co-founder of NP Digital, Crazy Egg and Ubersuggest — one of the most recognized names in SEO and content marketing. Neil joined me to talk growth, traffic and building an audience from nothing.</p>
+      </div>
+      <div class="mini-interview">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/fuPUvmR1YcY" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Janice interview"></iframe>
+        </div>
+        <h4>Janice</h4>
+        <p><!-- Dmitry: couldn't confirm this guest's full name/title automatically — drop in a one-line bio here. --></p>
+      </div>
+    </div>
+
+    <!-- QUOTE STRIP: WINKLEVOSS TWINS -->
+    <div class="quote-strip">
+      <blockquote>"We like simplicity — things that can be understood in one or two sentences."
+        <cite>Cameron Winklevoss, Winklevoss Capital</cite>
+      </blockquote>
+      <a href="https://zurb.com/soapbox/winklevoss-twins-soapbox" target="_blank">Read the recap →</a>
+    </div>
+
+    <!-- FULL ARCHIVE -->
+    <div class="archive-block">
+      <h3>The Full ZURBsoapbox Archive</h3>
+      <p>60+ conversations recorded over the years — click any name to listen to the podcast or read the recap on ZURB's site.</p>
+      <div class="guest-archive">
+        <a class="guest-tag" href="https://zurb.com/soapbox/ben-parr-s-soapbox" target="_blank">Ben Parr <span class="role">· Author, Captivology</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/rand-fishkin-of-moz" target="_blank">Rand Fishkin <span class="role">· Moz</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/amanda-linden-soapbox" target="_blank">Amanda Linden <span class="role">· Asana</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/tina-chen-s-soapbox" target="_blank">Tina Chen <span class="role">· Slack</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/katie-dill-s-soapbox" target="_blank">Katie Dill <span class="role">· Airbnb</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/brian-balfour-s-soapbox" target="_blank">Brian Balfour <span class="role">· HubSpot</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/sandi-macpherson-of-quibb" target="_blank">Sandi MacPherson <span class="role">· Quibb</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/guy-kawasaki-s-soapbox" target="_blank">Guy Kawasaki <span class="role">· Canva</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/jessica-hische-s-soapbox" target="_blank">Jessica Hische <span class="role">· Letterer &amp; Illustrator</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/jacob-jaber-s-soapbox" target="_blank">Jacob Jaber <span class="role">· Philz Coffee</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/randy-hunt-s-soapbox" target="_blank">Randy Hunt <span class="role">· Etsy</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/tim-van-damme-s-soapbox" target="_blank">Tim Van Damme <span class="role">· Dropbox</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/geoff-koops-and-mike-towber-s-soapbox" target="_blank">Geoff Koops &amp; Mike Towber <span class="role">· Rdio</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/braden-kowitz-soapbox" target="_blank">Braden Kowitz <span class="role">· Google Ventures</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/wesley-yun-s-soapbox" target="_blank">Wesley Yun <span class="role">· Lytro</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/marissa-louie-s-soapbox" target="_blank">Marissa Louie <span class="role">· Yahoo</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/crowdfunding-design-education-jared-spool-s-soapbox" target="_blank">Jared Spool <span class="role">· UIE</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/design-habits-not-apps" target="_blank">Nir Eyal <span class="role">· Author, Hooked</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/what-is-the-shelf-life-of-an-industry" target="_blank">Brian Taptich <span class="role">· Bitcasa</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/games-aren-t-the-future-of-mobile-ads" target="_blank">Brian Wong <span class="role">· Kiip</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/michelle-dennedy-s-soapbox" target="_blank">Michelle Dennedy <span class="role">· McAfee</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/brad-garlinghouse-s-soapbox" target="_blank">Brad Garlinghouse <span class="role">· YouSendIt</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/howard-lindzon-s-soapbox" target="_blank">Howard Lindzon <span class="role">· StockTwits</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/one-kings-lane-ceo-doug-mack-s-zurbsoapbox" target="_blank">Doug Mack <span class="role">· One Kings Lane</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/twilio-ceo-jeff-lawson-s-soapbox" target="_blank">Jeff Lawson <span class="role">· Twilio</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/joe-gebbia-s-soapbox" target="_blank">Joe Gebbia <span class="role">· Airbnb</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/sahil-lavingia-s-soapbox" target="_blank">Sahil Lavingia <span class="role">· Gumroad</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/winklevoss-twins-soapbox" target="_blank">Winklevoss Twins <span class="role">· Winklevoss Capital</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/evan-williams-s-soapbox" target="_blank">Evan Williams <span class="role">· Twitter</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/hiten-shah-s-soapbox" target="_blank">Hiten Shah <span class="role">· Kissmetrics</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/ade-olonoh-s-soapbox" target="_blank">Ade Olonoh <span class="role">· Formspring</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/jeff-atwood-s-zurbsoapbox" target="_blank">Jeff Atwood <span class="role">· Stack Overflow</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/robert-scoble-s-zurbsoapbox" target="_blank">Robert Scoble <span class="role">· Rackspace</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/aaron-levie-s-zurbsoapbox" target="_blank">Aaron Levie <span class="role">· Box</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/patrick-byrne-s-zurbsoapbox" target="_blank">Patrick Byrne <span class="role">· Overstock.com</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/dave-mcclure-s-zurbsoapbox" target="_blank">Dave McClure <span class="role">· 500 Startups</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/ron-conway-zurbsoapbox-investing-with-the-godfather-of-silicon-valley" target="_blank">Ron Conway <span class="role">· Angel Investor</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/sachin-agarwal-zurbsoapbox-posterous-from-blog-to-social-network" target="_blank">Sachin Agarwal <span class="role">· Posterous</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/matt-mickiewicz-s-soapbox-building-a-web-business-when-you-are-15-years-old" target="_blank">Matt Mickiewicz <span class="role">· 99designs</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/kevin-hartz-s-soapbox-how-founder-of-eventbrite-keeps-launching-hit-startups" target="_blank">Kevin Hartz <span class="role">· Eventbrite</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/kevin-hale-s-soapbox-wufoo-s-buildup-to-surveymonkey-s-35m-acquisition" target="_blank">Kevin Hale <span class="role">· Wufoo</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/matt-mullenweg-s-soapbox-wordpress-8-year-anniversary" target="_blank">Matt Mullenweg <span class="role">· WordPress</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/philip-rosedale-s-soapbox-from-car-dealerships-to-second-life" target="_blank">Philip Rosedale <span class="role">· Second Life</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/irene-au-s-soapbox-how-google-creates-products" target="_blank">Irene Au <span class="role">· Google</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/julie-zhuo-s-soapbox-how-facebook-uses-data" target="_blank">Julie Zhuo <span class="role">· Facebook</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/tom-conrad-s-soapbox-pandora-apple-and-pets-com" target="_blank">Tom Conrad <span class="role">· Pandora</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/peter-skillman-s-soapbox-innovating-the-mobile-experience-at-palm" target="_blank">Peter Skillman <span class="role">· Palm</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/konstantin-guericke-s-soapbox-how-linkedin-broke-through" target="_blank">Konstantin Guericke <span class="role">· LinkedIn</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/nate-bolt-s-soapbox-remote-ux-research" target="_blank">Nate Bolt <span class="role">· Bolt \ Peters</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/luke-wroblewski-s-soapbox-design-for-mobile-first" target="_blank">Luke Wroblewski <span class="role">· Bagcheck</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/bill-scott-s-soapbox-behind-the-scenes-of-netflix-s-ui" target="_blank">Bill Scott <span class="role">· Meebo</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/alex-faaborg-s-soapbox-how-was-firefox-designed" target="_blank">Alex Faaborg <span class="role">· Firefox</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/justin-kan-s-soapbox-one-camera-broadcast-to-a-website-with-35-million-users" target="_blank">Justin Kan <span class="role">· Justin.tv</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/richard-white-s-soapbox-250-000-site-sale-on-ebay-killing-goats-for-6-hours-and-a-healthy-no" target="_blank">Richard White <span class="role">· UserVoice</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/john-marshall-s-soapbox-van-halen-marriage-and-crucial-mistakes" target="_blank">John Marshall <span class="role">· MarketMotive</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/dave-sifry-s-soapbox-lessons-learned-from-technorati-to-offbeat-guides" target="_blank">Dave Sifry <span class="role">· Technorati</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/luke-wroblewski-s-soapbox-how-to-make-excellent-products" target="_blank">Luke Wroblewski <span class="role">· Yahoo</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/bart-decrem-s-soapbox-the-story-of-tapulous" target="_blank">Bart Decrem <span class="role">· Tapulous</span></a>
+        <a class="guest-tag" href="https://zurb.com/soapbox/mrinal-desai-s-soapbox-cats-dogs-and-web-2-0" target="_blank">Mrinal Desai <span class="role">· CrossLoop</span></a>
+      </div>
     </div>
   </div>
 </section>
