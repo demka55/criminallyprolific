@@ -101,7 +101,10 @@
           <p class="nl-desc">3 hours a day. 4 exits. Free biweekly playbook.</p>
         </div>
         <div style="position:relative;">
-          <iframe src="https://dmitrydragilev.substack.com/embed" width="480" height="320" style="border:1px solid #EEE;background:white;max-width:100%;" frameborder="0" scrolling="no"></iframe>
+          <form action="https://dmitrydragilev.substack.com/api/v1/free" method="post" target="_blank" style="display:flex;gap:10px;flex-wrap:wrap;max-width:480px;">
+            <input type="email" name="email" placeholder="you@email.com" required style="flex:1;min-width:200px;padding:14px 16px;border:1.5px solid #ddd;border-radius:6px;font-family:inherit;font-size:15px;">
+            <button type="submit" style="background:#0033ff;color:#fff;border:none;padding:14px 28px;border-radius:6px;font-weight:700;font-size:15px;font-family:inherit;cursor:pointer;white-space:nowrap;">Subscribe</button>
+          </form>
           <p class="nl-fine">No spam. Unsubscribe anytime.</p>
         </div>
       </div>
@@ -258,6 +261,60 @@
   <div class="container">
     <p class="eyebrow">— Interviews</p>
     <h2 class="section-title">Podcast interviews</h2>
+
+    <!-- FAN FAVORITES -->
+    <h3 style="font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#0033ff;margin:32px 0 20px;">★ Fan Favorites</h3>
+    <div class="interviews-grid" style="margin-bottom:48px;">
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=-HOHn5atNqw" target="_blank">
+        <div class="interview-thumb" style="position:relative;">
+          <img src="https://img.youtube.com/vi/-HOHn5atNqw/mqdefault.jpg" alt="IndieHackers" loading="lazy">
+          <div class="interview-play">▶</div>
+          <span style="position:absolute;top:8px;left:8px;background:#0033ff;color:#fff;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:4px 8px;border-radius:4px;">★ Favorite</span>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">IndieHackers</p>
+          <p class="interview-title">Thinking One Step Ahead to Grow Your Business via PR</p>
+          <p class="interview-meta">August 10, 2020 · 65 min · ▶ YouTube</p>
+        </div>
+      </a>
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=iKMZohthbz0" target="_blank">
+        <div class="interview-thumb" style="position:relative;">
+          <img src="https://img.youtube.com/vi/iKMZohthbz0/mqdefault.jpg" alt="Niche Pursuits" loading="lazy">
+          <div class="interview-play">▶</div>
+          <span style="position:absolute;top:8px;left:8px;background:#0033ff;color:#fff;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:4px 8px;border-radius:4px;">★ Favorite</span>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">Niche Pursuits</p>
+          <p class="interview-title">This SEO Specialist Sold 3 Businesses to Google and Semrush</p>
+          <p class="interview-meta">March 25, 2024 · 57 min · ▶ YouTube</p>
+        </div>
+      </a>
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=7dGRDpX0LBw" target="_blank">
+        <div class="interview-thumb" style="position:relative;">
+          <img src="https://img.youtube.com/vi/7dGRDpX0LBw/mqdefault.jpg" alt="MarketMuse" loading="lazy">
+          <div class="interview-play">▶</div>
+          <span style="position:absolute;top:8px;left:8px;background:#0033ff;color:#fff;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:4px 8px;border-radius:4px;">★ Favorite</span>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">MarketMuse Podcast</p>
+          <p class="interview-title">How To Adjust Your Keyword Research Strategy For The Google Helpful Content Update</p>
+          <p class="interview-meta">November 1, 2022 · 13 min · ▶ YouTube</p>
+        </div>
+      </a>
+      <a class="interview-card interview-card--video" href="https://fast.wistia.net/embed/iframe/s5rwmspfpr" target="_blank">
+        <div class="interview-thumb interview-thumb--wistia" style="position:relative;">
+          <img src="https://embed-ssl.wistia.com/deliveries/s5rwmspfpr/image.jpg" alt="Mixergy 2021" loading="lazy" onerror="this.src='/assets/uploads/2025/01/podcast-icon.png';this.style.width='80px';this.style.height='80px';this.style.objectFit='contain';this.style.margin='auto'">
+          <div class="interview-play">▶</div>
+          <span style="position:absolute;top:8px;left:8px;background:#0033ff;color:#fff;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:4px 8px;border-radius:4px;">★ Favorite</span>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">Mixergy</p>
+          <p class="interview-title">This $250K ARR startup just sold for $800K</p>
+          <p class="interview-meta">April 20, 2021 · 57 min · ▶ Watch</p>
+        </div>
+      </a>
+    </div>
+
     <div class="interviews-grid" id="interviewsGrid">
 
       <!-- Fast & Furious Exits — YouTube -->
@@ -286,16 +343,28 @@
         </div>
       </a>
 
-      <!-- ExitWise — YouTube -->
-      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=UpB1aseytfo" target="_blank">
-        <div class="interview-thumb">
-          <img src="https://img.youtube.com/vi/UpB1aseytfo/mqdefault.jpg" alt="ExitWise" loading="lazy">
-          <div class="interview-play">▶</div>
+      <!-- ExitWise — video link TBD, was incorrectly pointing to the UnMiss video below -->
+      <div class="interview-card">
+        <div class="interview-thumb interview-thumb--audio">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0033ff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="#0033ff" stroke="none"/></svg>
         </div>
         <div class="interview-info">
           <p class="interview-pod">ExitWise</p>
           <p class="interview-title">Build for a Strategic Acquisition Within 3 Years</p>
-          <p class="interview-meta">March 18, 2026 · 38 min · ▶ YouTube</p>
+          <p class="interview-meta">March 18, 2026 · 38 min</p>
+        </div>
+      </div>
+
+      <!-- UnMiss Podcast — YouTube -->
+      <a class="interview-card interview-card--video" href="https://www.youtube.com/watch?v=UpB1aseytfo" target="_blank">
+        <div class="interview-thumb">
+          <img src="https://img.youtube.com/vi/UpB1aseytfo/mqdefault.jpg" alt="UnMiss Podcast" loading="lazy">
+          <div class="interview-play">▶</div>
+        </div>
+        <div class="interview-info">
+          <p class="interview-pod">UnMiss Podcast</p>
+          <p class="interview-title">Building Businesses That Serve Life, Not the Other Way Around</p>
+          <p class="interview-meta">February 5, 2026 · 67 min · ▶ YouTube</p>
         </div>
       </a>
 
