@@ -619,15 +619,6 @@
         <p class="interview-meta"><span class="interview-date">2016</span> · ▶ YouTube</p>
         </div>
         </a>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:20px;margin-top:28px;">
-      <button class="show-more-btn" id="showMoreBtn" onclick="toggleInterviews()">Show all 32 video interviews ↓</button>
-    </div>
-
-    <!-- AUDIO ONLY -->
-    <h3 style="font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin:56px 0 20px;color:#555;">Audio-Only Interviews</h3>
-    <div class="interviews-grid">
       <a class="interview-card interview-card--audio" href="/assets/uploads/2025/08/How-to-Rank-1-on-Google_-Lessons-from-4-SaaS-Exits-w-Dmitry-Dragilev.mp3" target="_blank">
         <div class="interview-thumb interview-thumb--audio">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0033ff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="#0033ff" stroke="none"/></svg>
@@ -658,6 +649,10 @@
         <p class="interview-meta"><span class="interview-date">January 14, 2020</span> · 56 min · ▶ Listen</p>
         </div>
         </a>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:20px;margin-top:28px;">
+      <button class="show-more-btn" id="showMoreBtn" onclick="toggleInterviews()">Show all 35 interviews ↓</button>
     </div>
   </div>
 </div>
@@ -771,7 +766,7 @@ function toggleInterviews(){
   if(more.classList.contains('visible')){
     more.classList.remove('visible');
     document.getElementById('archiveTitle').style.display='none';
-    btn.textContent='Show all 32 video interviews ↓';
+    btn.textContent='Show all 35 interviews ↓';
   } else {
     more.classList.add('visible');
     document.getElementById('archiveTitle').style.display='';
