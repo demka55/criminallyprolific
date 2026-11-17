@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steal One Hour — Blueprint Analysis (Internal)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: #111; background: #fff; line-height: 1.7; }
+
+  .header { background: #111; color: #fff; padding: 32px 40px; border-bottom: 3px solid #0033ff; }
+  .header h1 { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; }
+  .header .sub { font-size: 13px; color: rgba(255,255,255,.5); margin-top: 6px; }
+  .header .badge { display: inline-block; background: rgba(0,51,255,.2); border: 1px solid rgba(0,51,255,.4); color: #6699ff; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; margin-top: 12px; border-radius: 3px; }
+
+  .toc { background: #f5f8ff; border-bottom: 1.5px solid #e0e8ff; padding: 20px 40px; }
+  .toc-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; }
+  .toc a { font-size: 13px; font-weight: 600; color: #0033ff; letter-spacing: 0.02em; }
+  .toc a:hover { text-decoration: underline; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 48px 40px; }
+
+  h2 { font-size: 22px; font-weight: 900; color: #111; letter-spacing: -0.5px; margin: 48px 0 16px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+  h2:first-child { margin-top: 0; }
+  h3 { font-size: 16px; font-weight: 800; color: #111; margin: 28px 0 8px; }
+  p { margin-bottom: 14px; color: #444; font-size: 15px; line-height: 1.8; }
+  strong { color: #111; font-weight: 700; }
+
+  /* BIG COMPARE TABLE */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 20px 0 32px; font-size: 14px; }
+  .compare-table th { padding: 12px 16px; text-align: left; font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+  .compare-table th:first-child { background: #f5f5f5; color: #888; width: 160px; }
+  .compare-table th.old { background: #fff0f0; color: #c0392b; }
+  .compare-table th.new { background: #f0f4ff; color: #0033ff; }
+  .compare-table td { padding: 12px 16px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .compare-table td:first-child { font-weight: 700; font-size: 11px; color: #888; letter-spacing: 1px; text-transform: uppercase; background: #fafafa; }
+  .compare-table td.old { background: #fffafa; color: #444; }
+  .compare-table td.new { background: #f7f9ff; color: #333; }
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  /* SCORECARD TABLE */
+  table.scorecard { width: 100%; border-collapse: collapse; margin: 16px 0 28px; font-size: 13px; }
+  .scorecard th { background: #111; color: #fff; padding: 10px 14px; text-align: left; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+  .scorecard td { padding: 11px 14px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .scorecard tr:nth-child(even) td { background: #fafafa; }
+  .score-pass { color: #1a7a1a; font-weight: 800; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .score-fail { color: #c0392b; font-weight: 800; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+  .score-partial { color: #d97706; font-weight: 800; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* CALLOUTS */
+  .callout { border-left: 4px solid #0033ff; background: #f5f8ff; padding: 16px 20px; margin: 16px 0 24px; }
+  .callout.red { border-left-color: #c0392b; background: #fff5f5; }
+  .callout.green { border-left-color: #1a7a1a; background: #f5fff5; }
+  .callout.gold { border-left-color: #d97706; background: #fffbf0; }
+  .callout .label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .callout p { margin: 0; color: #333; font-size: 14px; }
+
+  /* TITLE CANDIDATES */
+  table.titles { width: 100%; border-collapse: collapse; margin: 16px 0 28px; font-size: 13px; }
+  .titles th { background: #111; color: #fff; padding: 10px 14px; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+  .titles td { padding: 11px 14px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .titles tr:nth-child(even) td { background: #fafafa; }
+  .titles td:first-child { font-weight: 800; color: #111; }
+  .winner-row td { background: #f0f4ff !important; }
+  .winner-row td:first-child { color: #0033ff; }
+
+  /* CHANGE GRID */
+  .change-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0 28px; }
+  .change-box { border: 1.5px solid #eee; padding: 20px; }
+  .change-box h4 { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .change-box h4.before { color: #c0392b; }
+  .change-box h4.after { color: #0033ff; }
+  .change-box p { font-size: 14px; color: #555; line-height: 1.65; margin: 0; }
+
+  ul { padding-left: 20px; margin-bottom: 16px; }
+  li { margin-bottom: 6px; color: #444; font-size: 14px; line-height: 1.7; }
+  ul.checklist { list-style: none; padding-left: 0; }
+  ul.checklist li { padding-left: 24px; position: relative; }
+  ul.checklist li::before { position: absolute; left: 0; font-weight: 800; }
+  ul.checklist li.pass::before { content: '✓'; color: #1a7a1a; }
+  ul.checklist li.fail::before { content: '✗'; color: #c0392b; }
+  ul.checklist li.partial::before { content: '◑'; color: #d97706; }
+
+  @media (max-width: 600px) {
+    .container { padding: 32px 20px; }
+    .change-grid { grid-template-columns: 1fr; }
+    .toc { padding: 16px 20px; }
+    .header { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Steal One Hour — Blueprint Analysis</h1>
+  <div class="sub">Why the blueprint changed · How "The Getaway Car" compares · Charlie Hoehn's 12-test scorecard · Title analysis · Section-by-section changes</div>
+  <div class="badge">Internal — not in sitemap · noindex</div>
+</div>
+
+<div class="toc">
+  <div class="toc-inner">
+    <a href="#compare">Head-to-head comparison</a>
+    <a href="#short">Short version</a>
+    <a href="#scorecard">12-test scorecard</a>
+    <a href="#three-extra">3 extra tests</a>
+    <a href="#title">Title analysis</a>
+    <a href="#sections">Section changes</a>
+    <a href="#kept">What was kept</a>
+    <a href="#checklist">Where v2 stands</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- BIG COMPARE -->
+  <h2 id="compare">The Getaway Car → Steal One Hour: Head-to-Head</h2>
+  <p>Every meaningful element of the book, side by side. This is the full diff.</p>
+
+  <table class="compare-table">
+    <tr>
+      <th></th>
+      <th class="old">The Getaway Car (v1)</th>
+      <th class="new">Steal One Hour (v2)</th>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td class="old">The Getaway Car — evocative, cinematic, no unit of change baked in. Also: a 2014 Westlake book (Univ. of Chicago Press).</td>
+      <td class="new">Steal One Hour — verb + unit + micro-conflict. The verb "steal" implies taking from somewhere (the company). The unit (one hour) makes the promise concrete and testable.</td>
+    </tr>
+    <tr>
+      <td>Subtitle</td>
+      <td class="old">How a Soviet Immigrant Said No to Google, Sold Four Companies, and Reclaimed a 3-Hour Workday — author's story, not reader's promise.</td>
+      <td class="new">How founders who already won get their lives back without selling, quitting, or breaking the company — reader-first. "Already won" is the qualifier that selects the right person.</td>
+    </tr>
+    <tr>
+      <td>Category</td>
+      <td class="old">Business memoir. Crowded. No clear shelf position.</td>
+      <td class="new">Founder time-reclamation. Category-of-one: adjacent to productivity (but doesn't add time) and adjacent to exit planning (but doesn't require selling).</td>
+    </tr>
+    <tr>
+      <td>Big problem</td>
+      <td class="old">Working 8+ hours even though you've built companies. True but generic. No name.</td>
+      <td class="new">Founder creep — the founder identity expands every year until it fills every hour you have. Named, specific, sticky. Readers repeat it to friends.</td>
+    </tr>
+    <tr>
+      <td>Villain</td>
+      <td class="old">None named. "The grind"? Unclear what the book is against.</td>
+      <td class="new">Freedom later — the lie every founder tells themselves. "When we hit $X I'll have time." The villain is a phrase founders already use. Recognition is instant.</td>
+    </tr>
+    <tr>
+      <td>Hero (reader)</td>
+      <td class="old">Boris (primary) + Betsy (secondary). Two readers dilutes the positioning.</td>
+      <td class="new">Boris only. The whole book is written for and about Boris. Betsy appears once in a late chapter as a named example.</td>
+    </tr>
+    <tr>
+      <td>Boris profile</td>
+      <td class="old">Present but underused — described, not dramatized. No day-in-the-life hell scene.</td>
+      <td class="new">72-hour weeks, loves Paris and piano and tango and bonsai. He works every minute. He calls it dedication. The book calls it founder creep. The heaven: Boris leaves at 4pm on a Tuesday. His phone doesn't ring.</td>
+    </tr>
+    <tr>
+      <td>Opening / First 15%</td>
+      <td class="old">Foreword: Clayton Christensen story, school pickup, "building prisons with great branding." Good writing, but The Dare and best story asset both buried past the 15% mark.</td>
+      <td class="new">Page Before Page One: The Dare is the first thing the reader does. Tuesday count. Leave one hour early. Write what broke. School pickup arrives in Ch. 5 as the narrative proof after the reader has already done the experiment.</td>
+    </tr>
+    <tr>
+      <td>The Dare</td>
+      <td class="old">Not present. School pickup story was the implied dare but never stated as an action the reader takes.</td>
+      <td class="new">"Leave one hour early tomorrow. Tell no one. Write down what broke." A concrete action on the first page. The book is built around proving the list will shrink.</td>
+    </tr>
+    <tr>
+      <td>Vocabulary (identity)</td>
+      <td class="old">None coined. No terms for the reader to repeat. Identity test: failed.</td>
+      <td class="new">founder creep · freedom later · your Tuesday · stolen hour · anxiety work · nothing broke · The Page · The Dare — 8 terms. Each one is repeatable at a dinner table.</td>
+    </tr>
+    <tr>
+      <td>Dinner-table test</td>
+      <td class="old">"What's the book about?" — "It's about how I built companies on 3 hours a day." Personal story. Hard to relay.</td>
+      <td class="new">"Founders who already won but can't stop working. You steal one hour. Nothing breaks. That's the whole book." Relayable in one breath.</td>
+    </tr>
+    <tr>
+      <td>Method name</td>
+      <td class="old">The Getaway Car Method. Linked to title. 10 steps unchanged.</td>
+      <td class="new">The Steal One Hour Method. Same 10 steps. Renamed to match title and add "The Page" — the living document built in steps 1–5.</td>
+    </tr>
+    <tr>
+      <td>The Page</td>
+      <td class="old">Not present as a named artifact. Steps produced a map but no deliverable the reader could name and show someone.</td>
+      <td class="new">The Page — the document the reader builds in steps 1–5. Named, tangible, shareable. "The most important document you will ever make for your company." Gifting mechanism starts here.</td>
+    </tr>
+    <tr>
+      <td>Gifting mechanism</td>
+      <td class="old">"Hand one of them this book and watch his face." No setup. No chapter addressed to the recipient. PickFu: who do you give a business memoir to? Gifting test: failed.</td>
+      <td class="new">Ch. 9 "Give This to Boris" — the chapter opens by addressing the person the reader wants to give it to. The book anticipates being gifted and writes for the recipient directly. Two-copy Kickstarter tier.</td>
+    </tr>
+    <tr>
+      <td>Media hook</td>
+      <td class="old">"Guy who turned down Google built companies on 3 hrs/day." Interesting but personal.</td>
+      <td class="new">"The founder who turned down Google is now teaching founders to leave early. Here's why the company doesn't need you." Universal. Podcast-ready. Every founder host has a Boris in their audience.</td>
+    </tr>
+    <tr>
+      <td>Polarizing factor</td>
+      <td class="old">Too mild for 1-star reviews. No villain, no provocation, no claim that anything is wrong with how the reader currently lives. 3-star range.</td>
+      <td class="new">"Freedom later" calls the reader's coping mechanism a lie. The Dare dares the reader to do something uncomfortable. Some founders will close the book. The right ones finish it in one sitting. 5-star + 1-star range.</td>
+    </tr>
+    <tr>
+      <td>Heaven (reader's after-state)</td>
+      <td class="old">Vague: "reclaim time." Not visualized as a specific scene.</td>
+      <td class="new">Boris leaves at 4pm on a Tuesday. His phone doesn't ring. He goes to piano. The company is fine. He never knew it could be like this. Scene-specific, emotionally complete.</td>
+    </tr>
+    <tr>
+      <td>Transformation (visible to others)</td>
+      <td class="old">Unclear. Reader becomes "someone who built companies efficiently"? Not visible to friends.</td>
+      <td class="new">Before: founder creep owns you. After: you own your Tuesday. When Boris leaves at 4pm and his team notices — that's visible. Goggins test equivalent: friends ask what got into him.</td>
+    </tr>
+    <tr>
+      <td>TOC structure</td>
+      <td class="old">9 chapters. Foreword + 8 chapters, loosely structured. Best assets spread across the book.</td>
+      <td class="new">The Dare + 9 chapters + Bonus. Ch 1–3: problem/villain/reader. Ch 4–5: build The Page + first exit. Ch 6–8: execute and prove. Ch 9: gift. Bonus: sell. Front-loaded proof.</td>
+    </tr>
+    <tr>
+      <td>Launch activation</td>
+      <td class="old">Kickstarter plan. Newsletter list. No pre-launch action for readers.</td>
+      <td class="new">The Dare as pre-launch activation. Run 3 Borises through it before manuscript is done. Each Boris who comes back and says "nothing broke" is a testimonial and a co-author of the book's proof.</td>
+    </tr>
+  </table>
+
+  <!-- SHORT VERSION -->
+  <h2 id="short">The Short Version</h2>
+  <p><strong>Verdict:</strong> "The Getaway Car" v1 was a good memoir pitch. "Steal One Hour" v2 is a 20M-copy nonfiction pitch. The gap between them is six specific decisions, each traceable to a failed test in Charlie Hoehn's scorecard.</p>
+  <div class="callout green">
+    <div class="label">What this pass added</div>
+    <p>New title with a unit of change baked in · Coined vocabulary (founder creep, freedom later, your Tuesday, stolen hour, anxiety work) · The Dare as a page-one action · First 15% restructured around the best story asset · Single bullseye reader (Boris only) · Gifting mechanism built into Ch. 9</p>
+  </div>
+
+  <!-- SCORECARD -->
+  <h2 id="scorecard">Scorecard v1 vs. v2: 12 Tests</h2>
+  <p>Source: Charlie Hoehn, "Books That Scale · 02" — the same framework that separates <em>Atomic Habits</em> (20M copies) from <em>Tiny Habits</em> (200K copies).</p>
+
+  <table class="scorecard">
+    <tr>
+      <th>Test</th>
+      <th>What it asks</th>
+      <th>v1</th>
+      <th>v2</th>
+      <th>What changed</th>
+    </tr>
+    <tr>
+      <td><strong>Embodiment</strong></td>
+      <td>Did the author live the transformation?</td>
+      <td class="score-pass">PASS</td>
+      <td class="score-pass">PASS</td>
+      <td>Kept and strengthened with school pickup as inciting event in Ch. 5.</td>
+    </tr>
+    <tr>
+      <td><strong>Category</strong></td>
+      <td>Does it own a clear, defensible category?</td>
+      <td class="score-fail">FAIL</td>
+      <td class="score-pass">PASS</td>
+      <td>"Steal One Hour" owns: founder time-reclamation. Not productivity. Not memoir. Not exit planning.</td>
+    </tr>
+    <tr>
+      <td><strong>Value</strong></td>
+      <td>Is the value proposition immediate and concrete?</td>
+      <td class="score-fail">FAIL</td>
+      <td class="score-pass">PASS</td>
+      <td>"Leave one hour early. Tell no one. Write what broke. Nothing will." Immediate, testable, true.</td>
+    </tr>
+    <tr>
+      <td><strong>Transformation</strong></td>
+      <td>Can a reader tell friends what changed in them?</td>
+      <td class="score-partial">PARTIAL</td>
+      <td class="score-pass">PASS</td>
+      <td>Before: founder creep owns you. After: you own your Tuesday. Visible to others.</td>
+    </tr>
+    <tr>
+      <td><strong>Accessibility</strong></td>
+      <td>Can anyone with the problem read it?</td>
+      <td class="score-pass">PASS</td>
+      <td class="score-pass">PASS</td>
+      <td>Jargon-free, story-driven. Kept.</td>
+    </tr>
+    <tr>
+      <td><strong>Talkability</strong></td>
+      <td>Does it survive the dinner-table test?</td>
+      <td class="score-fail">FAIL</td>
+      <td class="score-pass">PASS</td>
+      <td>"Founders who already won but can't stop working. You steal one hour. Nothing breaks." One breath.</td>
+    </tr>
+    <tr>
+      <td><strong>Timing</strong></td>
+      <td>Is the market ready for this?</td>
+      <td class="score-pass">PASS</td>
+      <td class="score-pass">PASS</td>
+      <td>Founder burnout at cultural peak. 2026 is the right moment. Kept.</td>
+    </tr>
+    <tr>
+      <td><strong>Identity</strong></td>
+      <td>Does the reader adopt new vocabulary?</td>
+      <td class="score-fail">FAIL</td>
+      <td class="score-pass">PASS</td>
+      <td>8 coined terms: founder creep, freedom later, your Tuesday, stolen hour, anxiety work, nothing broke, The Page, The Dare.</td>
+    </tr>
+    <tr>
+      <td><strong>Gifting</strong></td>
+      <td>Would someone buy two copies?</td>
+      <td class="score-fail">FAIL</td>
+      <td class="score-pass">PASS</td>
+      <td>Ch. 9 "Give This to Boris" — the gift mechanism is built into the book. Chapter 9 addresses the recipient directly.</td>
+    </tr>
+    <tr>
+      <td><strong>Media</strong></td>
+      <td>Is there a hook for press and podcasts?</td>
+      <td class="score-partial">PARTIAL</td>
+      <td class="score-pass">PASS</td>
+      <td>"The founder who turned down Google is now teaching founders to leave early." Universal hook.</td>
+    </tr>
+    <tr>
+      <td><strong>Launch</strong></td>
+      <td>Is there a launch-ready community?</td>
+      <td class="score-pass">PASS</td>
+      <td class="score-pass">PASS</td>
+      <td>20k newsletter, Kickstarter plan. Added: The Dare as pre-launch activation.</td>
+    </tr>
+    <tr>
+      <td><strong>Distribution</strong></td>
+      <td>Are there non-bookstore channels?</td>
+      <td class="score-partial">PARTIAL</td>
+      <td class="score-partial">PARTIAL</td>
+      <td>Newsletter channel kept. Two-copy Kickstarter tier added. Corporate/bulk-buy path still TBD.</td>
+    </tr>
+  </table>
+
+  <!-- THREE EXTRA TESTS -->
+  <h2 id="three-extra">Three Tests Outside the Scorecard</h2>
+
+  <h3>Written for one real person</h3>
+  <p>Hoehn's rule: narrow is wide. The book that tries to reach everyone reaches no one. v1 had two readers — Boris and Betsy — diluting the positioning. <strong>Fix:</strong> Boris only. Betsy appears in one late chapter as a named example. The whole book is written for and about Boris. His specific hobbies (Paris, piano, tango, bonsai) are named because they represent the life the company ate.</p>
+
+  <div class="callout">
+    <div class="label">Boris — the bullseye reader</div>
+    <p>Dmitry's uncle. Software company co-founder, 14 years in, 72-hour weeks. Loves Paris, piano, tango, bonsai. Calls his schedule "dedication." The book calls it founder creep. When Boris finishes chapter one and does The Dare, and nothing breaks — that moment is the book working.</p>
+  </div>
+
+  <h3>First 15% test</h3>
+  <p>The average reader stops at 15% of a nonfiction book. v1 had the school pickup story — the best narrative asset — buried in Step 6. By the 15% mark, the reader was in framework-setup mode and hadn't seen the proof of concept yet. <strong>Fix:</strong> The Dare moves the proof to page one. School pickup is in Ch. 5. Reader sees the best story before they're 20% in.</p>
+
+  <div class="callout gold">
+    <div class="label">The 15% line in the TOC</div>
+    <p>At ~300 pages, 15% = page 45. That's roughly through Ch. 2 "Freedom Later." The Dare happens before page one. The named villain (freedom later) arrives by page 45. The reader's own proof (school pickup story) arrives in Ch. 5 at ~25%. The first 15% now has: The Dare (action) → Ch 1 Founder Creep (naming) → Ch 2 Freedom Later (villain). That's the hook, the problem, and the enemy — all before page 45.</p>
+  </div>
+
+  <h3>Polarizing</h3>
+  <p>Great books get 5-star and 1-star reviews, never 3-star. v1 was too mild to generate either. No villain, no dare, no claim that anything is wrong with how the reader currently lives. <strong>Fix:</strong> "Founder creep" names a thing that was invisible. "Freedom later" calls out the lie founders tell themselves. The Dare is a provocation. Some founders will close the book. The right ones will finish it in one sitting.</p>
+
+  <!-- TITLE ANALYSIS -->
+  <h2 id="title">Title: Full Scoring</h2>
+  <p>Five candidates evaluated against: category claim, unit of change, talkability, prior use, and differentiation from "one hour" competitors.</p>
+
+  <table class="titles">
+    <tr>
+      <th>Title</th>
+      <th>Category claim</th>
+      <th>Unit of change</th>
+      <th>Talkable?</th>
+      <th>Conflict?</th>
+      <th>Verdict</th>
+    </tr>
+    <tr>
+      <td>The Getaway Car</td>
+      <td>None — reads as memoir</td>
+      <td>None</td>
+      <td>Low</td>
+      <td>Westlake 2014</td>
+      <td class="score-fail">DROP</td>
+    </tr>
+    <tr class="winner-row">
+      <td><strong>Steal One Hour</strong></td>
+      <td>Founder time-reclamation</td>
+      <td>Yes — one hour</td>
+      <td>High</td>
+      <td>Low — competitors ADD; this TAKES</td>
+      <td class="score-pass">WINNER</td>
+    </tr>
+    <tr>
+      <td>Your Tuesday</td>
+      <td>Founder freedom</td>
+      <td>Partial — a day</td>
+      <td>Medium</td>
+      <td>None found</td>
+      <td class="score-partial">BACKUP</td>
+    </tr>
+    <tr>
+      <td>Nothing Broke</td>
+      <td>Proof-of-concept promise</td>
+      <td>None explicit</td>
+      <td>High</td>
+      <td>None found</td>
+      <td class="score-partial">BACKUP</td>
+    </tr>
+    <tr>
+      <td>Founder Creep</td>
+      <td>Names the problem</td>
+      <td>None</td>
+      <td>Medium</td>
+      <td>None found</td>
+      <td class="score-partial">BACKUP</td>
+    </tr>
+  </table>
+
+  <div class="callout">
+    <div class="label">Why "Steal One Hour" wins over the "one hour" shelf</div>
+    <p>Competitors: <em>Power Hour</em>, <em>The One Hour Advantage</em>, <em>The Miracle Hour</em>. All add an hour to the reader's day. This book takes one away from the company. The verb "steal" contains the entire differentiation. It also implies the company would object — which is the whole dramatic tension. <strong>Next step: blind test on PickFu ($50) with these 5 candidates against the Boris persona description.</strong></p>
+  </div>
+
+  <!-- SECTION CHANGES -->
+  <h2 id="sections">Section-by-Section Changes: v1 → v2</h2>
+
+  <div class="change-grid">
+    <div class="change-box">
+      <h4 class="before">v1 — Opening / Foreword</h4>
+      <p>Clayton Christensen story. School pickup. "Building prisons with great branding." Good writing but delayed. Reader reaches page 30 before seeing the core proof.</p>
+    </div>
+    <div class="change-box">
+      <h4 class="after">v2 — The Dare (Page Before Page One)</h4>
+      <p>Dare first. Tuesday count. "Leave one hour early. Tell no one. Write what broke." School pickup arrives in Ch. 5. First 15% test: passed.</p>
+    </div>
+  </div>
+
+  <div class="change-grid">
+    <div class="change-box">
+      <h4 class="before">v1 — Big Problem</h4>
+      <p>"Working 8+ hour days even though you've built companies." True but generic. No name for the phenomenon. Nothing to repeat.</p>
+    </div>
+    <div class="change-box">
+      <h4 class="after">v2 — Founder creep</h4>
+      <p>"The founder identity expands every year until it fills every hour you have." Named, specific, viral-ready. Identity test: passed.</p>
+    </div>
+  </div>
+
+  <div class="change-grid">
+    <div class="change-box">
+      <h4 class="before">v1 — Villain</h4>
+      <p>No explicit villain. The system? The grind? Unclear what the book is against.</p>
+    </div>
+    <div class="change-box">
+      <h4 class="after">v2 — Freedom later</h4>
+      <p>Named, specific villain. "When we hit $X I'll have time." The lie every founder tells themselves. Polarizing test: passed.</p>
+    </div>
+  </div>
+
+  <div class="change-grid">
+    <div class="change-box">
+      <h4 class="before">v1 — Reader(s)</h4>
+      <p>Boris (primary) + Betsy (secondary, late-career pivot). Two readers dilutes positioning.</p>
+    </div>
+    <div class="change-box">
+      <h4 class="after">v2 — Boris only</h4>
+      <p>The whole book is written for Boris. Betsy appears in one late chapter. One real person: passed.</p>
+    </div>
+  </div>
+
+  <div class="change-grid">
+    <div class="change-box">
+      <h4 class="before">v1 — Vocabulary</h4>
+      <p>No coined terms. Nothing for the reader to repeat. Identity test: failed.</p>
+    </div>
+    <div class="change-box">
+      <h4 class="after">v2 — 8 coined terms</h4>
+      <p>founder creep · freedom later · your Tuesday · stolen hour · anxiety work · nothing broke · The Page · The Dare</p>
+    </div>
+  </div>
+
+  <div class="change-grid">
+    <div class="change-box">
+      <h4 class="before">v1 — Gifting</h4>
+      <p>"Hand one of them this book and watch his face." No setup. No chapter addressed to the recipient. Gifting test: failed.</p>
+    </div>
+    <div class="change-box">
+      <h4 class="after">v2 — Ch. 9: Give This to Boris</h4>
+      <p>Chapter 9 opens by addressing the person the reader wants to give it to. Book anticipates being gifted and writes for the recipient directly.</p>
+    </div>
+  </div>
+
+  <div class="change-grid">
+    <div class="change-box">
+      <h4 class="before">v1 — Method artifact</h4>
+      <p>Steps 1–5 produced a map but no named, shareable deliverable.</p>
+    </div>
+    <div class="change-box">
+      <h4 class="after">v2 — The Page</h4>
+      <p>Steps 1–5 build The Page — a named document the reader owns, shares, and updates. "The most important document you will ever make for your company."</p>
+    </div>
+  </div>
+
+  <!-- WHAT WAS KEPT -->
+  <h2 id="kept">What Was Kept and Why</h2>
+  <ul>
+    <li><strong>All 10 method steps</strong> — The Getaway Car Method is well-designed. Renamed to match the new title.</li>
+    <li><strong>Boris as bullseye reader</strong> — Perfect character. Kept verbatim, sharpened with heaven scene.</li>
+    <li><strong>School pickup story</strong> — Best narrative asset. Moved from Step 6 to Ch. 5.</li>
+    <li><strong>JustReachOut / Nikita example</strong> — Strong proof of company running without founder. Kept in method section.</li>
+    <li><strong>Author stats</strong> — 4× acquired, 3 hrs/day, 20k+ subscribers, 500+ companies. All still accurate.</li>
+    <li><strong>Soviet immigrant / turned down Google framing</strong> — Embodiment test. The author IS the proof. Moved into hero's journey structure.</li>
+    <li><strong>Kickstarter / monetization path</strong> — Intact. Added two-copy gifting tier.</li>
+    <li><strong>Betsy</strong> — Relegated to one late chapter. Still present, no longer diluting the core positioning.</li>
+  </ul>
+
+  <!-- CHECKLIST -->
+  <h2 id="checklist">Where v2 Stands</h2>
+  <ul class="checklist">
+    <li class="pass">Title with unit of change baked in</li>
+    <li class="pass">Named villain (freedom later)</li>
+    <li class="pass">Named problem (founder creep)</li>
+    <li class="pass">One bullseye reader (Boris)</li>
+    <li class="pass">8 coined terms</li>
+    <li class="pass">First 15% restructured (The Dare first)</li>
+    <li class="pass">Gifting mechanism (Ch. 9)</li>
+    <li class="pass">Dinner-table sentence: "Founders who already won but can't stop working. You steal one hour. Nothing breaks."</li>
+    <li class="partial">Title blind test on PickFu ($50) — not yet run</li>
+    <li class="partial">Step 6 placeholder: "[Add second hour I took after pickup, and what had to move]" — Dmitry to fill</li>
+    <li class="fail">3 Borises through The Dare before manuscript done — not yet recruited</li>
+    <li class="fail">Corporate gifting / bulk-buy path — not yet built</li>
+  </ul>
+
+</div>
+</body>
+</html>

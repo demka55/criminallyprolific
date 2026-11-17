@@ -1,125 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>The Getaway Car — Dmitry Dragilev</title>
-  <meta name="description" content="The Getaway Car: How a Soviet Immigrant Said No to Google, Sold Four Companies, and Reclaimed a 3-Hour Workday. A book by Dmitry Dragilev.">
-  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-  <link rel="shortcut icon" href="/assets/img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <style>
-    /* ── BOOK HERO ── */
-    .book-hero{background:#fff;padding:80px 0;border-bottom:1.5px solid #eee;}
-    .book-hero-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:340px 1fr;gap:72px;align-items:center;}
-    .book-cover-wrap{position:relative;flex-shrink:0;}
-    .book-cover-img{width:100%;display:block;box-shadow:0 40px 80px rgba(0,0,0,.6);}
-    .book-cover-placeholder{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,#0033ff 0%,#001a80 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;box-shadow:0 40px 80px rgba(0,0,0,.6);}
-    .book-cover-placeholder .bcp-title{font-size:28px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-1px;margin-bottom:16px;}
-    .book-cover-placeholder .bcp-sub{font-size:12px;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:24px;}
-    .book-cover-placeholder .bcp-author{font-size:14px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:2px;text-transform:uppercase;}
-    .book-pub{display:none;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steal One Hour — Book Landing Page</title>
+<meta name="description" content="Steal One Hour: How founders who already won get their lives back without selling, quitting, or breaking the company. A book by Dmitry Dragilev.">
+<meta property="og:title" content="Steal One Hour — Dmitry Dragilev">
+<meta property="og:description" content="How founders who already won get their lives back without selling, quitting, or breaking the company.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: #111; background: #fff; line-height: 1.7; }
+  a { color: inherit; text-decoration: none; }
 
-    .book-text{color:#111;}
-    .book-kicker{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0033ff;margin-bottom:20px;display:block;}
-    .book-h1{font-size:52px;font-weight:900;color:#111;line-height:1.0;letter-spacing:-2px;margin-bottom:8px;}
-    .book-h1 em{font-style:normal;color:#0033ff;}
-    .book-sub{font-size:17px;font-weight:600;color:#444;line-height:1.5;margin-bottom:28px;font-style:italic;}
-    .book-hook{font-size:19px;color:#444;line-height:1.75;margin-bottom:32px;max-width:560px;}
-    .book-hook strong{color:#111;}
-    .book-ctas{display:flex;gap:12px;flex-wrap:wrap;}
-    .btn-book-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#0033ff;color:#fff;font-size:15px;font-weight:700;border-radius:4px;transition:background .15s;}
-    .btn-book-primary:hover{background:#0022cc;}
-    .btn-book-secondary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:transparent;color:#111;font-size:15px;font-weight:700;border:2px solid #ddd;border-radius:4px;transition:all .15s;}
-    .btn-book-secondary:hover{border-color:#111;}
+  /* NAV */
+  nav { background: #fff; border-bottom: 1.5px solid #eee; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; max-width: 100%; }
+  .nav-logo { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #111; }
+  .nav-links { display: flex; gap: 2rem; font-size: 13px; font-weight: 600; color: #444; letter-spacing: 0.03em; }
+  .nav-links a:hover { color: #0033ff; }
+  .nav-links a.active { color: #0033ff; }
 
-    /* ── PULLQUOTE STRIP ── */
-    .book-pullquote{background:#0033ff;padding:40px 0;}
-    .book-pullquote-inner{max-width:860px;margin:0 auto;padding:0 40px;text-align:center;}
-    .book-pullquote blockquote{font-size:24px;font-weight:800;color:#fff;line-height:1.4;letter-spacing:-.5px;}
-    .book-pullquote cite{display:block;margin-top:12px;font-size:13px;color:rgba(255,255,255,.65);font-style:normal;letter-spacing:1px;text-transform:uppercase;}
+  /* HERO */
+  .book-hero { background: #fff; padding: 80px 0; border-bottom: 1.5px solid #eee; }
+  .book-hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 320px 1fr; gap: 72px; align-items: center; }
+  .book-cover-placeholder { width: 100%; aspect-ratio: 2/3; background: linear-gradient(135deg, #0033ff 0%, #001a80 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; box-shadow: 0 40px 80px rgba(0,0,0,.35); }
+  .bcp-title { font-size: 32px; font-weight: 900; color: #fff; line-height: 1.0; letter-spacing: -1px; margin-bottom: 16px; }
+  .bcp-sub { font-size: 11px; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 24px; }
+  .bcp-author { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.8); letter-spacing: 2px; text-transform: uppercase; }
 
-    /* ── WHAT THIS BOOK IS ── */
-    .book-about{padding:80px 0;border-bottom:1.5px solid #eee;}
-    .book-about-inner{max-width:860px;margin:0 auto;padding:0 40px;}
-    .book-about h2{font-size:40px;font-weight:900;color:#111;letter-spacing:-1.5px;margin-bottom:32px;line-height:1.1;}
-    .book-about p{font-size:17px;color:#444;line-height:1.8;margin-bottom:20px;}
-    .book-about p strong{color:#111;}
-    .book-about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;}
-    .book-about-card{background:#fff;border:1.5px solid #e0e0e0;border-left:4px solid #0033ff;padding:28px 32px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
-    .book-about-card h4{font-size:15px;font-weight:800;color:#111;letter-spacing:-.2px;margin-bottom:10px;}
-    .book-about-card p{font-size:15px;color:#333;line-height:1.7;margin:0;}
+  .book-kicker { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #0033ff; margin-bottom: 20px; display: block; }
+  .book-h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 900; color: #111; line-height: 1.0; letter-spacing: -2px; margin-bottom: 10px; }
+  .book-h1 em { font-style: normal; color: #0033ff; }
+  .book-sub { font-size: 17px; font-weight: 600; color: #444; line-height: 1.5; margin-bottom: 28px; font-style: italic; }
+  .book-hook { font-size: 18px; color: #444; line-height: 1.8; margin-bottom: 32px; }
+  .book-hook strong { color: #111; }
+  .book-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: #0033ff; color: #fff; font-size: 15px; font-weight: 700; border-radius: 4px; transition: background .15s; font-family: 'Inter', sans-serif; }
+  .btn-primary:hover { background: #0022cc; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: transparent; color: #111; font-size: 15px; font-weight: 700; border: 2px solid #ddd; border-radius: 4px; transition: all .15s; font-family: 'Inter', sans-serif; }
+  .btn-secondary:hover { border-color: #111; }
 
-    /* ── CHAPTERS ── */
-    .book-chapters{padding:80px 0;background:#fff;border-top:1.5px solid #eee;border-bottom:1.5px solid #eee;}
-    .book-chapters-inner{max-width:860px;margin:0 auto;padding:0 40px;}
-    .book-chapters h2{font-size:40px;font-weight:900;color:#111;letter-spacing:-1.5px;margin-bottom:48px;}
-    .chapter-item{display:grid;grid-template-columns:80px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid #eee;align-items:start;}
-    .chapter-item:last-child{border-bottom:none;}
-    .chapter-num{font-size:11px;font-weight:800;color:#fff;letter-spacing:.5px;text-transform:uppercase;background:#0033ff;padding:5px 8px;border-radius:4px;text-align:center;margin-top:2px;display:inline-block;width:100%;box-sizing:border-box;}
-    .chapter-title{font-size:20px;font-weight:800;color:#111;letter-spacing:-.3px;margin-bottom:10px;}
-    .chapter-desc{font-size:16px;color:#444;line-height:1.75;}
+  /* PULLQUOTE */
+  .book-pullquote { background: #0033ff; padding: 48px 0; }
+  .book-pullquote-inner { max-width: 860px; margin: 0 auto; padding: 0 40px; text-align: center; }
+  .book-pullquote blockquote { font-size: 24px; font-weight: 800; color: #fff; line-height: 1.4; letter-spacing: -0.5px; }
+  .book-pullquote cite { display: block; margin-top: 14px; font-size: 12px; color: rgba(255,255,255,.65); font-style: normal; letter-spacing: 1.5px; text-transform: uppercase; }
 
-    /* ── AUTHOR STRIP ── */
-    .book-author{padding:80px 0;border-bottom:1.5px solid #eee;}
-    .book-author-inner{max-width:1100px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:start;}
-    .book-author-photo{width:100%;border-radius:2px;display:block;}
-    .book-author h2{font-size:36px;font-weight:900;color:#111;letter-spacing:-1px;margin-bottom:20px;}
-    .book-author p{font-size:16px;color:#444;line-height:1.8;margin-bottom:16px;}
-    .book-author-stats{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap;}
-    .book-author-stat span:first-child{font-size:28px;font-weight:900;color:#111;letter-spacing:-1px;display:block;}
-    .book-author-stat span:last-child{font-size:11px;color:#888;letter-spacing:1px;text-transform:uppercase;}
+  /* ABOUT */
+  .book-about { padding: 80px 0; border-bottom: 1.5px solid #eee; }
+  .book-about-inner { max-width: 860px; margin: 0 auto; padding: 0 40px; }
+  .book-about h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; color: #111; letter-spacing: -1.5px; margin-bottom: 20px; line-height: 1.1; }
+  .book-about .lead { font-size: 17px; color: #444; line-height: 1.8; margin-bottom: 40px; }
+  .book-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .book-about-card { background: #fff; border: 1.5px solid #e0e0e0; border-left: 4px solid #0033ff; padding: 28px 32px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+  .book-about-card h4 { font-size: 11px; font-weight: 800; color: #0033ff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .book-about-card p { font-size: 15px; color: #333; line-height: 1.75; margin: 0; }
 
-    /* ── FOREWORD EXCERPT ── */
-    .book-excerpt{background:#f5f8ff;padding:80px 0;border-top:1.5px solid #eee;border-bottom:1.5px solid #eee;}
-    .book-excerpt-inner{max-width:760px;margin:0 auto;padding:0 40px;}
-    .book-excerpt .eyebrow{color:#0033ff;margin-bottom:24px;}
-    .book-excerpt h2{font-size:36px;font-weight:900;color:#111;letter-spacing:-1px;margin-bottom:32px;}
-    .book-excerpt-text{font-size:17px;color:#444;line-height:1.85;}
-    .book-excerpt-text p{margin-bottom:24px;}
-    .book-excerpt-text strong{color:#111;}
-    .book-excerpt-text em{color:#0033ff;font-style:normal;}
+  /* METHOD */
+  .book-method { background: #111; padding: 80px 0; }
+  .book-method-inner { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+  .book-method h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; color: #fff; letter-spacing: -1.5px; margin-bottom: 10px; }
+  .book-method .method-sub { font-size: 16px; color: rgba(255,255,255,.5); margin-bottom: 40px; }
+  .method-dare { background: #0033ff; padding: 28px 32px; margin-bottom: 32px; border-radius: 2px; }
+  .method-dare h3 { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.75); margin-bottom: 10px; }
+  .method-dare p { font-size: 17px; color: #fff; line-height: 1.7; font-weight: 500; }
+  .method-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .method-step { background: #1a1a1a; padding: 24px 28px; border-top: 3px solid #0033ff; }
+  .method-step .step-num { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #0033ff; margin-bottom: 8px; }
+  .method-step h4 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 8px; letter-spacing: -0.3px; }
+  .method-step p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.6; }
+  .method-bonus { background: #0033ff22; border: 1px solid #0033ff44; padding: 24px 28px; margin-top: 16px; }
+  .method-bonus .step-num { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #0033ff; margin-bottom: 8px; }
+  .method-bonus h4 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .method-bonus p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.6; }
 
-    /* ── FINAL CTA ── */
-    .book-final-cta{padding:80px 0;text-align:center;}
-    .book-final-cta h2{font-size:44px;font-weight:900;color:#111;letter-spacing:-1.5px;margin-bottom:16px;}
-    .book-final-cta p{font-size:17px;color:#555;max-width:520px;margin:0 auto 36px;line-height:1.7;}
+  /* CHAPTERS */
+  .book-chapters { padding: 80px 0; border-top: 1.5px solid #eee; border-bottom: 1.5px solid #eee; }
+  .book-chapters-inner { max-width: 860px; margin: 0 auto; padding: 0 40px; }
+  .book-chapters h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; color: #111; letter-spacing: -1.5px; margin-bottom: 48px; }
+  .chapter-item { display: grid; grid-template-columns: 72px 1fr; gap: 28px; padding: 28px 0; border-bottom: 1px solid #eee; align-items: start; }
+  .chapter-item:last-child { border-bottom: none; }
+  .chapter-num { font-size: 10px; font-weight: 800; color: #fff; letter-spacing: .5px; text-transform: uppercase; background: #0033ff; padding: 5px 8px; border-radius: 4px; text-align: center; display: inline-block; width: 100%; }
+  .chapter-title { font-size: 19px; font-weight: 800; color: #111; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .chapter-desc { font-size: 15px; color: #555; line-height: 1.75; }
 
-    @media(max-width:900px){
-      .book-hero-inner{grid-template-columns:1fr;gap:40px;}
-      .book-cover-wrap{max-width:280px;margin:0 auto;}
-      .book-h1{font-size:38px;}
-      .book-about-grid{grid-template-columns:1fr;}
-      .book-author-inner{grid-template-columns:1fr;}
-      .book-author-photo{max-width:200px;}
-      .book-hero-inner,.book-about-inner,.book-chapters-inner,.book-excerpt-inner{padding:0 24px;}
-    }
-    @media(max-width:580px){
-      .book-h1{font-size:32px;}
-      .book-pullquote blockquote{font-size:18px;}
-      .book-final-cta h2{font-size:32px;}
-    }
-  </style>
+  /* BLUEPRINT SECTION */
+  .book-blueprint { background: #f5f8ff; padding: 80px 0; border-top: 1.5px solid #eee; border-bottom: 1.5px solid #eee; }
+  .book-blueprint-inner { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+  .book-blueprint h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; color: #111; letter-spacing: -1.5px; margin-bottom: 10px; }
+  .book-blueprint .bp-sub { font-size: 16px; color: #666; margin-bottom: 40px; }
+  .bp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .bp-card { background: #fff; border: 1.5px solid #e0e0e0; border-left: 4px solid #0033ff; padding: 24px 28px; }
+  .bp-card h3 { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #0033ff; margin-bottom: 10px; }
+  .bp-card p { font-size: 15px; color: #333; line-height: 1.7; }
+  .bp-promise { background: #0033ff; color: #fff; padding: 36px 40px; margin-top: 20px; }
+  .bp-promise h3 { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 12px; }
+  .bp-promise p { font-size: 18px; color: #fff; line-height: 1.7; font-weight: 500; }
+
+  /* AUTHOR */
+  .book-author { padding: 80px 0; border-bottom: 1.5px solid #eee; }
+  .book-author-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 220px 1fr; gap: 64px; align-items: start; }
+  .author-photo { width: 100%; aspect-ratio: 1; background: #e8e8e8; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+  .book-author h2 { font-size: 36px; font-weight: 900; color: #111; letter-spacing: -1px; margin-bottom: 16px; }
+  .book-author p { font-size: 16px; color: #444; line-height: 1.8; margin-bottom: 14px; }
+  .book-author a { color: #0033ff; }
+  .author-stats { display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap; }
+  .stat span:first-child { font-size: 28px; font-weight: 900; color: #111; letter-spacing: -1px; display: block; }
+  .stat span:last-child { font-size: 11px; color: #888; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* EXCERPT */
+  .book-excerpt { background: #f5f8ff; padding: 80px 0; border-top: 1.5px solid #eee; border-bottom: 1.5px solid #eee; }
+  .book-excerpt-inner { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #0033ff; margin-bottom: 20px; display: block; }
+  .book-excerpt h2 { font-size: 36px; font-weight: 900; color: #111; letter-spacing: -1px; margin-bottom: 32px; }
+  .book-excerpt p { font-size: 17px; color: #444; line-height: 1.85; margin-bottom: 20px; }
+  .book-excerpt p strong { color: #111; }
+  .book-excerpt .ex-sig { font-size: 14px; color: #888; margin-top: 28px; font-style: italic; }
+
+  /* FINAL CTA */
+  .book-final-cta { padding: 80px 0; text-align: center; border-top: 1.5px solid #eee; }
+  .book-final-cta h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 900; color: #111; letter-spacing: -1.5px; margin-bottom: 16px; }
+  .book-final-cta p { font-size: 17px; color: #555; max-width: 480px; margin: 0 auto 32px; line-height: 1.6; }
+
+  /* FOOTER */
+  footer { background: #111; color: #888; padding: 48px 40px 32px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 2rem; }
+  .footer-col h4 { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+  .footer-col a { display: block; font-size: 14px; color: #888; margin-bottom: 6px; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid #333; padding-top: 20px; font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .book-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .book-cover-placeholder { max-width: 240px; margin: 0 auto; }
+    .book-about-grid { grid-template-columns: 1fr; }
+    .book-author-inner { grid-template-columns: 1fr; }
+    .method-steps { grid-template-columns: 1fr; }
+    nav { padding: 0 20px; }
+    .book-hero-inner, .book-about-inner, .book-chapters-inner, .book-blueprint-inner, .book-author-inner, .book-excerpt-inner { padding: 0 20px; }
+  }
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <a href="/" class="nav-logo">
-    <img src="/assets/img/favicon.png" alt="">
-    Criminally Prolific
-  </a>
+<nav>
+  <div class="nav-logo"><a href="/">Criminally Prolific</a></div>
   <div class="nav-links">
-    <a href="/dmitry/">About</a>
-    <a href="/#interviews">Interviews</a>
-    <a href="/book/" style="color:#0033ff;">Book</a>
-    <a href="/blog/">Blog</a>
-    <a href="/testimonials/">Testimonials</a>
-    <a href="/press/">Press</a>
-    <a href="/contact/">Contact</a>
-    <a href="/signup/" class="nav-cta">Free Newsletter</a>
+    <a href="/newsletter/">Newsletter</a>
+    <a href="/pr-tools/">Tools</a>
+    <a href="/book/" class="active">Book</a>
+    <a href="/about/">About</a>
   </div>
 </nav>
 
@@ -128,64 +159,130 @@
   <div class="book-hero-inner">
     <div class="book-cover-wrap">
       <div class="book-cover-placeholder">
-        <p class="bcp-title">The Getaway Car</p>
-        <p class="bcp-sub">How a Soviet Immigrant Said No to Google, Sold Four Companies, and Reclaimed a 3-Hour Workday</p>
-        <p class="bcp-author">Dmitry Dragilev</p>
-      </div>
-      <div class="book-pub">
-        <span>Publishing with</span>
-        <a href="https://about.damngravity.com/" target="_blank">Damn Gravity</a>
-        <span>/</span>
-        <a href="https://www.hachettebookgroup.com/" target="_blank">Hachette Book Group</a>
+        <div class="bcp-title">Steal<br>One<br>Hour</div>
+        <div class="bcp-sub">How founders who already won get their lives back</div>
+        <div class="bcp-author">Dmitry Dragilev</div>
       </div>
     </div>
-
     <div class="book-text">
-      <span class="book-kicker">The Book</span>
-      <h1 class="book-h1">The <em>Getaway</em> Car</h1>
-      <p class="book-sub">How a Soviet Immigrant Said No to Google, Sold Four Companies, and Reclaimed a 3-Hour Workday</p>
-      <p class="book-hook">You're hitting your numbers. You're grinding. And somewhere in the back of your mind, a quiet voice keeps asking: <strong>is this actually what I want?</strong><br><br>This book is for founders who are winning by every metric — and still feel like something is off.</p>
+      <span class="book-kicker">Coming 2026</span>
+      <h1 class="book-h1">Steal <em>One</em> Hour</h1>
+      <p class="book-sub">How founders who already won get their lives back without selling, quitting, or breaking the company</p>
+      <div class="book-hook">
+        You built something real. The numbers are good. <strong>So why are you still doing twelve-hour days?</strong><br><br>
+        The company didn't trap you. <strong>Founder creep</strong> did — the way the founder identity expands every year until it fills every hour you have.<br><br>
+        <strong>Tomorrow, leave one hour early. Tell no one. Write down what broke.</strong><br><br>
+        Nothing will break. That's the whole book.
+      </div>
       <div class="book-ctas">
-        <a href="/signup/" class="btn-book-primary">Get notified at launch →</a>
-        <a href="#excerpt" class="btn-book-secondary">Read the foreword</a>
+        <a href="/signup/" class="btn-primary">Join the waitlist</a>
+        <a href="#excerpt" class="btn-secondary">Read an excerpt</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PULLQUOTE -->
-<div class="book-pullquote">
+<section class="book-pullquote">
   <div class="book-pullquote-inner">
-    <blockquote>"Wealth isn't a number. Wealth is owning your Tuesday afternoon. This book will show you how to build both."</blockquote>
+    <blockquote>
+      A stolen hour is not taken from the company. It is taken back from founder creep — and given to the person who built the company in the first place.
+    </blockquote>
     <cite>— Dmitry Dragilev</cite>
   </div>
-</div>
+</section>
 
-<!-- WHAT THIS BOOK IS -->
+<!-- ABOUT -->
 <section class="book-about">
   <div class="book-about-inner">
     <h2>This is not a productivity book.</h2>
-    <p>It's not a hustle bible. It won't tell you to wake up at 4 AM and cold plunge your way to a seven-figure exit. This is a raw account of how one immigrant kid — programmed from birth to grind — figured out slowly, painfully, with a lot of bad decisions along the way, that <strong>the only metric worth optimizing for is the life you're actually living.</strong></p>
-    <p>Dmitry Dragilev arrived in America at eleven with three layers of clothes on his back and one belief drilled into him by two countries that agreed on nothing else: work or disappear. He spent the next two decades doing exactly that — scaling startups, walking away from a Google acquisition while everyone around him took the payout, then building three more companies, acquired by Semrush and Adobe — all while working three hours a day and being home when his kids walked through the door at 3 PM.</p>
-    <p>The milestone kept moving. The time never came. <strong>Until he stopped waiting for it.</strong></p>
-
+    <p class="lead">You don't need more output per hour. You need to stop letting the founder role eat the rest of your life — without blowing up the thing you spent a decade building.</p>
     <div class="book-about-grid">
       <div class="book-about-card">
         <h4>What it's not</h4>
-        <p>A growth playbook. An exit strategy guide. A meditation on hustle culture. A framework for squeezing more productivity out of every hour.</p>
+        <p>Not a time-management system. Not a delegation framework. Not "work smarter." Not advice to sell, quit, or take a sabbatical.</p>
       </div>
       <div class="book-about-card">
         <h4>What it is</h4>
-        <p>A blueprint for building a business that funds your life — and a brutally honest account of what it actually costs to figure out what your life is supposed to look like.</p>
+        <p>A single provable dare — leave one hour early, tell no one, write what broke — repeated until you can prove to yourself that the company runs without you in it.</p>
       </div>
       <div class="book-about-card">
         <h4>Who it's for</h4>
-        <p>Founders winning by every external metric and losing something they can't name. Anyone who's answered "once we hit the next milestone" to questions about their kids, their health, their marriage.</p>
+        <p>Founders 8–15 years in. You already won by most measures. The company works. You just can't stop working. Boris — 14 years in, 72-hour weeks, dreams of Paris. This is for him.</p>
       </div>
       <div class="book-about-card">
         <h4>What you'll leave with</h4>
-        <p>The exact sequence — messy, slow, sometimes humiliating — for finding your real identity and building a business around it. Not a framework. A practice.</p>
+        <p>One real stolen hour per week. A written map of where the company actually depends on you. The first draft of your exit from founder creep.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="book-method">
+  <div class="book-method-inner">
+    <h2>The Steal One Hour Method</h2>
+    <p class="method-sub">Ten steps. The first five build The Page — the map you'll use for the rest of your life.</p>
+    <div class="method-dare">
+      <h3>The Dare — Before Chapter One</h3>
+      <p>Leave one hour early tomorrow. Tell no one you're doing it. When you get home, write down everything that broke. Read that list. That list is the map. The book is about shrinking it to nothing.</p>
+    </div>
+    <div class="method-steps">
+      <div class="method-step">
+        <div class="step-num">Step 01</div>
+        <h4>Find your values</h4>
+        <p>Name the three things you'd refuse to give up. They become the filter for every decision in steps 2–10.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">Step 02</div>
+        <h4>Map yourself</h4>
+        <p>Draw every role you play in the company. Not the org chart — the real one. Where does the company actually need you?</p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">Step 03</div>
+        <h4>5 Whys</h4>
+        <p>Pick one role from your map. Ask why you're the one doing it, five times. The answer surprises everyone.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">Step 04</div>
+        <h4>Yes-and</h4>
+        <p>For every "I can't step back because…" — yes, and what would have to be true for that to change?</p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">Step 05</div>
+        <h4>Pick your Tuesday</h4>
+        <p>Choose the specific hour you're stealing first. Tuesday 4pm. Not "someday." The Page is now complete.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">Step 06</div>
+        <h4>Steal the next hour</h4>
+        <p>Do the dare for real. Leave. Write the list. Compare it to The Page. The gap is your work for the next 90 days.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">Step 07</div>
+        <h4>Hand off, kill, or cage</h4>
+        <p>Everything on the list gets one of three fates: someone else owns it, it doesn't happen, or it happens in a box you control.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">Step 08</div>
+        <h4>Slow reply</h4>
+        <p>Respond to half your messages the next day instead of the same hour. Track what breaks. Almost nothing does.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">Step 09</div>
+        <h4>Sit in the empty hour</h4>
+        <p>Do not fill the stolen hour with new work. The discomfort is the point — it's founder creep fighting back. Sit with it.</p>
+      </div>
+      <div class="method-step">
+        <div class="step-num">Step 10</div>
+        <h4>Leave the engine running</h4>
+        <p>Build the system that keeps the hour stolen: one weekly review, one person who can answer your question, one rule about where you are not.</p>
+      </div>
+    </div>
+    <div class="method-bonus">
+      <div class="step-num">Bonus</div>
+      <h4>Sell the right way</h4>
+      <p>If the stolen hours have taught you anything, it's that you've been building an acquirable company without knowing it. Here's how to find the buyer before you're ready to sell.</p>
     </div>
   </div>
 </section>
@@ -193,120 +290,139 @@
 <!-- CHAPTERS -->
 <section class="book-chapters">
   <div class="book-chapters-inner">
-    <h2>Inside the book</h2>
-
+    <h2>What's inside</h2>
     <div class="chapter-item">
-      <div><span class="chapter-num">Foreword</span></div>
+      <div><span class="chapter-num">The Dare</span></div>
       <div>
-        <p class="chapter-title">The Only Metric That Matters</p>
-        <p class="chapter-desc">We were sold a definition of success built around revenue, headcount, and exit multiples — none of which have anything to do with your actual life. The dirty truth about why most entrepreneurs aren't building companies. They're building prisons with great branding.</p>
+        <div class="chapter-title">Page Before Page One</div>
+        <div class="chapter-desc">Leave one hour early. Tell no one. Write what broke. Read that list. The book is about shrinking it to nothing.</div>
       </div>
     </div>
-
     <div class="chapter-item">
-      <div><span class="chapter-num">01</span></div>
+      <div><span class="chapter-num">Ch 01</span></div>
       <div>
-        <p class="chapter-title">Programmed</p>
-        <p class="chapter-desc">From Moscow to Nashua — how two countries with opposite ideologies gave one immigrant kid the exact same operating system: you are what you produce. Stop producing and you disappear. And why that wiring follows you into your calendar, your inbox, and your inability to sit still on a Tuesday afternoon without feeling like you're falling behind.</p>
+        <div class="chapter-title">Founder Creep</div>
+        <div class="chapter-desc">The founder identity expands every year until it fills every hour you have. Here's what it looks like — and how to see it in yourself.</div>
       </div>
     </div>
-
     <div class="chapter-item">
-      <div><span class="chapter-num">02</span></div>
+      <div><span class="chapter-num">Ch 02</span></div>
       <div>
-        <p class="chapter-title">The First Exit</p>
-        <p class="chapter-desc">The question nobody asks at a SaaS conference: when did you last pick up your daughter from school? How building JustReachOut cracked open the only number that actually matters — 90% of the time you'll ever spend with your kids is already gone by the time they turn eighteen.</p>
+        <div class="chapter-title">Freedom Later</div>
+        <div class="chapter-desc">The lie every founder tells themselves. "When we hit X, I'll have time." X keeps moving. It has to. This chapter names why.</div>
       </div>
     </div>
-
     <div class="chapter-item">
-      <div><span class="chapter-num">03</span></div>
+      <div><span class="chapter-num">Ch 03</span></div>
       <div>
-        <p class="chapter-title">The Great Refusal</p>
-        <p class="chapter-desc">Google acquired the startup Dmitry spent two years building to 40 million pageviews a month. Everyone signed and headed to Mountain View. He walked away. No savings. First kid on the way. No plan. Why that walk in the opposite direction was the first decision he ever made that was actually his.</p>
+        <div class="chapter-title">Your Number</div>
+        <div class="chapter-desc">Not the revenue number. The hour number. What would you do with a Tuesday afternoon if the company didn't need you? Most founders have no answer. This chapter finds it.</div>
       </div>
     </div>
-
     <div class="chapter-item">
-      <div><span class="chapter-num">04</span></div>
+      <div><span class="chapter-num">Ch 04</span></div>
       <div>
-        <p class="chapter-title">What Do You Actually Want?</p>
-        <p class="chapter-desc">In 2011 Tim Ferriss asked a question Dmitry couldn't answer. A few months later Patrick Byrne handed him a clock — six months to live, ten punches on a ticket. What happened when he finally got honest enough to answer both, and why his first reaction to his own answer was shame.</p>
+        <div class="chapter-title">The Map</div>
+        <div class="chapter-desc">Steps 1–5. Building The Page. The real org chart. The five whys. The yes-and. Pick your Tuesday. The most important document you will ever make for your company.</div>
       </div>
     </div>
-
     <div class="chapter-item">
-      <div><span class="chapter-num">05</span></div>
+      <div><span class="chapter-num">Ch 05</span></div>
       <div>
-        <p class="chapter-title">The Architecture of Enough</p>
-        <p class="chapter-desc">Two backpacks. Six months. Thailand, rural China, Tibet, the Baltics, a Stephen King audiobook in Tallinn with nowhere to be. The actual sequence — messy, slow, occasionally humiliating — that gets you from "I should probably think about this" to knowing exactly what your identity is and being able to defend it in any room.</p>
+        <div class="chapter-title">The First Exit</div>
+        <div class="chapter-desc">Step 6. The first time you actually do it. What happens when you leave early — and what doesn't. Dmitry's school pickup. The Soviet Union's best productivity hack.</div>
       </div>
     </div>
-
     <div class="chapter-item">
-      <div><span class="chapter-num">06</span></div>
+      <div><span class="chapter-num">Ch 06</span></div>
       <div>
-        <p class="chapter-title">This is Great Dmitry, But I Still Have to Make Money</p>
-        <p class="chapter-desc">Your identity won't pay the mortgage. But a soul-crushing job isn't the only other option. Real examples from real people in Dmitry's life — an OB-GYN, a military pilot, a lawyer — who repackaged what they already knew into a life that fits. Also: the exit is the money event. Everything else is just covering your costs while you build.</p>
+        <div class="chapter-title">Anxiety Work</div>
+        <div class="chapter-desc">Steps 7–8. The tasks that exist only to manage your fear. How to recognize them. What to do with them. The inbox you're maintaining for no one.</div>
       </div>
     </div>
-
     <div class="chapter-item">
-      <div><span class="chapter-num">07</span></div>
+      <div><span class="chapter-num">Ch 07</span></div>
       <div>
-        <p class="chapter-title">The Blueprint</p>
-        <p class="chapter-desc">Not every business is a getaway car — most are just jobs with worse benefits and no HR department. The exact philosophy behind building one that someone will actually pay to take off your hands: start with the exit, find your distribution partner before you build your product, educate your acquirer while you grow, design yourself out of operations from day one.</p>
+        <div class="chapter-title">The Empty Hour</div>
+        <div class="chapter-desc">Step 9. The hardest chapter. The company will not collapse. The discomfort is the point. Sit with it until it's just Tuesday afternoon.</div>
       </div>
     </div>
-
     <div class="chapter-item">
-      <div><span class="chapter-num">08</span></div>
+      <div><span class="chapter-num">Ch 08</span></div>
       <div>
-        <p class="chapter-title">The Blueprint in Action</p>
-        <p class="chapter-desc">Three businesses at three different stages — one two months old with live customers, one at 170 paying customers in its first month, one still in discovery — running the same playbook in real time as this book is being written. What the repeatable system actually looks like when it's happening.</p>
+        <div class="chapter-title">Nothing Broke</div>
+        <div class="chapter-desc">Step 10. The proof. What the list looked like after 90 days. What "leave the engine running" actually means. The system that keeps the hour stolen.</div>
       </div>
     </div>
-
     <div class="chapter-item">
-      <div><span class="chapter-num">09</span></div>
+      <div><span class="chapter-num">Ch 09</span></div>
       <div>
-        <p class="chapter-title">Finding Your Acquirer Before You Build</p>
-        <p class="chapter-desc">Most founders think about the exit at the end. That's exactly backwards. The step-by-step process for researching your acquirer before you write a single line of code — which marketplaces to use, who inside the organization to talk to, why you'll be wrong about the acquirer the first time, and why complete transparency is the most underrated advantage in any acquisition conversation.</p>
+        <div class="chapter-title">Give This to Boris</div>
+        <div class="chapter-desc">The stolen hour as gift. How to give this book to someone who won't believe it yet — and what it means when they come back and say nothing broke.</div>
       </div>
     </div>
+    <div class="chapter-item">
+      <div><span class="chapter-num">Bonus</span></div>
+      <div>
+        <div class="chapter-title">Finding Your Acquirer Before You Build</div>
+        <div class="chapter-desc">The stolen hours have been making your company acquirable all along. Here's how to find the buyer before you're ready, and why that changes everything.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- BLUEPRINT SNAPSHOT -->
+<section class="book-blueprint">
+  <div class="book-blueprint-inner">
+    <h2>The Blueprint at a Glance</h2>
+    <p class="bp-sub">The core architecture of Steal One Hour — the promise, the reader, the method.</p>
+    <div class="bp-grid">
+      <div class="bp-card">
+        <h3>The Big Problem</h3>
+        <p>Founder creep: the founder identity expands every year until it fills every hour you have. It doesn't feel like a trap. It feels like success. That's what makes it dangerous.</p>
+      </div>
+      <div class="bp-card">
+        <h3>The Villain</h3>
+        <p>"Freedom later" — the promise that keeps founders working 72-hour weeks indefinitely. When we hit $X. When we close this round. When we hire the VP. Later never arrives.</p>
+      </div>
+      <div class="bp-card">
+        <h3>The Hero</h3>
+        <p>Boris. Software company co-founder, 14 years in, 72-hour weeks, loves Paris and piano and tango and bonsai. He works every minute. He calls it dedication. The book calls it founder creep.</p>
+      </div>
+      <div class="bp-card">
+        <h3>The Unit of Change</h3>
+        <p>One hour. Not a lifestyle overhaul. Not a sabbatical. One specific hour, stolen from the company, written about, proven safe. Done once. Then again. Then it's just Tuesday.</p>
+      </div>
+      <div class="bp-card">
+        <h3>The Method</h3>
+        <p>The Dare + 10 steps + The Page. Five steps build your map. Five steps execute it. One bonus step for founders who realize the company is now worth selling.</p>
+      </div>
+      <div class="bp-card">
+        <h3>The Heaven</h3>
+        <p>Boris leaves at 4pm on a Tuesday. His phone doesn't ring. He goes to piano. The company is fine. He never knew it could be like this. This book knew it all along.</p>
+      </div>
+    </div>
+    <div class="bp-promise">
+      <h3>Central Promise</h3>
+      <p>If you do The Dare — leave one hour early, tell no one, write what broke — and nothing breaks, you will have proven to yourself that the life you wanted when you started the company is available to you right now, without selling, without quitting, without breaking anything. The book is 300 pages of that proof.</p>
+    </div>
   </div>
 </section>
 
 <!-- AUTHOR -->
 <section class="book-author">
   <div class="book-author-inner">
+    <div class="author-photo">Photo</div>
     <div>
-      <img class="book-author-photo" src="/assets/img/dmitry.jpg" alt="Dmitry Dragilev">
-    </div>
-    <div>
-      <span class="eyebrow">About the Author</span>
       <h2>Dmitry Dragilev</h2>
-      <p>Dmitry Dragilev is a serial SaaS founder who has built and sold four companies — to Google, SEOJet, and Semrush (twice, most recently in 2025 as part of Adobe's acquisition of Semrush) — while working three hours a day and being home when his kids walked through the door at 3 PM.</p>
-      <p>He's a contributor to Forbes, TechCrunch, Entrepreneur, WIRED, Moz, Mashable, and The Next Web. He founded the ZURBsoapbox speaker series, where he interviewed Tim Ferriss, Neil Patel, Guy Kawasaki, and the founders of LinkedIn, Twitter, WordPress, and Pandora.</p>
-      <p>He lives in New Hampshire with his wife and kids. He is, as of this writing, home for school pickup every single day.</p>
-      <div class="book-author-stats">
-        <div class="book-author-stat">
-          <span>4×</span>
-          <span>Acquired</span>
-        </div>
-        <div class="book-author-stat">
-          <span>3 hrs</span>
-          <span>Per day</span>
-        </div>
-        <div class="book-author-stat">
-          <span>20k+</span>
-          <span>Subscribers</span>
-        </div>
-        <div class="book-author-stat">
-          <span>500+</span>
-          <span>Companies ranked #1</span>
-        </div>
+      <p>Soviet immigrant. Turned down Google. Sold four companies. Home by 3pm for school pickup.</p>
+      <p>Dmitry built his first company while raising his sister and helping his mother get established in a new country. He learned early that there is no "later." You steal the time now or it doesn't come.</p>
+      <p>He writes about founder freedom, company-building, and ranking in AI search at <a href="https://criminallyprolific.com">criminallyprolific.com</a>. He sends a newsletter to 20,000+ founders every two weeks.</p>
+      <div class="author-stats">
+        <div class="stat"><span>4×</span><span>Acquired</span></div>
+        <div class="stat"><span>3 hrs</span><span>Average workday</span></div>
+        <div class="stat"><span>20k+</span><span>Newsletter subscribers</span></div>
+        <div class="stat"><span>500+</span><span>Companies ranked #1</span></div>
       </div>
     </div>
   </div>
@@ -315,122 +431,60 @@
 <!-- EXCERPT -->
 <section class="book-excerpt" id="excerpt">
   <div class="book-excerpt-inner">
-    <span class="eyebrow">From the Foreword</span>
-    <h2>The Only Metric That Matters</h2>
+    <span class="eyebrow">From the opening pages</span>
+    <h2>Page Before Page One</h2>
     <div class="book-excerpt-text">
-      <p>Let me ask you something before we go any further.</p>
-      <p>When was the last time you sat at dinner with your kids — actually sat there, phone face-down, not mentally drafting a reply to the Slack message you just felt buzz in your pocket — and thought: <em>this is exactly where I want to be?</em></p>
-      <p>I'm not asking to judge you. I'm asking because I spent years not being able to answer it. I was too busy. Too "on." Too convinced that the next milestone — the next MRR target, the next product launch, the next acquisition conversation — would be the one that finally gave me permission to show up for my own life.</p>
-      <p>It didn't.</p>
-      <p><strong>Here's the dirty truth about the world you and I were sold: most entrepreneurs aren't building companies. They're building prisons with great branding.</strong> The cell is lined with pitch decks and Notion docs and "quick syncs" that eat your Tuesday alive. The warden is a culture that has decided your exhaustion is a virtue signal.</p>
-      <p>Clayton Christensen — Harvard Business School professor, author of The Innovator's Dilemma — watched his classmates from the Class of '79 across decades of reunions. Not a single one had planned to end up estranged from their kids or hollowed out behind their success. They just kept allocating time and energy toward whatever gave the fastest, most measurable return.</p>
-      <p>Work does that. Work gives you feedback. It closes loops. It lets you feel like you're winning.</p>
-      <p>A three-year-old who needs you to sit on the floor and play doesn't give you feedback. She just needs you there. And if you're not, she doesn't file a complaint. She just learns, slowly, quietly, what to expect from you.</p>
-      <p><strong>I did not want to be the founder who learned that lesson too late.</strong></p>
-      <p>I call what I built the Getaway Car — because the whole point was never to get rich in the Jack Welch sense. The point was to get free. Free enough to be at school pickup. Free enough to deal with your health before a doctor makes it urgent. Free enough to actually show up for the people you keep meaning to call back.</p>
-      <p><em>Everything else is infrastructure for that. Let's build it.</em></p>
+      <p>Here is a number: the number of Tuesdays you have left before you turn 80.</p>
+      <p>If you are 45, that is about 1,820 Tuesdays. <strong>How many of them belong to you right now?</strong></p>
+      <p>Not to the company. Not to the inbox. Not to the thing-that-needs-you-or-it-won't-happen. How many Tuesdays are yours?</p>
+      <p>Most founders, when they do this math, go quiet for a moment. Then they go back to work.</p>
+      <p>This book is about the moment after the quiet.</p>
+      <p>Tomorrow — before you read chapter one — I want you to do one thing: <strong>leave one hour early. Tell no one you're doing it.</strong> When you get home, write down everything that broke.</p>
+      <p>Then read the list.</p>
+      <p>That list is the map. <strong>Everything in this book is about shrinking it to nothing.</strong></p>
+      <div class="ex-sig">— Dmitry Dragilev, Steal One Hour</div>
     </div>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section class="book-final-cta">
-  <div class="container">
-    <h2>Get notified when it launches.</h2>
-    <p>Sign up for the newsletter and you'll be the first to know — plus get the exact playbook Dmitry used to build and sell four companies on 3 hours a day.</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="/signup/" class="btn-book-primary">Join 20,000+ subscribers →</a>
-      <a href="/dmitry/" style="display:inline-flex;align-items:center;gap:8px;padding:16px 28px;font-size:15px;font-weight:700;color:#111;border:2px solid #ddd;border-radius:4px;transition:all .15s;">Learn about Dmitry →</a>
-    </div>
+  <h2>Join the challenge.</h2>
+  <p>Get notified when the book launches — plus the one-page Dare you can run this week.</p>
+  <div class="book-ctas" style="justify-content:center;">
+    <a href="/signup/" class="btn-primary">I'm in — notify me</a>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
+<footer>
   <div class="footer-inner">
-    <!-- Col 1: About -->
-    <div class="footer-about">
-      <div class="footer-photo-row">
-        <img src="/assets/img/dmitry.jpg" alt="Dmitry Dragilev" class="footer-photo">
-        <a href="/" class="footer-logo">Criminally Prolific</a>
-      </div>
-      <p class="footer-bio">I'm Dmitry Dragilev — multi-exit founder who sold 4 companies to Google, Semrush, and Adobe working 3 hours a day. I write about building businesses for lifestyle freedom, not a golden cage.</p>
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/in/dmitrydragilev/" target="_blank">LinkedIn</a>
-        <a href="/signup/">Newsletter</a>
-        <a href="/book/">New Book</a>
-      </div>
-    </div>
-    <!-- Col 2: Companies -->
     <div class="footer-col">
       <h4>Companies</h4>
-      <ul>
-        <li><a href="https://www.semrush.com/apps/llm-gap-analyzer/" target="_blank">LLM Gap Analyzer</a></li>
-        <li><a href="https://www.semrush.com/apps/youtube-gap-analyzer/" target="_blank">YouTube Gap Analyzer</a></li>
-        <li><a href="https://irsresolutionservice.com/" target="_blank">IRS Resolution Service</a></li>
-        <li><a href="https://www.semrush.com/apps/serp-gap-analyzer/" target="_blank">SERP Gap Analyzer <span class="acq-tag">— Acquired</span></a></li>
-        <li><a href="https://justreachout.io" target="_blank">JustReachOut <span class="acq-tag">— Acquired</span></a></li>
-        <li><a href="https://smallbiz.tools" target="_blank">Smallbiz.Tools <span class="acq-tag">— Acquired</span></a></li>
-        <li><a href="https://thenextweb.com/news/took-startup-0-40m-pageviews-got-acquired-google" target="_blank">Polar Polls <span class="acq-tag">— Acquired by Google</span></a></li>
-      </ul>
+      <a href="https://justreach.com">JustReachOut</a>
+      <a href="https://topicranker.com">TopicRanker</a>
+      <a href="https://smallbiz.tools">SmallBiz.Tools</a>
     </div>
-    <!-- Col 3: PR & Growth -->
     <div class="footer-col">
       <h4>PR &amp; Growth</h4>
-      <ul>
-        <li><a href="/how-to-pitch-journalists/">How to Pitch Journalists</a></li>
-        <li><a href="/pr-pitch-angles/">PR Pitch Angles</a></li>
-        <li><a href="/pr-for-startups/">PR for Startups</a></li>
-        <li><a href="/saas-pr/">SaaS PR Guide</a></li>
-        <li><a href="/do-your-own-pr/">Do Your Own PR</a></li>
-        <li><a href="/media-relations-strategy/">Media Relations Strategy</a></li>
-        <li><a href="/marketing-communications-strategy/">Marketing Comms Strategy</a></li>
-        <li><a href="/media-list-examples/">Media List Examples</a></li>
-        <li><a href="/company-boilerplate/">Company Boilerplate</a></li>
-        <li><a href="/growth-hacking/">Growth Hacking</a></li>
-        <li><a href="/50-growth-hacking-tools/">50 Growth Hacking Tools</a></li>
-        <li><a href="/press-release-email/">Press Release Email</a></li>
-        <li><a href="/pitch-sell-your-app/">How to Pitch &amp; Sell Your App</a></li>
-        <li><a href="/waste-money-on-facebook-ads/">Stop Wasting Money on Facebook Ads</a></li>
-        <li><a href="/convert-website-visitors/">Convert Website Visitors</a></li>
-      </ul>
+      <a href="/newsletter/">Newsletter</a>
+      <a href="/pr-tools/">PR Tools</a>
+      <a href="/blog/">Blog</a>
     </div>
-    <!-- Col 4: Email & SEO -->
     <div class="footer-col">
       <h4>Email &amp; SEO</h4>
-      <ul>
-        <li><a href="/cold-email-example/">Cold Email Examples</a></li>
-        <li><a href="/email-pitch-tips/">Email Pitch Tips</a></li>
-        <li><a href="/business-email-templates/">Business Email Templates</a></li>
-        <li><a href="/sales-email-sequences/">Sales Email Sequences</a></li>
-        <li><a href="/gmail-mail-merge/">Gmail Mail Merge</a></li>
-        <li><a href="/find-anyones-email/">Find Anyone's Email</a></li>
-        <li><a href="/email-signatures/">Email Signatures</a></li>
-        <li><a href="/email-signoffs/">Email Sign-offs</a></li>
-        <li><a href="/how-to-ask-for-business-in-an-email/">How to Ask for Business</a></li>
-        <li><a href="/how-to-rank-higher-on-google/">Rank Higher on Google</a></li>
-        <li><a href="/optimize-for-google-rankbrain/">Optimize for RankBrain</a></li>
-        <li><a href="/ranking-high-volume-keyword/">High-Volume Keywords</a></li>
-        <li><a href="/low-search-volume-keywords/">Low Search Volume Keywords</a></li>
-        <li><a href="/grow-email-list/">Grow Your Email List</a></li>
-        <li><a href="/grow-email-subscribers/">Grow Email Subscribers</a></li>
-      </ul>
+      <a href="/email-outreach/">Email Outreach</a>
+      <a href="/seo-tips/">SEO Tips</a>
+      <a href="/media-list/">Media List</a>
+    </div>
+    <div class="footer-col">
+      <h4>Book</h4>
+      <a href="/book/">Steal One Hour</a>
+      <a href="/book/#excerpt">Read an Excerpt</a>
+      <a href="/signup/">Join Waitlist</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div class="footer-bottom-inner">
-      <p class="footer-copy">© 2026 Criminally Prolific LLC. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms-of-use/">Terms of Use</a>
-        <a href="/contact/">Contact</a>
-        <a href="/sitemap/">Sitemap</a>
-      </div>
-      <img src="/assets/img/logo-footer.png" alt="Criminally Prolific" class="footer-circular-logo">
-    </div>
-  </div>
+  <div class="footer-bottom">© 2026 Dmitry Dragilev · criminallyprolific.com</div>
 </footer>
-
 
 </body>
 </html>
