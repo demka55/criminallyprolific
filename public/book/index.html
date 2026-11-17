@@ -9,17 +9,13 @@
 <meta property="og:description" content="How founders who already won get their lives back without selling, quitting, or breaking the company.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="stylesheet" href="/assets/css/main.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', sans-serif; color: #111; background: #fff; line-height: 1.7; }
   a { color: inherit; text-decoration: none; }
 
-  /* NAV */
-  nav { background: #fff; border-bottom: 1.5px solid #eee; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; max-width: 100%; }
-  .nav-logo { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #111; }
-  .nav-links { display: flex; gap: 2rem; font-size: 13px; font-weight: 600; color: #444; letter-spacing: 0.03em; }
-  .nav-links a:hover { color: #0033ff; }
-  .nav-links a.active { color: #0033ff; }
 
   /* HERO */
   .book-hero { background: #fff; padding: 80px 0; border-bottom: 1.5px solid #eee; }
@@ -137,22 +133,40 @@
     .book-about-grid { grid-template-columns: 1fr; }
     .book-author-inner { grid-template-columns: 1fr; }
     .method-steps { grid-template-columns: 1fr; }
-    nav { padding: 0 20px; }
     .book-hero-inner, .book-about-inner, .book-chapters-inner, .book-blueprint-inner, .book-author-inner, .book-excerpt-inner { padding: 0 20px; }
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo"><a href="/">Criminally Prolific</a></div>
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/assets/img/favicon.png" alt="">
+    Criminally Prolific
+  </a>
   <div class="nav-links">
-    <a href="/newsletter/">Newsletter</a>
-    <a href="/pr-tools/">Tools</a>
-    <a href="/book/" class="active">Book</a>
-    <a href="/about/">About</a>
+    <a href="/dmitry/">About</a>
+    <a href="/#interviews">Interviews</a>
+    <a href="/book/">Book</a>
+    <a href="/blog/">Blog</a>
+    <a href="/testimonials/">Testimonials</a>
+    <a href="/press/">Press</a>
+    <a href="/contact/">Contact</a>
+    <a href="/signup/" class="nav-cta">Free Newsletter</a>
   </div>
+  <button class="nav-hamburger" onclick="document.getElementById('navMobile').classList.toggle('open')" aria-label="Menu">&#9776;</button>
 </nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="/dmitry/">About</a>
+  <a href="/#interviews">Interviews</a>
+  <a href="/book/">Book</a>
+  <a href="/blog/">Blog</a>
+  <a href="/testimonials/">Testimonials</a>
+  <a href="/press/">Press</a>
+  <a href="/contact/">Contact</a>
+  <a href="/signup/" class="nav-cta">Free Newsletter</a>
+</div>
 
 <!-- HERO -->
 <section class="book-hero">
