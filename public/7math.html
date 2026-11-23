@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>7th Grade Math Tutor — Proportions, Percents &amp; Equations (10 Weeks)</title>
+<meta name="description" content="A free 10-week 7th grade math program with a built-in tutor bot: proportional relationships, percents, and expressions, equations and inequalities. Unlimited practice problems with step-by-step hints.">
+<style>
+/* ============================================================
+   7th Grade Math Tutor — single-file, no dependencies.
+   All styles are scoped under .cp7 so this can be dropped into
+   an existing site without colliding with your theme.
+   ============================================================ */
+.cp7 *,.cp7 *::before,.cp7 *::after{box-sizing:border-box}
+.cp7{
+  --ink:#1b1a18;--soft:#5c5751;--faint:#8b857c;
+  --paper:#fbf9f6;--card:#ffffff;--line:#e5e0d7;--line2:#f1ede6;
+  --a:#2d55c9;--ab:#eef1fd;
+  --a1:#2d55c9;--a1b:#eef1fd;
+  --a2:#b0580c;--a2b:#fdf2e6;
+  --a3:#156e63;--a3b:#e7f4f1;
+  --good:#166b3d;--goodb:#e8f4ec;
+  --bad:#a7301a;--badb:#fcebe6;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family:var(--sans);
+  color:var(--ink);background:var(--paper);
+  line-height:1.62;-webkit-font-smoothing:antialiased;
+  max-width:1120px;margin:0 auto;padding:28px 20px 72px;
+  font-size:17px;
+}
+.cp7 h1,.cp7 h2,.cp7 h3,.cp7 h4{line-height:1.22;margin:0;font-weight:700;letter-spacing:-.015em}
+.cp7 p{margin:0 0 1em}
+.cp7 p:last-child{margin-bottom:0}
+.cp7 a{color:var(--a);text-decoration:underline;text-underline-offset:2px}
+.cp7 b,.cp7 strong{font-weight:680}
+.cp7 ul,.cp7 ol{margin:0 0 1em;padding-left:1.35em}
+.cp7 li{margin:.3em 0}
+.cp7 code,.cp7 .m{font-family:var(--mono);font-size:.94em;background:var(--line2);padding:.12em .36em;border-radius:4px;white-space:nowrap}
+.cp7 .m.big{font-size:1.12em;padding:.2em .45em}
+.cp7 .nowrap{white-space:nowrap}
+
+/* ---------- hero ---------- */
+.cp7 .hero{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px}
+.cp7 .kicker{font-size:12.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);font-weight:650;margin:0 0 10px}
+.cp7 .hero h1{font-size:clamp(28px,4.6vw,42px);margin-bottom:12px}
+.cp7 .hero .sub{font-size:clamp(16px,2vw,19px);color:var(--soft);max-width:62ch}
+.cp7 details.guide{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0}
+.cp7 details.guide summary{cursor:pointer;padding:12px 16px;font-weight:650;font-size:15px;list-style:none}
+.cp7 details.guide summary::-webkit-details-marker{display:none}
+.cp7 details.guide summary::before{content:"▸ ";color:var(--faint)}
+.cp7 details.guide[open] summary::before{content:"▾ "}
+.cp7 details.guide .gbody{padding:2px 16px 16px;font-size:15.5px;color:var(--soft);border-top:1px solid var(--line2)}
+.cp7 details.guide .gbody p{margin-top:12px}
+
+/* ---------- overall progress ---------- */
+.cp7 .progwrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+.cp7 .dots{display:flex;gap:5px}
+.cp7 .dot{width:22px;height:8px;border-radius:99px;background:var(--line);transition:background .2s}
+.cp7 .dot.on{background:var(--good)}
+.cp7 .progtxt{font-size:14px;color:var(--soft);font-variant-numeric:tabular-nums}
+.cp7 .reset{font-size:13px;color:var(--faint);background:none;border:none;padding:4px 2px;cursor:pointer;text-decoration:underline;font-family:inherit}
+.cp7 .reset:hover{color:var(--bad)}
+
+/* ---------- week nav ---------- */
+.cp7 .unitrow{margin-bottom:22px}
+.cp7 .unitlab{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:650;color:var(--faint);margin:0 0 9px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.cp7 .unitlab .ilm{text-transform:none;letter-spacing:0;font-weight:500;color:var(--faint);font-size:12.5px}
+.cp7 .wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:9px}
+.cp7 .wbtn{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;font-family:inherit;font-size:15px;color:var(--ink);transition:border-color .15s,box-shadow .15s,transform .08s;position:relative}
+.cp7 .wbtn:hover{border-color:var(--c);box-shadow:0 1px 0 var(--c)}
+.cp7 .wbtn:active{transform:translateY(1px)}
+.cp7 .wbtn.sel{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c);background:var(--cb)}
+.cp7 .wbtn .wn{display:block;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:680;color:var(--c);margin-bottom:2px}
+.cp7 .wbtn .wt{display:block;font-weight:600;line-height:1.3;font-size:14.5px}
+.cp7 .wbtn .chk{position:absolute;top:9px;right:10px;color:var(--good);font-size:14px;font-weight:700;opacity:0}
+.cp7 .wbtn.done .chk{opacity:1}
+
+/* ---------- week panel ---------- */
+.cp7 .panel{border-top:1px solid var(--line);padding-top:26px}
+.cp7 .phead{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:6px}
+.cp7 .phead .tag{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:680;color:var(--c)}
+.cp7 .phead h2{font-size:clamp(22px,3.2vw,30px);margin:4px 0 0}
+.cp7 .phead .cal{font-size:14px;color:var(--faint);white-space:nowrap;padding-top:4px}
+.cp7 .goals{background:var(--cb);border:1px solid var(--line);border-left:3px solid var(--c);border-radius:0 10px 10px 0;padding:14px 18px;margin:18px 0 26px}
+.cp7 .goals h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--c);margin-bottom:6px}
+.cp7 .goals ul{margin:0;padding-left:1.2em;font-size:15.5px}
+
+.cp7 .lesson{max-width:74ch}
+.cp7 .lesson h3{font-size:19px;margin:30px 0 10px}
+.cp7 .lesson h4{font-size:16px;margin:22px 0 6px}
+.cp7 .lesson>:first-child{margin-top:0}
+
+.cp7 .callout{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:20px 0}
+.cp7 .callout.key{background:var(--cb);border-color:var(--c)}
+.cp7 .callout.warn{background:#fdf7e8;border-color:#e2c77e}
+.cp7 .callout .cl{font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-weight:680;color:var(--c);display:block;margin-bottom:6px}
+.cp7 .callout.warn .cl{color:#8a6410}
+.cp7 .callout p:last-child{margin-bottom:0}
+
+.cp7 table.t{border-collapse:collapse;margin:14px 0;font-variant-numeric:tabular-nums;background:var(--card);font-size:15.5px}
+.cp7 table.t th,.cp7 table.t td{border:1px solid var(--line);padding:7px 14px;text-align:center}
+.cp7 table.t th{background:var(--line2);font-weight:650;font-size:14px}
+.cp7 table.t td.q{color:var(--bad);font-weight:700}
+.cp7 table.ref{border-collapse:collapse;margin:16px 0;background:var(--card);font-size:15.5px;width:100%}
+.cp7 table.ref th,.cp7 table.ref td{border:1px solid var(--line);padding:9px 13px;text-align:left;vertical-align:top}
+.cp7 table.ref th{background:var(--line2);font-weight:650;font-size:14px}
+
+.cp7 .frac{display:inline-flex;flex-direction:column;vertical-align:-.55em;text-align:center;font-size:.92em;line-height:1.15;margin:0 .12em;font-family:var(--mono)}
+.cp7 .frac>span:first-child{border-bottom:1.4px solid currentColor;padding:0 .3em}
+.cp7 .frac>span:last-child{padding:0 .3em}
+
+/* worked examples */
+.cp7 .exwrap{margin:26px 0 8px}
+.cp7 .exwrap h3{font-size:19px;margin-bottom:12px}
+.cp7 details.ex{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.cp7 details.ex summary{cursor:pointer;padding:13px 16px;font-weight:600;list-style:none;display:flex;gap:10px;align-items:flex-start;font-size:16px}
+.cp7 details.ex summary::-webkit-details-marker{display:none}
+.cp7 details.ex summary .exn{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--c);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:3px}
+.cp7 details.ex .steps{padding:4px 16px 16px 48px;border-top:1px solid var(--line2);font-size:16px}
+.cp7 details.ex .steps ol{padding-left:1.3em;margin:12px 0 0}
+.cp7 details.ex .steps li{margin:.45em 0}
+.cp7 details.ex .ansline{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-weight:650;color:var(--good)}
+.cp7 .hintopen{font-size:13.5px;color:var(--faint);font-weight:500}
+
+/* ---------- tutor bot ---------- */
+.cp7 .bot{margin:34px 0 0;border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.cp7 .bothead{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--cb)}
+.cp7 .botav{width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px;flex:0 0 auto}
+.cp7 .botname{font-weight:680;font-size:16px}
+.cp7 .botname small{display:block;font-weight:500;font-size:13px;color:var(--soft)}
+.cp7 .botscore{margin-left:auto;font-size:14px;color:var(--soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cp7 .skillrow{display:flex;gap:7px;flex-wrap:wrap;padding:12px 18px;border-bottom:1px solid var(--line2);background:#fdfcfa}
+.cp7 .chip{font-family:inherit;font-size:13.5px;padding:5px 11px;border-radius:99px;border:1px solid var(--line);background:var(--card);cursor:pointer;color:var(--soft);transition:all .14s}
+.cp7 .chip:hover{border-color:var(--c);color:var(--c)}
+.cp7 .chip.on{background:var(--c);border-color:var(--c);color:#fff;font-weight:600}
+.cp7 .log{padding:18px;max-height:none;display:flex;flex-direction:column;gap:14px}
+.cp7 .msg{display:flex;gap:11px;align-items:flex-start;animation:cpin .22s ease-out}
+@keyframes cpin{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.cp7 .msg .av{flex:0 0 auto;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:2px}
+.cp7 .msg.bot .av{background:var(--c);color:#fff}
+.cp7 .msg.me{flex-direction:row-reverse}
+.cp7 .msg.me .av{background:var(--line);color:var(--soft)}
+.cp7 .bub{border-radius:12px;padding:11px 15px;max-width:min(62ch,88%);font-size:16px}
+.cp7 .msg.bot .bub{background:var(--line2);border-top-left-radius:3px}
+.cp7 .msg.me .bub{background:var(--a);color:#fff;border-top-right-radius:3px;font-variant-numeric:tabular-nums}
+.cp7 .msg.bot .bub.ok{background:var(--goodb);box-shadow:inset 0 0 0 1px #bfe0cb}
+.cp7 .msg.bot .bub.no{background:var(--badb);box-shadow:inset 0 0 0 1px #f2cdc3}
+.cp7 .bub p{margin:0 0 .6em}
+.cp7 .bub p:last-child{margin-bottom:0}
+.cp7 .bub table.t{margin:10px 0 4px;background:#fff}
+.cp7 .bub ul.rl{margin:8px 0 0;padding-left:1.25em;font-family:var(--mono);font-size:14.5px}
+.cp7 .bub ol{margin:8px 0 0}
+.cp7 .bub .lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:680;color:var(--soft);display:block;margin-bottom:5px}
+.cp7 .choices{display:flex;flex-direction:column;gap:7px;margin-top:11px}
+.cp7 .cbtn{font-family:inherit;font-size:15.5px;text-align:left;padding:9px 13px;border:1px solid var(--line);background:#fff;border-radius:9px;cursor:pointer;color:var(--ink);transition:all .14s;line-height:1.4}
+.cp7 .cbtn:hover:not(:disabled){border-color:var(--c);background:var(--cb)}
+.cp7 .cbtn:disabled{cursor:default;opacity:.55}
+.cp7 .cbtn.pickedY{border-color:var(--good);background:var(--goodb);opacity:1}
+.cp7 .cbtn.pickedN{border-color:var(--bad);background:var(--badb);opacity:1}
+.cp7 .cbtn svg{display:block;margin:0 auto}
+.cp7 .choices.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.cp7 .botfoot{border-top:1px solid var(--line);padding:14px 18px;background:#fdfcfa}
+.cp7 .inrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cp7 .inrow input[type=text]{flex:1 1 180px;min-width:0;font-family:var(--mono);font-size:17px;padding:10px 13px;border:1.5px solid var(--line);border-radius:9px;background:#fff;color:var(--ink)}
+.cp7 .inrow input[type=text]:focus{outline:none;border-color:var(--c);box-shadow:0 0 0 3px var(--cb)}
+.cp7 .btn{font-family:inherit;font-size:15px;font-weight:600;padding:10px 17px;border-radius:9px;border:1.5px solid var(--c);background:var(--c);color:#fff;cursor:pointer;transition:filter .14s}
+.cp7 .btn:hover{filter:brightness(1.1)}
+.cp7 .btn.ghost{background:#fff;color:var(--c)}
+.cp7 .btn.ghost:hover{background:var(--cb);filter:none}
+.cp7 .btn.plain{background:#fff;color:var(--soft);border-color:var(--line)}
+.cp7 .btn.plain:hover{color:var(--ink);border-color:var(--soft);filter:none}
+.cp7 .btn.sm{font-size:13.5px;padding:7px 12px;border-radius:8px}
+.cp7 .toolrow{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.cp7 .typehint{font-size:13px;color:var(--faint);margin-top:9px}
+.cp7 .askai{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+
+/* week footer */
+.cp7 .wfoot{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+.cp7 .wfoot .spacer{flex:1 1 auto}
+.cp7 .donelab{font-size:15px;color:var(--good);font-weight:650}
+
+.cp7 .ftr{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-size:14.5px;color:var(--faint)}
+.cp7 .ftr p{margin-bottom:.7em}
+
+.cp7 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (max-width:620px){
+  .cp7{font-size:16.5px;padding:20px 15px 56px}
+  .cp7 .bub{max-width:100%}
+  .cp7 .log{padding:14px}
+  .cp7 details.ex .steps{padding-left:16px}
+  .cp7 .wgrid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+}
+
+@media print{
+  .cp7 .weeknav,.cp7 .bot,.cp7 .progwrap,.cp7 .wfoot,.cp7 details.guide{display:none!important}
+  .cp7 details.ex{break-inside:avoid}
+  .cp7 details.ex .steps{display:block!important}
+  .cp7{max-width:none;font-size:12pt;padding:0}
+  .cp7 .panel{border:none;padding-top:0}
+}
+</style>
+</head>
+<body>
+
+<div class="cp7" id="cp7">
+
+  <header class="hero">
+    <p class="kicker">10-week program · 7th grade math</p>
+    <h1>Proportions, Percents &amp; Equations</h1>
+    <p class="sub">Ten weeks of lessons, worked examples, and a tutor bot that makes up unlimited practice problems and walks you through the ones you miss. Covers ILM Units 2, 4, and 6.</p>
+
+    <details class="guide">
+      <summary>How to use this page</summary>
+      <div class="gbody">
+        <p><b>One week at a time.</b> Read the lesson, open the worked examples and try each one before looking at the steps, then work with the tutor bot until you get about ten right. That's a week.</p>
+        <p><b>The bot is a tutor, not an answer key.</b> Type an answer and it tells you if you're right. Miss it and you get a nudge first, then a bigger hint, then the full solution — in that order, so you get a chance to catch your own mistake.</p>
+        <p><b>Your progress saves automatically</b> in this browser, so you can close the page and come back. All ten weeks are unlocked from day one — skip around if you want to review.</p>
+        <p><b>Answers can be typed as decimals or fractions.</b> <span class="m">0.75</span>, <span class="m">3/4</span>, and <span class="m">.75</span> all count as the same answer. Dollar signs and percent signs are ignored, so <span class="m">$12.50</span> and <span class="m">12.5</span> both work.</p>
+        <p><b>Printing:</b> use your browser's print command and you'll get the open week's lesson and worked examples as a clean worksheet, with the bot and navigation stripped out.</p>
+      </div>
+    </details>
+
+    <div class="progwrap">
+      <div class="dots" id="dots" aria-hidden="true"></div>
+      <span class="progtxt" id="progtxt">0 of 10 weeks finished</span>
+      <button class="reset" id="resetbtn" type="button">reset progress</button>
+    </div>
+  </header>
+
+  <nav class="weeknav" id="weeknav" aria-label="Weeks"></nav>
+
+  <main id="panel" class="panel" aria-live="polite"></main>
+
+  <footer class="ftr">
+    <p>Built for one 7th grader and shared in case it helps yours. Problems are generated fresh every time, so the practice never runs out.</p>
+  </footer>
+
+</div>
+
+<script>
+/* ============================================================
+   PART 1 — helpers, answer parsing, SVG renderers, progress store
+   ============================================================ */
+(function(){
+"use strict";
+
+/* ---------- random + number formatting ---------- */
+function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+function ri(a,b){ return a + Math.floor(Math.random()*(b-a+1)); }
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function r2(n){ return Math.round(n*100)/100; }
+function r4(n){ return Math.round(n*10000)/10000; }
+
+/* fmt: 3 -> "3", 2.5 -> "2.5", 0.3333 -> "0.3333" (trailing zeros trimmed) */
+function fmt(n){
+  if(n===null||n===undefined||isNaN(n)) return "?";
+  /* a real minus sign, so "−x − 6 = −8" doesn't mix glyphs mid-line.
+     every parser below normalizes it back to "-" before reading it. */
+  return (Math.round(n*10000)/10000).toString().replace("-","−");
+}
+function money(n){ return (Math.round(n*100)/100).toFixed(2); }
+function pct(n){ return fmt(Math.round(n*100)/100); }
+/* signed term, e.g. sgn(-3) -> " − 3" for display */
+function sgn(n){ return (n<0 ? " − " : " + ") + fmt(Math.abs(n)); }
+/* same, but a zero term disappears instead of showing " + 0" */
+function sgnZ(n){ return n===0 ? "" : sgn(n); }
+/* coefficient in front of a variable: 1x -> x, -1x -> -x */
+function co(n,v){
+  if(n===1) return v;
+  if(n===-1) return "−"+v;
+  return fmt(n)+v;
+}
+/* nice fraction string for a decimal, if one exists with denominator <= 20 */
+function asFrac(n){
+  if(Number.isInteger(n)) return fmt(n);
+  for(var d=2;d<=20;d++){
+    var num = n*d;
+    if(Math.abs(num-Math.round(num))<1e-9){
+      num = Math.round(num);
+      var g = gcd(Math.abs(num),d);
+      return fmt(num/g)+"/"+(d/g);
+    }
+  }
+  return fmt(n);
+}
+function gcd(a,b){ while(b){ var t=b; b=a%b; a=t; } return a||1; }
+/* fraction as stacked html */
+function fracHTML(a,b){ return '<span class="frac"><span>'+a+'</span><span>'+b+'</span></span>'; }
+
+/* ---------- answer parsing ---------- */
+/* Accepts: 12  -3.5  .75  3/4  -2/3  $12.50  15%  1,200  2 1/2 */
+function parseNum(raw){
+  if(raw===null||raw===undefined) return NaN;
+  var s = String(raw).trim().toLowerCase();
+  s = s.replace(/[−–—]/g,"-").replace(/[$,%\s]/g,"").replace(/^=+/,"");
+  if(!s) return NaN;
+  // mixed number like 2-1/2 after space removal becomes 21/2, so handle "2 1/2" before stripping:
+  var mixed = String(raw).trim().match(/^(-?\d+)\s+(\d+)\s*\/\s*(\d+)$/);
+  if(mixed){
+    var whole = parseFloat(mixed[1]);
+    var f = parseFloat(mixed[2])/parseFloat(mixed[3]);
+    return whole < 0 ? whole - f : whole + f;
+  }
+  if(/^-?\d*\.?\d+\/-?\d*\.?\d+$/.test(s)){
+    var p = s.split("/");
+    var den = parseFloat(p[1]);
+    if(den===0) return NaN;
+    return parseFloat(p[0])/den;
+  }
+  if(!/^-?\d*\.?\d+$/.test(s)) return NaN;
+  var v = parseFloat(s);
+  return isNaN(v) ? NaN : v;
+}
+function near(a,b,tol){ if(isNaN(a)) return false; return Math.abs(a-b) <= (tol===undefined?1e-6:tol); }
+
+/* Parse a linear expression into {varName:coeff, ...,"":constant}
+   Handles: 5x+3   3-2x   -x   0.5x-2   2/3x+1   7a-4b+2  */
+function parseLinear(raw){
+  if(raw===null||raw===undefined) return null;
+  var s = String(raw).toLowerCase();
+  s = s.replace(/[−–—]/g,"-").replace(/\s+/g,"").replace(/\*/g,"").replace(/^y=/,"");
+  if(!s) return null;
+  if(!/^[-+0-9a-z./]+$/.test(s)) return null;
+  var terms = s.match(/[+-]?[^+-]+/g);
+  if(!terms) return null;
+  var map = {};
+  for(var i=0;i<terms.length;i++){
+    var t = terms[i];
+    var m = t.match(/^([+-]?)((?:\d+(?:\.\d+)?)?(?:\/\d+(?:\.\d+)?)?)([a-z]?)$/);
+    if(!m) return null;
+    var sign = m[1]==="-" ? -1 : 1;
+    var numStr = m[2], v = m[3] || "";
+    var val;
+    if(numStr===""){ if(v==="") return null; val = 1; }
+    else if(numStr.indexOf("/")>=0){
+      var p = numStr.split("/");
+      if(p[0]===""||p[1]===""||parseFloat(p[1])===0) return null;
+      val = parseFloat(p[0])/parseFloat(p[1]);
+    } else val = parseFloat(numStr);
+    if(isNaN(val)) return null;
+    map[v] = (map[v]||0) + sign*val;
+  }
+  return map;
+}
+/* Do two linear expressions match? "5x+11" vs "11+5x" -> true */
+function linearEq(a,b){
+  var A = parseLinear(a), B = parseLinear(b);
+  if(!A||!B) return false;
+  var keys = {};
+  for(var k in A) keys[k]=1;
+  for(var k2 in B) keys[k2]=1;
+  for(var k3 in keys){ if(Math.abs((A[k3]||0)-(B[k3]||0)) > 1e-9) return false; }
+  return true;
+}
+
+/* ---------- small html builders ---------- */
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function tableHTML(xs, ys, xl, yl, qIndex){
+  var h = '<table class="t"><tr><th>'+esc(xl)+'</th>';
+  for(var i=0;i<xs.length;i++) h += '<td>'+(xs[i]===null?'<span class="q">?</span>':fmt(xs[i]))+'</td>';
+  h += '</tr><tr><th>'+esc(yl)+'</th>';
+  for(var j=0;j<ys.length;j++){
+    var isQ = (qIndex!==undefined && j===qIndex) || ys[j]===null;
+    h += '<td'+(isQ?' class="q"':'')+'>'+(isQ?'?':fmt(ys[j]))+'</td>';
+  }
+  return h + '</tr></table>';
+}
+function M(s){ return '<span class="m">'+s+'</span>'; }
+
+/* ---------- SVG: coordinate graph ---------- */
+/* opts: {k, b, curve:'quad'|'flat', pts:[[x,y,label]], max, size, xl, yl} */
+function graphSVG(o){
+  o = o||{};
+  var S = o.size||200, max = o.max||10, pad = 30, right = 12;
+  var span = S - pad - right;
+  var sx = function(v){ return pad + (v/max)*span; };
+  var sy = function(v){ return (S-pad) - (v/max)*span; };
+  var step = max<=6?1:(max<=12?2:5);
+  var g = '<svg viewBox="0 0 '+S+' '+S+'" width="100%" style="max-width:'+S+'px" role="img" aria-label="coordinate graph">';
+  g += '<rect x="0" y="0" width="'+S+'" height="'+S+'" fill="#fff"/>';
+  for(var v=0;v<=max;v+=step){
+    g += '<line x1="'+sx(v)+'" y1="'+sy(0)+'" x2="'+sx(v)+'" y2="'+sy(max)+'" stroke="#eceade" stroke-width="1"/>';
+    g += '<line x1="'+sx(0)+'" y1="'+sy(v)+'" x2="'+sx(max)+'" y2="'+sy(v)+'" stroke="#eceade" stroke-width="1"/>';
+  }
+  // axes
+  g += '<line x1="'+sx(0)+'" y1="'+sy(0)+'" x2="'+(sx(max)+6)+'" y2="'+sy(0)+'" stroke="#8b857c" stroke-width="1.4"/>';
+  g += '<line x1="'+sx(0)+'" y1="'+sy(0)+'" x2="'+sx(0)+'" y2="'+(sy(max)-6)+'" stroke="#8b857c" stroke-width="1.4"/>';
+  // tick labels
+  for(var v2=0;v2<=max;v2+=step){
+    g += '<text x="'+sx(v2)+'" y="'+(sy(0)+14)+'" font-size="9" fill="#8b857c" text-anchor="middle" font-family="sans-serif">'+v2+'</text>';
+    if(v2>0) g += '<text x="'+(sx(0)-6)+'" y="'+(sy(v2)+3.5)+'" font-size="9" fill="#8b857c" text-anchor="end" font-family="sans-serif">'+v2+'</text>';
+  }
+  g += '<text x="'+sx(0)+'" y="'+(sy(max)-10)+'" font-size="10" fill="#5c5751" text-anchor="middle" font-family="sans-serif">'+esc(o.yl||"y")+'</text>';
+  g += '<text x="'+(sx(max)+2)+'" y="'+(sy(0)+24)+'" font-size="10" fill="#5c5751" text-anchor="end" font-family="sans-serif">'+esc(o.xl||"x")+'</text>';
+  var stroke = o.color||"#2d55c9";
+  if(o.curve==="quad"){
+    var d = "";
+    for(var t=0;t<=max;t+=max/24){
+      var yv = (t*t)/max;
+      d += (d?" L":"M") + sx(t) + " " + sy(Math.min(yv,max));
+    }
+    g += '<path d="'+d+'" fill="none" stroke="'+stroke+'" stroke-width="2.4"/>';
+  } else if(o.curve==="flat"){
+    g += '<line x1="'+sx(0)+'" y1="'+sy(o.b)+'" x2="'+sx(max)+'" y2="'+sy(o.b)+'" stroke="'+stroke+'" stroke-width="2.4"/>';
+  } else if(o.k!==undefined && o.k!==null){
+    var b = o.b||0;
+    var xEnd = (max-b)/o.k;
+    if(xEnd>max) xEnd = max;
+    if(xEnd<0) xEnd = 0;
+    var yEnd = b + o.k*xEnd;
+    g += '<line x1="'+sx(0)+'" y1="'+sy(b)+'" x2="'+sx(xEnd)+'" y2="'+sy(yEnd)+'" stroke="'+stroke+'" stroke-width="2.4"/>';
+  }
+  var pts = o.pts||[];
+  for(var p=0;p<pts.length;p++){
+    var P = pts[p];
+    g += '<circle cx="'+sx(P[0])+'" cy="'+sy(P[1])+'" r="4" fill="'+stroke+'" stroke="#fff" stroke-width="1.5"/>';
+    if(P[2]) g += '<text x="'+(sx(P[0])+7)+'" y="'+(sy(P[1])-6)+'" font-size="10.5" fill="#1b1a18" font-family="sans-serif" font-weight="600">'+esc(P[2])+'</text>';
+  }
+  return g + '</svg>';
+}
+
+/* ---------- SVG: number line ---------- */
+/* opts: {pt, dir:'left'|'right', closed:bool, min, max, size} */
+function numLineSVG(o){
+  var min = (o.min===undefined?-8:o.min), max = (o.max===undefined?8:o.max);
+  var W = o.size||300, H = 56, pad = 16;
+  var span = W - pad*2;
+  var sx = function(v){ return pad + ((v-min)/(max-min))*span; };
+  var y = 30;
+  var g = '<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="max-width:'+W+'px" role="img" aria-label="number line">';
+  g += '<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="#fff"/>';
+  g += '<line x1="'+pad+'" y1="'+y+'" x2="'+(W-pad)+'" y2="'+y+'" stroke="#8b857c" stroke-width="1.3"/>';
+  g += '<path d="M'+(pad-1)+' '+y+' l7 -4 v8 z" fill="#8b857c"/><path d="M'+(W-pad+1)+' '+y+' l-7 -4 v8 z" fill="#8b857c"/>';
+  for(var v=min;v<=max;v++){
+    var big = (v%2===0);
+    g += '<line x1="'+sx(v)+'" y1="'+(y-(big?5:3))+'" x2="'+sx(v)+'" y2="'+(y+(big?5:3))+'" stroke="#8b857c" stroke-width="1"/>';
+    if(big) g += '<text x="'+sx(v)+'" y="'+(y+19)+'" font-size="9.5" fill="#8b857c" text-anchor="middle" font-family="sans-serif">'+fmt(v)+'</text>';
+  }
+  if(o.pt!==undefined && o.pt!==null){
+    var px = sx(o.pt);
+    var ex = o.dir==="left" ? pad+3 : W-pad-3;
+    g += '<line x1="'+px+'" y1="'+y+'" x2="'+ex+'" y2="'+y+'" stroke="#2d55c9" stroke-width="3.4"/>';
+    var tip = o.dir==="left" ? pad+1 : W-pad-1;
+    var dx = o.dir==="left" ? 8 : -8;
+    g += '<path d="M'+tip+' '+y+' l'+dx+' -5 v10 z" fill="#2d55c9"/>';
+    g += '<circle cx="'+px+'" cy="'+y+'" r="5.4" fill="'+(o.closed?"#2d55c9":"#fff")+'" stroke="#2d55c9" stroke-width="2.4"/>';
+  }
+  return g + '</svg>';
+}
+
+/* ---------- progress store ---------- */
+var KEY = "cp7math.v1";
+function loadState(){
+  try{ var s = JSON.parse(localStorage.getItem(KEY)); return (s&&typeof s==="object") ? s : {}; }
+  catch(e){ return {}; }
+}
+function saveState(s){ try{ localStorage.setItem(KEY, JSON.stringify(s)); }catch(e){} }
+var STATE = loadState();
+function wrec(n){
+  if(!STATE[n]) STATE[n] = {c:0,a:0,done:false};
+  return STATE[n];
+}
+
+/* expose to the rest of the file */
+window.CP7 = {
+  pick:pick, ri:ri, shuffle:shuffle, r2:r2, r4:r4, fmt:fmt, money:money, pctf:pct,
+  sgn:sgn, sgnZ:sgnZ, co:co, asFrac:asFrac, gcd:gcd, fracHTML:fracHTML,
+  parseNum:parseNum, near:near, parseLinear:parseLinear, linearEq:linearEq,
+  esc:esc, tableHTML:tableHTML, M:M, graphSVG:graphSVG, numLineSVG:numLineSVG,
+  STATE:STATE, saveState:function(){ saveState(STATE); }, wrec:wrec,
+  SKILLS:{}, WEEKS:[]
+};
+window.CP7.skill = function(id,name,gen){ window.CP7.SKILLS[id] = {id:id,name:name,gen:gen}; };
+
+})();
+/* ============================================================
+   PART 2 — problem generators (the bot's question bank)
+   Every generator returns a fresh randomized problem:
+     {q, type:'input'|'choice', choices:[{html,ok}], check(raw),
+      answer, hint:[nudge, bigger hint], solution, tip}
+   ============================================================ */
+(function(){
+"use strict";
+var C = window.CP7;
+var pick=C.pick, ri=C.ri, shuffle=C.shuffle, fmt=C.fmt, money=C.money, r2=C.r2,
+    asFrac=C.asFrac, parseNum=C.parseNum, near=C.near, linearEq=C.linearEq,
+    tableHTML=C.tableHTML, M=C.M, graphSVG=C.graphSVG, numLineSVG=C.numLineSVG,
+    co=C.co, sgn=C.sgn, sgnZ=C.sgnZ, skill=C.skill, fracHTML=C.fracHTML;
+
+function numCheck(ans, tol){ return function(raw){ return near(parseNum(raw), ans, tol===undefined?0.0001:tol); }; }
+function moneyCheck(ans){ return function(raw){ return near(parseNum(raw), ans, 0.011); }; }
+function exprCheck(ans){ return function(raw){ return linearEq(raw, ans); }; }
+function ratios(xs,ys){
+  var h="";
+  for(var i=0;i<xs.length;i++) h += "<li>"+fmt(ys[i])+" ÷ "+fmt(xs[i])+" = <b>"+fmt(C.r4(ys[i]/xs[i]))+"</b></li>";
+  return '<ul class="rl">'+h+"</ul>";
+}
+
+/* ============================ WEEK 1 ============================ */
+var T1 = [
+  {xl:"Hours worked", yl:"Dollars earned"},
+  {xl:"Pounds", yl:"Cost ($)"},
+  {xl:"Minutes", yl:"Pages printed"},
+  {xl:"Bags", yl:"Marbles"},
+  {xl:"Weeks", yl:"Dollars saved"},
+  {xl:"Gallons", yl:"Miles driven"}
+];
+
+skill("w1-ratio","Proportional table or not?",function(){
+  var prop = Math.random()<0.5;
+  var ctx = pick(T1);
+  var xs = pick([[1,2,3,4],[2,4,6,8],[1,3,5,7],[3,6,9,12],[2,3,4,5],[4,8,12,16]]);
+  var k = pick([2,3,4,5,6,10,1.5,2.5,0.5]);
+  var ys = xs.map(function(x){ return r2(k*x); });
+  var why = "";
+  if(!prop){
+    if(Math.random()<0.55){
+      var b = pick([2,3,5,4,1.5,-2]);
+      ys = xs.map(function(x){ return r2(k*x+b); });
+      why = "every y is "+fmt(k)+"·x plus "+fmt(b)+", and that extra "+fmt(b)+" throws the ratios off";
+    } else {
+      var i = ri(1, xs.length-1);
+      ys[i] = r2(ys[i] + pick([1,2,3,-1,-2]));
+      why = "one row breaks the pattern";
+    }
+  }
+  return {
+    q:"Is this table proportional?"+tableHTML(xs,ys,ctx.xl,ctx.yl),
+    type:"choice",
+    choices:[{html:"Yes — proportional",ok:prop},{html:"No — not proportional",ok:!prop}],
+    noShuffle:true,
+    hint:["Divide y by x in <i>every single row</i> and write the four answers down. What has to be true about them?",
+          "Start with the first row: "+fmt(ys[0])+" ÷ "+fmt(xs[0])+" = "+fmt(C.r4(ys[0]/xs[0]))+". Now check the others. If even one is different, it's not proportional."],
+    solution:"Divide y by x in every row:"+ratios(xs,ys)+
+      (prop ? "All four give the same number, so it <b>is</b> proportional and k = <b>"+fmt(k)+"</b>."
+            : "The answers are not all the same ("+why+"), so it is <b>not</b> proportional.")
+  };
+});
+
+skill("w1-k","Find the constant of proportionality",function(){
+  var ctx = pick(T1);
+  var k = pick([2,3,4,5,6,8,12,1.5,2.5,0.5,0.25,1.25]);
+  var xs = pick([[2,4,6,8],[3,6,9,12],[4,8,12,16],[2,5,8,11],[1,2,3,4]]);
+  var ys = xs.map(function(x){ return r2(k*x); });
+  return {
+    q:"Find the constant of proportionality for this table."+tableHTML(xs,ys,ctx.xl,ctx.yl),
+    type:"input", placeholder:"k = ?", tip:"Decimals or fractions both work.",
+    check:numCheck(k), answer:fmt(k),
+    hint:["k is always y ÷ x. Pick any row — they all give the same answer in a proportional table.",
+          "Use the first row: "+fmt(ys[0])+" ÷ "+fmt(xs[0])+" = ?"],
+    solution:"k = y ÷ x = "+fmt(ys[0])+" ÷ "+fmt(xs[0])+" = <b>"+fmt(k)+"</b>"+
+      (k<1 ? " (which is "+asFrac(k)+")" : "")+
+      ". Double-check with another row: "+fmt(ys[2])+" ÷ "+fmt(xs[2])+" = "+fmt(k)+". ✔ So "+M("y = "+fmt(k)+"x")+"."
+  };
+});
+
+var RATE1 = [
+  {ks:[1.5,2.25,2.5,3,3.5,4], ns:[2,3,4,5,6], u:"dollars per pound", mon:true,
+   s:function(n,t){ return n+" pounds of trail mix cost $"+money(t)+". What is the price per pound?"; }},
+  {ks:[45,50,55,60,65], ns:[2,3,4,5], u:"miles per hour",
+   s:function(n,t){ return "A car travels "+fmt(t)+" miles in "+n+" hours at a steady speed. How many miles per hour?"; }},
+  {ks:[8,12,15,16,20,24], ns:[3,4,5,6], u:"bars per box",
+   s:function(n,t){ return n+" identical boxes hold "+fmt(t)+" granola bars in total. How many bars per box?"; }},
+  {ks:[12,15,18,20,25], ns:[3,4,5,6], u:"pages per minute",
+   s:function(n,t){ return "A printer prints "+fmt(t)+" pages in "+n+" minutes. How many pages per minute?"; }},
+  {ks:[28,30,32,34,36], ns:[3,4,5,8], u:"miles per gallon",
+   s:function(n,t){ return "A car goes "+fmt(t)+" miles on "+n+" gallons of gas. How many miles per gallon?"; }}
+];
+skill("w1-rate","Unit rate from a word problem",function(){
+  var t = pick(RATE1), k = pick(t.ks), n = pick(t.ns), total = r2(k*n);
+  return {
+    q:t.s(n,total)+"<br><span class=\"hintopen\">Answer in "+t.u+".</span>",
+    type:"input", placeholder:t.mon?"$ per pound":"number",
+    check:t.mon?moneyCheck(k):numCheck(k), answer:(t.mon?"$"+money(k):fmt(k)),
+    hint:["A unit rate is the amount for <i>one</i>. Which number do you divide by which to get \"per one\"?",
+          "Divide the total by the number of units: "+fmt(total)+" ÷ "+fmt(n)+" = ?"],
+    solution:"Unit rate = total ÷ number of units = "+fmt(total)+" ÷ "+fmt(n)+" = <b>"+(t.mon?"$"+money(k):fmt(k))+"</b> "+t.u+
+      ". That unit rate <i>is</i> the constant of proportionality, so "+M("y = "+fmt(k)+"x")+"."
+  };
+});
+
+/* ============================ WEEK 2 ============================ */
+skill("w2-graph","Which graph is proportional?",function(){
+  var k = pick([1,1.5,2,2.5,3]);
+  var b = pick([2,3,4]);
+  var opts = shuffle([
+    {html:graphSVG({k:k,size:168}), ok:true, why:"straight line <i>and</i> through the origin"},
+    {html:graphSVG({k:k,b:b,size:168,color:"#b0580c"}), ok:false, why:"a straight line, but it starts at "+fmt(b)+" instead of 0"},
+    {html:graphSVG({curve:"quad",size:168,color:"#b0580c"}), ok:false, why:"goes through the origin, but it curves instead of staying straight"},
+    {html:graphSVG({curve:"flat",b:pick([4,5,6]),size:168,color:"#b0580c"}), ok:false, why:"straight, but flat — y never changes, and it misses the origin"}
+  ]);
+  return {
+    q:"Which of these graphs shows a <b>proportional</b> relationship?",
+    type:"choice", choices:opts, grid:true, noShuffle:true,
+    hint:["A proportional graph has to pass <i>two</i> tests. One is about shape, the other is about a specific point.",
+          "Test 1: is it a straight line? Test 2: does it go through the origin, (0, 0)? Only one graph passes both."],
+    solution:"A proportional graph must be a <b>straight line through the origin</b>. The right one is the line that starts at (0, 0) and rises at a steady rate. The others fail: one is straight but starts above the origin, one goes through the origin but curves, and one is flat."
+  };
+});
+
+var EQ2 = [
+  {e:"y = 3x",ok:true},{e:"y = 0.5x",ok:true},{e:"y = 12x",ok:true},{e:"y = 1.5x",ok:true},
+  {e:"y = x",ok:true,note:"k is just 1"},{e:"y = x/4",ok:true,note:"that's y = 0.25x"},
+  {e:"y = 2x + 5",ok:false,note:"the + 5 ruins it"},{e:"y = 4x − 3",ok:false,note:"the − 3 ruins it"},
+  {e:"y = x + 1",ok:false,note:"the + 1 ruins it"},{e:"y = 10 − 2x",ok:false,note:"there's a 10 hanging on"},
+  {e:"y = 6x + 0.5",ok:false,note:"the + 0.5 ruins it"}
+];
+skill("w2-eq","Proportional equation or not?",function(){
+  var it = pick(EQ2);
+  return {
+    q:"Does this equation represent a proportional relationship?<br>"+M("<b>"+it.e+"</b>"),
+    type:"choice",
+    choices:[{html:"Yes — proportional",ok:it.ok},{html:"No — not proportional",ok:!it.ok}],
+    noShuffle:true,
+    hint:["The only shape allowed is "+M("y = kx")+" — one number multiplied by x, and nothing else going on.",
+          "Is anything being <i>added to</i> or <i>subtracted from</i> the x-term? If yes, it's not proportional."],
+    solution:M(it.e)+" is "+(it.ok?"<b>proportional</b>":"<b>not proportional</b>")+". "+
+      (it.ok ? "It fits "+M("y = kx")+" exactly"+(it.note?" — "+it.note:"")+", so when x doubles, y doubles."
+             : "It isn't in the form "+M("y = kx")+" — "+it.note+". Check it: at x = 0, y isn't 0, so the graph misses the origin.")
+  };
+});
+
+skill("w2-fromtable","Write the equation from a table",function(){
+  var ctx = pick(T1);
+  var k = pick([2,3,4,5,7,1.5,2.5,0.5,0.25,6]);
+  var xs = pick([[2,4,6,8],[1,2,3,4],[4,8,12,16],[3,6,9,12]]);
+  var ys = xs.map(function(x){ return r2(k*x); });
+  return {
+    q:"Write the equation for this table."+tableHTML(xs,ys,ctx.xl,ctx.yl),
+    type:"input", placeholder:"y = ___", tip:"Type it like y = 3x (or just 3x).",
+    check:exprCheck(fmt(k)+"x"), answer:"y = "+fmt(k)+"x",
+    hint:["Every proportional equation looks like "+M("y = kx")+". You only have to find the one missing piece.",
+          "Find k by dividing y by x: "+fmt(ys[0])+" ÷ "+fmt(xs[0])+" = "+fmt(k)+". Now drop it into "+M("y = kx")+"."],
+    solution:"k = "+fmt(ys[0])+" ÷ "+fmt(xs[0])+" = "+fmt(k)+", so the equation is <b>"+M("y = "+fmt(k)+"x")+"</b>. Test it on the last column: "+fmt(k)+" × "+fmt(xs[3])+" = "+fmt(ys[3])+" ✔"
+  };
+});
+
+skill("w2-fromgraph","Read k off a graph",function(){
+  var k = pick([0.5,1,1.5,2,2.5,3,4]);
+  var x = pick([2,4,6].filter(function(v){ return k*v<=10 && Math.abs(k*v-Math.round(k*v))<1e-9; }));
+  if(x===undefined) { k=2; x=4; }
+  var y = k*x;
+  return {
+    q:"This graph is proportional. What is the constant of proportionality?"+
+      graphSVG({k:k,pts:[[x,y,"("+x+", "+fmt(y)+")"]],size:210}),
+    type:"input", placeholder:"k = ?", tip:"Decimals or fractions both work.",
+    check:numCheck(k), answer:fmt(k),
+    hint:["On a graph, k is still y ÷ x. You have one labeled point — use it.",
+          "The point is ("+x+", "+fmt(y)+"), so k = "+fmt(y)+" ÷ "+x+" = ?"],
+    solution:"Use the labeled point ("+x+", "+fmt(y)+"): k = y ÷ x = "+fmt(y)+" ÷ "+x+" = <b>"+fmt(k)+"</b>. Another way to see it: from the origin the line goes up "+fmt(k)+" for every 1 step right. Equation: "+M("y = "+fmt(k)+"x")+"."
+  };
+});
+
+/* ============================ WEEK 3 ============================ */
+skill("w3-missing","Find the missing value",function(){
+  var ctx = pick(T1);
+  var k = pick([2,3,4,5,6,8,1.5,2.5,0.5]);
+  var xs = pick([[2,4,6,10],[3,6,9,15],[1,2,3,7],[4,8,12,20],[2,5,8,12]]);
+  var ys = xs.map(function(x){ return r2(k*x); });
+  var qi = 3;
+  var want = ys[qi];
+  return {
+    q:"This table is proportional. Find the missing value."+tableHTML(xs,ys,ctx.xl,ctx.yl,qi),
+    type:"input", placeholder:"?",
+    check:numCheck(want), answer:fmt(want),
+    hint:["First find k from a column you can see. Then use it on the column with the ?",
+          "k = "+fmt(ys[0])+" ÷ "+fmt(xs[0])+" = "+fmt(k)+". Now multiply: "+fmt(k)+" × "+fmt(xs[qi])+" = ?"],
+    solution:"Find k from a full column: "+fmt(ys[0])+" ÷ "+fmt(xs[0])+" = "+fmt(k)+". Then multiply by the x you need: "+fmt(k)+" × "+fmt(xs[qi])+" = <b>"+fmt(want)+"</b>."
+  };
+});
+
+var WORD3 = [
+  {ks:[8,10,12,15,20],xs:[3,4,5,6],x2:[7,8,9,10,12],u:"bottles",
+   q:function(k,x1,x2){ return "A machine fills "+(k*x1)+" bottles in "+x1+" minutes at a steady rate. How many bottles does it fill in "+x2+" minutes?"; }},
+  {ks:[6,8,9,12],xs:[2,3,4],x2:[5,6,7,10],u:"cookies",
+   q:function(k,x1,x2){ return k*x1+" cookies take "+x1+" cups of flour. How many cookies can you make with "+x2+" cups?"; }},
+  {ks:[45,50,55,60],xs:[2,3,4],x2:[5,6,7],u:"miles",
+   q:function(k,x1,x2){ return "A bus covers "+(k*x1)+" miles in "+x1+" hours at a steady speed. How far does it go in "+x2+" hours?"; }},
+  {ks:[3,4,5,6],xs:[4,5,6],x2:[8,9,10,12],u:"dollars",
+   q:function(k,x1,x2){ return "Mowing "+x1+" lawns pays $"+(k*x1)+". At the same rate, what does mowing "+x2+" lawns pay?"; }},
+  {ks:[7,9,11,13],xs:[3,4,5],x2:[6,8,9],u:"pages",
+   q:function(k,x1,x2){ return "You read "+(k*x1)+" pages in "+x1+" minutes at a steady pace. How many pages in "+x2+" minutes?"; }}
+];
+skill("w3-word","Proportional word problem",function(){
+  var t = pick(WORD3), k = pick(t.ks), x1 = pick(t.xs), x2 = pick(t.x2);
+  var ans = k*x2;
+  return {
+    q:t.q(k,x1,x2),
+    type:"input", placeholder:t.u,
+    check:numCheck(ans), answer:fmt(ans)+" "+t.u,
+    hint:["Find the rate for one first — that's your k. Then multiply by the new amount.",
+          "k = "+(k*x1)+" ÷ "+x1+" = "+k+" per unit. Now "+k+" × "+x2+" = ?"],
+    solution:"Step 1 — find k: "+(k*x1)+" ÷ "+x1+" = <b>"+k+"</b> per unit.<br>Step 2 — write the equation: "+M("y = "+k+"x")+".<br>Step 3 — plug in x = "+x2+": "+k+" × "+x2+" = <b>"+fmt(ans)+" "+t.u+"</b>."
+  };
+});
+
+skill("w3-deal","Which is the better deal?",function(){
+  var u = shuffle([1.25,1.4,1.5,1.6,1.75,1.8,2,2.25]);
+  var u1 = u[0], u2 = u[1];
+  var n1 = pick([3,4,5,6]), n2 = pick([4,5,6,8]);
+  var t1 = r2(u1*n1), t2 = r2(u2*n2);
+  var item = pick(["notebooks","markers","protein bars","phone cases","candles"]);
+  var aCheaper = u1 < u2;
+  return {
+    q:"Which is the better deal on "+item+"?<br>"+
+      "<b>Store A:</b> "+n1+" for $"+money(t1)+"<br><b>Store B:</b> "+n2+" for $"+money(t2),
+    type:"choice",
+    choices:[{html:"Store A",ok:aCheaper},{html:"Store B",ok:!aCheaper},{html:"They cost the same per item",ok:false}],
+    noShuffle:true,
+    hint:["You can't compare "+n1+" items to "+n2+" items directly. Get both down to the price for <i>one</i>.",
+          "Store A: $"+money(t1)+" ÷ "+n1+" = $"+money(u1)+" each. Now do the same for Store B and compare."],
+    solution:"Find each unit price:<ul class=\"rl\"><li>A: "+money(t1)+" ÷ "+n1+" = <b>$"+money(u1)+"</b> each</li><li>B: "+money(t2)+" ÷ "+n2+" = <b>$"+money(u2)+"</b> each</li></ul><b>Store "+(aCheaper?"A":"B")+"</b> is cheaper per item. Unit rate is how you compare any two proportional deals."
+  };
+});
+
+/* ============================ WEEK 4 ============================ */
+var PCTS = [5,10,15,20,25,30,40,50,60,70,75,80,90];
+var WHOLES = [20,40,50,60,80,120,150,200,240,300,400];
+skill("w4-part","Find the part",function(){
+  var p = pick(PCTS), w = pick(WHOLES), part = r2(p/100*w);
+  return {
+    q:"What is "+p+"% of "+w+"?",
+    type:"input", placeholder:"answer",
+    check:numCheck(part,0.011), answer:fmt(part),
+    hint:["\"Of\" means multiply — but you can't multiply by a percent directly. Turn "+p+"% into a decimal first.",
+          p+"% = "+fmt(p/100)+", so the problem is "+fmt(p/100)+" × "+w+" = ?"],
+    solution:"<b>Percent equation:</b> part = percent (as a decimal) × whole<br>"+
+      M(fmt(p/100)+" × "+w+" = "+fmt(part))+"<br>Answer: <b>"+fmt(part)+"</b>.<br><br>Or with the <b>percent proportion</b>: "+
+      fracHTML("part",w)+" = "+fracHTML(p,100)+" → cross multiply → 100·part = "+p+"·"+w+" → part = "+fmt(part)+"."
+  };
+});
+skill("w4-percent","Find the percent",function(){
+  var p = pick(PCTS), w = pick(WHOLES), part = r2(p/100*w);
+  return {
+    q:fmt(part)+" is what percent of "+w+"?",
+    type:"input", placeholder:"% ", tip:"Just the number — the % is assumed.",
+    check:numCheck(p,0.051), answer:p+"%",
+    hint:["Set up the percent proportion: "+fracHTML("part","whole")+" = "+fracHTML("p","100")+". Which number is the part and which is the whole?",
+          "part ÷ whole = "+fmt(part)+" ÷ "+w+" = "+fmt(C.r4(part/w))+". Now turn that decimal into a percent."],
+    solution:"Divide the part by the whole, then move the decimal two places right:<br>"+
+      M(fmt(part)+" ÷ "+w+" = "+fmt(C.r4(part/w)))+" → <b>"+p+"%</b>.<br><br>Watch the word <i>of</i> — the number after \"of\" ("+w+") is always the whole."
+  };
+});
+skill("w4-whole","Find the whole",function(){
+  var p = pick(PCTS), w = pick(WHOLES), part = r2(p/100*w);
+  return {
+    q:fmt(part)+" is "+p+"% of what number?",
+    type:"input", placeholder:"answer",
+    check:numCheck(w,0.051), answer:fmt(w),
+    hint:["This time the <i>whole</i> is missing. Multiplying won't get it — you need the opposite operation.",
+          "part ÷ decimal percent = whole, so "+fmt(part)+" ÷ "+fmt(p/100)+" = ?"],
+    solution:"Since part = percent × whole, flip it: whole = part ÷ percent.<br>"+
+      M(fmt(part)+" ÷ "+fmt(p/100)+" = "+fmt(w))+"<br>Answer: <b>"+fmt(w)+"</b>. Sanity check: "+p+"% of "+fmt(w)+" is "+fmt(part)+" ✔<br><br>Notice the answer is <i>bigger</i> than the part — that's what should happen when the percent is under 100%."
+  };
+});
+var W4CTX = [
+  function(part,p,w,miss){
+    if(miss==="part") return "A test has "+w+" questions. You got "+p+"% of them right. How many did you get right?";
+    if(miss==="percent") return "A test has "+w+" questions and you got "+fmt(part)+" right. What percent is that?";
+    return "You got "+fmt(part)+" questions right, which was "+p+"% of the test. How many questions were on the test?";
+  },
+  function(part,p,w,miss){
+    if(miss==="part") return "A school has "+w+" students and "+p+"% ride the bus. How many students ride the bus?";
+    if(miss==="percent") return "Out of "+w+" students, "+fmt(part)+" ride the bus. What percent ride the bus?";
+    return fmt(part)+" students ride the bus, and that is "+p+"% of the school. How many students are in the school?";
+  },
+  function(part,p,w,miss){
+    if(miss==="part") return "A phone battery holds "+w+" minutes of video. You've used "+p+"% of it. How many minutes did you use?";
+    if(miss==="percent") return "A battery holds "+w+" minutes of video and you used "+fmt(part)+" minutes. What percent did you use?";
+    return "You used "+fmt(part)+" minutes of video, which was "+p+"% of the battery. How many minutes does a full battery hold?";
+  }
+];
+skill("w4-word","Percent word problem",function(){
+  var p = pick(PCTS), w = pick(WHOLES), part = r2(p/100*w);
+  var miss = pick(["part","percent","whole"]);
+  var q = pick(W4CTX)(part,p,w,miss);
+  var ans = miss==="part" ? part : (miss==="percent" ? p : w);
+  return {
+    q:q,
+    type:"input", placeholder:miss==="percent"?"%":"answer",
+    check:numCheck(ans,0.051), answer:fmt(ans)+(miss==="percent"?"%":""),
+    hint:["Label the three parts first: which number is the whole, which is the part, and which is the percent? One of them is missing.",
+          miss==="part" ? "You have the percent and the whole, so multiply: "+fmt(p/100)+" × "+w+" = ?"
+          : miss==="percent" ? "You have the part and the whole, so divide: "+fmt(part)+" ÷ "+w+" = ?"
+          : "You have the part and the percent, so divide: "+fmt(part)+" ÷ "+fmt(p/100)+" = ?"],
+    solution:"The whole is "+fmt(w)+", the part is "+fmt(part)+", the percent is "+p+"% — and the missing one is the <b>"+miss+"</b>.<br>"+
+      (miss==="part" ? M(fmt(p/100)+" × "+w+" = "+fmt(part)) :
+       miss==="percent" ? M(fmt(part)+" ÷ "+w+" = "+fmt(C.r4(part/w))+" = "+p+"%") :
+       M(fmt(part)+" ÷ "+fmt(p/100)+" = "+fmt(w)))+
+      "<br>Answer: <b>"+fmt(ans)+(miss==="percent"?"%":"")+"</b>."
+  };
+});
+
+/* ============================ WEEK 5 ============================ */
+var PRICES = [18,24.5,32,38.4,45,52.8,60,75,84,96.5,120];
+skill("w5-tax","Sales tax",function(){
+  var p = pick(PRICES), r = pick([5,6,6.25,7,8,8.5]);
+  var tax = r2(p*r/100), total = r2(p+tax);
+  var askTotal = Math.random()<0.65;
+  return {
+    q:"A jacket costs $"+money(p)+" and the sales tax is "+fmt(r)+"%. "+(askTotal?"What is the <b>total</b> you pay?":"How much is the <b>tax</b> alone?"),
+    type:"input", placeholder:"$", tip:"Round to the nearest cent.",
+    check:moneyCheck(askTotal?total:tax), answer:"$"+money(askTotal?total:tax),
+    hint:["Tax is a percent <i>of the price</i>, and then it gets added on top.",
+          askTotal ? "Fast way: you pay 100% + "+fmt(r)+"% = "+fmt(100+r)+"% of the price, so multiply by "+fmt(1+r/100)+"."
+                   : "Tax = "+fmt(r/100)+" × "+money(p)+" = ?"],
+    solution:"Tax = "+fmt(r/100)+" × $"+money(p)+" = <b>$"+money(tax)+"</b>"+
+      (askTotal ? "<br>Total = $"+money(p)+" + $"+money(tax)+" = <b>$"+money(total)+"</b><br><br><b>One-step shortcut:</b> "+M("$"+money(p)+" × "+fmt(1+r/100)+" = $"+money(total))+" — the 1 keeps the original price and the ."+String(fmt(r/100)).replace("0.","")+" adds the tax." : ".")
+  };
+});
+skill("w5-tip","Tip",function(){
+  var p = pick([24,32,45,56,60,72,84,96]), r = pick([15,18,20]);
+  var tip = r2(p*r/100), total = r2(p+tip);
+  var askTotal = Math.random()<0.6;
+  return {
+    q:"A dinner bill is $"+money(p)+" and you leave a "+r+"% tip. "+(askTotal?"What is the <b>total</b>?":"How much is the <b>tip</b>?"),
+    type:"input", placeholder:"$", tip:"Round to the nearest cent.",
+    check:moneyCheck(askTotal?total:tip), answer:"$"+money(askTotal?total:tip),
+    hint:["A tip works exactly like tax: a percent of the bill, added on.",
+          askTotal ? "Multiply the bill by "+fmt(1+r/100)+" to get bill + tip in one step." : "Tip = "+fmt(r/100)+" × "+money(p)+" = ?"],
+    solution:"Tip = "+fmt(r/100)+" × $"+money(p)+" = <b>$"+money(tip)+"</b>"+
+      (askTotal ? "<br>Total = $"+money(p)+" + $"+money(tip)+" = <b>$"+money(total)+"</b><br>Shortcut: "+M("$"+money(p)+" × "+fmt(1+r/100)+" = $"+money(total)) : "")+
+      "<br><br>Mental check: 10% of $"+money(p)+" is $"+money(p/10)+", so a "+r+"% tip should land near $"+money(p/10*(r/10))+"."
+  };
+});
+skill("w5-discount","Discount / sale price",function(){
+  var p = pick(PRICES), r = pick([10,15,20,25,30,40,50]);
+  var off = r2(p*r/100), sale = r2(p-off);
+  var askSale = Math.random()<0.7;
+  return {
+    q:"A $"+money(p)+" pair of shoes is "+r+"% off. "+(askSale?"What is the <b>sale price</b>?":"How much do you <b>save</b>?"),
+    type:"input", placeholder:"$", tip:"Round to the nearest cent.",
+    check:moneyCheck(askSale?sale:off), answer:"$"+money(askSale?sale:off),
+    hint:[askSale ? "Careful — "+r+"% off is the amount you <i>save</i>, not the price you pay. What percent do you still have to pay?"
+                  : "The discount is just a percent of the original price.",
+          askSale ? "If "+r+"% comes off, you pay "+(100-r)+"%. So multiply: "+fmt((100-r)/100)+" × "+money(p)+" = ?"
+                  : "Savings = "+fmt(r/100)+" × "+money(p)+" = ?"],
+    solution:"Discount = "+fmt(r/100)+" × $"+money(p)+" = <b>$"+money(off)+"</b> saved."+
+      (askSale ? "<br>Sale price = $"+money(p)+" − $"+money(off)+" = <b>$"+money(sale)+"</b><br><br><b>One-step shortcut:</b> "+r+"% off means you pay "+(100-r)+"%, so "+M("$"+money(p)+" × "+fmt((100-r)/100)+" = $"+money(sale))+". The most common mistake is stopping at the discount and calling it the price." : "")
+  };
+});
+skill("w5-markup","Markup",function(){
+  var c = pick([12,18,24,30,40,45,60,80]), r = pick([25,40,50,60,75,100]);
+  var up = r2(c*r/100), price = r2(c+up);
+  return {
+    q:"A store buys a backpack for $"+money(c)+" and marks it up "+r+"%. What is the <b>selling price</b>?",
+    type:"input", placeholder:"$", tip:"Round to the nearest cent.",
+    check:moneyCheck(price), answer:"$"+money(price),
+    hint:["Markup is the opposite of a discount: a percent of the cost gets <i>added</i> on.",
+          "Multiply the cost by "+fmt(1+r/100)+", or find "+fmt(r/100)+" × "+money(c)+" = $"+money(up)+" and add it to the cost."],
+    solution:"Markup = "+fmt(r/100)+" × $"+money(c)+" = $"+money(up)+".<br>Selling price = $"+money(c)+" + $"+money(up)+" = <b>$"+money(price)+"</b>.<br><br>Shortcut: "+M("$"+money(c)+" × "+fmt(1+r/100)+" = $"+money(price))+"."
+  };
+});
+
+/* ============================ WEEK 6 ============================ */
+skill("w6-change","Percent increase or decrease",function(){
+  var old = pick([20,25,40,50,60,80,120,150,200,250]);
+  var r = pick([10,15,20,25,30,40,50,60]);
+  var up = Math.random()<0.5;
+  var nw = r2(up ? old*(1+r/100) : old*(1-r/100));
+  var thing = pick([
+    {a:"A jacket's price went from $"+money(old)+" to $"+money(nw)+".",u:"$"},
+    {a:"A town's population went from "+old+" to "+nw+" people.",u:""},
+    {a:"Your weekly screen time went from "+old+" minutes to "+nw+" minutes.",u:""}
+  ]);
+  return {
+    q:thing.a+" By what percent did it "+(up?"increase":"decrease")+"?",
+    type:"input", placeholder:"%", tip:"Just the number.",
+    check:numCheck(r,0.051), answer:r+"%",
+    hint:["Percent change always compares the <i>change</i> to the <b>original</b> amount — not to the new one.",
+          "Change = "+fmt(Math.abs(nw-old))+". Now divide by the original ("+fmt(old)+") and convert to a percent."],
+    solution:"<b>Percent change = </b>"+fracHTML("change","original")+"<br>"+
+      "Change = "+fmt(Math.abs(nw-old))+(up?" (up)":" (down)")+", original = "+fmt(old)+".<br>"+
+      M(fmt(Math.abs(nw-old))+" ÷ "+fmt(old)+" = "+fmt(C.r4(Math.abs(nw-old)/old)))+" → <b>"+r+"% "+(up?"increase":"decrease")+"</b>.<br><br>The #1 mistake is dividing by the new number. Always divide by where you <i>started</i>."
+  };
+});
+skill("w6-after","Find the new amount",function(){
+  var old = pick([20,25,40,50,60,80,120,150,200,240]);
+  var r = pick([5,10,15,20,25,30,40,50]);
+  var up = Math.random()<0.5;
+  var nw = r2(up ? old*(1+r/100) : old*(1-r/100));
+  return {
+    q:"A $"+money(old)+" item "+(up?"increases":"decreases")+" in price by "+r+"%. What is the new price?",
+    type:"input", placeholder:"$", tip:"Round to the nearest cent.",
+    check:moneyCheck(nw), answer:"$"+money(nw),
+    hint:["You can do this in one multiplication. Start from 100% — the whole original price — and "+(up?"add":"take away")+" "+r+"%.",
+          "Multiplier = "+(up?"1 + "+fmt(r/100):"1 − "+fmt(r/100))+" = "+fmt(up?1+r/100:1-r/100)+". Multiply the price by that."],
+    solution:(up?"<b>Increase</b> → multiply by (1 + rate):":"<b>Decrease</b> → multiply by (1 − rate):")+"<br>"+
+      M("$"+money(old)+" × "+fmt(up?1+r/100:1-r/100)+" = $"+money(nw))+"<br>Answer: <b>$"+money(nw)+"</b>.<br><br>Long way, same answer: "+r+"% of $"+money(old)+" = $"+money(old*r/100)+", then "+(up?"add":"subtract")+" it."
+  };
+});
+skill("w6-twostep","Discount and then tax",function(){
+  var p = pick([40,60,80,90,120,150,200]), d = pick([20,25,30,40]), t = pick([5,6,7,8]);
+  var sale = r2(p*(1-d/100));
+  var total = Math.round(sale*(1+t/100)*100)/100;
+  return {
+    q:"A $"+money(p)+" coat is "+d+"% off. Sales tax of "+t+"% is added to the sale price. What do you pay in total?",
+    type:"input", placeholder:"$", tip:"Round to the nearest cent.",
+    check:moneyCheck(total), answer:"$"+money(total),
+    hint:["Two steps, in order: take the discount first, then put tax on whatever is left.",
+          "Sale price = "+money(p)+" × "+fmt(1-d/100)+" = $"+money(sale)+". Now add "+t+"% tax to <i>that</i>."],
+    solution:"Step 1 — discount: "+M("$"+money(p)+" × "+fmt(1-d/100)+" = $"+money(sale))+"<br>"+
+      "Step 2 — tax on the sale price: "+M("$"+money(sale)+" × "+fmt(1+t/100)+" = $"+money(total))+"<br>"+
+      "Total: <b>$"+money(total)+"</b>.<br><br>Order matters for the middle number but not the final answer here — tax applies to the discounted price, which is why you discount first."
+  };
+});
+skill("w6-original","Work backwards to the original price",function(){
+  var orig = pick([20,40,50,60,80,120,150,200]), d = pick([10,20,25,40,50]);
+  var sale = r2(orig*(1-d/100));
+  return {
+    q:"After a "+d+"% discount, a bike costs $"+money(sale)+". What was the <b>original</b> price?",
+    type:"input", placeholder:"$", tip:"Round to the nearest cent.",
+    check:moneyCheck(orig), answer:"$"+money(orig),
+    hint:["$"+money(sale)+" is not the whole price — it's what's left after the discount. What percent of the original is it?",
+          "If "+d+"% came off, then $"+money(sale)+" is "+(100-d)+"% of the original. So divide: "+money(sale)+" ÷ "+fmt((100-d)/100)+" = ?"],
+    solution:"The sale price is "+(100-d)+"% of the original, so:<br>"+
+      M("$"+money(sale)+" ÷ "+fmt((100-d)/100)+" = $"+money(orig))+"<br>Original price: <b>$"+money(orig)+"</b>.<br><br>Check it forward: "+money(orig)+" × "+fmt((100-d)/100)+" = $"+money(sale)+" ✔<br>Tempting wrong move: adding "+d+"% to the sale price. That gives $"+money(r2(sale*(1+d/100)))+", which is <i>not</i> the original — percents are taken of different wholes."
+  };
+});
+
+/* ============================ WEEK 7 ============================ */
+var VARS = ["x","y","a","b","m","n","p","t"];
+skill("w7-vocab","Terms, coefficients, constants",function(){
+  var vs = shuffle(VARS).slice(0,2);
+  var c1 = pick([2,3,4,5,6,7,8,9,-2,-3,-4,-5,-6]);
+  var c2 = pick([2,3,4,5,6,7,8,-2,-3,-4,-5]);
+  var k = pick([2,3,4,5,6,7,8,9,10,-3,-4,-5,-7]);
+  var expr = co(c1,vs[0]) + sgn(k) + sgn(c2).replace(/^ /,"") ;
+  // build display cleanly: c1·v1 + k + c2·v2  (3 terms)
+  expr = co(c1,vs[0]) + sgn(k) + (c2<0?" − ":" + ") + co(Math.abs(c2),vs[1]);
+  var ask = pick(["terms","coef","const"]);
+  var q, ans, h1, h2, sol;
+  if(ask==="terms"){
+    q = "How many <b>terms</b> are in this expression?<br>"+M("<b>"+expr+"</b>");
+    ans = 3;
+    h1 = "Terms are the pieces separated by + and − signs. Count the pieces.";
+    h2 = "Chop it at every + and −: "+M(co(c1,vs[0]))+", "+M(fmt(k))+", "+M(co(c2,vs[1]))+".";
+    sol = "Terms are separated by + and − signs, so there are <b>3</b> terms: "+M(co(c1,vs[0]))+", "+M(fmt(k))+", and "+M(co(c2,vs[1]))+". The sign in front belongs to the term.";
+  } else if(ask==="coef"){
+    var which = Math.random()<0.5 ? 0 : 1;
+    var cc = which===0 ? c1 : c2;
+    q = "What is the <b>coefficient</b> of "+M(vs[which])+" in this expression?<br>"+M("<b>"+expr+"</b>");
+    ans = cc;
+    h1 = "A coefficient is the number multiplying a variable — and its sign comes along with it.";
+    h2 = "Find the "+vs[which]+" term. Is there a minus sign in front of it?";
+    sol = "The coefficient is the number attached to the variable, <i>including its sign</i>. The "+vs[which]+" term is "+M(co(cc,vs[which]))+", so the coefficient is <b>"+fmt(cc)+"</b>.";
+  } else {
+    q = "What is the <b>constant</b> in this expression?<br>"+M("<b>"+expr+"</b>");
+    ans = k;
+    h1 = "The constant is the term with no variable stuck to it — the one number that never changes.";
+    h2 = "Two terms have letters. The one that doesn't is the constant — don't forget its sign.";
+    sol = "The constant is the term with no variable: <b>"+fmt(k)+"</b>. (Its sign counts — the "+(k<0?"minus":"plus")+" in front belongs to it.)";
+  }
+  return {q:q, type:"input", placeholder:"number", check:numCheck(ans), answer:fmt(ans), hint:[h1,h2], solution:sol};
+});
+skill("w7-like","Spot the like terms",function(){
+  var v = pick(VARS), w = pick(VARS.filter(function(z){ return z!==v; }));
+  var a = ri(2,9), b = ri(2,9), c = ri(2,9), d = ri(2,9);
+  var opts = shuffle([
+    {html:M(a+v)+" and "+M(b+v), ok:true},
+    {html:M(a+v)+" and "+M(b+w), ok:false},
+    {html:M(a+v)+" and "+M(c), ok:false},
+    {html:M(d+w)+" and "+M(d), ok:false}
+  ]);
+  return {
+    q:"Which pair are <b>like terms</b>?",
+    type:"choice", choices:opts, noShuffle:true,
+    hint:["Like terms have to have the <i>exact same variable part</i>. The numbers in front can be anything.",
+          M(a+v)+" and "+M(b+v)+" both have the same letter. Does any other pair match letters?"],
+    solution:"Like terms have the same variable raised to the same power — only the coefficient differs. So "+M(a+v)+" and "+M(b+v)+" are like terms and can be combined into "+M((a+b)+v)+". A "+v+"-term and a "+w+"-term can't combine, and a variable term can never combine with a plain number."
+  };
+});
+skill("w7-combine","Combine like terms",function(){
+  var v = pick(["x","y","n","a"]);
+  var a = pick([2,3,4,5,6,7,8,9]), b = pick([1,2,3,4,5,6,7,8,9,10]);
+  var c = pick([2,3,4,5,6,7]), d = pick([1,2,3,4,5,6,7,8,9]);
+  var negC = Math.random()<0.6, negD = Math.random()<0.5;
+  var cc = negC ? -c : c, dd = negD ? -d : d;
+  var expr = co(a,v) + sgn(b) + (cc<0?" − ":" + ") + co(Math.abs(cc),v) + sgn(dd);
+  var av = a + cc, k = b + dd;
+  var ans = (av===0?"":fmt(av)+v) + (k===0?"":(av===0 ? fmt(k) : sgn(k).replace(/ /g,"")));
+  if(ans==="") ans = "0";
+  var disp = (av===0?"":co(av,v)) + (k===0?(av===0?"0":""):(av===0?fmt(k):sgn(k)));
+  return {
+    q:"Simplify by combining like terms:<br>"+M("<b>"+expr+"</b>"),
+    type:"input", placeholder:"simplified expression", tip:"Type it like 5x + 11",
+    check:exprCheck(ans), answer:disp,
+    hint:["Only like terms can combine. Group the "+v+"-terms together and the plain numbers together.",
+          v+"-terms: "+fmt(a)+" "+(cc<0?"−":"+")+" "+fmt(Math.abs(cc))+" = "+fmt(av)+". Numbers: "+fmt(b)+" "+(dd<0?"−":"+")+" "+fmt(Math.abs(dd))+" = "+fmt(k)+"."],
+    solution:"Group the like terms (carry each sign with its term):<ol>"+
+      "<li>"+v+"-terms: "+M(co(a,v)+(cc<0?" − ":" + ")+co(Math.abs(cc),v))+" = "+M(co(av,v))+"</li>"+
+      "<li>constants: "+M(fmt(b)+sgn(dd))+" = "+M(fmt(k))+"</li></ol>"+
+      "Answer: <b>"+M(disp)+"</b>. Note you <i>cannot</i> combine "+M(co(av,v))+" with "+M(fmt(k))+" — different kinds of terms."
+  };
+});
+skill("w7-distribute","Distribute, then combine",function(){
+  var v = pick(["x","y","n","a"]);
+  var a = pick([2,3,4,5,-2,-3]), b = pick([2,3,4,5,6]), c = pick([1,2,3,4,5,6,7]);
+  var neg = Math.random()<0.5;
+  var cc = neg ? -c : c;
+  var d = pick([2,3,4,5,6,7,8]);
+  var plusTerm = Math.random()<0.5;
+  var expr = fmt(a)+"("+co(b,v)+(cc<0?" − ":" + ")+fmt(Math.abs(cc))+")" + (plusTerm ? " + "+co(d,v) : " − "+co(d,v));
+  var vTotal = a*b + (plusTerm ? d : -d);
+  var kTotal = a*cc;
+  var ansStr = (vTotal===0?"":fmt(vTotal)+v) + (kTotal===0?"":(vTotal===0?fmt(kTotal):(kTotal<0?"-":"+")+Math.abs(kTotal)));
+  if(ansStr==="") ansStr = "0";
+  var disp = (vTotal===0 ? (kTotal===0?"0":fmt(kTotal)) : co(vTotal,v)+(kTotal===0?"":sgn(kTotal)));
+  return {
+    q:"Simplify:<br>"+M("<b>"+expr+"</b>"),
+    type:"input", placeholder:"simplified expression", tip:"Type it like 13x - 12",
+    check:exprCheck(ansStr), answer:disp,
+    hint:["Distribute first — the "+fmt(a)+" has to multiply <i>both</i> things inside the parentheses, signs included.",
+          fmt(a)+" × "+co(b,v)+" = "+co(a*b,v)+" and "+fmt(a)+" × ("+fmt(cc)+") = "+fmt(a*cc)+". Now combine the "+v+"-terms."],
+    solution:"<ol><li>Distribute: "+M(fmt(a)+"("+co(b,v)+sgn(cc)+")")+" = "+M(co(a*b,v)+sgn(a*cc))+"</li>"+
+      "<li>Rewrite the whole thing: "+M(co(a*b,v)+sgn(a*cc)+(plusTerm?" + ":" − ")+co(d,v))+"</li>"+
+      "<li>Combine "+v+"-terms: "+fmt(a*b)+(plusTerm?" + ":" − ")+fmt(d)+" = "+fmt(vTotal)+"</li></ol>"+
+      "Answer: <b>"+M(disp)+"</b>."
+  };
+});
+
+/* ============================ WEEK 8 ============================ */
+function solveSteps(list){
+  var keep = [];
+  for(var i=0;i<list.length;i++) if(list[i]) keep.push(list[i]);
+  return "<ol><li>"+keep.join("</li><li>")+"</li></ol>";
+}
+/* the "divide by the coefficient" step — skipped when the coefficient is 1,
+   because "divide both sides by 1" is noise, not a step */
+function divStep(coef, x){
+  if(coef === 1) return null;
+  if(coef === -1) return "Both sides are negative, so multiply by −1: "+M("x = "+fmt(x));
+  return "Divide both sides by "+fmt(coef)+": "+M("x = "+fmt(x));
+}
+skill("w8-two","Two-step equation",function(){
+  var x = pick([2,3,4,5,6,7,8,9,10,-2,-3,-4,-5]);
+  var a = pick([2,3,4,5,6,-2,-3,-4]);
+  var b = pick([1,2,3,5,7,8,10,12,-3,-5,-6,-8]);
+  var c = a*x + b;
+  return {
+    q:"Solve for x:<br>"+M("<b>"+co(a,"x")+sgn(b)+" = "+fmt(c)+"</b>"),
+    type:"input", placeholder:"x = ?",
+    check:numCheck(x), answer:"x = "+fmt(x),
+    hint:["Undo the operations in reverse order. The "+(b<0?"− "+fmt(Math.abs(b)):"+ "+fmt(b))+" is the outer layer — peel that off first.",
+          (b<0?"Add "+fmt(Math.abs(b)):"Subtract "+fmt(b))+" on both sides to get "+M(co(a,"x")+" = "+fmt(a*x))+". Then divide both sides by "+fmt(a)+"."],
+    solution:solveSteps([
+      M(co(a,"x")+sgn(b)+" = "+fmt(c)),
+      (b<0?"Add "+fmt(Math.abs(b))+" to both sides":"Subtract "+fmt(b)+" from both sides")+": "+M(co(a,"x")+" = "+fmt(a*x)),
+      "Divide both sides by "+fmt(a)+": "+M("x = "+fmt(x)),
+      "Check: "+fmt(a)+"("+fmt(x)+")"+sgn(b)+" = "+fmt(c)+" ✔"
+    ])+"<b>x = "+fmt(x)+"</b>"
+  };
+});
+skill("w8-frac","Equation with a fraction coefficient",function(){
+  var f = pick([[2,3],[3,4],[1,2],[2,5],[3,5],[5,6],[1,3],[4,5]]);
+  var num = f[0], den = f[1];
+  var m = pick([1,2,3,4,5,-1,-2,-3]);
+  var x = den*m;
+  var b = pick([2,3,4,5,6,7,8,-2,-3,-4,-5,-6]);
+  var prod = num*m;
+  var c = prod + b;
+  return {
+    q:"Solve for x:<br>"+M("<b>"+fracHTML(num,den)+"x"+sgn(b)+" = "+fmt(c)+"</b>"),
+    type:"input", placeholder:"x = ?", tip:"Fractions are fine: 3/4",
+    check:numCheck(x), answer:"x = "+fmt(x),
+    hint:["Treat the fraction like any other coefficient. Deal with the "+(b<0?"− "+fmt(Math.abs(b)):"+ "+fmt(b))+" first.",
+          "After "+(b<0?"adding "+fmt(Math.abs(b)):"subtracting "+fmt(b))+" you get "+M(fracHTML(num,den)+"x = "+fmt(prod))+". To undo multiplying by "+num+"/"+den+", multiply both sides by the reciprocal "+den+"/"+num+"."],
+    solution:solveSteps([
+      M(fracHTML(num,den)+"x"+sgn(b)+" = "+fmt(c)),
+      (b<0?"Add "+fmt(Math.abs(b)):"Subtract "+fmt(b))+" on both sides: "+M(fracHTML(num,den)+"x = "+fmt(prod)),
+      "Multiply both sides by the reciprocal "+M(fracHTML(den,num))+": "+M("x = "+fmt(prod)+" × "+den+"/"+num+" = "+fmt(x)),
+      "Check: "+num+"/"+den+" × "+fmt(x)+" = "+fmt(prod)+", and "+fmt(prod)+sgn(b)+" = "+fmt(c)+" ✔"
+    ])+"<b>x = "+fmt(x)+"</b><br><br>Multiplying by the reciprocal beats dividing by a fraction every time."
+  };
+});
+skill("w8-dec","Equation with decimals",function(){
+  var a = pick([0.5,0.25,0.75,1.5,2.5,0.2,0.4]);
+  var x = pick([2,4,6,8,10,12,20,-4,-8]);
+  var b = pick([1.5,2.5,3,4.5,6,-1.5,-2.5,-3]);
+  var ax = C.r4(a*x);
+  var c = C.r4(ax + b);
+  return {
+    q:"Solve for x:<br>"+M("<b>"+fmt(a)+"x"+sgn(b)+" = "+fmt(c)+"</b>"),
+    type:"input", placeholder:"x = ?",
+    check:numCheck(x,0.0005), answer:"x = "+fmt(x),
+    hint:["Decimals don't change the plan: undo the addition or subtraction first, then undo the multiplication.",
+          (b<0?"Add "+fmt(Math.abs(b)):"Subtract "+fmt(b))+" on both sides → "+M(fmt(a)+"x = "+fmt(ax))+". Then divide by "+fmt(a)+"."],
+    solution:solveSteps([
+      M(fmt(a)+"x"+sgn(b)+" = "+fmt(c)),
+      (b<0?"Add "+fmt(Math.abs(b)):"Subtract "+fmt(b))+" on both sides: "+M(fmt(a)+"x = "+fmt(ax)),
+      "Divide both sides by "+fmt(a)+": "+M("x = "+fmt(ax)+" ÷ "+fmt(a)+" = "+fmt(x)),
+      "Check: "+fmt(a)+"("+fmt(x)+")"+sgn(b)+" = "+fmt(c)+" ✔"
+    ])+"<b>x = "+fmt(x)+"</b><br><br>If decimals bug you, "+fmt(a)+" = "+asFrac(a)+", and the fraction method works the same."
+  };
+});
+skill("w8-dist","Distribute, then solve",function(){
+  var a = pick([2,3,4,5,-2,-3]);
+  var b = pick([1,2,3,4,5,6,-2,-3,-4]);
+  var x = pick([2,3,4,5,6,-2,-3,-4,0]);
+  var c = a*(x+b);
+  return {
+    q:"Solve for x:<br>"+M("<b>"+fmt(a)+"(x"+sgn(b)+") = "+fmt(c)+"</b>"),
+    type:"input", placeholder:"x = ?",
+    check:numCheck(x), answer:"x = "+fmt(x),
+    hint:["Two good routes: distribute the "+fmt(a)+" first, or divide both sides by "+fmt(a)+" first. Either works.",
+          "Divide-first route: "+M("x"+sgn(b)+" = "+fmt(c/a))+". Then "+(b<0?"add "+fmt(Math.abs(b)):"subtract "+fmt(b))+"."],
+    solution:"<b>Route A — divide first:</b>"+solveSteps([
+      "Divide both sides by "+fmt(a)+": "+M("x"+sgn(b)+" = "+fmt(c/a)),
+      (b<0?"Add "+fmt(Math.abs(b)):"Subtract "+fmt(b))+": "+M("x = "+fmt(x))
+    ])+"<b>Route B — distribute first:</b>"+solveSteps([
+      M(fmt(a)+"x"+sgn(a*b)+" = "+fmt(c)),
+      (a*b<0?"Add "+fmt(Math.abs(a*b)):"Subtract "+fmt(a*b))+": "+M(fmt(a)+"x = "+fmt(a*x)),
+      "Divide by "+fmt(a)+": "+M("x = "+fmt(x))
+    ])+"Either way, <b>x = "+fmt(x)+"</b>."
+  };
+});
+
+/* ============================ WEEK 9 ============================ */
+skill("w9-both","Variables on both sides",function(){
+  var x = pick([2,3,4,5,6,7,8,-2,-3,-4,-5]);
+  var a = pick([3,4,5,6,7,8,-3,-4]);
+  var c = pick([2,3,4,5,-2,-3,-5]);
+  if(a===c) c = a+1;
+  var b = pick([1,2,3,5,6,-2,-4,-7]);
+  var d = (a-c)*x + b;
+  return {
+    q:"Solve for x:<br>"+M("<b>"+co(a,"x")+sgn(b)+" = "+co(c,"x")+sgnZ(d)+"</b>"),
+    type:"input", placeholder:"x = ?",
+    check:numCheck(x), answer:"x = "+fmt(x),
+    hint:["Get all the x-terms onto one side and all the plain numbers onto the other. Whatever you do, do it to both sides.",
+          "Subtract "+co(c,"x")+" from both sides: "+M(co(a-c,"x")+sgn(b)+" = "+fmt(d))+". Now it's a two-step equation."],
+    solution:solveSteps([
+      M(co(a,"x")+sgn(b)+" = "+co(c,"x")+sgnZ(d)),
+      "Subtract "+M(co(c,"x"))+" from both sides: "+M(co(a-c,"x")+sgn(b)+" = "+fmt(d)),
+      (b<0?"Add "+fmt(Math.abs(b)):"Subtract "+fmt(b))+" on both sides: "+M(co(a-c,"x")+" = "+fmt((a-c)*x)),
+      divStep(a-c, x),
+      "Check both sides: left = "+fmt(a*x+b)+", right = "+fmt(c*x+d)+" ✔"
+    ])+"<b>x = "+fmt(x)+"</b>"
+  };
+});
+skill("w9-distboth","Distribute on both sides",function(){
+  var x = pick([2,3,4,5,6,-2,-3,-4]);
+  var a = pick([2,3,4,5]), c = pick([2,3,4,6]);
+  if(a===c) c = a+1;
+  var b = pick([1,2,3,4,5,-2,-3]);
+  // a(x + b) = c(x + d)  ->  ax + ab = cx + cd  ->  (a-c)x = cd - ab
+  var d = ((a-c)*x + a*b)/c;
+  if(!Number.isInteger(d)){ d = Math.round(d); x = (c*d - a*b)/(a-c); }
+  if(!Number.isInteger(x)){ a=3; c=2; b=2; d=5; x=4; }
+  return {
+    q:"Solve for x:<br>"+M("<b>"+fmt(a)+"(x"+sgn(b)+") = "+fmt(c)+"(x"+sgnZ(d)+")</b>"),
+    type:"input", placeholder:"x = ?",
+    check:numCheck(x), answer:"x = "+fmt(x),
+    hint:["Distribute on both sides first, then gather x-terms on one side.",
+          "Left becomes "+M(co(a,"x")+sgn(a*b))+", right becomes "+M(co(c,"x")+sgnZ(c*d))+". Now subtract "+co(c,"x")+" from both sides."],
+    solution:solveSteps([
+      "Distribute both sides: "+M(co(a,"x")+sgn(a*b)+" = "+co(c,"x")+sgnZ(c*d)),
+      "Subtract "+M(co(c,"x"))+": "+M(co(a-c,"x")+sgn(a*b)+" = "+fmt(c*d)),
+      (a*b<0?"Add "+fmt(Math.abs(a*b)):"Subtract "+fmt(a*b))+": "+M(co(a-c,"x")+" = "+fmt(c*d-a*b)),
+      divStep(a-c, x)
+    ])+"<b>x = "+fmt(x)+"</b>"
+  };
+});
+skill("w9-fracboth","Rational numbers, both sides",function(){
+  var den = pick([2,3,4]);
+  var den2 = pick([2,3,4,6]);
+  if(den===den2) den2 = den*2;
+  var L = 1/den, R = 1/den2;
+  var step = den*den2;
+  var x = step * pick([1,2,-1]);
+  var b = pick([2,3,4,5,-2,-3]);
+  var d = C.r4(L*x + b - R*x);
+  var diff = C.r4(L-R), recip = C.r4(1/diff);
+  return {
+    q:"Solve for x:<br>"+M("<b>"+fracHTML(1,den)+"x"+sgn(b)+" = "+fracHTML(1,den2)+"x"+sgnZ(d)+"</b>"),
+    type:"input", placeholder:"x = ?", tip:"Fractions are fine.",
+    check:numCheck(x,0.0005), answer:"x = "+fmt(x),
+    hint:["Same plan as always: x-terms on one side, numbers on the other. Fractions just need a common denominator.",
+          "Subtract "+M(fracHTML(1,den2)+"x")+" from both sides. "+fracHTML(1,den)+" − "+fracHTML(1,den2)+" = "+asFrac(diff)+", so you get "+M(asFrac(diff)+"x"+sgn(b)+" = "+fmt(d))+"."],
+    solution:solveSteps([
+      "Subtract "+M(fracHTML(1,den2)+"x")+" from both sides: "+M(asFrac(diff)+"x"+sgn(b)+" = "+fmt(d)),
+      (b<0?"Add "+fmt(Math.abs(b)):"Subtract "+fmt(b))+": "+M(asFrac(diff)+"x = "+fmt(C.r4(diff*x))),
+      "Multiply both sides by the reciprocal of "+asFrac(diff)+", which is "+asFrac(recip)+": "+M("x = "+fmt(x))
+    ])+"<b>x = "+fmt(x)+"</b><br><br>Shortcut worth knowing: multiplying every term by "+step+" at the very start clears both fractions."
+  };
+});
+var W9W = [
+  function(){
+    var a=pick([8,10,12,15]), b=pick([20,25,30]), c=pick([5,6,9]), d=b+pick([10,20,30]);
+    var m=(d-b)/(a-c);
+    if(!Number.isInteger(m)||m<=0) return null;
+    return {q:"Gym A charges $"+b+" to join plus $"+a+" a month. Gym B charges $"+d+" to join plus $"+c+" a month. After how many months do they cost the same?",
+      eq:b+" + "+a+"m = "+d+" + "+c+"m", ans:m, u:"months",
+      steps:["Let m = months.", "Gym A total: "+M(b+" + "+a+"m")+". Gym B total: "+M(d+" + "+c+"m")+".", "Set them equal: "+M(b+" + "+a+"m = "+d+" + "+c+"m"), "Subtract "+c+"m: "+M(b+" + "+(a-c)+"m = "+d), "Subtract "+b+": "+M((a-c)+"m = "+(d-b)), "Divide by "+(a-c)+": "+M("m = "+m)]};
+  },
+  function(){
+    var p=pick([3,4,5,6]), extra=pick([12,15,18,24]), t=pick([2,3,4]);
+    // p*n + extra = (p+t)*n  -> n = extra/t
+    var n = extra/t;
+    if(!Number.isInteger(n)) return null;
+    return {q:"A photographer charges $"+p+" per print plus a $"+extra+" sitting fee. A second photographer charges $"+(p+t)+" per print with no fee. How many prints make the two cost the same?",
+      eq:p+"n + "+extra+" = "+(p+t)+"n", ans:n, u:"prints",
+      steps:["Let n = number of prints.","Set the totals equal: "+M(p+"n + "+extra+" = "+(p+t)+"n"),"Subtract "+p+"n from both sides: "+M(extra+" = "+t+"n"),"Divide by "+t+": "+M("n = "+n)]};
+  },
+  function(){
+    var w=pick([4,5,6,8]), s1=pick([30,40,50]), r=pick([5,10]), s2=s1+pick([20,30,40]);
+    // s1 + r*wk = s2  (savings) ... make it both-sides
+    var r2v = r + pick([5,10]);
+    var wk = (s2-s1)/(r2v-r);
+    if(!Number.isInteger(wk)||wk<=0) return null;
+    return {q:"You have $"+s1+" saved and add $"+r2v+" a week. Your friend has $"+s2+" saved and adds $"+r+" a week. In how many weeks will you have the same amount?",
+      eq:s1+" + "+r2v+"w = "+s2+" + "+r+"w", ans:wk, u:"weeks",
+      steps:["Let w = weeks.","Your total: "+M(s1+" + "+r2v+"w")+". Friend's total: "+M(s2+" + "+r+"w")+".","Set equal: "+M(s1+" + "+r2v+"w = "+s2+" + "+r+"w"),"Subtract "+r+"w: "+M(s1+" + "+(r2v-r)+"w = "+s2),"Subtract "+s1+": "+M((r2v-r)+"w = "+(s2-s1)),"Divide by "+(r2v-r)+": "+M("w = "+wk)]};
+  }
+];
+skill("w9-word","Write the equation, then solve",function(){
+  var p = null, guard = 0;
+  while(!p && guard++ < 25) p = pick(W9W)();
+  if(!p) p = {q:"Gym A charges $20 to join plus $12 a month. Gym B charges $50 to join plus $9 a month. After how many months do they cost the same?",
+    eq:"20 + 12m = 50 + 9m", ans:10, u:"months",
+    steps:["Let m = months.","Set the totals equal: "+M("20 + 12m = 50 + 9m"),"Subtract 9m: "+M("20 + 3m = 50"),"Subtract 20: "+M("3m = 30"),"Divide by 3: "+M("m = 10")]};
+  return {
+    q:p.q,
+    type:"input", placeholder:p.u,
+    check:numCheck(p.ans), answer:fmt(p.ans)+" "+p.u,
+    hint:["Name the unknown with a letter first, then write what each side costs in terms of that letter.",
+          "The equation is "+M(p.eq)+". Now solve it the usual way — variables to one side."],
+    solution:solveSteps(p.steps)+"<b>"+fmt(p.ans)+" "+p.u+"</b>.<br><br>The hard part of a word problem is almost never the algebra — it's deciding what the letter stands for and what each side is worth."
+  };
+});
+
+/* ============================ WEEK 10 ============================ */
+function flip(sym){ return {"<":">",">":"<","≤":"≥","≥":"≤"}[sym]; }
+function ineqChoices(sym,val){
+  var set = [{html:M("x "+sym+" "+fmt(val)),ok:true},
+             {html:M("x "+flip(sym)+" "+fmt(val)),ok:false},
+             {html:M("x "+sym+" "+fmt(-val)),ok:false},
+             {html:M("x "+flip(sym)+" "+fmt(-val)),ok:false}];
+  var seen = {}, out = [];
+  for(var i=0;i<set.length;i++){
+    var key = set[i].html;
+    if(!seen[key]){ seen[key]=1; out.push(set[i]); }
+  }
+  return shuffle(out);
+}
+skill("w10-one","One-step inequality",function(){
+  var sym = pick(["<",">","≤","≥"]);
+  var form = pick(["add","sub","mulpos","mulneg"]);
+  var x = pick([2,3,4,5,6,-2,-3,-4,-5]);
+  var q, val, flipped=false, steps;
+  if(form==="add"){
+    var b = pick([2,3,4,5,7,8]);
+    q = "x + "+b+" "+sym+" "+fmt(x+b); val = x;
+    steps = ["Subtract "+b+" from both sides.","Adding or subtracting never flips the sign.","Result: "+M("x "+sym+" "+fmt(val))];
+  } else if(form==="sub"){
+    var b2 = pick([2,3,4,5,7,8]);
+    q = "x − "+b2+" "+sym+" "+fmt(x-b2); val = x;
+    steps = ["Add "+b2+" to both sides.","Adding or subtracting never flips the sign.","Result: "+M("x "+sym+" "+fmt(val))];
+  } else if(form==="mulpos"){
+    var a = pick([2,3,4,5,6]);
+    q = fmt(a)+"x "+sym+" "+fmt(a*x); val = x;
+    steps = ["Divide both sides by "+a+".","Dividing by a <b>positive</b> number keeps the sign the same.","Result: "+M("x "+sym+" "+fmt(val))];
+  } else {
+    var an = pick([2,3,4,5]);
+    q = "−"+fmt(an)+"x "+sym+" "+fmt(-an*x); val = x; flipped = true;
+    steps = ["Divide both sides by −"+an+".","Dividing by a <b>negative</b> number <b>flips</b> the inequality sign: "+sym+" becomes "+flip(sym)+".","Result: "+M("x "+flip(sym)+" "+fmt(val))];
+  }
+  var finalSym = flipped ? flip(sym) : sym;
+  return {
+    q:"Solve the inequality:<br>"+M("<b>"+q+"</b>"),
+    type:"choice", choices:ineqChoices(finalSym,val), noShuffle:true,
+    hint:["Solve it exactly like an equation — but there is one move that forces you to flip the inequality sign. Did you make that move?",
+          flipped ? "You divided by a negative number. That flips "+sym+" to "+flip(sym)+"."
+                  : "You only "+(form==="mulpos"?"divided by a positive number":"added or subtracted")+", so the sign stays as "+sym+"."],
+    solution:solveSteps(steps)+"<b>"+M("x "+finalSym+" "+fmt(val))+"</b>"
+  };
+});
+skill("w10-two","Two-step inequality",function(){
+  var sym = pick(["<",">","≤","≥"]);
+  var neg = Math.random()<0.5;
+  var a = pick([2,3,4,5,6]);
+  var aa = neg ? -a : a;
+  var x = pick([2,3,4,5,-2,-3,-4]);
+  var b = pick([1,2,3,5,7,-2,-3,-5]);
+  var c = aa*x + b;
+  var finalSym = neg ? flip(sym) : sym;
+  return {
+    q:"Solve the inequality:<br>"+M("<b>"+co(aa,"x")+sgn(b)+" "+sym+" "+fmt(c)+"</b>"),
+    type:"choice", choices:ineqChoices(finalSym,x), noShuffle:true,
+    hint:["Undo the "+(b<0?"subtraction":"addition")+" first, then undo the multiplication. Keep an eye on the sign of the number you divide by.",
+          (b<0?"Add "+fmt(Math.abs(b)):"Subtract "+fmt(b))+" on both sides → "+M(co(aa,"x")+" "+sym+" "+fmt(aa*x))+". Now divide by "+fmt(aa)+
+            (neg?" — a negative, so the sign flips.":" — a positive, so the sign stays.")],
+    solution:solveSteps([
+      (b<0?"Add "+fmt(Math.abs(b))+" to both sides":"Subtract "+fmt(b)+" from both sides")+": "+M(co(aa,"x")+" "+sym+" "+fmt(aa*x)),
+      "Divide both sides by "+fmt(aa)+(neg?", which is negative — <b>flip the sign</b>: "+sym+" → "+flip(sym):", which is positive — the sign stays."),
+      "Result: "+M("x "+finalSym+" "+fmt(x))
+    ])+"<b>"+M("x "+finalSym+" "+fmt(x))+"</b>"+
+      (neg?"<br><br>The flip is the whole game on these. Test it: try x = "+fmt(x+ (finalSym.indexOf(">")>=0?1:-1))+" in the original and it works.":"")
+  };
+});
+skill("w10-line","Match the number line",function(){
+  var sym = pick(["<",">","≤","≥"]);
+  var val = pick([-5,-4,-3,-2,2,3,4,5]);
+  var closed = (sym==="≤"||sym==="≥");
+  var dir = (sym===">"||sym==="≥") ? "right" : "left";
+  var opts = shuffle([
+    {html:numLineSVG({pt:val,dir:dir,closed:closed,size:270}), ok:true},
+    {html:numLineSVG({pt:val,dir:dir,closed:!closed,size:270}), ok:false},
+    {html:numLineSVG({pt:val,dir:dir==="right"?"left":"right",closed:closed,size:270}), ok:false},
+    {html:numLineSVG({pt:-val,dir:dir,closed:closed,size:270}), ok:false}
+  ]);
+  return {
+    q:"Which number line shows "+M("<b>x "+sym+" "+fmt(val)+"</b>")+"?",
+    type:"choice", choices:opts, grid:false, noShuffle:true,
+    hint:["Two decisions: is the circle open or filled, and which way does the arrow point?",
+          "The sign is "+sym+", so the circle is <b>"+(closed?"filled in (the number itself counts)":"open (the number itself does not count)")+"</b> and the arrow points <b>"+dir+"</b> from "+val+"."],
+    solution:"For "+M("x "+sym+" "+fmt(val))+":<ol>"+
+      "<li>Circle at "+fmt(val)+" is <b>"+(closed?"closed/filled":"open")+"</b>, because "+sym+" "+(closed?"includes":"does not include")+" "+fmt(val)+" itself.</li>"+
+      "<li>Shade to the <b>"+dir+"</b>, because the solutions are all the numbers "+(dir==="right"?"greater":"less")+" than "+fmt(val)+".</li></ol>"+
+      "Quick test: pick a number in your shaded part — say "+fmt(dir==="right"?val+1:val-1)+" — and check it makes "+M("x "+sym+" "+fmt(val))+" true."
+  };
+});
+var W10W = [
+  function(){ var e=pick([10,12,15]), r=pick([3,4,5,6]), b=pick([40,45,48,54,60]);
+    var n=Math.floor((b-e)/r);
+    return {q:"You have $"+b+" at a fair. Entry costs $"+e+" and each ride costs $"+r+". What is the greatest number of rides you can afford?",
+      ineq:e+" + "+r+"r ≤ "+b, ans:n, u:"rides",
+      steps:["Let r = number of rides.","Total spent must be at most $"+b+": "+M(e+" + "+r+"r ≤ "+b),"Subtract "+e+": "+M(r+"r ≤ "+(b-e)),"Divide by "+r+": "+M("r ≤ "+C.r4((b-e)/r)),"You can't buy part of a ride, so round <b>down</b>: "+n+" rides."]}; },
+  function(){ var s=pick([20,25,30]), w=pick([5,8,10]), g=pick([70,80,90,100]);
+    var n=Math.ceil((g-s)/w);
+    return {q:"You have $"+s+" saved and save $"+w+" more each week. In how many weeks will you have at least $"+g+"?",
+      ineq:s+" + "+w+"w ≥ "+g, ans:n, u:"weeks",
+      steps:["Let w = weeks.","You need at least $"+g+": "+M(s+" + "+w+"w ≥ "+g),"Subtract "+s+": "+M(w+"w ≥ "+(g-s)),"Divide by "+w+": "+M("w ≥ "+C.r4((g-s)/w)),"Weeks come in whole numbers and you need to reach the goal, so round <b>up</b>: "+n+" weeks."]}; }
+];
+skill("w10-word","Inequality word problem",function(){
+  var p = pick(W10W)();
+  var wrong = shuffle([p.ans+1, p.ans-1, p.ans+2]).slice(0,3);
+  var ch = shuffle([{html:fmt(p.ans)+" "+p.u,ok:true}].concat(wrong.map(function(w){ return {html:fmt(w)+" "+p.u,ok:false}; })));
+  return {
+    q:p.q,
+    type:"choice", choices:ch, noShuffle:true,
+    hint:["Write an inequality, not an equation. Which phrase tells you the direction — \"at most\", \"at least\", \"no more than\"?",
+          "The inequality is "+M(p.ineq)+". Solve it, then think about whether to round up or down in real life."],
+    solution:solveSteps(p.steps)+"<b>"+fmt(p.ans)+" "+p.u+"</b>.<br><br>With inequalities the algebra gives you a range — the last step is always deciding what that range means for real objects you can't cut in half."
+  };
+});
+
+})();
+/* ============================================================
+   PART 3 — the 10 weeks: what the bot teaches, in order.
+   Beat types:
+     {t:"say",  h:"..."}                      bot explains a chunk
+     {t:"ask",  ...problem}                   one-off concept check
+     {t:"drill",s:"skill-id", need:3}         practice until N in a row
+                s can also be "@review" (earlier weeks) or "@all"
+     {t:"explain", p:"prompt", model:"..."}   say it back in your own words
+     {t:"done", h:"..."}                      week finished
+   ============================================================ */
+(function(){
+"use strict";
+var C = window.CP7;
+var M = C.M, fracHTML = C.fracHTML;
+
+C.WEEKS = [
+/* ================= WEEK 1 ================= */
+{
+n:1, unit:1, title:"Proportional relationships in tables",
+cal:"January · ILM Unit 2",
+goals:["Decide whether a table is proportional","Find the constant of proportionality (k) from a table","Connect k to the unit rate you already know"],
+script:[
+ {t:"say",h:"Welcome to Week 1. Ten weeks from now you'll be solving inequalities, but it all starts here, with one idea that runs through the whole thing.<br><br>Ready?"},
+ {t:"say",h:"Two quantities are <b>proportional</b> when one is always the <i>same number of times</i> the other.<br><br>You already know this from money. If a job pays $9 an hour, then hours and dollars are proportional: dollars is always 9 times hours."},
+ {t:"ask",q:"Quick one to prove the point. At $9 an hour, how much do you earn in 3 hours?",type:"input",placeholder:"$",
+  check:function(r){ return C.near(C.parseNum(r),27,0.011); },answer:"$27",
+  hint:["9 for each hour, three hours.","9 × 3"],
+  solution:"9 × 3 = <b>$27</b>. You multiplied by 9 — and that 9 is going to turn out to be the most important number in this unit."},
+ {t:"say",h:"Here's the thing: that 9 never changes. 1 hour → $9. 4 hours → $36. 10 hours → $90. Every single time, dollars ÷ hours = 9.<br><br>That gives you a <b>test</b> you can run on any table: <b>divide y by x in every row.</b> If you always get the same number, it's proportional. If even one row disagrees, it isn't."},
+ {t:"say",h:"Let's try it. I'll give you tables, you tell me proportional or not. Get three right in a row and we move on.<br><br>Don't eyeball these — actually do the division on each row."},
+ {t:"drill",s:"w1-ratio",need:3},
+ {t:"say",h:"Nice. Now the vocabulary, because your teacher will use it.<br><br>That number you keep getting when you divide is called the <b>constant of proportionality</b>. It's written <b>k</b>.<br><br>"+M("k = y ÷ x")+"<br><br>\"Constant\" because it doesn't change. That's the whole point of it."},
+ {t:"ask",q:"How do you find k from a table?",type:"choice",
+  choices:[{html:"Divide y by x",ok:true},{html:"Divide x by y",ok:false},{html:"Subtract x from y",ok:false},{html:"Add x and y",ok:false}],
+  hint:["Think about the $9/hour table: dollars and hours. Which did you divide by which to get 9?","Dollars ÷ hours = 9. The y-value ÷ the x-value."],
+  solution:"<b>k = y ÷ x</b>. Order matters — x ÷ y gives you the upside-down answer. In the pay table, 27 ÷ 3 = 9 (right), while 3 ÷ 27 = 0.111 (not what you want)."},
+ {t:"drill",s:"w1-k",need:3},
+ {t:"say",h:"One more thing about k, and this is the part that makes it easy.<br><br><b>k is just the unit rate.</b> Miles per hour. Dollars per pound. Pages per minute. Any time you hear the word <b>per</b>, you're hearing k.<br><br>So you've been finding constants of proportionality since 5th grade. It just had a shorter name."},
+ {t:"drill",s:"w1-rate",need:3},
+ {t:"explain",p:"Say this one back to me in your own words: how can you tell whether a table is proportional? Type whatever you've got — I won't grade your spelling.",
+  model:"Divide y by x in <i>every</i> row. If all the answers are the same number, the table is proportional, and that number is k. If any row gives a different answer, it's not proportional."},
+ {t:"done",h:"Week 1 down. You can now spot a proportional table and pull k out of it.<br><br>Next week: the same relationship, but hiding in graphs and equations. The good news is you already know how to find k — you'll just be finding it in new places."}
+],
+notes:`
+<h3>Key ideas</h3>
+<ul>
+<li><b>Proportional</b> = one quantity is always the same number of times the other.</li>
+<li><b>Test a table:</b> divide y by x in every row. All the same → proportional.</li>
+<li><b>Constant of proportionality:</b> <span class="m">k = y ÷ x</span>. Same thing as the <b>unit rate</b> ("per one").</li>
+<li>If any row gives a different ratio, the relationship is <b>not</b> proportional.</li>
+</ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>Is this proportional? <span class="m">x: 2, 5, 8 &nbsp;·&nbsp; y: 7, 17.5, 28</span></span></summary>
+<div class="steps"><ol><li>7 ÷ 2 = 3.5</li><li>17.5 ÷ 5 = 3.5</li><li>28 ÷ 8 = 3.5</li></ol>
+<div class="ansline">All three ratios are 3.5, so it is proportional with k = 3.5, and y = 3.5x.</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>4 pounds of coffee cost $38. What is k?</span></summary>
+<div class="steps"><ol><li>k is the price for one pound — a unit rate.</li><li>38 ÷ 4 = 9.5</li></ol>
+<div class="ansline">k = $9.50 per pound, so y = 9.5x.</div></div></details>
+</div>`
+},
+
+/* ================= WEEK 2 ================= */
+{
+n:2, unit:1, title:"Proportionality in graphs and equations",
+cal:"January · ILM Unit 2",
+goals:["Identify proportional relationships from a graph","Identify them from an equation","Write y = kx from a table or graph","See how k becomes slope in 8th grade"],
+script:[
+ {t:"say",h:"Last week: tables. This week the same relationship shows up as a picture and as an equation.<br><br>Start with graphs. A proportional graph has to pass <b>two</b> tests, and most people forget the second one."},
+ {t:"say",h:"<b>Test 1:</b> it's a straight line.<br><b>Test 2:</b> it goes through the <b>origin</b>, the point (0, 0).<br><br>Why the origin? Because zero hours of work pays zero dollars. Zero pounds of apples costs zero dollars. If x is 0, y has to be 0 — no exceptions."},
+ {t:"ask",q:"A graph is a perfectly straight line, but it crosses the y-axis at 4 instead of 0. Is it proportional?",type:"choice",
+  choices:[{html:"Yes — it's straight, that's enough",ok:false},{html:"No — it misses the origin",ok:true}],
+  hint:["It passed test 1. Did it pass test 2?","Straight is necessary but not sufficient. Where does it have to cross?"],
+  solution:"<b>No.</b> Straight is only half the requirement. Crossing at 4 means that when x = 0, y = 4 — you're getting 4 of something for free, so y isn't a constant multiple of x. Think of a gym with a $4 joining fee: still a straight line, not proportional."},
+ {t:"drill",s:"w2-graph",need:2},
+ {t:"say",h:"Now equations. This test is the fastest of the three.<br><br>A proportional equation can be written <b>"+M("y = kx")+"</b> — one number times x, and <i>nothing else going on</i>.<br><br>"+M("y = 7x")+" ✔ proportional<br>"+M("y = 7x + 2")+" ✘ not proportional<br><br>That little + 2 is the whole difference. It's the $2 fee that gets charged before you buy anything."},
+ {t:"drill",s:"w2-eq",need:3},
+ {t:"say",h:"Writing your own equation is now a two-step job:<br><br>1. Find k (divide y by x)<br>2. Write "+M("y = kx")+" with your k in it<br><br>That's it. There's no step 3."},
+ {t:"drill",s:"w2-fromtable",need:3},
+ {t:"say",h:"Graphs work the same way — find any point on the line, then divide y by x.<br><br>There's also a shortcut you'll use constantly next year: from the origin, count <b>up k for every 1 step right</b>. If a line goes up 3 for each 1 across, k = 3."},
+ {t:"drill",s:"w2-fromgraph",need:2},
+ {t:"say",h:"Here's where this is heading, so you're not surprised in 8th grade.<br><br>Next year k gets a new name: <b>slope</b>, written <b>m</b>. And lines get written "+M("y = mx + b")+", where b is where the line crosses the y-axis.<br><br>Proportional relationships are just the special case where <b>b = 0</b>. You're already doing 8th grade algebra — with the easy value of b."},
+ {t:"explain",p:"In your own words: why is "+M("y = 3x + 2")+" not proportional?",
+  model:"Because of the + 2. When x = 0, y = 2 instead of 0, so the graph misses the origin, and y isn't a constant multiple of x — dividing y by x gives a different answer every time."},
+ {t:"drill",s:"@review",need:2},
+ {t:"done",h:"Two weeks in and you can read a proportional relationship in all three forms: table, graph, equation.<br><br>Next week we stop identifying them and start using them to answer questions."}
+],
+notes:`
+<h3>Key ideas</h3>
+<table class="ref"><tr><th>Where you see it</th><th>It's proportional if…</th></tr>
+<tr><td>Table</td><td>y ÷ x is the same in every row</td></tr>
+<tr><td>Graph</td><td>a <b>straight line</b> that passes through the <b>origin (0,0)</b></td></tr>
+<tr><td>Equation</td><td>it can be written <span class="m">y = kx</span> — nothing added or subtracted</span></td></tr></table>
+<ul><li>From a graph: k = y ÷ x for any point on the line, or "up k for every 1 right."</li>
+<li><b>8th grade preview:</b> k becomes slope m in <span class="m">y = mx + b</span>. Proportional means b = 0.</li></ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>Is <span class="m">y = x/5</span> proportional?</span></summary>
+<div class="steps"><ol><li>Dividing by 5 is the same as multiplying by 1/5.</li><li>So <span class="m">y = 0.2x</span>, which fits <span class="m">y = kx</span>.</li></ol>
+<div class="ansline">Yes — proportional, k = 1/5 = 0.2.</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>A line passes through (6, 15). Write its equation.</span></summary>
+<div class="steps"><ol><li>k = 15 ÷ 6 = 2.5</li><li>Substitute into y = kx.</li></ol>
+<div class="ansline">y = 2.5x</div></div></details>
+</div>`
+},
+
+/* ================= WEEK 3 ================= */
+{
+n:3, unit:1, title:"Solving proportional problems",
+cal:"January · ILM Unit 2",
+goals:["Find missing values in a proportional table","Solve proportional word problems","Compare two relationships using unit rate"],
+script:[
+ {t:"say",h:"You can identify proportional relationships. This week you <i>use</i> them — which is what the test questions actually ask.<br><br>Good news: there's basically one move. <b>Find k, then multiply.</b>"},
+ {t:"ask",q:"A relationship is proportional with k = 4. If x = 7, what is y?",type:"input",placeholder:"y = ?",
+  check:function(r){ return C.near(C.parseNum(r),28); },answer:"28",
+  hint:["k is what you multiply x by.","y = kx = 4 × 7"],
+  solution:"y = kx = 4 × 7 = <b>28</b>. Once you have k, every question becomes one multiplication."},
+ {t:"say",h:"Missing values in a table work exactly like that:<br><br>1. Find k from a column where you can see both numbers<br>2. Multiply (or divide) to fill the gap<br><br>If the <i>y</i> is missing, multiply by k. If the <i>x</i> is missing, divide by k."},
+ {t:"drill",s:"w3-missing",need:3},
+ {t:"say",h:"Word problems are the same thing wearing a costume. Your first move is always the same: <b>find the rate for one</b>.<br><br>\"165 miles in 3 hours\" → 55 miles per hour → now you can answer any question about any number of hours."},
+ {t:"drill",s:"w3-word",need:3},
+ {t:"say",h:"Last skill this week, and it's the most useful one in real life: <b>comparing</b> two deals.<br><br>You can't compare \"5 for $8.75\" to \"3 for $5.10\" directly. Different sizes. Get both down to the price for one, then compare."},
+ {t:"drill",s:"w3-deal",need:2},
+ {t:"explain",p:"What's your very first move on any proportional word problem?",
+  model:"Find k — the rate for one. Divide to get \"per one,\" then multiply by whatever amount the question asks about."},
+ {t:"drill",s:"@review",need:3},
+ {t:"done",h:"That's ILM Unit 2, done. You can identify a proportional relationship in a table, a graph, or an equation, pull out k, write y = kx, and use it to answer questions.<br><br>Next up: percents (Unit 4). Here's a secret — percents <i>are</i> proportions. You already know most of it."}
+],
+notes:`
+<h3>Key ideas</h3>
+<ul><li><b>The move:</b> find k, then multiply. <span class="m">y = kx</span></li>
+<li>Missing y → multiply by k. Missing x → divide by k.</li>
+<li><b>Word problems:</b> find the rate for one first.</li>
+<li><b>Comparing deals:</b> reduce both to unit rate, then compare.</li></ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>12 pens cost $9. What do 20 pens cost?</span></summary>
+<div class="steps"><ol><li>k = 9 ÷ 12 = $0.75 per pen</li><li>0.75 × 20 = 15</li></ol>
+<div class="ansline">$15.00</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>Which is cheaper: 6 for $7.50 or 4 for $5.20?</span></summary>
+<div class="steps"><ol><li>7.50 ÷ 6 = $1.25 each</li><li>5.20 ÷ 4 = $1.30 each</li></ol>
+<div class="ansline">6 for $7.50 is the better deal, by 5¢ per item.</div></div></details>
+</div>`
+},
+
+/* ================= WEEK 4 ================= */
+{
+n:4, unit:2, title:"The percent proportion and percent equation",
+cal:"February · ILM Unit 4",
+goals:["Use the percent proportion part/whole = p/100","Use the percent equation part = percent × whole","Find the part, the percent, or the whole"],
+script:[
+ {t:"say",h:"New unit, and it connects straight back to last month.<br><br><b>Percent</b> literally means \"per one hundred.\" 25% means 25 out of every 100. That's a ratio — which is why percents are really just proportions in disguise."},
+ {t:"say",h:"Every percent problem on earth has three numbers in it:<br><br>• the <b>whole</b> (the whole thing, 100%)<br>• the <b>part</b> (some piece of it)<br>• the <b>percent</b><br><br>You always get two. You find the third. That's the entire unit."},
+ {t:"say",h:"Two tools, same job. Pick whichever you like:<br><br><b>Percent proportion:</b> "+fracHTML("part","whole")+" = "+fracHTML("p","100")+"<br><br><b>Percent equation:</b> part = percent (as a decimal) × whole<br><br>I'll mostly use the equation because it's fewer steps, but your teacher may want the proportion. They always agree."},
+ {t:"ask",q:"In the question \"12 is what percent of 48?\", which number is the <b>whole</b>?",type:"choice",
+  choices:[{html:"48",ok:true},{html:"12",ok:false},{html:"100",ok:false},{html:"Can't tell yet",ok:false}],
+  hint:["There's one word in that sentence that always points at the whole.","The number right after the word <i>of</i> is the whole. Every time."],
+  solution:"<b>48.</b> The number after the word <b>of</b> is always the whole. That one trick will save you on half the problems in this unit — \"of\" points at the whole, and the whole goes on the bottom."},
+ {t:"say",h:"Start with the easiest type: <b>finding the part.</b><br><br>\"What is 20% of 60?\" You have the percent and the whole, so multiply — but turn the percent into a decimal first. 20% = 0.20.<br><br>0.20 × 60 = 12."},
+ {t:"drill",s:"w4-part",need:3},
+ {t:"say",h:"Next type: <b>finding the percent.</b> You have the part and the whole.<br><br>Divide part ÷ whole, then move the decimal two places right.<br><br>12 ÷ 48 = 0.25 → 25%"},
+ {t:"drill",s:"w4-percent",need:3},
+ {t:"say",h:"Hardest type: <b>finding the whole.</b> You have the part and the percent.<br><br>Since part = percent × whole, flip it: <b>whole = part ÷ percent</b>.<br><br>\"12 is 25% of what?\" → 12 ÷ 0.25 = 48.<br><br>Sanity check that'll catch most mistakes: if the percent is under 100%, your answer must come out <i>bigger</i> than the part."},
+ {t:"drill",s:"w4-whole",need:3},
+ {t:"say",h:"Now the real skill — figuring out which of the three you're being asked for. Read, label the numbers you have, and see which one's missing."},
+ {t:"drill",s:"w4-word",need:3},
+ {t:"explain",p:"How do you find the whole in a word problem?",
+  model:"Look for the word \"of\" — the number right after it is the whole. If the whole is the missing one, divide the part by the percent written as a decimal."},
+ {t:"done",h:"Week 4 done. You can find any one of part, percent, or whole when you have the other two.<br><br>Next week those same three numbers show up at the mall: tax, tip, discount, and markup."}
+],
+notes:`
+<h3>Key ideas</h3>
+<ul><li><b>Percent proportion:</b> <span class="frac"><span>part</span><span>whole</span></span> = <span class="frac"><span>p</span><span>100</span></span></li>
+<li><b>Percent equation:</b> part = percent (decimal) × whole</li>
+<li>Find the <b>part</b> → multiply. Find the <b>percent</b> → part ÷ whole. Find the <b>whole</b> → part ÷ percent.</li>
+<li>The number after the word <b>of</b> is the whole.</li>
+<li>If the percent is less than 100%, the whole is bigger than the part.</li></ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>What is 35% of 240?</span></summary>
+<div class="steps"><ol><li>35% = 0.35</li><li>0.35 × 240 = 84</li></ol><div class="ansline">84</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>18 is 45% of what number?</span></summary>
+<div class="steps"><ol><li>The whole is missing, so divide.</li><li>18 ÷ 0.45 = 40</li><li>Check: 45% of 40 = 18 ✔</li></ol><div class="ansline">40</div></div></details>
+</div>`
+},
+
+/* ================= WEEK 5 ================= */
+{
+n:5, unit:2, title:"Tax, tip, discount, markup",
+cal:"February · ILM Unit 4",
+goals:["Calculate sales tax and tips","Calculate discounts and sale prices","Calculate markup","Use a single multiplier instead of two steps"],
+script:[
+ {t:"say",h:"Four words this week — tax, tip, discount, markup — and one idea underneath all of them.<br><br>Every one is: take a percent of a price, then <b>add it on</b> or <b>take it off</b>.<br><br>Tax: add. Tip: add. Markup: add. Discount: subtract. That's the only difference between them."},
+ {t:"say",h:"The long way always works:<br>1. Find the percent of the price<br>2. Add it or subtract it<br><br>But there's a one-step shortcut that's worth learning, because it prevents the most common mistake in this unit."},
+ {t:"say",h:"Think in terms of what percent you end up with:<br><br>• 6% tax → you pay 106% → <b>× 1.06</b><br>• 18% tip → you pay 118% → <b>× 1.18</b><br>• 25% off → you pay 75% → <b>× 0.75</b><br>• 40% markup → you charge 140% → <b>× 1.40</b><br><br>One multiplication, done."},
+ {t:"ask",q:"If something is 30% off, what percent of the original price do you actually pay?",type:"input",placeholder:"%",
+  check:function(r){ return C.near(C.parseNum(r),70,0.051); },answer:"70%",
+  hint:["The whole price is 100%. Thirty of those percent are coming off.","100 − 30"],
+  solution:"<b>70%.</b> 100% − 30% = 70%, so the sale price is 0.70 × original. This is the single most useful idea in the week — a discount tells you what you <i>save</i>, so subtract from 100 to find what you <i>pay</i>."},
+ {t:"say",h:"Let's start with tax. Round money answers to the nearest cent."},
+ {t:"drill",s:"w5-tax",need:2},
+ {t:"say",h:"Tips work identically — a percent of the bill, added on.<br><br>Mental math trick for real life: 10% is just moving the decimal one place. 10% of $46 is $4.60. Want 20%? Double it. Want 15%? Take 10% plus half of that."},
+ {t:"drill",s:"w5-tip",need:2},
+ {t:"say",h:"Now discounts, and here's the trap I promised.<br><br>A $40 shirt is 25% off. You compute 0.25 × 40 = $10 and write down $10.<br><br>But $10 is what you <b>save</b>, not what you <b>pay</b>. The answer is $30. Read the question: is it asking for the discount, or the sale price?"},
+ {t:"drill",s:"w5-discount",need:3},
+ {t:"say",h:"Markup is the store's side of the same coin. They buy a backpack for $24 and sell it for more. A 50% markup means they charge 150% of what they paid: 24 × 1.5 = $36."},
+ {t:"drill",s:"w5-markup",need:2},
+ {t:"explain",p:"What multiplier would you use for a 15% discount, and what multiplier for a 15% markup?",
+  model:"Discount: × 0.85, because you pay 100% − 15% = 85%. Markup: × 1.15, because the price becomes 100% + 15% = 115%."},
+ {t:"drill",s:"@review",need:2},
+ {t:"done",h:"Week 5 done — you can handle any price-tag percent problem.<br><br>Next week: percent <i>change</i>. Same family, but now we go backwards and figure out the percent itself."}
+],
+notes:`
+<h3>Key ideas</h3>
+<table class="ref"><tr><th>Situation</th><th>Long way</th><th>One-step multiplier</th></tr>
+<tr><td>6% sales tax</td><td>price + 0.06·price</td><td><span class="m">× 1.06</span></td></tr>
+<tr><td>18% tip</td><td>bill + 0.18·bill</td><td><span class="m">× 1.18</span></td></tr>
+<tr><td>25% off</td><td>price − 0.25·price</td><td><span class="m">× 0.75</span></td></tr>
+<tr><td>40% markup</td><td>cost + 0.40·cost</td><td><span class="m">× 1.40</span></td></tr></table>
+<ul><li>A discount is what you <b>save</b>. Subtract from 100% to find what you <b>pay</b>.</li>
+<li>Round money to the nearest cent.</li></ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>$52.80 jacket, 7% sales tax. Total?</span></summary>
+<div class="steps"><ol><li>Tax = 0.07 × 52.80 = $3.70 (rounded)</li><li>Total = 52.80 + 3.70 = $56.50</li><li>Or in one step: 52.80 × 1.07 = $56.50</li></ol><div class="ansline">$56.50</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>$96 boots, 35% off. Sale price?</span></summary>
+<div class="steps"><ol><li>You pay 100% − 35% = 65%</li><li>96 × 0.65 = 62.40</li></ol><div class="ansline">$62.40 (you save $33.60)</div></div></details>
+</div>`
+},
+
+/* ================= WEEK 6 ================= */
+{
+n:6, unit:2, title:"Percent increase, decrease, and working backwards",
+cal:"February · ILM Unit 4",
+goals:["Find a percent increase or decrease","Find the new amount after a percent change","Handle two-step percent problems","Work backwards to an original price"],
+script:[
+ {t:"say",h:"Last week you were given the percent. This week you have to <b>find</b> it — and go backwards.<br><br>The formula is short:<br><br><b>percent change = "+fracHTML("change","original")+"</b><br><br>Then turn that decimal into a percent."},
+ {t:"say",h:"Two things people get wrong here, both about the denominator.<br><br>1. Divide by the <b>original</b>, not the new number.<br>2. \"Original\" means where you <i>started</i>, which isn't always the smaller number — prices go down too."},
+ {t:"ask",q:"A price goes from $80 to $100. When you compute the percent increase, what do you divide by?",type:"choice",
+  choices:[{html:"80, the original",ok:true},{html:"100, the new price",ok:false},{html:"20, the change",ok:false},{html:"180, the total",ok:false}],
+  hint:["Percent change measures the change relative to where things started.","It started at 80."],
+  solution:"<b>80.</b> The change is 20, and 20 ÷ 80 = 0.25 = 25% increase. If you'd divided by 100 you'd get 20%, which is the answer to a different question. Always divide by the starting value."},
+ {t:"drill",s:"w6-change",need:3},
+ {t:"say",h:"Going the other direction — you know the percent change, you want the new amount — is just last week's multiplier again.<br><br>• Increase by 15% → × 1.15<br>• Decrease by 15% → × 0.85"},
+ {t:"drill",s:"w6-after",need:3},
+ {t:"say",h:"Real shopping has two steps: the sale, then the tax. Do them <b>in order</b> — discount first, then tax on the discounted price, because that's what the register actually does."},
+ {t:"drill",s:"w6-twostep",need:2},
+ {t:"say",h:"Now the trickiest problem type in the whole unit: you know the <b>sale</b> price and you want the <b>original</b>.<br><br>A bike costs $48 after 20% off. What was it?<br><br>$48 isn't the whole — it's 80% of the whole. So <b>divide</b>: 48 ÷ 0.80 = $60."},
+ {t:"ask",q:"A shirt is $30 after a 25% discount. What was the original price?",type:"input",placeholder:"$",
+  check:function(r){ return C.near(C.parseNum(r),40,0.011); },answer:"$40",
+  hint:["$30 is 75% of the original. You're missing the whole, so you divide.","30 ÷ 0.75"],
+  solution:"$30 is 75% of the original, so 30 ÷ 0.75 = <b>$40</b>. Check it forward: 25% off $40 saves $10, leaving $30 ✔<br><br>Tempting wrong answer: adding 25% to $30 gives $37.50 — wrong, because that 25% would be of $30 instead of the original."},
+ {t:"drill",s:"w6-original",need:2},
+ {t:"say",h:"One last thing, because it's genuinely surprising and shows up on tests.<br><br>Take $100. Raise it 20% → $120. Now drop it 20% → $96.<br><br>Not $100. You don't end up back where you started, because the 20% up was taken of $100 and the 20% down was taken of $120. <b>Percents are always of something</b>, and that something changes."},
+ {t:"ask",q:"A $200 item goes up 10%, then down 10%. What is the final price?",type:"input",placeholder:"$",
+  check:function(r){ return C.near(C.parseNum(r),198,0.011); },answer:"$198",
+  hint:["Do it in two steps. Don't assume the two 10%s cancel.","200 × 1.1 = 220. Then 220 × 0.9 = ?"],
+  solution:"200 × 1.1 = 220, then 220 × 0.9 = <b>$198</b>. You lost $2 overall, because the 10% decrease came off the larger $220."},
+ {t:"explain",p:"Why doesn't a 20% increase followed by a 20% decrease get you back to the original number?",
+  model:"Because each percent is taken <i>of a different amount</i>. The increase is 20% of the original, but the decrease is 20% of the new, larger number — so more comes off than went on."},
+ {t:"done",h:"That's ILM Unit 4. Percent proportion, percent equation, tax, tip, discount, markup, percent change, and working backwards.<br><br>Four weeks left, and they're all algebra: terms, equations, and inequalities."}
+],
+notes:`
+<h3>Key ideas</h3>
+<ul><li><b>Percent change = </b><span class="frac"><span>change</span><span>original</span></span> — always divide by where you started.</li>
+<li>New amount: increase → <span class="m">× (1 + r)</span>; decrease → <span class="m">× (1 − r)</span>.</li>
+<li><b>Two steps:</b> discount first, then tax on the sale price.</li>
+<li><b>Backwards:</b> sale price ÷ (1 − r) = original.</li>
+<li>Up 20% then down 20% does <b>not</b> return to the original — each percent is of a different whole.</li></ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>Screen time went from 250 to 200 minutes. Percent decrease?</span></summary>
+<div class="steps"><ol><li>Change = 50</li><li>50 ÷ 250 = 0.20</li></ol><div class="ansline">20% decrease</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>$150 coat, 40% off, then 6% tax. Total?</span></summary>
+<div class="steps"><ol><li>Sale: 150 × 0.60 = $90</li><li>Tax: 90 × 1.06 = $95.40</li></ol><div class="ansline">$95.40</div></div></details>
+</div>`
+},
+
+/* ================= WEEK 7 ================= */
+{
+n:7, unit:3, title:"Expressions: terms, like terms, and simplifying",
+cal:"March · ILM Unit 6",
+goals:["Name terms, like terms, coefficients, and constants","Combine like terms","Use the distributive property","Simplify multi-part expressions"],
+script:[
+ {t:"say",h:"New unit, and it starts with vocabulary. That sounds boring, but every instruction you'll get for the next month uses these four words, so ten minutes here saves a lot of confusion later."},
+ {t:"say",h:"Take "+M("8x − 5 + 3y")+".<br><br>• <b>Terms</b> are the pieces separated by + and −: "+M("8x")+", "+M("−5")+", "+M("3y")+". Three terms.<br>• <b>Coefficients</b> are the numbers multiplying a variable: 8 and 3.<br>• The <b>constant</b> is the term with no variable: −5.<br><br>Critical detail: <b>the sign in front belongs to the term.</b> It's −5, not 5."},
+ {t:"ask",q:"In "+M("6a − 9 + 4b")+", what is the constant?",type:"input",placeholder:"number",
+  check:function(r){ return C.near(C.parseNum(r),-9); },answer:"−9",
+  hint:["The constant is the term with no letter attached.","It's the 9 — but check the sign in front of it."],
+  solution:"The constant is <b>−9</b>. Not 9. The minus sign in front of it is part of the term, and forgetting that causes more wrong answers in this unit than anything else."},
+ {t:"drill",s:"w7-vocab",need:3},
+ {t:"say",h:"Now the word that matters most: <b>like terms</b>.<br><br>Like terms have the <b>exact same variable part</b>. Only the number in front can differ.<br><br>"+M("7x")+" and "+M("2x")+" → like ✔<br>"+M("7x")+" and "+M("2y")+" → not like ✘<br>"+M("7x")+" and "+M("2")+" → not like ✘<br><br>Think of it as units. 7 apples + 2 apples = 9 apples. 7 apples + 2 oranges = you can't say anything shorter than that."},
+ {t:"drill",s:"w7-like",need:2},
+ {t:"say",h:"Combining like terms is just that apple counting. Add the coefficients, keep the variable:<br><br>"+M("7x + 3 − 2x + 8")+" → "+M("5x + 11")+"<br><br>Group the x's (7 − 2 = 5), group the numbers (3 + 8 = 11). And stop there — "+M("5x + 11")+" cannot be combined any further."},
+ {t:"drill",s:"w7-combine",need:3},
+ {t:"say",h:"Last tool: the <b>distributive property</b>. A number outside parentheses multiplies <b>everything</b> inside.<br><br>"+M("3(2x + 4)")+" = "+M("6x + 12")+"<br><br>Both terms. Not just the first one. And signs come along for the ride:<br><br>"+M("−2(x − 5)")+" = "+M("−2x + 10")+"<br><br>Negative times negative is positive, so that −5 turns into +10."},
+ {t:"drill",s:"w7-distribute",need:3},
+ {t:"explain",p:"Why can't "+M("5x + 3")+" be simplified into one term?",
+  model:"Because 5x and 3 aren't like terms — one has a variable and the other doesn't. 5x means 5 of something unknown; 3 is just 3. You can only add coefficients when the variable parts match exactly."},
+ {t:"done",h:"Week 7 done. You can read algebra vocabulary and simplify expressions.<br><br>Next week we add an equals sign, and expressions become equations you can actually solve."}
+],
+notes:`
+<h3>Key ideas</h3>
+<ul><li><b>Terms</b> are separated by + and −. The sign in front belongs to the term.</li>
+<li><b>Coefficient</b> = the number multiplying a variable. <b>Constant</b> = the term with no variable.</li>
+<li><b>Like terms</b> have identical variable parts. Only like terms can be combined.</li>
+<li><b>Distributive property:</b> <span class="m">a(b + c) = ab + ac</span> — multiply <i>everything</i> inside.</li>
+<li>Order of work: distribute first, then combine like terms.</li></ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>Simplify <span class="m">9n + 4 − 3n − 11</span></span></summary>
+<div class="steps"><ol><li>n-terms: 9n − 3n = 6n</li><li>constants: 4 − 11 = −7</li></ol><div class="ansline">6n − 7</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>Simplify <span class="m">5(2x − 3) + 4x</span></span></summary>
+<div class="steps"><ol><li>Distribute: 10x − 15 + 4x</li><li>Combine x-terms: 10x + 4x = 14x</li></ol><div class="ansline">14x − 15</div></div></details>
+</div>`
+},
+
+/* ================= WEEK 8 ================= */
+{
+n:8, unit:3, title:"Multi-step equations with rational numbers",
+cal:"March · ILM Unit 6",
+goals:["Solve two-step equations","Solve equations with fraction and decimal coefficients","Distribute before solving","Check solutions by substituting"],
+script:[
+ {t:"say",h:"An equation is a scale that balances. "+M("3x + 7 = 22")+" says the left side weighs exactly what the right side weighs.<br><br>One rule governs everything you're about to do: <b>whatever you do to one side, do to the other.</b> Break that and the scale tips."},
+ {t:"say",h:"To get x alone you <b>undo</b> the operations — in <b>reverse</b> order from how they were built.<br><br>"+M("3x + 7 = 22")+" was built by multiplying by 3, <i>then</i> adding 7.<br>So undo it backwards: subtract 7 first, then divide by 3."},
+ {t:"ask",q:"For "+M("3x + 7 = 22")+", which do you undo first?",type:"choice",
+  choices:[{html:"Subtract 7 from both sides",ok:true},{html:"Divide both sides by 3",ok:false},{html:"Subtract 3 from both sides",ok:false},{html:"Divide both sides by 7",ok:false}],
+  hint:["Reverse order. Which operation was done <i>last</i> when the equation was built?","The + 7 is the outer layer — peel it off first."],
+  solution:"<b>Subtract 7.</b> That leaves "+M("3x = 15")+", then divide by 3 to get x = 5.<br><br>Going the other way (dividing by 3 first) isn't illegal, but you'd have to divide the 7 too, which gets ugly fast."},
+ {t:"drill",s:"w8-two",need:3},
+ {t:"say",h:"Now <b>rational numbers</b> — the part of this unit that makes people nervous. It shouldn't. Fractions and decimals don't change the plan at all. They just change the arithmetic.<br><br>For a fraction coefficient, <b>multiply by the reciprocal</b> (flip it):<br><br>"+M(fracHTML(2,3)+"x = 14")+" → multiply both sides by "+fracHTML(3,2)+" → "+M("x = 21")},
+ {t:"drill",s:"w8-frac",need:3},
+ {t:"say",h:"Decimals: identical plan. Undo the addition, then divide.<br><br>If decimals bother you more than fractions, remember 0.5 = "+fracHTML(1,2)+" and 0.25 = "+fracHTML(1,4)+" — convert and use whichever form you like better."},
+ {t:"drill",s:"w8-dec",need:2},
+ {t:"say",h:"Parentheses? Two legal routes:<br><br>"+M("4(x + 3) = 20")+"<br><br><b>Route A:</b> divide both sides by 4 → "+M("x + 3 = 5")+" → x = 2<br><b>Route B:</b> distribute → "+M("4x + 12 = 20")+" → x = 2<br><br>Same answer. Route A is faster when the division is clean, Route B when it isn't."},
+ {t:"drill",s:"w8-dist",need:3},
+ {t:"say",h:"One habit that's worth more than any trick: <b>check your answer</b>. Substitute it back into the original equation. If both sides match, you're right — and you never have to wonder.<br><br>Thirty seconds, and it catches almost every sign error you'll ever make."},
+ {t:"explain",p:"In your own words, what's the strategy for solving a two-step equation?",
+  model:"Undo the operations in reverse order, doing the same thing to both sides. Add or subtract first to get the variable term alone, then divide by the coefficient (or multiply by its reciprocal). Then substitute your answer back in to check."},
+ {t:"drill",s:"@review",need:2},
+ {t:"done",h:"Week 8 done — multi-step equations with whole numbers, fractions, and decimals.<br><br>Next week the variable shows up on <i>both</i> sides. One extra move, same rules."}
+],
+notes:`
+<h3>Key ideas</h3>
+<ul><li>Whatever you do to one side, do to the other.</li>
+<li><b>Undo in reverse order:</b> add/subtract first, then multiply/divide.</li>
+<li>Fraction coefficient → multiply both sides by the <b>reciprocal</b>.</li>
+<li>Parentheses → distribute, or divide both sides by the outside number.</li>
+<li>Always <b>check</b> by substituting your answer into the original equation.</li></ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>Solve <span class="m">−4x + 9 = 25</span></span></summary>
+<div class="steps"><ol><li>Subtract 9: −4x = 16</li><li>Divide by −4: x = −4</li><li>Check: −4(−4) + 9 = 16 + 9 = 25 ✔</li></ol><div class="ansline">x = −4</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>Solve <span class="m">0.25x − 1.5 = 3</span></span></summary>
+<div class="steps"><ol><li>Add 1.5: 0.25x = 4.5</li><li>Divide by 0.25: x = 18</li><li>Check: 0.25(18) − 1.5 = 4.5 − 1.5 = 3 ✔</li></ol><div class="ansline">x = 18</div></div></details>
+</div>`
+},
+
+/* ================= WEEK 9 ================= */
+{
+n:9, unit:3, title:"Variables on both sides",
+cal:"April · ILM Unit 6",
+goals:["Solve equations with the variable on both sides","Distribute on both sides first","Handle fractions on both sides","Turn a word problem into an equation"],
+script:[
+ {t:"say",h:"Everything from last week still applies. There's exactly one new move: <b>get all the variable terms onto one side.</b><br><br>"+M("5x − 3 = 2x + 12")+"<br><br>Subtract "+M("2x")+" from both sides — the same way you'd subtract a number — and you're back to a two-step equation you already know how to finish."},
+ {t:"ask",q:"For "+M("7x + 1 = 3x + 17")+", what's a good first move?",type:"choice",
+  choices:[{html:"Subtract 3x from both sides",ok:true},{html:"Subtract 7x from both sides",ok:false},{html:"Subtract 1 from the left only",ok:false},{html:"Divide everything by 7",ok:false}],
+  hint:["You want the x-terms together. Which one should you move to keep the coefficient positive?","Moving the smaller x-term (3x) leaves 4x on the left — positive and easy."],
+  solution:"<b>Subtract 3x.</b> That gives "+M("4x + 1 = 17")+", then x = 4.<br><br>Subtracting 7x is legal too — you'd get "+M("1 = −4x + 17")+" and the same answer — but moving the <i>smaller</i> x-term keeps your coefficient positive, and positive means fewer sign mistakes."},
+ {t:"drill",s:"w9-both",need:3},
+ {t:"say",h:"Parentheses on both sides? Distribute both, then collect.<br><br>"+M("3(x + 2) = 2(x + 5)")+"<br>→ "+M("3x + 6 = 2x + 10")+"<br>→ "+M("x = 4")+"<br><br>Distribute first, always. Trying to shortcut before the parentheses are gone is how people lose terms."},
+ {t:"drill",s:"w9-distboth",need:3},
+ {t:"say",h:"Fractions on both sides have a shortcut worth knowing: <b>multiply every term by the common denominator</b> at the very start, and they all vanish.<br><br>"+M(fracHTML(1,2)+"x + 4 = "+fracHTML(1,4)+"x + 7")+"<br><br>Multiply everything by 4: "+M("2x + 16 = x + 28")+" → x = 12.<br><br>No fractions left to fight with."},
+ {t:"drill",s:"w9-fracboth",need:2},
+ {t:"say",h:"Here's where both-sides equations earn their keep. They answer \"<b>when is it the same?</b>\" questions.<br><br>Two gyms with different joining fees and monthly rates — when do they cost the same? Two phone plans, two savings accounts, two taxi companies. Set the two expressions equal and solve."},
+ {t:"drill",s:"w9-word",need:2},
+ {t:"explain",p:"When you have an equation with x on both sides, how do you decide which x-term to move?",
+  model:"Move the one with the smaller coefficient, so the x-term you keep stays positive. Either choice gives the same answer, but keeping it positive means fewer sign errors."},
+ {t:"drill",s:"@review",need:2},
+ {t:"done",h:"Week 9 done. Variables on both sides, parentheses on both sides, fractions on both sides, and word problems that set two expressions equal.<br><br>One week left: inequalities. Same algebra, one new rule, plus graphing."}
+],
+notes:`
+<h3>Key ideas</h3>
+<ul><li>Get all variable terms on one side, all constants on the other.</li>
+<li>Move the <b>smaller</b> variable term to keep the coefficient positive.</li>
+<li>Parentheses on both sides → distribute both, then collect.</li>
+<li>Fractions → multiply <b>every</b> term by the common denominator to clear them.</li>
+<li>"When is it the same?" problems become <span class="m">expression = expression</span>.</li></ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>Solve <span class="m">8x − 5 = 3x + 20</span></span></summary>
+<div class="steps"><ol><li>Subtract 3x: 5x − 5 = 20</li><li>Add 5: 5x = 25</li><li>Divide by 5: x = 5</li><li>Check: 8(5) − 5 = 35 and 3(5) + 20 = 35 ✔</li></ol><div class="ansline">x = 5</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>Gym A: $30 join + $12/month. Gym B: $60 join + $9/month. Same cost when?</span></summary>
+<div class="steps"><ol><li>30 + 12m = 60 + 9m</li><li>Subtract 9m: 30 + 3m = 60</li><li>Subtract 30: 3m = 30</li><li>m = 10</li></ol><div class="ansline">After 10 months, both cost $150.</div></div></details>
+</div>`
+},
+
+/* ================= WEEK 10 ================= */
+{
+n:10, unit:3, title:"Inequalities, graphs, and final review",
+cal:"April · ILM Unit 6",
+goals:["Solve one- and two-step inequalities","Know when to flip the inequality sign","Graph solutions on a number line","Review all ten weeks"],
+script:[
+ {t:"say",h:"Last week. Inequalities.<br><br>An equation has one answer. An inequality has a <b>whole range</b> of answers. "+M("x > 5")+" is true for 6, for 5.1, for 1,000 — every number past 5.<br><br>• "+M("<")+" less than &nbsp; • "+M(">")+" greater than<br>• "+M("≤")+" at most / no more than &nbsp; • "+M("≥")+" at least"},
+ {t:"say",h:"You solve them <b>exactly</b> like equations. Same undoing, same both-sides rule.<br><br>There is one — <i>one</i> — new rule:<br><br><b>Multiply or divide by a negative number → flip the inequality sign.</b><br><br>Here's why. 3 < 5 is true. Multiply both sides by −1: is −3 < −5? No. −3 is <i>bigger</i>. The order reverses, so the sign has to reverse with it."},
+ {t:"ask",q:"When do you flip the inequality sign?",type:"choice",
+  choices:[{html:"When you multiply or divide by a negative number",ok:true},
+           {html:"Whenever there's a negative number anywhere",ok:false},
+           {html:"When you add or subtract a negative number",ok:false},
+           {html:"Every time you solve an inequality",ok:false}],
+  hint:["Only one kind of operation reverses the order of numbers.","Adding −3 to both sides is fine. Dividing both sides by −3 is the problem."],
+  solution:"<b>Only when you multiply or divide by a negative.</b><br><br>Adding or subtracting negatives changes nothing about the sign — "+M("x − 5 > 2")+" becomes "+M("x > 7")+", no flip. It's specifically multiplying or dividing that reverses the order."},
+ {t:"drill",s:"w10-one",need:3},
+ {t:"drill",s:"w10-two",need:3},
+ {t:"say",h:"Now graphing. Two decisions, every time:<br><br><b>1. Open or closed circle?</b><br>"+M("<")+" or "+M(">")+" → <b>open</b> circle (that exact number isn't included)<br>"+M("≤")+" or "+M("≥")+" → <b>closed/filled</b> circle (it is included)<br><br><b>2. Which way?</b><br>Shade toward the numbers that work. For "+M("x > 3")+", shade right. For "+M("x < 3")+", shade left.<br><br>Not sure? Pick a number in your shaded part and test it in the inequality."},
+ {t:"drill",s:"w10-line",need:3},
+ {t:"say",h:"Word problems. Watch for the phrases that set the direction:<br><br>• \"at most,\" \"no more than,\" \"up to\" → "+M("≤")+"<br>• \"at least,\" \"minimum,\" \"no less than\" → "+M("≥")+"<br><br>And one real-world wrinkle: after you solve, think about what the answer <i>means</i>. If "+M("r ≤ 5.8")+" rides, the answer is 5 rides — you can't buy 0.8 of a ride. Money you need to <i>reach</i> rounds up; things you can <i>afford</i> round down."},
+ {t:"drill",s:"w10-word",need:2},
+ {t:"say",h:"That's the whole curriculum. Ten weeks, three units.<br><br>Now the real test: I'm going to mix problems from <b>every week</b> — proportions, percents, expressions, equations, inequalities — and you won't know which is coming. That's exactly how a final exam feels.<br><br>Five in a row."},
+ {t:"drill",s:"@all",need:5},
+ {t:"explain",p:"Last one. What's the single rule that makes inequalities different from equations?",
+  model:"If you multiply or divide both sides by a negative number, you flip the inequality sign. Everything else works the same as solving an equation."},
+ {t:"done",h:"That's all ten weeks. 🎓<br><br>You can find a constant of proportionality, write y = kx, work any percent problem including backwards, simplify expressions, solve multi-step equations with fractions and decimals, and solve and graph inequalities.<br><br>The mixed review above never runs out of problems — come back to it any time before a test. Nice work."}
+],
+notes:`
+<h3>Key ideas</h3>
+<ul><li>Solve inequalities exactly like equations, with one exception.</li>
+<li><b>Multiply or divide by a negative → flip the sign.</b> Adding or subtracting never flips it.</li>
+<li><b>Graphing:</b> <span class="m">&lt;</span> <span class="m">&gt;</span> → open circle; <span class="m">≤</span> <span class="m">≥</span> → closed circle. Shade toward the solutions.</li>
+<li>"At most / no more than" → <span class="m">≤</span>. "At least / minimum" → <span class="m">≥</span>.</li>
+<li>Check a graph by testing one number from the shaded region.</li></ul>
+<div class="exwrap"><h3>Worked examples</h3>
+<details class="ex"><summary><span class="exn">1</span><span>Solve and graph <span class="m">−3x + 1 ≤ 10</span></span></summary>
+<div class="steps"><ol><li>Subtract 1: −3x ≤ 9</li><li>Divide by −3 and <b>flip</b>: x ≥ −3</li><li>Graph: closed circle at −3, shade right.</li><li>Test x = 0: −3(0) + 1 = 1 ≤ 10 ✔</li></ol><div class="ansline">x ≥ −3</div></div></details>
+<details class="ex"><summary><span class="exn">2</span><span>You have $50. Entry is $8 and rides are $3. Greatest number of rides?</span></summary>
+<div class="steps"><ol><li>8 + 3r ≤ 50</li><li>3r ≤ 42</li><li>r ≤ 14</li></ol><div class="ansline">14 rides</div></div></details>
+</div>`
+}
+];
+})();
+/* ============================================================
+   PART 4 — the tutor bot: conversation engine, mastery gates,
+   progress saving, and the page itself.
+   ============================================================ */
+(function(){
+"use strict";
+var C = window.CP7;
+var WEEKS = C.WEEKS, SKILLS = C.SKILLS, STATE = C.STATE;
+var pick = C.pick, shuffle = C.shuffle;
+
+/* ------------------------------------------------------------
+   OPTIONAL: live AI tutor hook.
+   Leave AI_ENDPOINT as "" and everything runs offline, scripted.
+   Paste a serverless function URL here and two things switch on:
+     1. an "Ask Max anything" box under the answer field
+     2. real feedback on the "say it back to me" questions
+   A ready-to-deploy function is in the HTML comment at the
+   bottom of this file.
+   ------------------------------------------------------------ */
+var AI_ENDPOINT = "";
+
+function aiAsk(payload){
+  return fetch(AI_ENDPOINT, {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(payload)
+  }).then(function(r){
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    return r.json();
+  }).then(function(d){ return d.reply || d.text || ""; });
+}
+
+var $ = function(id){ return document.getElementById(id); };
+var panel = $("panel"), nav = $("weeknav");
+
+var UNITC = {1:["var(--a1)","var(--a1b)"],2:["var(--a2)","var(--a2b)"],3:["var(--a3)","var(--a3b)"]};
+var UNITNAME = {1:"Unit 1 · Proportional Relationships",2:"Unit 2 · Percents",3:"Unit 3 · Expressions, Equations &amp; Inequalities"};
+var UNITILM = {1:"ILM Unit 2 · January",2:"ILM Unit 4 · February",3:"ILM Unit 6 · March – mid April"};
+
+/* ---------- progress ---------- */
+function rec(n){
+  if(!STATE[n]) STATE[n] = {b:0,c:0,a:0,done:false,m:{}};
+  if(!STATE[n].m) STATE[n].m = {};
+  return STATE[n];
+}
+function save(){ C.saveState(); }
+function doneCount(){
+  var k = 0;
+  for(var i=1;i<=WEEKS.length;i++) if(STATE[i] && STATE[i].done) k++;
+  return k;
+}
+function paintProgress(){
+  var d = "";
+  for(var i=1;i<=WEEKS.length;i++) d += '<span class="dot'+((STATE[i]&&STATE[i].done)?" on":"")+'"></span>';
+  $("dots").innerHTML = d;
+  $("progtxt").textContent = doneCount()+" of "+WEEKS.length+" weeks finished";
+  var btns = nav.querySelectorAll(".wbtn");
+  for(var j=0;j<btns.length;j++){
+    var wn = +btns[j].getAttribute("data-w");
+    btns[j].classList.toggle("done", !!(STATE[wn] && STATE[wn].done));
+  }
+}
+
+/* ---------- week nav ---------- */
+function buildNav(){
+  var html = "", unit = 0;
+  for(var i=0;i<WEEKS.length;i++){
+    var w = WEEKS[i];
+    if(w.unit !== unit){
+      if(unit !== 0) html += '</div></div>';
+      unit = w.unit;
+      html += '<div class="unitrow" style="--c:'+UNITC[unit][0]+';--cb:'+UNITC[unit][1]+'">'+
+              '<p class="unitlab">'+UNITNAME[unit]+' <span class="ilm">'+UNITILM[unit]+'</span></p><div class="wgrid">';
+    }
+    html += '<button class="wbtn" type="button" data-w="'+w.n+'" style="--c:'+UNITC[w.unit][0]+';--cb:'+UNITC[w.unit][1]+'">'+
+            '<span class="chk">✓</span><span class="wn">Week '+w.n+'</span><span class="wt">'+C.esc(w.title)+'</span></button>';
+  }
+  html += '</div></div>';
+  nav.innerHTML = html;
+  nav.addEventListener("click", function(e){
+    var b = e.target.closest ? e.target.closest(".wbtn") : null;
+    if(b) openWeek(+b.getAttribute("data-w"));
+  });
+}
+
+/* ============================================================
+   bot state
+   ============================================================ */
+var W = null, R = null, beat = 0;
+var P = null, attempts = 0, hintShown = 0;
+var drill = null;        // {s, need, have, free}
+var freeSkill = null;
+var log, inrow, input, tools, scoreEl, askaiEl;
+
+var OK_WORDS = ["Correct.","That's it.","Right.","Exactly.","Yep — that's right.","Got it.","Nice."];
+var NO_WORDS = ["Not quite.","That's not it.","Nope — try once more.","Close, but not right."];
+var GO_WORDS = ["Got it","Makes sense","OK — next","Keep going"];
+
+function openWeek(n){
+  W = WEEKS[n-1];
+  R = rec(n);
+  beat = R.b || 0;
+  if(beat >= W.script.length) beat = W.script.length - 1;
+  P = null; drill = null; freeSkill = null; attempts = 0; hintShown = 0;
+  var btns = nav.querySelectorAll(".wbtn");
+  for(var i=0;i<btns.length;i++) btns[i].classList.toggle("sel", +btns[i].getAttribute("data-w") === n);
+  renderPanel();
+  greet();
+  paintProgress();
+}
+
+function renderPanel(){
+  var ids = weekSkills(W), skillChips = "";
+  for(var i=0;i<ids.length;i++){
+    var s = SKILLS[ids[i]];
+    if(!s) continue;
+    skillChips += '<button class="chip" type="button" data-skill="'+s.id+'">'+(R.m[s.id]?"✓ ":"")+C.esc(s.name)+'</button>';
+  }
+  skillChips += '<button class="chip" type="button" data-skill="@mix">↻ Mix these up</button>';
+
+  panel.setAttribute("style","--c:"+UNITC[W.unit][0]+";--cb:"+UNITC[W.unit][1]);
+  panel.innerHTML =
+    '<div class="phead"><div><span class="tag">Week '+W.n+' of 10</span><h2>'+C.esc(W.title)+'</h2></div>'+
+    '<span class="cal">'+C.esc(W.cal)+'</span></div>'+
+    '<div class="goals"><h3>By the end of this week you can</h3><ul><li>'+W.goals.join("</li><li>")+'</li></ul></div>'+
+    '<div class="bot">'+
+      '<div class="bothead"><div class="botav">M</div><div class="botname">Max<small>your math tutor</small></div>'+
+      '<span class="botscore" id="botscore"></span></div>'+
+      '<div class="skillrow" id="skillrow">'+skillChips+'</div>'+
+      '<div class="log" id="log"></div>'+
+      '<div class="botfoot">'+
+        '<div class="inrow" id="inrow" style="display:none">'+
+          '<input type="text" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="your answer" aria-label="Your answer">'+
+          '<button class="btn" id="sendbtn" type="button">Check</button>'+
+        '</div>'+
+        '<div class="typehint" id="typehint" style="display:none"></div>'+
+        '<div class="toolrow" id="tools"></div>'+
+        '<div class="askai" id="askai" style="display:none"></div>'+
+      '</div>'+
+    '</div>'+
+    '<details class="guide" id="refcard" style="margin-top:26px"><summary>Week '+W.n+' reference card &amp; worked examples</summary>'+
+      '<div class="gbody lesson">'+W.notes+'</div></details>'+
+    '<div class="wfoot">'+
+      (R.done ? '<span class="donelab">✓ Week '+W.n+' complete</span>'
+              : '<button class="btn ghost sm" id="markdone" type="button">Mark week '+W.n+' complete</button>')+
+      '<button class="btn plain sm" id="restart" type="button">Start this week over</button>'+
+      '<span class="spacer"></span>'+
+      (W.n < WEEKS.length ? '<button class="btn plain sm" id="nextweek" type="button">Week '+(W.n+1)+' →</button>' : '')+
+    '</div>';
+
+  log = $("log"); inrow = $("inrow"); input = $("ans"); tools = $("tools");
+  scoreEl = $("botscore"); askaiEl = $("askai");
+
+  $("sendbtn").addEventListener("click", submitTyped);
+  input.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); submitTyped(); } });
+  $("skillrow").addEventListener("click", function(e){
+    var b = e.target.closest ? e.target.closest(".chip") : null;
+    if(b) startFree(b.getAttribute("data-skill"));
+  });
+  var md = $("markdone"); if(md) md.addEventListener("click", function(){ markDone(true); });
+  $("restart").addEventListener("click", function(){
+    if(!confirm("Clear this week's progress and start from the beginning?")) return;
+    R.b = 0; R.c = 0; R.a = 0; R.m = {}; save(); openWeek(W.n);
+  });
+  var nw = $("nextweek"); if(nw) nw.addEventListener("click", function(){ openWeek(W.n+1); window.scrollTo(0,0); });
+
+  if(AI_ENDPOINT){
+    askaiEl.style.display = "";
+    askaiEl.innerHTML = '<div class="inrow"><input type="text" id="aiq" placeholder="Ask Max anything about this week…" aria-label="Ask a question">'+
+      '<button class="btn ghost" id="aibtn" type="button">Ask</button></div>';
+    $("aibtn").addEventListener("click", sendAI);
+    $("aiq").addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); sendAI(); } });
+  }
+  paintScore();
+}
+
+function weekSkills(w){
+  var out = [], seen = {};
+  for(var i=0;i<w.script.length;i++){
+    var b = w.script[i];
+    if(b.t === "drill" && typeof b.s === "string" && b.s.charAt(0) !== "@" && !seen[b.s]){ seen[b.s] = 1; out.push(b.s); }
+  }
+  return out;
+}
+function paintScore(){
+  if(!scoreEl) return;
+  var ms = 0, total = weekSkills(W).length;
+  for(var k in R.m) if(R.m[k]) ms++;
+  scoreEl.innerHTML = R.c+" right of "+R.a+" tried &nbsp;·&nbsp; "+ms+"/"+total+" skills mastered";
+}
+
+/* ---------- chat primitives ---------- */
+var LOG_CAP = 40;   /* a full week of practice would otherwise grow to hundreds of messages */
+function bubble(side, html, cls){
+  var d = document.createElement("div");
+  d.className = "msg "+side;
+  d.innerHTML = '<div class="av">'+(side === "bot" ? "M" : "You")+'</div><div class="bub'+(cls?" "+cls:"")+'">'+html+'</div>';
+  log.appendChild(d);
+  while(log.children.length > LOG_CAP) log.removeChild(log.firstElementChild);
+  try{ d.scrollIntoView({block:"nearest",behavior:"smooth"}); }catch(e){}
+  return d.querySelector(".bub");
+}
+function botSay(html, cls){ return bubble("bot", html, cls); }
+function meSay(txt){ return bubble("me", C.esc(txt)); }
+
+function setTools(list){
+  tools.innerHTML = "";
+  for(var i=0;i<list.length;i++){
+    if(!list[i]) continue;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "btn sm "+(list[i].style || "plain");
+    b.textContent = list[i].label;
+    b.addEventListener("click", list[i].fn);
+    tools.appendChild(b);
+  }
+}
+function showInput(ph, tip){
+  inrow.style.display = "";
+  input.value = "";
+  input.placeholder = ph || "your answer";
+  $("typehint").style.display = tip ? "" : "none";
+  $("typehint").textContent = tip || "";
+  try{ if(window.matchMedia("(min-width:700px)").matches) input.focus(); }catch(e){}
+}
+function hideInput(){ inrow.style.display = "none"; $("typehint").style.display = "none"; }
+
+/* a "continue" affordance lives in the tool row, so the chat stays readable */
+function continueBtn(label, fn){
+  setTools([{label: label || pick(GO_WORDS), style:"ghost", fn:function(){ setTools([]); fn(); }}]);
+}
+
+/* ---------- greeting / resume ---------- */
+function greet(){
+  log.innerHTML = "";
+  hideInput(); setTools([]);
+  if(R.done && beat >= W.script.length - 1){
+    botSay("You've already finished Week "+W.n+". Want to run the practice again, or just read the reference card below?");
+    setTools([
+      {label:"Practice this week again", style:"ghost", fn:function(){ startFree("@mix"); }},
+      {label:"Replay the lesson", fn:function(){ beat = 0; R.b = 0; save(); log.innerHTML = ""; runBeat(); }}
+    ]);
+    return;
+  }
+  if(beat > 0) botSay("Welcome back — picking up where we left off in Week "+W.n+".");
+  runBeat();
+}
+
+/* ---------- beat runner ---------- */
+function runBeat(){
+  R.b = beat; save();
+  var b = W.script[beat];
+  if(!b) return;
+  if(b.t === "say"){
+    hideInput();
+    botSay(b.h);
+    continueBtn(pick(GO_WORDS), next);
+  }
+  else if(b.t === "ask"){
+    drill = null;
+    present(b, true);
+  }
+  else if(b.t === "drill"){
+    drill = {s:b.s, need:b.need || 3, have:0, free:false};
+    botSay('<span class="lbl">Practice · '+drill.need+' in a row</span>'+(drillName(b.s) || "Mixed practice"));
+    nextProblem();
+  }
+  else if(b.t === "explain"){
+    runExplain(b);
+  }
+  else if(b.t === "done"){
+    hideInput();
+    botSay(b.h, "ok");
+    markDone(false);
+    setTools([
+      W.n < WEEKS.length
+        ? {label:"Start Week "+(W.n+1), style:"ghost", fn:function(){ openWeek(W.n+1); window.scrollTo(0,0); }}
+        : {label:"Mixed review", style:"ghost", fn:function(){ startFree("@all"); }},
+      {label:"Practice this week more", fn:function(){ startFree("@mix"); }}
+    ]);
+  }
+}
+function next(){
+  beat++;
+  if(beat >= W.script.length) beat = W.script.length - 1;
+  runBeat();
+}
+function drillName(s){
+  if(s === "@review") return "Quick review from earlier weeks";
+  if(s === "@all") return "Mixed review — anything from all ten weeks";
+  return SKILLS[s] ? SKILLS[s].name : null;
+}
+
+/* ---------- skill resolution ---------- */
+function resolveSkill(s){
+  if(s === "@all"){
+    var all = [];
+    for(var i=0;i<WEEKS.length;i++) all = all.concat(weekSkills(WEEKS[i]));
+    return pick(all);
+  }
+  if(s === "@review"){
+    var earlier = [];
+    for(var j=0;j<WEEKS.length;j++) if(WEEKS[j].n < W.n) earlier = earlier.concat(weekSkills(WEEKS[j]));
+    if(!earlier.length) earlier = weekSkills(W);
+    return pick(earlier);
+  }
+  if(s === "@mix") return pick(weekSkills(W));
+  if(Object.prototype.toString.call(s) === "[object Array]") return pick(s);
+  return s;
+}
+
+/* ---------- problems ---------- */
+function nextProblem(){
+  var id = resolveSkill(freeSkill || drill.s);
+  var sk = SKILLS[id];
+  if(!sk){ botSay("(That skill isn't available — moving on.)"); return next(); }
+  var p = null;
+  try{ p = sk.gen(); }catch(err){ p = null; }
+  if(!p){ return setTimeout(nextProblem, 30); }
+  p._skill = id;
+  present(p, false);
+}
+
+function problemTools(oneOff){
+  var list = [
+    {label:"I'm stuck — hint", fn:giveHint},
+    {label:"Show me how", fn:showSolution}
+  ];
+  if(!oneOff) list.push({label:"Different problem", fn:function(){ lockChoices(); nextProblem(); }});
+  if(freeSkill) list.push({label:"Back to the lesson", fn:backToLesson});
+  return list;
+}
+
+function present(p, oneOff){
+  P = p; P._oneOff = !!oneOff;
+  attempts = 0; hintShown = 0;
+  var html = p.q;
+  if(p.type === "choice"){
+    var ch = p.noShuffle ? p.choices : shuffle(p.choices);
+    P._ch = ch;
+    html += '<div class="choices'+(p.grid?" grid2":"")+'">';
+    for(var i=0;i<ch.length;i++) html += '<button class="cbtn" type="button" data-i="'+i+'">'+ch[i].html+'</button>';
+    html += '</div>';
+  }
+  var bub = botSay(html);
+  if(p.type === "choice"){
+    hideInput();
+    bub.addEventListener("click", function(e){
+      var b = e.target.closest ? e.target.closest(".cbtn") : null;
+      if(!b || b.disabled || !P) return;
+      var i = +b.getAttribute("data-i");
+      judge(P._ch[i].ok, stripTags(P._ch[i].html), b, bub);
+    });
+  } else {
+    showInput(p.placeholder, p.tip);
+  }
+  setTools(problemTools(P._oneOff));
+}
+function stripTags(h){
+  var d = document.createElement("div");
+  d.innerHTML = h;
+  return (d.textContent || "").trim() || "that one";
+}
+function lockChoices(){
+  var btns = log.querySelectorAll(".cbtn");
+  for(var i=0;i<btns.length;i++) btns[i].disabled = true;
+}
+
+function submitTyped(){
+  if(!P || P.type === "choice") return;
+  var raw = input.value;
+  if(!raw || !raw.trim()) return;
+  if(P._explain) return explainSubmitted(raw);
+  if(!/\d/.test(raw)){
+    meSay(raw); input.value = "";
+    botSay("I can't read that as an answer. Numbers look like <span class=\"m\">12</span>, <span class=\"m\">-3.5</span> or <span class=\"m\">3/4</span>; expressions look like <span class=\"m\">5x + 11</span>. Want a hint instead?", "no");
+    return;
+  }
+  meSay(raw);
+  input.value = "";
+  var ok = false;
+  try{ ok = !!P.check(raw); }catch(e){ ok = false; }
+  judge(ok, raw, null, null);
+}
+
+function judge(ok, shown, btnEl, bub){
+  if(btnEl){
+    meSay(shown);
+    btnEl.classList.add(ok ? "pickedY" : "pickedN");
+    btnEl.disabled = true;
+    if(ok && bub){
+      var all = bub.querySelectorAll(".cbtn");
+      for(var i=0;i<all.length;i++) all[i].disabled = true;
+    }
+  }
+  attempts++;
+  R.a++;
+  if(ok){
+    R.c++;
+    if(P._skill) markSkillProgress(P._skill, true);
+    save(); paintScore();
+
+    if(P._oneOff){
+      hideInput();
+      botSay(pick(OK_WORDS)+" "+P.solution, "ok");
+      P = null;
+      continueBtn(pick(GO_WORDS), next);
+      return;
+    }
+    if(drill && drill.free){
+      botSay(pick(OK_WORDS)+" Here comes another.", "ok");
+      P = null;
+      return setTimeout(nextProblem, 350);
+    }
+    drill.have++;
+    if(drill.have >= drill.need){
+      botSay(pick(OK_WORDS)+" That's "+drill.need+" in a row — you own this one.", "ok");
+      if(P._skill){ R.m[P._skill] = true; save(); renderChips(); }
+      hideInput();
+      P = null;
+      continueBtn("Next up", next);
+    } else {
+      botSay(pick(OK_WORDS)+" "+drill.have+" in a row — "+(drill.need - drill.have)+" more to go.", "ok");
+      P = null;
+      setTimeout(nextProblem, 350);
+    }
+    return;
+  }
+  /* wrong answer — walk the hint ladder */
+  if(P._skill) markSkillProgress(P._skill, false);
+  save(); paintScore();
+  if(attempts === 1){
+    hintShown = 1;
+    botSay(pick(NO_WORDS)+" "+((P.hint && P.hint[0]) || "Take another look at the setup.")+"<br><br>Give it another try.", "no");
+  } else if(attempts === 2 && P.hint && P.hint[1]){
+    hintShown = 2;
+    botSay("Still not it. Bigger hint:<br><br>"+P.hint[1], "no");
+  } else {
+    showSolution();
+  }
+}
+
+function giveHint(){
+  if(!P) return;
+  if(hintShown === 0 && P.hint && P.hint[0]){ hintShown = 1; botSay(P.hint[0]); }
+  else if(hintShown <= 1 && P.hint && P.hint[1]){ hintShown = 2; botSay(P.hint[1]); }
+  else showSolution();
+}
+
+function showSolution(){
+  if(!P) return;
+  lockChoices();
+  var oneOff = P._oneOff, sk = P._skill;
+  botSay('<span class="lbl">Here\'s the whole thing</span>'+P.solution+(P.answer ? "<br><br>Answer: <b>"+P.answer+"</b>" : ""));
+  P = null;
+  hideInput();
+  if(oneOff){ continueBtn(pick(GO_WORDS), next); return; }
+  if(drill && !drill.free){
+    drill.have = 0;
+    botSay("Read that through, then try a fresh one — the streak starts over, so you get real practice instead of a lucky guess.");
+    setTools([{label:"Next problem", style:"ghost", fn:nextProblem}].concat(freeSkill?[{label:"Back to the lesson",fn:backToLesson}]:[]));
+  } else {
+    setTools([{label:"Next problem", style:"ghost", fn:nextProblem},{label:"Back to the lesson", fn:backToLesson}]);
+  }
+}
+function markSkillProgress(id, ok){
+  if(!id) return;
+  if(!R.sk) R.sk = {};
+  if(!R.sk[id]) R.sk[id] = {c:0,a:0};
+  R.sk[id].a++;
+  if(ok) R.sk[id].c++;
+  save();
+}
+function renderChips(){
+  var row = $("skillrow");
+  if(!row) return;
+  var chips = row.querySelectorAll(".chip");
+  for(var i=0;i<chips.length;i++){
+    var id = chips[i].getAttribute("data-skill");
+    if(SKILLS[id]) chips[i].textContent = (R.m[id]?"✓ ":"")+SKILLS[id].name;
+  }
+  paintScore();
+}
+
+/* ---------- explain-it-back ---------- */
+function runExplain(b){
+  P = {_explain:true, _beat:b, type:"input"};
+  botSay('<span class="lbl">Say it back</span>'+b.p);
+  showInput("type a sentence or two", "Spelling doesn't matter — just get the idea down.");
+  setTools([{label:"Skip this one", fn:function(){ hideInput(); setTools([]); P = null; next(); }}]);
+}
+function explainSubmitted(raw){
+  var b = P._beat;
+  meSay(raw);
+  input.value = "";
+  hideInput(); setTools([]);
+  P = null;
+  if(AI_ENDPOINT){
+    var thinking = botSay("Reading that…");
+    aiAsk({mode:"grade_explanation", week:W.n, topic:W.title, prompt:b.p, student:raw, model:b.model})
+      .then(function(reply){
+        thinking.innerHTML = reply || ("Here's how I'd say it:<br><br>"+b.model);
+        continueBtn(pick(GO_WORDS), next);
+      })
+      .catch(function(){
+        thinking.innerHTML = "Here's how I'd say it:<br><br>"+b.model;
+        continueBtn(pick(GO_WORDS), next);
+      });
+    return;
+  }
+  botSay("Here's how I'd put it — compare it to yours:<br><br>"+b.model);
+  botSay("Did you get the main idea?");
+  setTools([
+    {label:"Yes, that matches", style:"ghost", fn:function(){ setTools([]); next(); }},
+    {label:"Not really", fn:function(){
+      setTools([]);
+      botSay("No problem — that's exactly what practice is for. Re-read my version above, and if it still feels shaky, tap a skill button at the top of the chat and drill that one a few more times before you move on.");
+      continueBtn("OK, keep going", next);
+    }}
+  ]);
+}
+
+/* ---------- free practice ---------- */
+function startFree(id){
+  freeSkill = id;
+  drill = {s:id, need:0, have:0, free:true};
+  P = null;
+  var nm = id === "@mix" ? "Mixed practice from Week "+W.n
+         : id === "@all" ? "Mixed review from all ten weeks"
+         : (SKILLS[id] ? SKILLS[id].name : "Practice");
+  botSay('<span class="lbl">Free practice</span>'+nm+" — as many as you want, no streak to hit.");
+  var chips = $("skillrow").querySelectorAll(".chip");
+  for(var i=0;i<chips.length;i++) chips[i].classList.toggle("on", chips[i].getAttribute("data-skill") === id);
+  nextProblem();
+}
+function backToLesson(){
+  freeSkill = null;
+  var chips = $("skillrow").querySelectorAll(".chip");
+  for(var i=0;i<chips.length;i++) chips[i].classList.remove("on");
+  P = null;
+  botSay("Back to the Week "+W.n+" lesson.");
+  runBeat();
+}
+
+/* ---------- week completion ---------- */
+function markDone(manual){
+  if(!R.done){ R.done = true; save(); }
+  paintProgress();
+  var foot = panel.querySelector(".wfoot"), md = $("markdone");
+  if(md && foot){
+    var s = document.createElement("span");
+    s.className = "donelab";
+    s.textContent = "✓ Week "+W.n+" complete";
+    foot.replaceChild(s, md);
+  }
+  if(manual) botSay("Week "+W.n+" marked complete. ✓");
+}
+
+/* ---------- optional AI question box ---------- */
+function sendAI(){
+  var q = $("aiq").value;
+  if(!q || !q.trim()) return;
+  $("aiq").value = "";
+  meSay(q);
+  var thinking = botSay("Thinking…");
+  aiAsk({mode:"question", week:W.n, topic:W.title, goals:W.goals, question:q})
+    .then(function(reply){ thinking.innerHTML = reply || "I didn't get a reply — try again in a second."; })
+    .catch(function(){ thinking.innerHTML = "I couldn't reach the tutor service just now. The lessons and all the practice still work without it."; });
+}
+
+/* ---------- boot ---------- */
+function boot(){
+  buildNav();
+  paintProgress();
+  $("resetbtn").addEventListener("click", function(){
+    if(!confirm("Erase saved progress for all 10 weeks?")) return;
+    for(var k in STATE) delete STATE[k];
+    save(); paintProgress(); openWeek(1);
+  });
+  var start = 1;
+  var m = (window.location.hash || "").match(/week-(\d+)/);
+  if(m && +m[1] >= 1 && +m[1] <= WEEKS.length) start = +m[1];
+  else for(var i=1;i<=WEEKS.length;i++){ if(!(STATE[i] && STATE[i].done)){ start = i; break; } }
+  openWeek(start);
+  window.addEventListener("beforeprint", function(){
+    var ds = document.querySelectorAll(".cp7 details");
+    for(var i=0;i<ds.length;i++) ds[i].open = true;
+  });
+}
+if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+else boot();
+
+})();
+
+</script>
+
+<!-- ============================================================
+     OPTIONAL: turning on the live AI tutor
+     ============================================================
+
+     Everything above works offline with no API key. The bot teaches,
+     asks, checks answers, and walks hint ladders using plain JS.
+
+     If you later want free-form Q&A ("Max, why does the inequality
+     flip again?"), do two things:
+
+     1. Deploy the function below to Netlify or Vercel. Your API key
+        lives on the server, never in this page.
+     2. Find  var AI_ENDPOINT = "";  in the script above and paste
+        your function URL between the quotes.
+
+     That switches on an "Ask Max anything" box and real feedback on
+     the "say it back to me" questions. Nothing else changes.
+
+     ---------- netlify/functions/tutor.js ----------
+     (Netlify: put this file at netlify/functions/tutor.js and set
+      ANTHROPIC_API_KEY in Site settings -> Environment variables.
+      Your endpoint is then https://YOURSITE.netlify.app/.netlify/functions/tutor)
+
+     exports.handler = async (event) => {
+       const cors = {
+         "Access-Control-Allow-Origin": "https://criminallyprolific.com",
+         "Access-Control-Allow-Headers": "Content-Type",
+         "Access-Control-Allow-Methods": "POST, OPTIONS"
+       };
+       if (event.httpMethod === "OPTIONS") return { statusCode: 204, headers: cors };
+       if (event.httpMethod !== "POST") return { statusCode: 405, headers: cors, body: "" };
+
+       const b = JSON.parse(event.body || "{}");
+
+       const system = [
+         "You are Max, a patient math tutor for one 7th grade student.",
+         "Course: proportional relationships, percents, and expressions/equations/inequalities.",
+         "Rules: never just give the final answer. Ask a guiding question or give one small hint.",
+         "Keep replies under 80 words. Plain language, no jargon the student has not met.",
+         "Simple HTML only (b, i, br). No markdown, no LaTeX.",
+         "If asked something off-topic, steer back to the math in one friendly line."
+       ].join(" ");
+
+       const prompt = b.mode === "grade_explanation"
+         ? "The student was asked: " + b.prompt +
+           "\nThey wrote: " + b.student +
+           "\nA correct answer is: " + b.model +
+           "\nSay whether they got the main idea, name the one thing to fix if anything, then give the clean version. Be encouraging."
+         : "Week " + b.week + " (" + b.topic + "). Student asks: " + b.question;
+
+       const r = await fetch("https://api.anthropic.com/v1/messages", {
+         method: "POST",
+         headers: {
+           "content-type": "application/json",
+           "x-api-key": process.env.ANTHROPIC_API_KEY,
+           "anthropic-version": "2023-06-01"
+         },
+         body: JSON.stringify({
+           model: "claude-haiku-5-5",
+           max_tokens: 400,
+           system,
+           messages: [{ role: "user", content: prompt }]
+         })
+       });
+
+       if (!r.ok) return { statusCode: 502, headers: cors, body: JSON.stringify({ reply: "" }) };
+       const data = await r.json();
+       const reply = (data.content || []).map(c => c.text || "").join("").trim();
+       return {
+         statusCode: 200,
+         headers: Object.assign({ "Content-Type": "application/json" }, cors),
+         body: JSON.stringify({ reply })
+       };
+     };
+     ---------- end of function ----------
+
+     Notes:
+     - Change the Access-Control-Allow-Origin value to the exact domain
+       you serve this page from, so nobody else can spend your credits.
+     - claude-haiku-5-5 is the cheap, fast model; swap the model string
+       if you want a stronger one.
+     - Vercel: same code as an API route, with request/response objects
+       instead of the handler signature.
+     ============================================================ -->
+
+</body>
+</html>
