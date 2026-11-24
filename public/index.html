@@ -99,7 +99,7 @@
         <div>
           <p class="eyebrow">— Newsletter</p>
           <h2 class="nl-title">Your business<br>shouldn't own you.</h2>
-          <p class="nl-desc">3 hours a day. 4 exits. Free biweekly playbook.</p>
+          <p class="nl-desc">3 hours a day. 4 exits. Free monthly playbook.</p>
         </div>
         <div style="position:relative;">
           <iframe src="https://dmitrydragilev.substack.com/embed" width="480" height="320" style="border:1px solid #EEE;background:white;max-width:100%;" frameborder="0" scrolling="no"></iframe>
@@ -255,7 +255,7 @@
       <div class="interview-card interview-card--video">
         <a href="https://www.youtube.com/watch?v=JZ3wbDIP610" target="_blank" style="display:block;color:inherit;text-decoration:none;">
         <div class="interview-thumb" style="position:relative;">
-        <img src="https://img.youtube.com/vi/JZ3wbDIP610/maxresdefault.jpg" alt="The Next Build Podcast" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/JZ3wbDIP610/hqdefault.jpg'">
+        <img src="/assets/img/next-build-podcast.jpg" alt="The Next Build Podcast — Dmitry Dragilev" loading="lazy" onerror="ytFallback(this,'JZ3wbDIP610')">
         <div class="interview-play">▶</div>
         <span style="position:absolute;top:8px;left:8px;background:#111;color:#fff;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:4px 8px;border-radius:4px;">★ New</span>
         </div>
@@ -268,6 +268,25 @@
         <div style="display:flex;flex-wrap:wrap;gap:16px;padding:0 16px 16px;">
           <a href="https://podcasts.apple.com/us/podcast/he-sold-4-companies-to-google-semrush-adobe-heres-how/id1896826615?i=1000802375864" target="_blank" style="font-size:13px;font-weight:700;color:#0033ff;text-decoration:none;">Listen on Apple Podcasts →</a>
           <a href="https://www.instagram.com/p/Df5nWs8HJgB/" target="_blank" style="font-size:13px;font-weight:700;color:#0033ff;text-decoration:none;">Watch the clip on Instagram →</a>
+        </div>
+        </div>
+      <!-- TODO: swap the placeholder title below for the real episode title, and add the publish date
+           inside the empty <span class="interview-date"></span> (e.g. November 20, 2026 · 45 min ·). -->
+      <div class="interview-card interview-card--video">
+        <a href="https://www.youtube.com/watch?v=iK_jTUOzTY8" target="_blank" style="display:block;color:inherit;text-decoration:none;">
+        <div class="interview-thumb" style="position:relative;">
+        <img src="/assets/img/live-local-business.jpg" alt="Live Local Business Podcast — Dmitry Dragilev" loading="lazy" onerror="ytFallback(this,'iK_jTUOzTY8')">
+        <div class="interview-play">▶</div>
+        <span style="position:absolute;top:8px;left:8px;background:#111;color:#fff;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:4px 8px;border-radius:4px;">★ New</span>
+        </div>
+        <div class="interview-info">
+        <p class="interview-pod">Live Local Business Podcast</p>
+        <p class="interview-title">Dmitry Dragilev on the Live Local Business Podcast</p>
+        <p class="interview-meta"><span class="interview-date"></span>▶ YouTube</p>
+        </div>
+        </a>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;padding:0 16px 16px;">
+          <a href="https://www.livelocalwarmmarketing.com/courses" target="_blank" style="font-size:13px;font-weight:700;color:#0033ff;text-decoration:none;">Live Local Warm Marketing courses →</a>
         </div>
         </div>
       <div class="interview-card interview-card--video">
@@ -688,7 +707,7 @@
       </div>
     </div>
     <div style="display:flex;align-items:center;gap:20px;margin-top:28px;">
-      <button class="show-more-btn" id="showMoreBtn" onclick="toggleInterviews()">Show all 37 interviews ↓</button>
+      <button class="show-more-btn" id="showMoreBtn" onclick="toggleInterviews()">Show all 38 interviews ↓</button>
     </div>
   </div>
 </div>
@@ -796,13 +815,42 @@ document.getElementById('videoModal').addEventListener('click',function(e){
 });
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 
+/* Thumbnail fallback chain: local asset → YouTube maxres → YouTube hq → styled placeholder.
+   YouTube serves a grey 120x90 "no thumbnail" image with HTTP 200 for videos that have no
+   stored thumbnail, so onerror alone never fires — we check naturalWidth/Height too. */
+function ytFallback(img,id){
+  var n=parseInt(img.getAttribute('data-try')||'0',10);
+  var urls=['https://img.youtube.com/vi/'+id+'/maxresdefault.jpg',
+            'https://img.youtube.com/vi/'+id+'/hqdefault.jpg'];
+  if(n<urls.length){
+    img.setAttribute('data-try',n+1);
+    img.onload=function(){
+      if(img.naturalWidth===120&&img.naturalHeight===90){ytFallback(img,id);}
+    };
+    img.src=urls[n];
+  } else {
+    ytPlaceholder(img);
+  }
+}
+function ytPlaceholder(img){
+  img.onerror=null;img.onload=null;
+  var wrap=img.parentNode;
+  if(!wrap)return;
+  img.parentNode.removeChild(img);
+  wrap.style.background='#eef1ff';
+  wrap.style.aspectRatio='16/9';
+  wrap.style.display='flex';
+  wrap.style.alignItems='center';
+  wrap.style.justifyContent='center';
+}
+
 function toggleInterviews(){
   var more=document.getElementById('moreInterviews');
   var btn=document.getElementById('showMoreBtn');
   if(more.classList.contains('visible')){
     more.classList.remove('visible');
     document.getElementById('archiveTitle').style.display='none';
-    btn.textContent='Show all 37 interviews ↓';
+    btn.textContent='Show all 38 interviews ↓';
   } else {
     more.classList.add('visible');
     document.getElementById('archiveTitle').style.display='';
